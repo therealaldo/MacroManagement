@@ -19,13 +19,13 @@ $ npm install
 
 ### Adding Lock to your project
 
-Install Cocoapods in order to fetch **Lock** native libraries dependencies and link them to your
+Install Cocoapods in order to fetch ```Lock``` native libraries dependencies and link them to your
 project.
 ```
 $ gem install cocoapods
 ```
 
-Run the following command to install **react-native-lock**.
+Run the following command to install ```react-native-lock```.
 ```
 $ npm install --save react-native-lock
 ```
@@ -36,7 +36,7 @@ root.
 $ npm install rnpm -g
 ```
 
-Once installed, link **react-native-lock** with your iOS project.
+Once installed, link ```react-native-lock``` with your iOS project.
 ```
 $ rnpm link react-native-lock
 ```
@@ -55,13 +55,13 @@ Open Xcode and click on ```<YourAppName>.xcodeproj``` in the project navigator a
 Make sure ```All``` is toggled on instead of ```Basic```. Look for ```Other Linker Flags``` and change the current value
 to ```$(inherited)``` for **all** configurations.
 
-After that, you are going to need to install **react-native-config** to access your environment
+After that, you are going to need to install ```react-native-config``` to access your environment
 variables.
 ```
 $ npm install --save react-native-config
 ```
 
-Link **react-native-config** to your iOS project using **rnpm**.
+Link ```react-native-config``` to your iOS project using ```rnpm```.
 ```
 $ rnpm link react-native-config
 ```
