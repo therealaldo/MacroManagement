@@ -9,7 +9,7 @@ using React Native while also incorporating Auth0 for user authentication.
 
 Clone the git repository to your machine using ssh.
 ```
-$ git clone git@github.com:therealaldo/login.git
+$ git clone git@github.com:therealaldo/MacroManagement.git
 ```
 
 Install the npm packages
