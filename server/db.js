@@ -17,10 +17,27 @@ module.exports = function() {
   });
 
   const _preferences = _sequelize.define('preferences', {
+    foodId: {
+      type: Sequelize.STRING
+    },
+    status: {
+      type: Sequelize.BOOLEAN
+    }
+  });
 
+  const _groceryListCollection = _sequelize.define('groceryListCollection', {
+    userId: {
+      type: Sequelize.STRING
+    },
+    listId: {
+      type: Sequelize.STRING
+    }
   });
 
   const _groceryLists = _sequelize.define('groceryLists', {
+    listId: {
+      type: Sequelize.STRING
+    },
 
   });
 
@@ -29,6 +46,7 @@ module.exports = function() {
   return {
     connection: _sequelize,
     preferences: _preferences,
+    groceryListCollection: _groceryListCollection,
     groceryLists: _groceryLists
   }
 

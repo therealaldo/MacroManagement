@@ -20,10 +20,6 @@ let ProfileView = React.createClass({
             style={styles.badge}
             source={require('./img/badge.png')}
           />
-          <Image
-            style={styles.avatar}
-            source={{uri: this.props.profile.picture}}
-          />
           <Text style={styles.title}>Welcome {this.props.profile.name}</Text>
         </View>
         <TouchableHighlight

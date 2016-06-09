@@ -1,7 +1,6 @@
 'use strict';
 
 import React, { Component } from 'react';
-
 import {
   StyleSheet,
   Text,
@@ -9,6 +8,7 @@ import {
   Image,
   TouchableHighlight,
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 import Auth0Lock from 'react-native-lock';
 import Config from 'react-native-config';
@@ -17,7 +17,11 @@ let credentials = {
   clientId: Config.CLIENT_ID,
   domain: Config.DOMAIN
 };
-let lock = new Auth0Lock(credentials);
+let lock = new Auth0Lock(credentials, {
+  integrations: {
+    facebook: {}
+  }
+});
 
 let WelcomeView = React.createClass({
   render: function() {
@@ -40,6 +44,7 @@ let WelcomeView = React.createClass({
       </View>
     );
   },
+
   _onLogin: function() {
     lock.show({
       closable: true,
@@ -48,12 +53,9 @@ let WelcomeView = React.createClass({
         console.log(err);
         return;
       }
-      this.props.navigator.push({
-        name: 'Profile',
-        passProps: {
-          profile: profile,
-          token: token,
-        }
+      Actions.profile({
+        profile: profile,
+        token: token
       });
     });
   },

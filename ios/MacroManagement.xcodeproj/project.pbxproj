@@ -21,6 +21,9 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		6015289A1D08F82000B89D44 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 601528971D08F82000B89D44 /* FBSDKCoreKit.framework */; };
+		6015289B1D08F82000B89D44 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 601528981D08F82000B89D44 /* FBSDKLoginKit.framework */; };
+		6015289C1D08F82000B89D44 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 601528991D08F82000B89D44 /* FBSDKShareKit.framework */; };
 		71C37522512F452E8E422D7E /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24BD2ADB96784069825997D2 /* libReactNativeConfig.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8DEE6F9DEB724DCD8D3D9FCC /* libA0RNLock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D3AE480878416185673271 /* libA0RNLock.a */; };
@@ -145,6 +148,9 @@
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		24BD2ADB96784069825997D2 /* libReactNativeConfig.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeConfig.a; sourceTree = "<group>"; };
 		341E3A880C69AD0CA769BCDA /* libPods-MacroManagement.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MacroManagement.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		601528971D08F82000B89D44 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		601528981D08F82000B89D44 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		601528991D08F82000B89D44 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		6168A4671B9276C2CF396923 /* Pods-MacroManagement.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroManagement.release.xcconfig"; path = "Pods/Target Support Files/Pods-MacroManagement/Pods-MacroManagement.release.xcconfig"; sourceTree = "<group>"; };
 		749F7AA2F8A455A17FAD8AE8 /* Pods-MacroManagementTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroManagementTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacroManagementTests/Pods-MacroManagementTests.debug.xcconfig"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
@@ -169,6 +175,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6015289A1D08F82000B89D44 /* FBSDKCoreKit.framework in Frameworks */,
+				6015289B1D08F82000B89D44 /* FBSDKLoginKit.framework in Frameworks */,
+				6015289C1D08F82000B89D44 /* FBSDKShareKit.framework in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
@@ -360,6 +369,9 @@
 		A2FC3F86FFC8323BDECCC002 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				601528971D08F82000B89D44 /* FBSDKCoreKit.framework */,
+				601528981D08F82000B89D44 /* FBSDKLoginKit.framework */,
+				601528991D08F82000B89D44 /* FBSDKShareKit.framework */,
 				341E3A880C69AD0CA769BCDA /* libPods-MacroManagement.a */,
 				8826F4A250727DA09B8F9D83 /* libPods-MacroManagementTests.a */,
 			);
@@ -384,12 +396,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MacroManagementTests" */;
 			buildPhases = (
-				85B56CF4AE667B2DF7A312BF /* 📦 Check Pods Manifest.lock */,
+				85B56CF4AE667B2DF7A312BF /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				BA0E2182C1CF358251889203 /* 📦 Embed Pods Frameworks */,
-				A24FF0BF037C64671D60C2E5 /* 📦 Copy Pods Resources */,
+				BA0E2182C1CF358251889203 /* [CP] Embed Pods Frameworks */,
+				A24FF0BF037C64671D60C2E5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -405,13 +417,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MacroManagement" */;
 			buildPhases = (
-				E9A0CC4470FC4CFDAE947182 /* 📦 Check Pods Manifest.lock */,
+				E9A0CC4470FC4CFDAE947182 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				065A292B96FDE0DB94DF5DDD /* 📦 Embed Pods Frameworks */,
-				286C05B74D19D9F881B166A9 /* 📦 Copy Pods Resources */,
+				065A292B96FDE0DB94DF5DDD /* [CP] Embed Pods Frameworks */,
+				286C05B74D19D9F881B166A9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -434,6 +446,9 @@
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 549A3479PG;
 					};
 				};
 			};
@@ -627,14 +642,14 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/packager/react-native-xcode.sh";
 		};
-		065A292B96FDE0DB94DF5DDD /* 📦 Embed Pods Frameworks */ = {
+		065A292B96FDE0DB94DF5DDD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -642,14 +657,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MacroManagement/Pods-MacroManagement-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		286C05B74D19D9F881B166A9 /* 📦 Copy Pods Resources */ = {
+		286C05B74D19D9F881B166A9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -657,14 +672,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MacroManagement/Pods-MacroManagement-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		85B56CF4AE667B2DF7A312BF /* 📦 Check Pods Manifest.lock */ = {
+		85B56CF4AE667B2DF7A312BF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -672,14 +687,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		A24FF0BF037C64671D60C2E5 /* 📦 Copy Pods Resources */ = {
+		A24FF0BF037C64671D60C2E5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -687,14 +702,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MacroManagementTests/Pods-MacroManagementTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BA0E2182C1CF358251889203 /* 📦 Embed Pods Frameworks */ = {
+		BA0E2182C1CF358251889203 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -702,14 +717,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MacroManagementTests/Pods-MacroManagementTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E9A0CC4470FC4CFDAE947182 /* 📦 Check Pods Manifest.lock */ = {
+		E9A0CC4470FC4CFDAE947182 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -806,6 +821,8 @@
 			baseConfigurationReference = DEC6C9FA4058690D9E40DE80 /* Pods-MacroManagement.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEAD_CODE_STRIPPING = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -821,6 +838,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = MacroManagement;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -829,6 +847,8 @@
 			baseConfigurationReference = 6168A4671B9276C2CF396923 /* Pods-MacroManagement.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -843,6 +863,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = MacroManagement;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -863,9 +884,10 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos9.3]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "~/Documents/FacebookSDK/**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -886,11 +908,16 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-lock/ios/A0RNLock/**",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-facebook-login/FacebookSDK/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lc++",
+				);
+				SDKROOT = iphoneos9.3;
 			};
 			name = Debug;
 		};
@@ -911,10 +938,11 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos9.3]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "~/Documents/FacebookSDK/**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -928,10 +956,15 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-lock/ios/A0RNLock/**",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-facebook-login/FacebookSDK/**",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lc++",
+				);
+				SDKROOT = iphoneos9.3;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
