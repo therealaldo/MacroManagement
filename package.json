@@ -25,8 +25,11 @@
     "react-native-config": "0.0.6",
     "react-native-lock": "0.2.0",
     "react-native-router-flux": "3.26.24",
+    "react-native-tabs": "^1.0.7",
     "react-redux": "4.4.5",
     "redux": "3.5.2",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.1.0",
     "sequelize": "3.23.3"
   },
   "devDependencies": {

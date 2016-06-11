@@ -12,8 +12,9 @@ Clone the git repository to your machine using ssh.
 $ git clone git@github.com:therealaldo/MacroManagement.git
 ```
 
-Install the npm packages
+Navigate to the project and install the npm packages.
 ```
+$ cd MacroManagement
 $ npm install
 ```
 
