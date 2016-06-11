@@ -6,29 +6,29 @@ module.exports = function() {
 
   function _create(data, err, success) {
     let payload = data;
-    db.groceryLists.create(payload)
+    db.userGoals.create(payload)
     .then(success)
     .catch(err)
   }
 
   function _find(data, err, success) {
     let payload = data;
-    db.groceryLists.findAll({where: {listId: payload.listId}})
+    db.userGoals.findAll({where: {userId: payload.userId}})
     .then(success)
     .catch(err);
   }
 
   function _findAll(err, success) {
-    db.groceryLists.findAll()
+    db.userGoals.findAll()
     .then(success)
     .catch(err);
   }
 
   function _update(data, err, success) {
     let payload = data;
-    db.groceryLists.find({where: {listId: payload.listId}})
-    .then(function(matchedList) {
-      matchedList.updateAttributes(data)
+    db.userGoals.find({where: {userId: payload.userId}})
+    .then(function(matchedOrder) {
+      matchedOrder.updateAttributes(data)
       .then(success)
       .catch(err)
     })
@@ -37,7 +37,7 @@ module.exports = function() {
 
   function _destroy(data, err, success) {
     let payload = data;
-    db.groceryLists.destroy({where: {listId: payload.listId}})
+    db.userGoals.destroy({where: {userId: payload.userId}})
     .then(success)
     .catch(err);
   }
