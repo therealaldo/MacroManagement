@@ -1,37 +1,37 @@
-import React, { Component } from 'react';
+'use strict';
 
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableHighlight,
-  Alert,
-} from 'react-native';
+import React, { PropTypes } from 'react';
+import { StyleSheet, Text, View, Image, TouchableHighlight, Alert } from 'react-native';
+import { connect } from 'react-redux';
 
 let API_ENDPOINT = 'http://localhost:8081/secured/ping';
 
-let ProfileView = React.createClass({
-  render: function() {
+class ProfileView extends React.Component {
+  static propTypes = {
+    routes: PropTypes.object,
+  };
+
+  render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.messageBox}>
+      <View style={ styles.container }>
+        <View style={ styles.messageBox }>
           <Image
-            style={styles.badge}
-            source={require('./img/badge.png')}
+            style={ styles.badge }
+            source={ imageMap['badge'] }
           />
-          <Text style={styles.title}>Welcome {this.props.profile.name}</Text>
+          <Text style={ styles.title }>Welcome { this.props.profile.name }</Text>
         </View>
         <TouchableHighlight
-          style={styles.callApiButton}
+          style={ styles.callApiButton }
           underlayColor='#949494'
-          onPress={this._onCallApi}>
+          onPress={ this._onCallApi }>
           <Text>Call API</Text>
         </TouchableHighlight>
       </View>
     );
-  },
-  _onCallApi: function() {
+  }
+
+  _onCallApi() {
     fetch(API_ENDPOINT)
       .then((response) => response.text())
       .then((responseText) => {
@@ -52,8 +52,12 @@ let ProfileView = React.createClass({
           ]
         )
       });
-  },
-});
+  }
+};
+
+const imageMap = {
+  "badge": require('../img/badge.png'),
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -93,4 +97,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = ProfileView;
+export default connect(({ routes }) => ({ routes }))(ProfileView);
