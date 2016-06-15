@@ -4,6 +4,11 @@ import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Button from 'react-native-button';
 import { Actions } from 'react-native-router-flux';
+import DashboardView from './dashboard_view';
+import WeeklyPlanView from './weekly_plan_view';
+import TrendsView from './trends_view';
+import ProfileView from './profile_view';
+import SettingsView from './settings_view';
 
 const contextTypes = {
   drawer: React.PropTypes.object
@@ -19,18 +24,21 @@ const TabView = (props, context) => {
   const drawer = context.drawer;
   return (
     <View style={[styles.container, props.sceneStyle ]}>
-      <Text>{ props.title }</Text>
-      {props.name === 'tab1_1' &&
-        <Button onPress={Actions.tab1_2}>next screen for tab1_1</Button>
+      { props.name === 'dashboard' &&
+        <DashboardView />
       }
-      {props.name === 'tab2_1' &&
-        <Button onPress={Actions.tab2_2}>next screen for tab2_1</Button>
+      { props.name === 'weeklyPlan' &&
+        <WeeklyPlanView />
       }
-      <Button onPress={ () => { Actions.dashboard(); }}>Switch to dashboard</Button>
-      <Button onPress={ () => { Actions.weeklyPlan(); }}>Switch to weekly plan</Button>
-      <Button onPress={ () => { Actions.trends(); }}>Switch to trends</Button>
-      <Button onPress={ () => { Actions.profile(); }}>Switch to profile</Button>
-      <Button onPress={ () => { Actions.settings(); }}>Switch to settings</Button>
+      { props.name === 'trends' &&
+        <TrendsView />
+      }
+      { props.name === 'profile' &&
+        <ProfileView />
+      }
+      { props.name === 'settings' &&
+        <SettingsView />
+      }
     </View>
   );
 };

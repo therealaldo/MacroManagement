@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Navigator, Text, View } from 'react-native';
-import { Router, Scene } from 'react-native-router-flux';
+import { Router, Scene, Reducer, TabBar } from 'react-native-router-flux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider, connect } from 'react-redux';
 import createLogger from 'redux-logger';
@@ -15,7 +15,6 @@ import TrendsView from './components/trends_view';
 import ProfileView from './components/profile_view';
 import SettingsView from './components/settings_view';
 import TabView from './components/tab_view';
-import NavDrawer from './components/nav_drawer';
 
 const RouterWithRedux = connect()(Router);
 
@@ -33,21 +32,33 @@ class TabIcon extends React.Component {
   }
 };
 
+const reducerCreate = params=>{
+  const defaultReducer = Reducer(params);
+  return (state, action) => {
+    console.log('ACTION: ', action);
+    return defaultReducer(state, action);
+  }
+};
+
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={ store }>
-        <RouterWithRedux>
+        <RouterWithRedux createReducer={ reducerCreate }>
           <Scene key='root'>
             <Scene key='welcome' icon={ TabIcon } component={ WelcomeView } title='Welcome'
               initial={ true }></Scene>
-            <Scene key='tabbar' tabs={ true } component={ NavDrawer }>
-              <Scene key='dashboard' component={ TabView } title='Dashboard' initial={ true }>
+            <Scene key='tabbar'>
+              <Scene key='main' tabs={ true } hideNavBar>
+                <Scene key='dashboard' icon={ TabIcon } component={ DashboardView } title='Dashboard' initial={ true }>
+                </Scene>
+                <Scene key='weeklyPlan' icon={ TabIcon } component={ WeeklyPlanView } title='Weekly Plan'>
+                </Scene>
+                <Scene key='trends' icon={ TabIcon } component={ TrendsView } title='Trends'></Scene>
+                <Scene key='profile' icon={ TabIcon } component={ ProfileView } title='Profile'></Scene>
+                <Scene key='settings' icon={ TabIcon } component={ SettingsView } title='Settings'>
+                </Scene>
               </Scene>
-              <Scene key='weeklyPlan' component={ TabView } title='Weekly Plan'></Scene>
-              <Scene key='trends' component={ TabView } title='Trends'></Scene>
-              <Scene key='profile' component={ TabView } title='Profile'></Scene>
-              <Scene key='settings' component={ TabView } title='Settings'></Scene>
             </Scene>
           </Scene>
           <Scene key='error' component={ Error } />

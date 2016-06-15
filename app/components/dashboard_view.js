@@ -14,8 +14,7 @@ class DashboardView extends React.Component {
   render() {
     return (
       <View style={ styles.container }>
-        <Text>Dashboard page</Text>
-        <Text>Current scene title: { this.props.routes.scene.title }</Text>
+        <Text>{ this.props.title } page</Text>
       </View>
     );
   }

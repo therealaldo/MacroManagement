@@ -14,8 +14,7 @@ class WeeklyPlanView extends React.Component {
   render() {
     return (
       <View style={ styles.container }>
-        <Text>Weekly Plan page</Text>
-        <Text>Current scene title: { this.props.routes.scene.title }</Text>
+        <Text>{ this.props.title } page</Text>
       </View>
     );
   }

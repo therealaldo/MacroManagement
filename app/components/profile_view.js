@@ -19,7 +19,7 @@ class ProfileView extends React.Component {
             style={ styles.badge }
             source={ imageMap['badge'] }
           />
-          <Text style={ styles.title }>Welcome { this.props.profile.name }</Text>
+          <Text style={ styles.title }>Welcome</Text>
         </View>
         <TouchableHighlight
           style={ styles.callApiButton }
