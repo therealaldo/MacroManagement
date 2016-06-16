@@ -14,6 +14,7 @@ import WeeklyPlanView from './components/weekly_plan_view';
 import TrendsView from './components/trends_view';
 import ProfileView from './components/profile_view';
 import SettingsView from './components/settings_view';
+import Error from './components/error_view';
 import TabView from './components/tab_view';
 
 const RouterWithRedux = connect()(Router);
@@ -49,8 +50,8 @@ export default class App extends React.Component {
             <Scene key='welcome' icon={ TabIcon } component={ WelcomeView } title='Welcome'
               initial={ true }></Scene>
             <Scene key='tabbar'>
-              <Scene key='main' tabs={ true } hideNavBar>
-                <Scene key='dashboard' icon={ TabIcon } component={ DashboardView } title='Dashboard' initial={ true }>
+              <Scene key='main' tabs={ true }>
+                <Scene key='dashboard' icon={ TabIcon } component={ DashboardView } title='Dashboard'>
                 </Scene>
                 <Scene key='weeklyPlan' icon={ TabIcon } component={ WeeklyPlanView } title='Weekly Plan'>
                 </Scene>

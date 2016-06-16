@@ -14,7 +14,7 @@ class WeeklyPlanView extends React.Component {
   render() {
     return (
       <View style={ styles.container }>
-        <Text>{ this.props.title } page</Text>
+        
       </View>
     );
   }

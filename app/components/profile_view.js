@@ -19,14 +19,8 @@ class ProfileView extends React.Component {
             style={ styles.badge }
             source={ imageMap['badge'] }
           />
-          <Text style={ styles.title }>Welcome</Text>
-        </View>
-        <TouchableHighlight
-          style={ styles.callApiButton }
-          underlayColor='#949494'
-          onPress={ this._onCallApi }>
-          <Text>Call API</Text>
-        </TouchableHighlight>
+        <Text style={ styles.title }>Welcome { this.props.routes.scene.profile.name }</Text>
+        </View>        
       </View>
     );
   }
@@ -37,7 +31,7 @@ class ProfileView extends React.Component {
       .then((responseText) => {
         Alert.alert(
           'Request Successful',
-          'We got the secured data successfully',
+          responseText,
           [
             {text: 'OK'},
           ]
