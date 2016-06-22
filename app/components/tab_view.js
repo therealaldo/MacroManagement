@@ -52,8 +52,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#e9e9e9',
-    borderWidth: 2,
-    borderColor: 'red'
   },
 });
 

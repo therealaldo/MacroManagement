@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { Navigator, Text, View } from 'react-native';
+import { Navigator, Text, View, StyleSheet } from 'react-native';
 import { Router, Scene, Reducer, TabBar } from 'react-native-router-flux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider, connect } from 'react-redux';
@@ -45,12 +45,13 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={ store }>
-        <RouterWithRedux createReducer={ reducerCreate }>
+        <RouterWithRedux createReducer={ reducerCreate } navigationBarStyle={ styles.navBar }
+          titleStyle={ styles.navTitle } sceneStyle={ styles.routerScene }>
           <Scene key='root'>
             <Scene key='welcome' icon={ TabIcon } component={ WelcomeView } title='Welcome'
-              initial={ true }></Scene>
+              initial={ true } hideNavBar></Scene>
             <Scene key='tabbar'>
-              <Scene key='main' tabs={ true }>
+              <Scene key='main' tabs={ true } hideNavBar>
                 <Scene key='dashboard' icon={ TabIcon } component={ DashboardView } title='Dashboard'>
                 </Scene>
                 <Scene key='weeklyPlan' icon={ TabIcon } component={ WeeklyPlanView } title='Weekly Plan'>
@@ -68,3 +69,18 @@ export default class App extends React.Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  navBar: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+    borderBottomWidth: 0,
+  },
+  navTitle: {
+    color: '#fefefe',
+    fontFamily: 'OpenSans-Bold'
+  },
+});

@@ -31,14 +31,14 @@ class WelcomeView extends React.Component {
             style={ styles.badge }
             source={ imageMap['badge'] }
           />
-          <Text style={ styles.title }>Auth0 Example</Text>
-          <Text style={ styles.subtitle }>Identity made simple for Developers</Text>
+        <Text style={ styles.title }>MacroManagement</Text>
+          <Text style={ styles.subtitle }>We Sweat the Small Stuff for You</Text>
         </View>
         <TouchableHighlight
           style={ styles.signInButton }
           underlayColor='#949494'
           onPress={ this._onLogin }>
-          <Text>Log In</Text>
+          <Text style={ styles.buttonText }>Log In</Text>
         </TouchableHighlight>
       </View>
     );
@@ -54,7 +54,7 @@ class WelcomeView extends React.Component {
       }
       Actions.tabbar({
         profile: profile,
-        token: token
+        token: token,
       });
     });
   }
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#15204C',
+    backgroundColor: '#26a65b',
   },
   messageBox: {
     flex: 1,
@@ -95,12 +95,17 @@ const styles = StyleSheet.create({
   signInButton: {
     height: 50,
     alignSelf: 'stretch',
-    backgroundColor: '#D9DADF',
+    backgroundColor: '#efbe14',
     margin: 10,
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
   },
+  buttonText: {
+    color: '#e9e9e9',
+    fontFamily: 'OpenSans-Semibold',
+    fontSize: 18
+  }
 });
 
 export default connect(({ routes }) => ({ routes }))(WelcomeView);
