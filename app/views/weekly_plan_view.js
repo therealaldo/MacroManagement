@@ -11,6 +11,8 @@ class WeeklyPlanView extends React.Component {
     routes: PropTypes.object,
   };
 
+  // TODO: research a react native calendar package where we can set calendar events necessary to for meal setting
+  // next thing would be to write the actions for the view such as SEARCH_MEALS || SET_MEAL, etc.
   render() {
     return (
       <View style={ styles.container }>

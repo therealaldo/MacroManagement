@@ -19,6 +19,7 @@ let lock = new Auth0Lock(credentials, {
   }
 });
 
+// TODO: style the login flow to match the app's style guidelines
 class WelcomeView extends React.Component {
   static propTypes = {
     routes: PropTypes.object,

@@ -12,6 +12,7 @@ class SettingsView extends React.Component {
     routes: PropTypes.object,
   };
 
+  // TODO: write the rest of the settings lists based on the action.key being called
   genRows() {
     if(this.props.title === 'Settings') {
       return (

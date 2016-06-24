@@ -11,6 +11,8 @@ class DashboardView extends React.Component {
     routes: PropTypes.object,
   };
 
+  // TODO: make the dashboard view a smart component to have screens such as the main dashboard
+  //       and other possible articles, progress for the day, etc.
   render() {
     return (
       <View style={ styles.container }>

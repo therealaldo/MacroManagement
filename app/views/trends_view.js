@@ -11,6 +11,7 @@ class TrendsView extends React.Component {
     routes: PropTypes.object,
   };
 
+  // TODO: find a react native graph package and start to incorporate that functionality
   render() {
     return (
       <View style={ styles.container }>

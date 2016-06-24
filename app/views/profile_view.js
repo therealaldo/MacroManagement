@@ -13,6 +13,7 @@ class ProfileView extends React.Component {
     routes: PropTypes.object,
   };
 
+  // TODO: make the profile view a smart component handling both view and edit profile screens
   render() {
     return (
       <View style={ styles.container }>
