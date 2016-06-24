@@ -1,21 +1,26 @@
 'use strict';
 
+// React
 import React from 'react';
 import { Navigator, Text, View, StyleSheet } from 'react-native';
 import { Router, Scene, Reducer, TabBar } from 'react-native-router-flux';
+
+// Store w/ Redux
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider, connect } from 'react-redux';
 import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
-import WelcomeView from './components/welcome_view';
-import DashboardView from './components/dashboard_view';
-import WeeklyPlanView from './components/weekly_plan_view';
-import TrendsView from './components/trends_view';
-import ProfileView from './components/profile_view';
-import SettingsView from './components/settings_view';
-import Error from './components/error_view';
-import TabView from './components/tab_view';
+
+// Main Views
+import WelcomeView from './views/welcome_view';
+import DashboardView from './views/dashboard_view';
+import WeeklyPlanView from './views/weekly_plan_view';
+import TrendsView from './views/trends_view';
+import ProfileView from './views/profile_view';
+import SettingsView from './views/settings_view';
+import Error from './views/error_view';
+import TabView from './views/tab_view';
 
 const RouterWithRedux = connect()(Router);
 
@@ -52,13 +57,32 @@ export default class App extends React.Component {
               initial={ true } hideNavBar></Scene>
             <Scene key='tabbar'>
               <Scene key='main' tabs={ true } hideNavBar>
-                <Scene key='dashboard' icon={ TabIcon } component={ DashboardView } title='Dashboard'>
+                <Scene key='dashboard' icon={ TabIcon } title='Dashboard'>
+                  <Scene key='mainDashboard' component={ DashboardView } title='Dashboard' />
                 </Scene>
-                <Scene key='weeklyPlan' icon={ TabIcon } component={ WeeklyPlanView } title='Weekly Plan'>
+                <Scene key='weeklyPlan' icon={ TabIcon } title='Weekly Plan'>
+                  <Scene key='mainWeeklyPlan' component={ WeeklyPlanView } title='Weekly Plan' />
                 </Scene>
-                <Scene key='trends' icon={ TabIcon } component={ TrendsView } title='Trends'></Scene>
-                <Scene key='profile' icon={ TabIcon } component={ ProfileView } title='Profile'></Scene>
-                <Scene key='settings' icon={ TabIcon } component={ SettingsView } title='Settings'>
+                <Scene key='trends' icon={ TabIcon } title='Trends'>
+                  <Scene key='mainTrends' component={ TrendsView } title='Trends' />
+                </Scene>
+                <Scene key='profile' icon={ TabIcon } title='Profile'>
+                  <Scene key='mainProfile' component={ ProfileView } title='Profile' />
+                </Scene>
+                <Scene key='settings' icon={ TabIcon } title='Settings'>
+                  <Scene key='mainSettings' component={ SettingsView } title='Settings' />
+                  <Scene key='profileSettings' component={ SettingsView }
+                    title='Profile' />
+                  <Scene key='privacySettings' component={ SettingsView }
+                    title='Sharing & Privacy' />
+                  <Scene key='mealSettings' component={ SettingsView }
+                    title='Meal Plan' />
+                  <Scene key='notificationSettings' component={ SettingsView }
+                    title='Notifications' />
+                  <Scene key='regionSettings' component={ SettingsView }
+                    title='Language & Region' />
+                  <Scene key='resetSettings' component={ SettingsView }
+                    title='Reset' />
                 </Scene>
               </Scene>
             </Scene>

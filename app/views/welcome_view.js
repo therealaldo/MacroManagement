@@ -5,6 +5,7 @@ import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native'
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 
+// Authorization w/ Auth0
 import Auth0Lock from 'react-native-lock';
 import Config from 'react-native-config';
 

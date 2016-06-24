@@ -4,6 +4,8 @@ import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Button from 'react-native-button';
 import { Actions } from 'react-native-router-flux';
+
+// Views
 import DashboardView from './dashboard_view';
 import WeeklyPlanView from './weekly_plan_view';
 import TrendsView from './trends_view';
