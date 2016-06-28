@@ -12,35 +12,83 @@ class SettingsView extends React.Component {
     routes: PropTypes.object,
   };
 
-  // TODO: write the rest of the settings lists based on the action.key being called
   genRows() {
-    if(this.props.title === 'Settings') {
-      return (
-        <SettingsList.Item title='Profile' onPress={() => Alert.alert('Profile pressed')} />
-        <SettingsList.Item title='Sharing & Privacy'
-          onPress={() => Alert.alert('Sharing & Privacy pressed')} />
-        <SettingsList.Item title='Meal Plan' onPress={() => Alert.alert('Meal Plan pressed')} />
-        <SettingsList.Header headerText='' />
-        <SettingsList.Item title='Notifications'
-          onPress={() => Alert.alert('Notifications pressed')} />
-        <SettingsList.Item title='Language & Region'
-          onPress={() => Alert.alert('Language & Region pressed')} />
-        <SettingsList.Item title='Reset' onPress={() => Alert.alert('Reset pressed')} />
-      )
-    }
-    if(this.props.title === 'Settings') {
-      return (
-        <SettingsList.Item title='Profile' onPress={() => Alert.alert('Profile pressed')} />
-        <SettingsList.Item title='Sharing & Privacy'
-          onPress={() => Alert.alert('Sharing & Privacy pressed')} />
-        <SettingsList.Item title='Meal Plan' onPress={() => Alert.alert('Meal Plan pressed')} />
-        <SettingsList.Header headerText='' />
-        <SettingsList.Item title='Notifications'
-          onPress={() => Alert.alert('Notifications pressed')} />
-        <SettingsList.Item title='Language & Region'
-          onPress={() => Alert.alert('Language & Region pressed')} />
-        <SettingsList.Item title='Reset' onPress={() => Alert.alert('Reset pressed')} />
-      )
+    switch(this.props.title) {
+      case 'Settings':
+        return (
+          <SettingsList>
+            <SettingsList.Header headerText='' />
+            <SettingsList.Item title='Profile' onPress={ Actions.profileSettings } />
+            <SettingsList.Item title='Sharing & Privacy' onPress={ Actions.privacySettings } />
+            <SettingsList.Item title='Meal Plan' onPress={ Actions.mealSettings } />
+            <SettingsList.Header headerText='' />
+            <SettingsList.Item title='Notifications' onPress={ Actions.notificationSettings } />
+            <SettingsList.Item title='Language & Region' onPress={ Actions.regionSettings } />
+            <SettingsList.Item title='Reset' onPress={ Actions.resetSettings } />
+          </SettingsList>
+        );
+      case 'Profile':
+        return (
+          <SettingsList>
+            <SettingsList.Header headerText='' />
+            <SettingsList.Item title='Edit Profile'
+              onPress={() => Alert.alert('Edit Profile pressed')} />
+          </SettingsList>
+        );
+      case 'Sharing & Privacy':
+        return (
+          <SettingsList>
+            <SettingsList.Header headerText='' />
+            <SettingsList.Item title='View Terms of Service'
+              onPress={() => Alert.alert('TOS pressed')} />
+            <SettingsList.Item title='View Privacy Policy'
+              onPress={() => Alert.alert('Privacy Policy pressed')} />
+          </SettingsList>
+        );
+      case 'Meal Plan':
+        return (
+          <SettingsList>
+            <SettingsList.Header headerText='' />
+            <SettingsList.Item title='Edit Food Preferences'
+              onPress={() => Alert.alert('Edit Food Preferences pressed')} />
+            <SettingsList.Item title='Show Nutrition Facts'
+              onPress={() => Alert.alert('Show Nutrition Facts pressed')} />
+          </SettingsList>
+        );
+      case 'Notifications':
+        return (
+          <SettingsList>
+            <SettingsList.Header headerText='' />
+            <SettingsList.Item title='Meal Plan' onPress={() => Alert.alert('Meal Plan pressed')} />
+            <SettingsList.Item title='Cookbook' onPress={() => Alert.alert('Cookbook pressed')} />
+            <SettingsList.Item title='Recommendations'
+              onPress={() => Alert.alert('Recommendations pressed')} />
+            <SettingsList.Item title='Do Not Disturb'
+              onPress={() => Alert.alert('Do Not Disturb pressed')} />
+          </SettingsList>
+        );
+      case 'Language & Region':
+        return (
+          <SettingsList>
+            <SettingsList.Header headerText='' />
+            <SettingsList.Item title='Change Language'
+              onPress={() => Alert.alert('Change Language pressed')} />
+            <SettingsList.Item title='Change Region'
+              onPress={() => Alert.alert('Change Region pressed')} />
+          </SettingsList>
+        );
+      case 'Reset':
+        return (
+          <SettingsList>
+            <SettingsList.Header headerText='' />
+            <SettingsList.Item title='Reset All Settings'
+              onPress={() => Alert.alert('Reset All Settings pressed')} />
+            <SettingsList.Item title='Reset Food Preferences'
+              onPress={() => Alert.alert('Reset Food Preferences pressed')} />
+            <SettingsList.Item title='Reset Notifications'
+              onPress={() => Alert.alert('Reset Notifications pressed')} />
+          </SettingsList>
+        );
     }
   }
 
@@ -48,10 +96,7 @@ class SettingsView extends React.Component {
     return (
       <View style={ styles.container }>
         <View style={ styles.settingsContainer }>
-          <SettingsList>
-            <SettingsList.Header headerText='' />
-              { this.genRows() }
-          </SettingsList>
+          { this.genRows() }
         </View>
         <Button style={ styles.logOutButton } onPress={() => Alert.alert('Log Out pressed')}>
           Log Out
