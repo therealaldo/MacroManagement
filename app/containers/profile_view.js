@@ -25,7 +25,7 @@ class ProfileView extends React.Component {
             <Text>21 years old</Text>
           </View>
           <View style={ styles.bubble }>
-            <Text>5'7</Text>
+            <Text>5</Text>
           </View>
           <View style={ styles.bubble }>
             <Text>125 lbs</Text>

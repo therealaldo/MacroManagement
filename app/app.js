@@ -13,14 +13,13 @@ import thunk from 'redux-thunk';
 import reducers from './reducers';
 
 // Main Views
-import WelcomeView from './views/welcome_view';
-import DashboardView from './views/dashboard_view';
-import WeeklyPlanView from './views/weekly_plan_view';
-import TrendsView from './views/trends_view';
-import ProfileView from './views/profile_view';
-import SettingsView from './views/settings_view';
-import Error from './views/error_view';
-import TabView from './views/tab_view';
+import WelcomeView from './containers/welcome_view';
+import DashboardView from './containers/dashboard_view';
+import WeeklyPlanView from './containers/weekly_plan_view';
+import TrendsView from './containers/trends_view';
+import ProfileView from './containers/profile_view';
+import SettingsView from './containers/settings_view';
+import Error from './containers/error_view';
 
 const RouterWithRedux = connect()(Router);
 
@@ -38,56 +37,61 @@ class TabIcon extends React.Component {
   }
 };
 
-const reducerCreate = params=>{
-  const defaultReducer = Reducer(params);
-  return (state, action) => {
-    console.log('ACTION: ', action);
-    return defaultReducer(state, action);
-  }
-};
-
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={ store }>
-        <RouterWithRedux createReducer={ reducerCreate } navigationBarStyle={ styles.navBar }
+        <RouterWithRedux navigationBarStyle={ styles.navBar }
           titleStyle={ styles.navTitle } sceneStyle={ styles.routerScene }>
-          <Scene key='root'>
-            <Scene key='welcome' icon={ TabIcon } component={ WelcomeView } title='Welcome'
-              initial={ true } hideNavBar></Scene>
-            <Scene key='tabbar'>
-              <Scene key='main' tabs={ true } hideNavBar>
-                <Scene key='dashboard' icon={ TabIcon } title='Dashboard'>
-                  <Scene key='mainDashboard' component={ DashboardView } title='Dashboard' />
-                </Scene>
-                <Scene key='weeklyPlan' icon={ TabIcon } title='Weekly Plan'>
-                  <Scene key='mainWeeklyPlan' component={ WeeklyPlanView } title='Weekly Plan' />
-                </Scene>
-                <Scene key='trends' icon={ TabIcon } title='Trends'>
-                  <Scene key='mainTrends' component={ TrendsView } title='Trends' />
-                </Scene>
-                <Scene key='profile' icon={ TabIcon } title='Profile'>
-                  <Scene key='mainProfile' component={ ProfileView } title='Profile' />
-                </Scene>
-                <Scene key='settings' icon={ TabIcon } title='Settings'>
-                  <Scene key='mainSettings' component={ SettingsView } title='Settings' />
-                  <Scene key='profileSettings' component={ SettingsView }
-                    title='Profile' />
-                  <Scene key='privacySettings' component={ SettingsView }
-                    title='Sharing & Privacy' />
-                  <Scene key='mealSettings' component={ SettingsView }
-                    title='Meal Plan' />
-                  <Scene key='notificationSettings' component={ SettingsView }
-                    title='Notifications' />
-                  <Scene key='regionSettings' component={ SettingsView }
-                    title='Language & Region' />
-                  <Scene key='resetSettings' component={ SettingsView }
-                    title='Reset' />
-                </Scene>
+          <Scene key='root' hideNavBar={ true }>
+            <Scene key='welcome' type='jump' icon={ TabIcon } component={ WelcomeView } title='Welcome'
+              initial={ true } hideNavBar={ true }></Scene>
+            <Scene key='tabbar' tabs={ true } hideNavBar={ true }>
+              <Scene key='dashboard' icon={ TabIcon } title='Dashboard'>
+                <Scene key='mainDashboard' initial={ true } component={ DashboardView }
+                  title='Dashboard'></Scene>
+              </Scene>
+              <Scene key='weeklyPlan' icon={ TabIcon } title='Weekly Plan'>
+                <Scene key='mainWeeklyPlan' initial={ true } component={ WeeklyPlanView }
+                  title='Weekly Plan'></Scene>
+              </Scene>
+              <Scene key='trends' icon={ TabIcon } title='Trends'>
+                <Scene key='mainTrends' initial={ true } component={ TrendsView }
+                  title='Trends'></Scene>
+              </Scene>
+              <Scene key='profile' icon={ TabIcon } title='Profile'>
+                <Scene key='viewProfile' initial={ true } component={ ProfileView }
+                  title='Profile'></Scene>
+              </Scene>
+              <Scene key='settings' icon={ TabIcon } title='Settings'>
+                <Scene key='mainSettings' initial={ true } component={ SettingsView }
+                  title='Settings'></Scene>
+                <Scene key='profileSettings' component={ SettingsView }
+                  title='Profile'></Scene>
+                <Scene key='sharePrivacySettings' component={ SettingsView }
+                  title='Sharing & Privacy'></Scene>
+                <Scene key='mealSettings' component={ SettingsView }
+                  title='Meal Plan'></Scene>
+                <Scene key='notificationSettings' component={ SettingsView }
+                  title='Notifications'></Scene>
+                <Scene key='mealNotificationSettings' component={ SettingsView }
+                  title='Meal Plan'></Scene>
+                <Scene key='notificationSettings' component={ SettingsView }
+                  title='Notifications'></Scene>
+                <Scene key='notificationSettings' component={ SettingsView }
+                  title='Notifications'></Scene>
+                <Scene key='langRegionSettings' component={ SettingsView }
+                  title='Language & Region'></Scene>
+                <Scene key='languageSettings' component={ SettingsView }
+                  title='Language'></Scene>
+                <Scene key='regionSettings' component={ SettingsView }
+                  title='Region'></Scene>
+                <Scene key='resetSettings' component={ SettingsView }
+                  title='Reset'></Scene>
               </Scene>
             </Scene>
           </Scene>
-          <Scene key='error' component={ Error } />
+          <Scene key='error' component={ Error }></Scene>
         </RouterWithRedux>
       </Provider>
     )

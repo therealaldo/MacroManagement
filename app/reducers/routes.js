@@ -7,6 +7,12 @@ const initialState = {
 export default function reducer(state = initialState, action = {}) {
   switch(action.type) {
     case 'focus':
+      if(action.scene.index) {
+        return {
+          ...state,
+          scene: action.scene.children[action.scene.index],
+        };
+      };
       return {
         ...state,
         scene: action.scene,
