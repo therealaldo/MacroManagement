@@ -6,8 +6,6 @@ import { connect } from 'react-redux';
 import SettingsList from 'react-native-settings-list';
 import Button from 'react-native-button';
 
-let API_ENDPOINT = 'http://localhost:8081/secured/ping';
-
 class ProfileView extends React.Component {
   static propTypes = {
     routes: PropTypes.object,
@@ -24,6 +22,7 @@ class ProfileView extends React.Component {
           <View style={ styles.bubble }>
             <Text>21 years old</Text>
           </View>
+
           <View style={ styles.bubble }>
             <Text>5</Text>
           </View>
@@ -48,29 +47,6 @@ class ProfileView extends React.Component {
       </View>
     );
   }
-
-  _onCallApi() {
-    fetch(API_ENDPOINT)
-      .then((response) => response.text())
-      .then((responseText) => {
-        Alert.alert(
-          'Request Successful',
-          responseText,
-          [
-            {text: 'OK'},
-          ]
-        )
-      })
-      .catch((error) => {
-        Alert.alert(
-          'Request Failed',
-          'Please download the API seed so that you can call it',
-          [
-            {text: 'OK'},
-          ]
-        )
-      });
-  }
 };
 
 const imageMap = {
@@ -82,6 +58,23 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#26a65b',
+  },
+  profileInfo: {
+    flex: 1,
+    paddingLeft: 10,
+    paddingRight: 10,
+    marginTop: 75,
+    overflow: 'hidden',
+    backgroundColor: '#e9e9e9',
+  },
+  profileSettings: {
+    flex: 4,
+    paddingLeft: 10,
+    paddingRight: 10,
+    overflow: 'hidden'
+  },
+  bubble: {
+    flex: 4
   }
 });
 
