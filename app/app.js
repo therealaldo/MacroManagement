@@ -78,6 +78,12 @@ export default class App extends React.Component {
                   title='Meal Plan'></Scene>
                 <Scene key='notificationSettings' component={ SettingsView }
                   title='Notifications'></Scene>
+                <Scene key='notificationMealPlanSettings' component={ SettingsView }
+                  title='Meal Plan'></Scene>
+                <Scene key='notificationCookbookSettings' component={ SettingsView }
+                  title='Cookbook'></Scene>
+                <Scene key='notificationRecommendSettings' component={ SettingsView }
+                  title='Recommendations'></Scene>
                 <Scene key='notificationSettings' component={ SettingsView }
                   title='Notifications'></Scene>
                 <Scene key='langRegionSettings' component={ SettingsView }

@@ -19,7 +19,7 @@ class ProfileView extends React.Component {
       <View style={ styles.container }>
         <View style={ styles.profileInfo }>
           <View style={ styles.bubble }>
-            <Text>{ this.props.routes.scene.profile.name }</Text>
+            <Text>Aldo Gonzalez</Text>
           </View>
           <View style={ styles.bubble }>
             <Text>21 years old</Text>

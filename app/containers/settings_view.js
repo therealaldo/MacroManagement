@@ -12,118 +12,213 @@ class SettingsView extends React.Component {
     routes: PropTypes.object,
   };
 
-  genRows() {
+  generateSettingsList() {
     switch(this.props.routes.scene.name) {
       case 'profileSettings':
         return (
-          <SettingsList>
-            <SettingsList.Header headerText='' />
-            <SettingsList.Item title='Edit Profile'
-              onPress={() => Alert.alert('Edit Profile pressed')} />
-          </SettingsList>
+          <View style={ styles.settingsContainer }>
+            <View style={ styles.listContainer }>
+              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
+                <SettingsList.Item title='Edit Profile' titleStyle={{fontFamily: 'OpenSans'}}
+                  onPress={() => Alert.alert('Edit Profile pressed')} />
+              </SettingsList>
+            </View>
+          </View>
         );
       case 'sharePrivacySettings':
         return (
-          <SettingsList>
-            <SettingsList.Header headerText='' />
-            <SettingsList.Item title='Terms of Service'
-              onPress={() => Alert.alert('TOS pressed')} />
-            <SettingsList.Item title='Privacy Policy'
-              onPress={() => Alert.alert('Privacy Policy pressed')} />
-          </SettingsList>
+          <View style={ styles.settingsContainer }>
+            <View style={ styles.listContainer }>
+              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
+                <SettingsList.Item title='Terms of Service' titleStyle={{fontFamily: 'OpenSans'}}
+                  onPress={() => Alert.alert('TOS pressed')} />
+                <SettingsList.Item title='Privacy Policy' titleStyle={{fontFamily: 'OpenSans'}}
+                  onPress={() => Alert.alert('Privacy Policy pressed')} />
+              </SettingsList>
+            </View>
+          </View>
         );
       case 'mealSettings':
         return (
-          <SettingsList>
-            <SettingsList.Header headerText='' />
-            <SettingsList.Item title='Edit Food Preferences'
-              onPress={() => Alert.alert('Edit Food Preferences pressed')} />
-            <SettingsList.Item title='Nutrition Facts'
-              onPress={() => Alert.alert('Nutrition Facts pressed')} />
-          </SettingsList>
+          <View style={ styles.settingsContainer }>
+            <View style={ styles.listContainer }>
+              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
+                <SettingsList.Item title='Edit Food Preferences' titleStyle={{fontFamily: 'OpenSans'}}
+                  onPress={() => Alert.alert('Edit Food Preferences pressed')} />
+                <SettingsList.Item title='Nutrition Facts' titleStyle={{fontFamily: 'OpenSans'}}
+                  onPress={() => Alert.alert('Nutrition Facts pressed')} />
+              </SettingsList>
+            </View>
+          </View>
         );
       case 'notificationSettings':
         return (
-          <SettingsList>
-            <SettingsList.Header headerText='' />
-            <SettingsList.Item title='Meal Plan' onPress={() => Alert.alert('Meal Plan pressed')} />
-            <SettingsList.Item title='Cookbook' onPress={() => Alert.alert('Cookbook pressed')} />
-            <SettingsList.Item title='Recommendations'
-              onPress={() => Alert.alert('Recommendations pressed')} />
-            <SettingsList.Header headerText='' />
-            <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false } />
-          </SettingsList>
+          <View style={ styles.settingsContainer }>
+            <View style={ styles.listContainer }>
+              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
+                <SettingsList.Item title='Meal Plan' titleStyle={{fontFamily: 'OpenSans'}}
+                  onPress={ Actions.notificationMealPlanSettings } />
+                <SettingsList.Item title='Cookbook' titleStyle={{fontFamily: 'OpenSans'}}
+                  onPress={ Actions.notificationCookbookSettings } />
+                <SettingsList.Item title='Recommendations' titleStyle={{fontFamily: 'OpenSans'}}
+                  onPress={ Actions.notificationRecommendSettings } />
+              </SettingsList>
+            </View>
+            <View style={ styles.listContainer }>
+              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
+                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}} />
+              </SettingsList>
+            </View>
+          </View>
+        );
+      case 'notificationMealPlanSettings':
+        return (
+          <View style={ styles.settingsContainer }>
+            <View style={ styles.listContainer }>
+              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
+                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}} />
+                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}} />
+                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}} />
+              </SettingsList>
+            </View>
+          </View>
+        );
+      case 'notificationCookbookSettings':
+        return (
+          <View style={ styles.settingsContainer }>
+            <View style={ styles.listContainer }>
+              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
+                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}} />
+                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}} />
+                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}} />
+              </SettingsList>
+            </View>
+          </View>
+        );
+      case 'notificationRecommendSettings':
+        return (
+          <View style={ styles.settingsContainer }>
+            <View style={ styles.listContainer }>
+              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
+                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}} />
+                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}} />
+                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}} />
+              </SettingsList>
+            </View>
+          </View>
         );
       case 'langRegionSettings':
         return (
-          <SettingsList>
-            <SettingsList.Header headerText='' />
-            <SettingsList.Item title='Language'
-              onPress={ Actions.languageSettings } />
-            <SettingsList.Item title='Region'
-              onPress={ Actions.regionSettings } />
-          </SettingsList>
+          <View style={ styles.settingsContainer }>
+            <View style={ styles.listContainer }>
+              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
+                <SettingsList.Item title='Language' titleStyle={{fontFamily: 'OpenSans'}}
+                  onPress={ Actions.languageSettings } />
+                <SettingsList.Item title='Region' titleStyle={{fontFamily: 'OpenSans'}}
+                  onPress={ Actions.regionSettings } />
+              </SettingsList>
+            </View>
+          </View>
         );
       case 'languageSettings':
         return (
-          <SettingsList>
-            <SettingsList.Header headerText='' />
-            <SettingsList.Item title='English' hasNavArrow={ false } />
-          </SettingsList>
+          <View style={ styles.settingsContainer }>
+            <View style={ styles.listContainer }>
+              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
+                <SettingsList.Item title='English' hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}} />
+              </SettingsList>
+            </View>
+          </View>
         );
       case 'regionSettings':
         return (
-          <SettingsList>
-            <SettingsList.Header headerText='' />
-            <SettingsList.Item title='United States' hasNavArrow={ false } />
-          </SettingsList>
+          <View style={ styles.settingsContainer }>
+            <View style={ styles.listContainer }>
+              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
+                <SettingsList.Item title='United States' hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}} />
+              </SettingsList>
+            </View>
+          </View>
         );
       case 'resetSettings':
         return (
-          <SettingsList>
-            <SettingsList.Header headerText='' />
-            <SettingsList.Item title='Reset Food Preferences' hasNavArrow={ false }
-              onPress={() => Alert.alert(
-                'Reset Food Preferences',
-                'Are you sure you want to reset your food preferences?',
-                [
-                  {text: 'Cancel'},
-                  {text: 'Reset', onPress: () => console.log('You just reset your food prefereces!')},
-                ]
-              )} />
-            <SettingsList.Item title='Reset Notifications' hasNavArrow={ false }
-              onPress={() => Alert.alert(
-                'Reset Notifications',
-                'Are you sure you want to reset your notifications?',
-                [
-                  {text: 'Cancel'},
-                  {text: 'Reset', onPress: () => console.log('You just reset your notifications!')},
-                ]
-              )} />
-            <SettingsList.Header headerText='' />
-            <SettingsList.Item title='Reset All Settings' hasNavArrow={ false }
-              onPress={() => Alert.alert(
-                'Reset All Settings',
-                'Are you sure you want to reset all of your settings?',
-                [
-                  {text: 'Cancel'},
-                  {text: 'Reset', onPress: () => console.log('You just reset all of your settings, HUGE deal!')},
-                ]
-              )} />
-          </SettingsList>
+          <View style={ styles.settingsContainer }>
+            <View style={ styles.listContainer }>
+              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
+                <SettingsList.Item title='Reset Food Preferences' hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}}
+                  onPress={() => Alert.alert(
+                    'Reset Food Preferences',
+                    'Are you sure you want to reset your food preferences?',
+                    [
+                      {text: 'Cancel'},
+                      {text: 'Reset', onPress: () => console.log('You just reset your food prefereces!')},
+                    ]
+                  )} />
+                <SettingsList.Item title='Reset Notifications' hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}}
+                  onPress={() => Alert.alert(
+                    'Reset Notifications',
+                    'Are you sure you want to reset your notifications?',
+                    [
+                      {text: 'Cancel'},
+                      {text: 'Reset', onPress: () => console.log('You just reset your notifications!')},
+                    ]
+                  )} />
+              </SettingsList>
+            </View>
+            <View style={ styles.listContainer }>
+              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
+                <SettingsList.Item title='Reset All Settings' hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}}
+                  onPress={() => Alert.alert(
+                    'Reset All Settings',
+                    'Are you sure you want to reset all of your settings?',
+                    [
+                      {text: 'Cancel'},
+                      {text: 'Reset', onPress: () => console.log('You just reset your settings.')},
+                    ]
+                  )} />
+              </SettingsList>
+            </View>
+          </View>
         );
       default:
         return (
-          <SettingsList>
-            <SettingsList.Header headerText='' />
-            <SettingsList.Item title='Profile' onPress={ Actions.profileSettings } />
-            <SettingsList.Item title='Sharing & Privacy' onPress={ Actions.sharePrivacySettings } />
-            <SettingsList.Item title='Meal Plan' onPress={ Actions.mealSettings } />
-            <SettingsList.Header headerText='' />
-            <SettingsList.Item title='Notifications' onPress={ Actions.notificationSettings } />
-            <SettingsList.Item title='Language & Region' onPress={ Actions.langRegionSettings } />
-            <SettingsList.Item title='Reset' onPress={ Actions.resetSettings } />
-          </SettingsList>
+            <View style={ styles.settingsContainer }>
+              <View style={ styles.listContainer }>
+                <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
+                  <SettingsList.Item title='Profile' titleStyle={{fontFamily: 'OpenSans'}}
+                    onPress={ Actions.profileSettings } />
+                  <SettingsList.Item title='Sharing & Privacy' titleStyle={{fontFamily: 'OpenSans'}}
+                    onPress={ Actions.sharePrivacySettings } />
+                  <SettingsList.Item title='Meal Plan' titleStyle={{fontFamily: 'OpenSans'}}
+                    onPress={ Actions.mealSettings } />
+                </SettingsList>
+              </View>
+              <View style={ styles.listContainer }>
+                <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
+                  <SettingsList.Item title='Notifications' titleStyle={{fontFamily: 'OpenSans'}}
+                    onPress={ Actions.notificationSettings } />
+                  <SettingsList.Item title='Language & Region' titleStyle={{fontFamily: 'OpenSans'}}
+                    onPress={ Actions.langRegionSettings } />
+                  <SettingsList.Item title='Reset' titleStyle={{fontFamily: 'OpenSans'}}
+                    onPress={ Actions.resetSettings } />
+                </SettingsList>
+              </View>
+            </View>
         );
     }
   }
@@ -131,9 +226,7 @@ class SettingsView extends React.Component {
   render() {
     return (
       <View style={ styles.container }>
-        <View style={ styles.settingsContainer }>
-          { this.genRows() }
-        </View>
+        { this.generateSettingsList() }
         <Button style={ styles.logOutButton } onPress={() => Alert.alert('Log Out pressed')}>
           Log Out
         </Button>
@@ -149,7 +242,22 @@ const styles = StyleSheet.create({
   },
   settingsContainer: {
     flex: 1,
-    marginTop: 50,
+    paddingLeft: 10,
+    paddingRight: 10,
+    marginTop: 75,
+    overflow: 'hidden'
+  },
+  listContainer: {
+    borderStyle: 'solid',
+    borderRadius: 10,
+    overflow: 'hidden',
+    marginBottom: 15,
+  },
+  logOutButton: {
+    backgroundColor: '#fff',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });;
 
