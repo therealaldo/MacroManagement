@@ -218,6 +218,10 @@ class SettingsView extends React.Component {
                     onPress={ Actions.resetSettings } />
                 </SettingsList>
               </View>
+              <Button containerStyle={ styles.logOutButtonContainer } style={ styles.logOutButtonText }
+                onPress={() => Alert.alert('Log Out pressed')}>
+                Log Out
+              </Button>
             </View>
         );
     }
@@ -227,9 +231,6 @@ class SettingsView extends React.Component {
     return (
       <View style={ styles.container }>
         { this.generateSettingsList() }
-        <Button style={ styles.logOutButton } onPress={() => Alert.alert('Log Out pressed')}>
-          Log Out
-        </Button>
       </View>
     );
   }
@@ -237,27 +238,31 @@ class SettingsView extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
     backgroundColor: '#26a65b',
+    flexDirection: 'column',
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   settingsContainer: {
     flex: 1,
-    paddingLeft: 10,
-    paddingRight: 10,
     marginTop: 75,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   listContainer: {
     borderStyle: 'solid',
     borderRadius: 10,
     overflow: 'hidden',
-    marginBottom: 15,
+    marginBottom: 10,
   },
-  logOutButton: {
-    backgroundColor: '#fff',
-    flex: 1,
+  logOutButtonContainer: {
+    backgroundColor: '#c62733',
+    height: 50,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  logOutButtonText: {
+    color: '#e9e9e9',
   }
 });;
 

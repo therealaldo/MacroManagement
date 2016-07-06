@@ -16,32 +16,37 @@ class ProfileView extends React.Component {
     return (
       <View style={ styles.container }>
         <View style={ styles.profileInfo }>
-          <View style={ styles.bubble }>
-            <Text>Aldo Gonzalez</Text>
+          <View style={ styles.profileColumn }>
+            <View style={ styles.bubble1 }>
+              <Text>Aldo Gonzalez</Text>
+            </View>
+            <View style={ styles.bubble2 }>
+              <Text>5ft. 7in.</Text>
+            </View>
           </View>
-          <View style={ styles.bubble }>
-            <Text>21 years old</Text>
-          </View>
-
-          <View style={ styles.bubble }>
-            <Text>5</Text>
-          </View>
-          <View style={ styles.bubble }>
-            <Text>125 lbs</Text>
+          <View style={ styles.profileColumn }>
+            <View style={ styles.bubble3 }>
+              <Text>21 years old</Text>
+            </View>
+            <View style={ styles.bubble4 }>
+              <Text>125 lbs</Text>
+            </View>
           </View>
         </View>
-        <View style={ styles.profileSettings }>
-          <SettingsList>
-            <SettingsList.Header headerText='' />
-            <SettingsList.Item title='Edit Profile'
-              onPress={() =>  Alert.alert('Edit Profile pressed')} />
-            <SettingsList.Item title='Change Food Preferences'
-                onPress={() =>  Alert.alert('Change Food Preferences pressed')} />
-            <SettingsList.Item title='Saved Shopping Lists'
-                onPress={() =>  Alert.alert('Saved Shopping Lists pressed')} />
-          </SettingsList>
+        <View style={ styles.settingsContainer }>
+          <View style={ styles.listContainer }>
+            <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
+              <SettingsList.Item title='Edit Profile' titleStyle={{fontFamily: 'OpenSans'}}
+                onPress={() =>  Alert.alert('Edit Profile pressed')} />
+              <SettingsList.Item title='Change Food Preferences' titleStyle={{fontFamily: 'OpenSans'}}
+                  onPress={() =>  Alert.alert('Change Food Preferences pressed')} />
+              <SettingsList.Item title='Saved Shopping Lists' titleStyle={{fontFamily: 'OpenSans'}}
+                  onPress={() =>  Alert.alert('Saved Shopping Lists pressed')} />
+            </SettingsList>
+          </View>
         </View>
-        <Button style={ styles.logOutButton } onPress={() => Alert.alert('Log Out pressed')}>
+        <Button containerStyle={ styles.logOutButtonContainer } style={ styles.logOutButtonText }
+          onPress={() => Alert.alert('Log Out pressed')}>
           Log Out
         </Button>
       </View>
@@ -58,24 +63,87 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#26a65b',
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   profileInfo: {
-    flex: 1,
-    paddingLeft: 10,
-    paddingRight: 10,
     marginTop: 75,
+    marginBottom: 10,
     overflow: 'hidden',
     backgroundColor: '#e9e9e9',
+    flexDirection: 'row',
+    borderStyle: 'solid',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#999',
+    overflow: 'hidden',
+    justifyContent: 'space-between',
   },
-  profileSettings: {
-    flex: 4,
-    paddingLeft: 10,
-    paddingRight: 10,
-    overflow: 'hidden'
+  profileColumn: {
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    height: 100,
+    flex: 1,
   },
-  bubble: {
-    flex: 4
-  }
+  bubble1: {
+    paddingLeft: 13,
+    flex: 1,
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#999',
+    borderRightWidth: 1,
+    borderRightColor: '#999',
+    borderStyle: 'solid',
+  },
+  bubble2: {
+    paddingLeft: 13,
+    flex: 1,
+    justifyContent: 'center',
+    borderTopWidth: 1,
+    borderTopColor: '#999',
+    borderRightWidth: 1,
+    borderRightColor: '#999',
+    borderStyle: 'solid',
+  },
+  bubble3: {
+    paddingLeft: 13,
+    flex: 1,
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#999',
+    borderLeftWidth: 1,
+    borderLeftColor: '#999',
+    borderStyle: 'solid',
+  },
+  bubble4: {
+    paddingLeft: 13,
+    flex: 1,
+    justifyContent: 'center',
+    borderTopWidth: 1,
+    borderTopColor: '#999',
+    borderLeftWidth: 1,
+    borderLeftColor: '#999',
+  },
+  settingsContainer: {
+    overflow: 'hidden',
+    marginBottom: 10,
+  },
+  listContainer: {
+    borderStyle: 'solid',
+    borderRadius: 10,
+    overflow: 'hidden',
+    flex: 1,
+  },
+  logOutButtonContainer: {
+    backgroundColor: '#c62733',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  logOutButtonText: {
+    color: '#e9e9e9',
+  },
 });
 
 export default connect(({ routes }) => ({ routes }))(ProfileView);
