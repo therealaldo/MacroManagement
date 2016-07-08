@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
   },
   settingsContainer: {
     flex: 1,
-    marginTop: 75,
+    marginTop: 80,
     overflow: 'hidden',
   },
   listContainer: {

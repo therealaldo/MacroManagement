@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   },
   filterContainer: {
     marginBottom: 10,
-    marginTop: 75,
+    marginTop: 80,
   },
   charts: {
 

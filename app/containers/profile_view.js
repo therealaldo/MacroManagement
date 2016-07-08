@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   profileInfo: {
-    marginTop: 75,
+    marginTop: 80,
     marginBottom: 10,
     overflow: 'hidden',
     backgroundColor: '#e9e9e9',

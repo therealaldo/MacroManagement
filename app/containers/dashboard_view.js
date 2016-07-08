@@ -75,12 +75,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#26a65b',
     paddingLeft: 10,
     paddingRight: 10,
-    paddingBottom: 51,
+    paddingBottom: 50,
   },
   progressContainer: {
     backgroundColor: '#e9e9e9',
     borderRadius: 7,
-    marginTop: 75,
+    marginTop: 80,
     padding: 10,
   },
   containerTitle: {

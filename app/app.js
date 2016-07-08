@@ -57,6 +57,8 @@ export default class App extends React.Component {
               </Scene>
               <Scene key='weeklyPlan' icon={ TabIcon } title='Weekly Plan'>
                 <Scene key='mainWeeklyPlan' initial={ true } component={ WeeklyPlanView }
+                  renderRightButton={() => <AddButton />}
+                  onRight={() => Alert.alert('add pressed')}
                   title='Weekly Plan'></Scene>
               </Scene>
               <Scene key='trends' icon={ TabIcon } title='Trends'>
@@ -110,13 +112,14 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   navBar: {
-    flex: 1,
     backgroundColor: '#26a65b',
     borderBottomWidth: 0,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
     paddingRight: 10,
     paddingLeft: 10,
+    paddingBottom: 5,
+    height: 80
   },
   navTitle: {
     color: '#e9e9e9',
