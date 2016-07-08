@@ -9,7 +9,7 @@ export default class AddButton extends React.Component {
   render() {
     return (
       <Button onPress={() => Alert.alert('Add pressed')}>
-        <Icon name='ios-add-circle' size={ 38 } color='#efbe14' />
+        <Icon name='md-add-circle' size={ 38 } color='#efbe14' />
       </Button>
     )
   }
