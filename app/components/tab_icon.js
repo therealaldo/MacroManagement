@@ -1,6 +1,6 @@
 'use strict';
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Text } from 'react-native';
 
 const propTypes = {
@@ -8,7 +8,7 @@ const propTypes = {
   title: PropTypes.string,
 };
 
-const TabIcon = (props) => {
+class TabIcon extends React.Component {
   <Text style={{ color: this.props.selected ? 'red' : 'black'}}>{ this.props.title }</Text>
 };
 

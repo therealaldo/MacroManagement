@@ -2,7 +2,7 @@
 
 // React
 import React from 'react';
-import { Navigator, Text, View, StyleSheet } from 'react-native';
+import { Navigator, Text, View, StyleSheet, Alert } from 'react-native';
 import { Router, Scene, Reducer, TabBar } from 'react-native-router-flux';
 
 // Store w/ Redux
@@ -20,6 +20,8 @@ import TrendsView from './containers/trends_view';
 import ProfileView from './containers/profile_view';
 import SettingsView from './containers/settings_view';
 import Error from './containers/error_view';
+
+import AddButton from './components/add_button';
 
 const RouterWithRedux = connect()(Router);
 
@@ -43,12 +45,14 @@ export default class App extends React.Component {
       <Provider store={ store }>
         <RouterWithRedux navigationBarStyle={ styles.navBar }
           titleStyle={ styles.navTitle } sceneStyle={ styles.routerScene }>
-          <Scene key='root' hideNavBar={ true }>
+          <Scene key='root' hideNavBar>
             <Scene key='welcome' type='jump' icon={ TabIcon } component={ WelcomeView } title='Welcome'
               initial={ true } hideNavBar={ true }></Scene>
-            <Scene key='tabbar' tabs={ true } hideNavBar={ true }>
+            <Scene key='tabbar' tabs hideNavBar>
               <Scene key='dashboard' icon={ TabIcon } title='Dashboard'>
                 <Scene key='mainDashboard' initial={ true } component={ DashboardView }
+                  renderRightButton={() => <AddButton />}
+                  onRight={() => Alert.alert('add pressed')}
                   title='Dashboard'></Scene>
               </Scene>
               <Scene key='weeklyPlan' icon={ TabIcon } title='Weekly Plan'>
@@ -107,14 +111,15 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   navBar: {
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: 'transparent',
     borderBottomWidth: 0,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    paddingRight: 10,
+    paddingLeft: 10,
   },
   navTitle: {
     color: '#fefefe',
-    fontFamily: 'OpenSans-Bold'
+    fontFamily: 'OpenSans-Bold',
   },
 });

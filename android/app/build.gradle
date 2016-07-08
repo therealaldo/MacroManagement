@@ -120,6 +120,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-vector-icons')
     compile project(':react-native-webview-js-context')
     compile project(':react-native-config')
     compile project(':react-native-lock')
