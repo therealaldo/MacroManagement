@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { PropTypes } from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, SegmentedControlIOS } from 'react-native';
+import { StyleSheet, Text, View, SegmentedControlIOS, ScrollView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
 import { connect } from 'react-redux';
@@ -18,12 +18,31 @@ class TrendsView extends React.Component {
           <SegmentedControlIOS values={['Days', 'Weeks', 'Months', 'All']}
             tintColor='#e9e9e9' selectedIndex={ 0 } />
         </View>
-        <View style={ styles.charts }>
-          <View style={ styles.chartContainer }>
-            <Text style={ styles.chartTitleText }>Calorie Intake</Text>
+        <ScrollView>
+          <View style={ styles.charts }>
+            <View style={ styles.chartContainer }>
+              <Text style={ styles.chartTitleText }>Calorie Intake</Text>
 
+            </View>
+
+            <View style={ styles.chartContainer }>
+              <Text style={ styles.chartTitleText }>Calorie Intake</Text>
+
+            </View>
+            <View style={ styles.chartContainer }>
+              <Text style={ styles.chartTitleText }>Calorie Intake</Text>
+
+            </View>
+            <View style={ styles.chartContainer }>
+              <Text style={ styles.chartTitleText }>Calorie Intake</Text>
+
+            </View>
+            <View style={ styles.chartContainer }>
+              <Text style={ styles.chartTitleText }>Calorie Intake</Text>
+
+            </View>
           </View>
-        </View>
+        </ScrollView>
       </View>
     );
   }
@@ -36,20 +55,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#26a65b',
     paddingLeft: 10,
     paddingRight: 10,
+    paddingBottom: 50,
   },
   filterContainer: {
-    flex: 1,
+    marginBottom: 10,
     marginTop: 75,
   },
   charts: {
-    flex: 8,
+
   },
   chartContainer: {
     height: 260,
     backgroundColor: '#e9e9e9',
     padding: 15,
     justifyContent: 'space-around',
-    borderRadius: 10,
+    borderRadius: 7,
+    marginBottom: 10,
   },
   chartTitleText: {
     fontFamily: 'OpenSans',

@@ -111,7 +111,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   navBar: {
     flex: 1,
-    backgroundColor: 'transparent',
+    backgroundColor: '#26a65b',
     borderBottomWidth: 0,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
@@ -119,7 +119,8 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   navTitle: {
-    color: '#fefefe',
+    color: '#e9e9e9',
     fontFamily: 'OpenSans-Bold',
+    fontSize: 20,
   },
 });

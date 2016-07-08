@@ -250,7 +250,7 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     borderStyle: 'solid',
-    borderRadius: 10,
+    borderRadius: 7,
     overflow: 'hidden',
     marginBottom: 10,
   },
@@ -259,7 +259,7 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: 7,
   },
   logOutButtonText: {
     color: '#e9e9e9',
