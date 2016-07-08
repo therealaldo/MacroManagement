@@ -1,6 +1,7 @@
 package com.macromanagement;
 
 import com.facebook.react.ReactActivity;
+import com.shaynesweeney.react_native_webview_js_context.RNWebViewJSContextPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.auth0.lock.react.LockReactPackage;
 import com.facebook.react.ReactPackage;
@@ -37,6 +38,7 @@ public class MainActivity extends ReactActivity {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new RNWebViewJSContextPackage(),
             new ReactNativeConfigPackage(),
             new LockReactPackage()
         );

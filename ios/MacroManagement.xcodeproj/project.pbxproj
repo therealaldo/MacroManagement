@@ -24,6 +24,8 @@
 		6015289A1D08F82000B89D44 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 601528971D08F82000B89D44 /* FBSDKCoreKit.framework */; };
 		6015289B1D08F82000B89D44 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 601528981D08F82000B89D44 /* FBSDKLoginKit.framework */; };
 		6015289C1D08F82000B89D44 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 601528991D08F82000B89D44 /* FBSDKShareKit.framework */; };
+		605CFEB51D2F57AF00AFD5F1 /* libRNWebViewJSContext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 605CFEB41D2F579400AFD5F1 /* libRNWebViewJSContext.a */; };
+		60CC916E1D2F37B30024FA50 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60CC91621D2F37A00024FA50 /* libART.a */; };
 		60D521A01D15286600DF075F /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60D5219F1D15286600DF075F /* OpenSans-Regular.ttf */; };
 		60D521A11D15286600DF075F /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60D5219F1D15286600DF075F /* OpenSans-Regular.ttf */; };
 		60D521AF1D1528AD00DF075F /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60D521AE1D1528AD00DF075F /* OpenSans-Bold.ttf */; };
@@ -40,6 +42,7 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8DEE6F9DEB724DCD8D3D9FCC /* libA0RNLock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D3AE480878416185673271 /* libA0RNLock.a */; };
 		C6300924721D22FB1007EBCB /* libPods-MacroManagement.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 341E3A880C69AD0CA769BCDA /* libPods-MacroManagement.a */; };
+		D77611AF4E90422DA9B3CDCB /* libRNChart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA76923022B4D47A4A7E797 /* libRNChart.a */; };
 		EE53C206E0DA8406489BBE76 /* libPods-MacroManagementTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8826F4A250727DA09B8F9D83 /* libPods-MacroManagementTests.a */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +124,27 @@
 			remoteGlobalIDString = EB2648DF1C7BE17A00B8F155;
 			remoteInfo = ReactNativeConfig;
 		};
+		605CFEB31D2F579400AFD5F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 605CFEA21D2F579400AFD5F1 /* RNWebViewJSContext.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1C5F19C51BD87D96000069D7;
+			remoteInfo = RNWebViewJSContext;
+		};
+		60604C141D2F412700C83E96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CE7FD6C3E84127A280CA39 /* RNChart.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 41FDC4F01AF5D0CF00DBBA9C;
+			remoteInfo = RNChart;
+		};
+		60CC91611D2F37A00024FA50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 60CC915C1D2F37A00024FA50 /* ART.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0CF68AC11AF0540F00FF9E5C;
+			remoteInfo = ART;
+		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -163,6 +187,10 @@
 		601528971D08F82000B89D44 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		601528981D08F82000B89D44 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		601528991D08F82000B89D44 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		605CFEA21D2F579400AFD5F1 /* RNWebViewJSContext.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNWebViewJSContext.xcodeproj; path = "../node_modules/react-native-webview-js-context/ios/RNWebViewJSContext.xcodeproj"; sourceTree = "<group>"; };
+		60604BE61D2F39F700C83E96 /* libLock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libLock.a; path = "../../../Library/Developer/Xcode/DerivedData/MacroManagement-ffhgnmjvbzyysegsfewflxkvsdul/Build/Products/Debug-iphonesimulator/Lock/libLock.a"; sourceTree = "<group>"; };
+		60604BE81D2F3A0700C83E96 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "../../../Library/Developer/Xcode/DerivedData/MacroManagement-ffhgnmjvbzyysegsfewflxkvsdul/Build/Products/Debug-iphonesimulator/AFNetworking/libAFNetworking.a"; sourceTree = "<group>"; };
+		60CC915C1D2F37A00024FA50 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
 		60D5219F1D15286600DF075F /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		60D521AE1D1528AD00DF075F /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		60D521B11D1528D700DF075F /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
@@ -174,10 +202,12 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7B35B8CA9AEB4E1DB9A2D0D2 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		83CE7FD6C3E84127A280CA39 /* RNChart.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNChart.xcodeproj; path = "../node_modules/react-native-chart/RNChart.xcodeproj"; sourceTree = "<group>"; };
 		8826F4A250727DA09B8F9D83 /* libPods-MacroManagementTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MacroManagementTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEC6C9FA4058690D9E40DE80 /* Pods-MacroManagement.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MacroManagement.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MacroManagement/Pods-MacroManagement.debug.xcconfig"; sourceTree = "<group>"; };
 		E5D3AE480878416185673271 /* libA0RNLock.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libA0RNLock.a; sourceTree = "<group>"; };
 		E70E2B513F424E6A95D1889B /* A0RNLock.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = A0RNLock.xcodeproj; path = "../node_modules/react-native-lock/ios/A0RNLock.xcodeproj"; sourceTree = "<group>"; };
+		FDA76923022B4D47A4A7E797 /* libRNChart.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNChart.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +223,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				605CFEB51D2F57AF00AFD5F1 /* libRNWebViewJSContext.a in Frameworks */,
+				60CC916E1D2F37B30024FA50 /* libART.a in Frameworks */,
 				6015289A1D08F82000B89D44 /* FBSDKCoreKit.framework in Frameworks */,
 				6015289B1D08F82000B89D44 /* FBSDKLoginKit.framework in Frameworks */,
 				6015289C1D08F82000B89D44 /* FBSDKShareKit.framework in Frameworks */,
@@ -209,6 +241,7 @@
 				8DEE6F9DEB724DCD8D3D9FCC /* libA0RNLock.a in Frameworks */,
 				C6300924721D22FB1007EBCB /* libPods-MacroManagement.a in Frameworks */,
 				71C37522512F452E8E422D7E /* libReactNativeConfig.a in Frameworks */,
+				D77611AF4E90422DA9B3CDCB /* libRNChart.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +359,30 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		605CFEA31D2F579400AFD5F1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				605CFEB41D2F579400AFD5F1 /* libRNWebViewJSContext.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		60604C041D2F412700C83E96 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				60604C151D2F412700C83E96 /* libRNChart.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		60CC915D1D2F37A00024FA50 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				60CC91621D2F37A00024FA50 /* libART.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,6 +394,8 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				605CFEA21D2F579400AFD5F1 /* RNWebViewJSContext.xcodeproj */,
+				60CC915C1D2F37A00024FA50 /* ART.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
 				00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */,
@@ -349,6 +408,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				E70E2B513F424E6A95D1889B /* A0RNLock.xcodeproj */,
 				7B35B8CA9AEB4E1DB9A2D0D2 /* ReactNativeConfig.xcodeproj */,
+				83CE7FD6C3E84127A280CA39 /* RNChart.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -393,6 +453,8 @@
 		A2FC3F86FFC8323BDECCC002 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				60604BE81D2F3A0700C83E96 /* libAFNetworking.a */,
+				60604BE61D2F39F700C83E96 /* libLock.a */,
 				601528971D08F82000B89D44 /* FBSDKCoreKit.framework */,
 				601528981D08F82000B89D44 /* FBSDKLoginKit.framework */,
 				601528991D08F82000B89D44 /* FBSDKShareKit.framework */,
@@ -420,12 +482,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MacroManagementTests" */;
 			buildPhases = (
+				2E1E2AB83D8E227AAF080914 /* 📦 Check Pods Manifest.lock */,
 				85B56CF4AE667B2DF7A312BF /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
 				BA0E2182C1CF358251889203 /* [CP] Embed Pods Frameworks */,
 				A24FF0BF037C64671D60C2E5 /* [CP] Copy Pods Resources */,
+				D30525D82A289F9A75B21D12 /* 📦 Embed Pods Frameworks */,
+				6859217420F05F5CE31D5818 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -441,6 +506,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MacroManagement" */;
 			buildPhases = (
+				5BD404C1ADB6BA8F4B90FF92 /* 📦 Check Pods Manifest.lock */,
 				E9A0CC4470FC4CFDAE947182 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
@@ -448,6 +514,8 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				065A292B96FDE0DB94DF5DDD /* [CP] Embed Pods Frameworks */,
 				286C05B74D19D9F881B166A9 /* [CP] Copy Pods Resources */,
+				2A3C21E7E25C75F985453F02 /* 📦 Embed Pods Frameworks */,
+				D2E8655269517C8429225905 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -464,7 +532,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 610;
+				LastUpgradeCheck = 730;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -491,6 +559,10 @@
 				{
 					ProductGroup = 6004BC901CFFA00D006828A0 /* Products */;
 					ProjectRef = E70E2B513F424E6A95D1889B /* A0RNLock.xcodeproj */;
+				},
+				{
+					ProductGroup = 60CC915D1D2F37A00024FA50 /* Products */;
+					ProjectRef = 60CC915C1D2F37A00024FA50 /* ART.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -535,6 +607,14 @@
 				{
 					ProductGroup = 601A6C0D1D0239380015DB20 /* Products */;
 					ProjectRef = 7B35B8CA9AEB4E1DB9A2D0D2 /* ReactNativeConfig.xcodeproj */;
+				},
+				{
+					ProductGroup = 60604C041D2F412700C83E96 /* Products */;
+					ProjectRef = 83CE7FD6C3E84127A280CA39 /* RNChart.xcodeproj */;
+				},
+				{
+					ProductGroup = 605CFEA31D2F579400AFD5F1 /* Products */;
+					ProjectRef = 605CFEA21D2F579400AFD5F1 /* RNWebViewJSContext.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -614,6 +694,27 @@
 			fileType = archive.ar;
 			path = libReactNativeConfig.a;
 			remoteRef = 601A6C1B1D0239380015DB20 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		605CFEB41D2F579400AFD5F1 /* libRNWebViewJSContext.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNWebViewJSContext.a;
+			remoteRef = 605CFEB31D2F579400AFD5F1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		60604C151D2F412700C83E96 /* libRNChart.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNChart.a;
+			remoteRef = 60604C141D2F412700C83E96 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		60CC91621D2F37A00024FA50 /* libART.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libART.a;
+			remoteRef = 60CC91611D2F37A00024FA50 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
@@ -708,6 +809,66 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MacroManagement/Pods-MacroManagement-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		2A3C21E7E25C75F985453F02 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MacroManagement/Pods-MacroManagement-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2E1E2AB83D8E227AAF080914 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5BD404C1ADB6BA8F4B90FF92 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6859217420F05F5CE31D5818 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MacroManagementTests/Pods-MacroManagementTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		85B56CF4AE667B2DF7A312BF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -746,6 +907,36 @@
 			inputPaths = (
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MacroManagementTests/Pods-MacroManagementTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2E8655269517C8429225905 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MacroManagement/Pods-MacroManagement-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D30525D82A289F9A75B21D12 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -827,7 +1018,9 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacroManagement.app/MacroManagement";
 			};
@@ -846,7 +1039,9 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacroManagement.app/MacroManagement";
 			};
@@ -866,6 +1061,7 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-lock/ios/A0RNLock/**",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-chart",
 				);
 				INFOPLIST_FILE = MacroManagement/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -873,6 +1069,7 @@
 					"$(inherited)",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MacroManagement;
 				PROVISIONING_PROFILE = "";
 			};
@@ -891,6 +1088,7 @@
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-lock/ios/A0RNLock/**",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
+					"$(SRCROOT)/../node_modules/react-native-chart",
 				);
 				INFOPLIST_FILE = MacroManagement/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -898,6 +1096,7 @@
 					"$(inherited)",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MacroManagement;
 				PROVISIONING_PROFILE = "";
 			};
@@ -923,6 +1122,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos9.3]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = "~/Documents/FacebookSDK/**";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -945,15 +1145,16 @@
 					"$(SRCROOT)/../node_modules/react-native-lock/ios/A0RNLock/**",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-facebook-login/FacebookSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-chart",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-lc++",
 				);
-				SDKROOT = iphoneos9.3;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -993,14 +1194,15 @@
 					"$(SRCROOT)/../node_modules/react-native-lock/ios/A0RNLock/**",
 					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
 					"$(SRCROOT)/../node_modules/react-native-facebook-login/FacebookSDK/**",
+					"$(SRCROOT)/../node_modules/react-native-chart",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-lc++",
 				);
-				SDKROOT = iphoneos9.3;
+				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

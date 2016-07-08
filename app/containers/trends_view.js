@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { PropTypes } from 'react';
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, SegmentedControlIOS } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
 import { connect } from 'react-redux';
@@ -11,21 +11,52 @@ class TrendsView extends React.Component {
     routes: PropTypes.object,
   };
 
-  // TODO: find a react native graph package and start to incorporate that functionality
   render() {
     return (
       <View style={ styles.container }>
+        <View style={ styles.filterContainer }>
+          <SegmentedControlIOS values={['Days', 'Weeks', 'Months', 'All']}
+            tintColor='#e9e9e9' selectedIndex={ 0 } />
+        </View>
+        <View style={ styles.charts }>
+          <View style={ styles.chartContainer }>
+            <Text style={ styles.chartTitleText }>Calorie Intake</Text>
 
+          </View>
+        </View>
       </View>
     );
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: 'center',
+    flexDirection: 'column',
     backgroundColor: '#26a65b',
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  filterContainer: {
+    flex: 1,
+    marginTop: 75,
+  },
+  charts: {
+    flex: 8,
+  },
+  chartContainer: {
+    height: 260,
+    backgroundColor: '#e9e9e9',
+    padding: 15,
+    justifyContent: 'space-around',
+    borderRadius: 10,
+  },
+  chartTitleText: {
+    fontFamily: 'OpenSans',
+    fontSize: 20,
+  },
+  chart: {
+    height: 200,
   }
 });;
 
