@@ -4,7 +4,10 @@ const initialState = {
   scene: {},
 };
 
-export default function reducer(state = initialState, action = {}) {
+export default reducer = (
+  state = initialState,
+  action = {}
+) => {
   switch(action.type) {
     case 'focus':
       if(action.scene.index) {

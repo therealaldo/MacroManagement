@@ -68,7 +68,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: '#26a65b',
     paddingLeft: 10,
-    paddingRight: 10
+    paddingRight: 10,
+    paddingBottom: 50
   },
   componentContainer: {
     padding: 10,
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
   },
   addMealText: {
     fontSize: 14,
-    fontFamily: 'OpenSans',
+    fontFamily: 'OpenSans-Semibold',
     color: '#e9e9e9'
   }
 });;

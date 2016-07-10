@@ -6,11 +6,8 @@ import { Navigator, Text, View, StyleSheet, Alert } from 'react-native';
 import { Router, Scene, Reducer, TabBar } from 'react-native-router-flux';
 
 // Store w/ Redux
-import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider, connect } from 'react-redux';
-import createLogger from 'redux-logger';
-import thunk from 'redux-thunk';
-import reducers from './reducers';
+import configureStore from './store/configure_store';
 
 // Main Views
 import WelcomeView from './containers/welcome_view';
@@ -24,12 +21,7 @@ import Error from './containers/error_view';
 import AddButton from './components/add_button';
 
 const RouterWithRedux = connect()(Router);
-
-const logger = createLogger();
-const middleware = [thunk, logger];
-const store = compose(
-  applyMiddleware(...middleware)
-)(createStore)(reducers);
+const store = configureStore();
 
 class TabIcon extends React.Component {
   render() {
@@ -57,8 +49,6 @@ export default class App extends React.Component {
               </Scene>
               <Scene key='weeklyPlan' icon={ TabIcon } title='Weekly Plan'>
                 <Scene key='mainWeeklyPlan' initial={ true } component={ WeeklyPlanView }
-                  renderRightButton={() => <AddButton />}
-                  onRight={() => Alert.alert('add pressed')}
                   title='Weekly Plan'></Scene>
               </Scene>
               <Scene key='trends' icon={ TabIcon } title='Trends'>
@@ -69,7 +59,8 @@ export default class App extends React.Component {
                 <Scene key='viewProfile' initial={ true } component={ ProfileView }
                   title='Profile'></Scene>
               </Scene>
-              <Scene key='settings' icon={ TabIcon } title='Settings'>
+              <Scene key='settings' icon={ TabIcon } leftButtonStyle={{paddingBottom: 40}}
+                title='Settings' leftButtonIconStyle={{tintColor: '#e9e9e9'}}>
                 <Scene key='mainSettings' initial={ true } component={ SettingsView }
                   title='Settings'></Scene>
                 <Scene key='profileSettings' component={ SettingsView }

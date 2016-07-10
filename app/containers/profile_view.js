@@ -3,6 +3,7 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, Image, TouchableHighlight, Alert } from 'react-native';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 import SettingsList from 'react-native-settings-list';
 import Button from 'react-native-button';
 

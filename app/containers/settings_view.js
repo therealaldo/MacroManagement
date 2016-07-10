@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { PropTypes } from 'react';
-import { StyleSheet, Text, View, Alert } from 'react-native';
+import { StyleSheet, Text, View, Alert, InteractionManager } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
 import { connect } from 'react-redux';
