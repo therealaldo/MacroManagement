@@ -90,4 +90,5 @@
     notifications: false,
     recommendations: false
   }
+  analysisFilter: 'FILTER_DAY',
 }
