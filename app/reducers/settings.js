@@ -5,7 +5,11 @@ import assign from 'lodash/object/assign';
 import mapValues from 'lodash/object/mapValues';
 
 const initialState = {
-
+  settings: {
+    nutritionFacts: false,
+    notifications: false,
+    recommendations: false,
+  }
 };
 
 export default reducer = (

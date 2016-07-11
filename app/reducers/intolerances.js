@@ -5,7 +5,10 @@ import assign from 'lodash/object/assign';
 import mapValues from 'lodash/object/mapValues';
 
 const initialState = {
-
+  entities: {
+    intolerances: {}
+  },
+  intoleranceList: [],
 };
 
 export default reducer = (
