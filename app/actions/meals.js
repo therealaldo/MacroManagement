@@ -12,38 +12,71 @@ import {
   SAVE_MEAL
 } from '../constants/action_types';
 
-export function fetchMealRequest = (query) => {
-
+export function fetchMealRequest = (query, offset) => {
+  return {
+    type: FETCH_MEAL_REQUEST,
+    query,
+    offset
+  };
 };
 
-export function fetchMealFailed = () => {
-
+export function fetchMealFailed = (error) => {
+  return {
+    type: FETCH_MEAL_FAILED,
+    error
+  };
 };
 
-export function fetchMealResult = () => {
-
+export function fetchMealResult = (response) => {
+  return {
+    type: FETCH_MEAL_RESULT,
+    response
+  };
 };
 
-export function moreSearchResult = () => {
-
+export function moreSearchResult = (pageIndex) => {
+  return {
+    type: MORE_SEARCH_RESULT,
+    pageIndex
+  };
 };
 
-export function searchMealInfo = () => {
-
+export function searchMealInfo = (mealIndex) => {
+  return {
+    type: SEARCH_MEAL_INFO,
+    mealIndex
+  };
 };
 
-export function addMeal = () => {
-
+export function addMeal = (mealType, meal) => {
+  return {
+    type: ADD_MEAL,
+    mealType,
+    meal
+  };
 };
 
-export function deleteMeal = () => {
-
+export function deleteMeal = (mealType, mealIndex) => {
+  return {
+    type: DELETE_MEAL,
+    mealType,
+    mealIndex
+  };
 };
 
-export function editMeal = () => {
-
+export function editMeal = (mealType, mealIndex) => {
+  return {
+    type: EDIT_MEAL,
+    mealType,
+    mealIndex
+  };
 };
 
-export function saveMeal = () => {
-
+export function saveMeal = (mealType, mealIndex, meal) => {
+  return {
+    type: SAVE_MEAL,
+    mealType,
+    mealIndex,
+    meal
+  };
 };
