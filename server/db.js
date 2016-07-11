@@ -57,7 +57,7 @@ module.exports = function() {
 
   const _meals = _sequelize.define('meals', {
     mealId: {
-      type: Sequelize.UUID,
+      type: Sequelize.INTEGER,
       primaryKey: true
     },
     name: {
@@ -92,6 +92,18 @@ module.exports = function() {
   const _preferences = _sequelize.define('preferences', {
     status: {
       type: Sequelize.UUID
+    }
+  });
+
+  const _settings = _sequelize.define('settings', {
+    nutritionFacts: {
+      type: Sequelize.BOOLEAN
+    },
+    notifications: {
+      type: Sequelize.BOOLEAN
+    },
+    recommendations: {
+      type: Sequelize.BOOLEAN
     }
   });
 
@@ -159,6 +171,7 @@ module.exports = function() {
 
   //Relationships
   _users.hasMany(_userMeals, {foreignKey: 'userId'});
+  _users.hasMany(_settings, {foreignKey: 'userId'});
   _users.hasMany(_userGroceryLists, {foreignKey: 'userId'});
   _users.hasMany(_userIntake, {foreignKey: 'userId'});
   _users.hasMany(_preferences, {foreignKey: 'userId'});
@@ -187,7 +200,8 @@ module.exports = function() {
     userGroceryLists: _userGroceryLists,
     userIntake: _userIntake,
     userMeals: _userMeals,
-    users: _users
+    users: _users,
+    settings: _settings,
   }
 
 }();
