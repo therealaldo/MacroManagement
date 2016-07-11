@@ -13,22 +13,24 @@ const GC_HTML = `
         google.setOnLoadCallback(resolve); /* <--- resolve() is called by RNWebViewJSContext */
       </script>
     </head>
-    <body><div id="chart_div"></div></body>
+    <body><div id="calorie_intake"></div>
+          <div id="calorie_progress"></div>
+    </body>
   </html>`;
 
-const CHART_JS = `
+const CHART_INTAKE = `
   var data = new google.visualization.DataTable();
   data.addColumn('date', 'Day');
-  data.addColumn('number', 'Weight');
+  data.addColumn('number', 'Calorie Intake');
   data.addColumn({ type: 'string', role: 'annotation' });
   data.addRows([
-      [new Date(2015, 2, 1), 150, '150'],
-      [new Date(2015, 2, 2), 152, null],
-      [new Date(2015, 2, 3), 146, '146'],
-      [new Date(2015, 2, 4), 150, null],
-      [new Date(2015, 2, 5), 157, '157'],
-      [new Date(2015, 2, 6), 147, null],
-      [new Date(2015, 2, 7), 147.5, '147'],
+      [new Date(2016, 7, 10), 2300, '2300'],
+      [new Date(2016, 7, 11), 2000, null],
+      [new Date(2016, 7, 12), 2100, '2100'],
+      [new Date(2016, 7, 13), 2240, null],
+      [new Date(2016, 7, 14), 2500, '2500'],
+      [new Date(2016, 7, 15), 1900, null],
+      [new Date(2016, 7, 16), 2010, '2010'],
   ]);
 
   var options = { enableInteractivity: false,
@@ -36,7 +38,7 @@ const CHART_JS = `
                   lineWidth: 3, width:750, height:420,
                   pointShape: 'circle', pointSize: 8,
                   chartArea: { left: 30, width: 690 }, areaOpacity: 0.07,
-                  colors: ['#e14c4d'], backgroundColor: { 'fill': '#34343f' },
+                  colors: ['#26a65b'], backgroundColor: { 'fill': '#34343f' },
                   annotations: {
                     textStyle: { fontSize: 26, bold: true, color: '#bbbbbd', auroColor: '#3f3f3f' },
                   },
@@ -44,13 +46,49 @@ const CHART_JS = `
                     format: 'MMM d',
                     textStyle: {color: '#bbbbbd', fontSize: 16,}, gridlines: { color: 'transparent' },
                   },
-                  vAxis: { gridlines: { count: 3, color: '#3f414f' } },
+                  vAxis: { gridlines: { count: 4, color: '#3f414f' } },
                 };
 
-  var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+  var chart = new google.visualization.AreaChart(document.getElementById('calorie_intake'));
   chart.draw(data, options);
 
   resolve(chart.getImageURI()); /* <--- resolve() is called by RNWebViewJSContext */`;
+
+const CHART_PROGRESS = `
+var data = new google.visualization.DataTable();
+data.addColumn('date', 'Day');
+data.addColumn('number', 'Calorie Progression');
+data.addColumn({ type: 'string', role: 'annotation' });
+data.addRows([
+    [new Date(2016, 7, 10), 2300, '2300'],
+    [new Date(2016, 7, 11), 2000, null],
+    [new Date(2016, 7, 12), 2100, '2100'],
+    [new Date(2016, 7, 13), 2240, null],
+    [new Date(2016, 7, 14), 2500, '2500'],
+    [new Date(2016, 7, 15), 1900, null],
+    [new Date(2016, 7, 16), 2010, '2010'],
+]);
+
+var options = { enableInteractivity: false,
+                legend: {position: 'none'},
+                lineWidth: 3, width:750, height:420,
+                pointShape: 'circle', pointSize: 8,
+                chartArea: { left: 30, width: 690 }, areaOpacity: 0.07,
+                colors: ['#26a65b'], backgroundColor: { 'fill': '#34343f' },
+                annotations: {
+                  textStyle: { fontSize: 26, bold: true, color: '#bbbbbd', auroColor: '#3f3f3f' },
+                },
+                hAxis: {
+                  format: 'MMM d',
+                  textStyle: {color: '#bbbbbd', fontSize: 16,}, gridlines: { color: 'transparent' },
+                },
+                vAxis: { gridlines: { count: 4, color: '#3f414f' } },
+              };
+
+var chart = new google.visualization.AreaChart(document.getElementById('calorie_intake'));
+chart.draw(data, options);
+
+resolve(chart.getImageURI()); /* <--- resolve() is called by RNWebViewJSContext */`;
 
 class Chart extends React.Component {
   static propTypes: {
@@ -70,7 +108,7 @@ class Chart extends React.Component {
   }
 
   async loadChart() {
-    var imageUri = await this.ctx.evaluateScript(CHART_JS);
+    var imageUri = await this.ctx.evaluateScript(CHART_INTAKE, CHART_PROGRESS);
     // this.setState({ imageUri });
   }
 
