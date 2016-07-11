@@ -9,7 +9,7 @@ export default reducer = (
   action = {}
 ) => {
   switch (action.type) {
-    case: 'NEW_EMPTY_LIST':
+    case 'NEW_EMPTY_LIST':
       return {
         ...state,
         groceryLists: action.groceryLists

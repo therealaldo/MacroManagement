@@ -2,41 +2,48 @@
   selectedDate: 'Mon, Jul 11, 2016',
   selectedGroceryList: ''
   entities: {
-    users: {
-      1: {
-        id: 1,
+    user: {
+      'facebook|1020620286942176': {
+        id: 'facebook|1020620286942176',
         email: 'aldog212@gmail.com',
         token: 'ksjdfasdhfiushefuihefisihfishdf'
-      },
-      2: {
-        id: 2,
-        email: 'jacobnigh@hotmail.com',
-        token: 'ksdjgksbdfkjbfskdjbfksdfkbjssdf'
       }
     },
-    mealPlans: {
+    plans: {
       'Sun, Jul 10, 2016': {
-
+        breakfast: [534937, 524647],
+        lunch: [534937],
+        dinner: [534937],
+        snacks: [534937, 524647],
+        totalCalories: 2400,
       },
       'Mon, Jul 11, 2016': {
-
+        breakfast: [534937, 524647],
+        lunch: [534937],
+        dinner: [534937, 524647],
+        snacks: [534937],
+        totalCalories: 1900,
       }
     },
     meals: {
-      1: {
-
+      534937: {
+        id: 534937,
+        name: 'Garden Fresh Caprese Turkey Burger',
+        image: "https://spoonacular.com/recipeImages/garden-fresh-caprese-turkey-burger-534937.jpg",
       },
-      2: {
-
+      524647: {
+        id: 524647,
+        title: "Bacon Pineapple Burgers with Candied Jalepenos and Sweet Chili Mayo",
+        image: "https://spoonacular.com/recipeImages/Bacon-Pineapple-Burgers-with-Candied-Jalepenos-and-Sweet-Chili-Mayo-524647.jpg",
       }
     },
     lists: {
-      1: {
-        id: 1,
+      'f47ac10b-58cc-4372-a567-0e02b2c3d479': {
+        id: 'f47ac10b-58cc-4372-a567-0e02b2c3d479',
         ingredients: [1, 2]
       },
-      2: {
-        id: 2,
+      'f47ac10b-58cc-4372-a567-0e02b2c98sfg': {
+        id: 'f47ac10b-58cc-4372-a567-0e02b2c98sfg',
         ingredients: [1, 2]
       }
     },
@@ -52,79 +59,32 @@
         completed: false
       }
     },
+    intolerances: {
+      1: {
+        id: 1,
+        name: 'peanuts'
+      }
+    }
   },
+  intoleranceList: [1],
+  mealPlans: ['Sun, Jul 10, 2016', 'Sun, Jul 11, 2016'],
   groceryLists: [1, 2],
-  results: {
-
-  }
-}
-
-{
-  "results": [
+  mealResults: [
     {
-      "id": 534937,
-      "title": "Garden Fresh Caprese Turkey Burger",
-      "image": "https://spoonacular.com/recipeImages/garden-fresh-caprese-turkey-burger-534937.jpg",
-      "imageType": "jpg"
+      id: 534937,
+      title: "Garden Fresh Caprese Turkey Burger",
+      image: "https://spoonacular.com/recipeImages/garden-fresh-caprese-turkey-burger-534937.jpg",
+      imageType: "jpg"
     },
     {
-      "id": 524647,
-      "title": "Bacon Pineapple Burgers with Candied Jalepenos and Sweet Chili Mayo",
-      "image": "https://spoonacular.com/recipeImages/Bacon-Pineapple-Burgers-with-Candied-Jalepenos-and-Sweet-Chili-Mayo-524647.jpg",
-      "imageType": "jpg"
-    },
-    {
-      "id": 143397,
-      "title": "Iron Chef Winner's Japanese-Style Hamburgers",
-      "image": "https://spoonacular.com/recipeImages/iron-chef-winners-japanese-style-hamburgers-2-143397.jpg",
-      "imageType": "jpg"
-    },
-    {
-      "id": 596808,
-      "title": "Asian Turkey Burgers with Wasabi Mayo",
-      "image": "https://spoonacular.com/recipeImages/Asian-Turkey-Burgers-with-Wasabi-Mayo-596808.jpg",
-      "imageType": "jpg"
-    },
-    {
-      "id": 613430,
-      "title": "Homemade Black Bean Veggie Burgers",
-      "image": "https://spoonacular.com/recipeImages/Homemade-Black-Bean-Veggie-Burgers-613430.jpg",
-      "imageType": "jpg"
-    },
-    {
-      "id": 388241,
-      "title": "Eggs Benedict Burgers",
-      "image": "https://spoonacular.com/recipeImages/Eggs-Benedict-Burgers-388241.jpg",
-      "imageType": "jpg"
-    },
-    {
-      "id": 588892,
-      "title": "Chickpea burger",
-      "image": "https://spoonacular.com/recipeImages/Chickpea-burger-588892.jpg",
-      "imageType": "jpg"
-    },
-    {
-      "id": 80736,
-      "title": "Lamb Burgers with Cilantro-Yogurt Sauce",
-      "image": "https://spoonacular.com/recipeImages/lamb-burgers-with-cilantro-yogurt-sauce-80736.jpg",
-      "imageType": "jpg"
-    },
-    {
-      "id": 599841,
-      "title": "Turkey Burgers with Lemon and Mint",
-      "image": "https://spoonacular.com/recipeImages/Turkey-Burgers-with-Lemon-and-Mint-599841.jpg",
-      "imageType": "jpg"
-    },
-    {
-      "id": 568312,
-      "title": "Basil Spinach Turkey Burger with French Fried Onions",
-      "image": "https://spoonacular.com/recipeImages/Basil-Spinach-Turkey-Burger-with-French-Fried-Onions-568312.jpg",
-      "imageType": "jpg"
+      id: 524647,
+      title: "Bacon Pineapple Burgers with Candied Jalepenos and Sweet Chili Mayo",
+      image: "https://spoonacular.com/recipeImages/Bacon-Pineapple-Burgers-with-Candied-Jalepenos-and-Sweet-Chili-Mayo-524647.jpg",
+      imageType: "jpg"
     }
   ],
-  "baseUri": "https://spoonacular.com/recipeImages/",
-  "offset": 0,
-  "number": 10,
-  "totalResults": 10,
-  "processingTimeMs": 136
+  pagination: 0,
+  totalResults: 2,
+  processingTimeMs: 136,
+
 }

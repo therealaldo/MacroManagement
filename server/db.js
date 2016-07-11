@@ -19,7 +19,6 @@ module.exports = function() {
   const _groceryLists = _sequelize.define('groceryLists', {
     listId: {
       type: Sequelize.UUID,
-      primaryKey: true
     },
     quantity: {
       type: Sequelize.INTEGER
@@ -27,6 +26,7 @@ module.exports = function() {
   });
 
   const _ingredients = _sequelize.define('ingredients', {
+
     quantity: {
       type: Sequelize.INTEGER
     }
@@ -63,7 +63,7 @@ module.exports = function() {
     name: {
       type: Sequelize.STRING
     },
-    calories: {
+    /*calories: {
       type: Sequelize.INTEGER
     },
     fat: {
@@ -86,7 +86,7 @@ module.exports = function() {
     },
     cookTime: {
       type: Sequelize.STRING
-    },
+    },*/
   });
 
   const _preferences = _sequelize.define('preferences', {
@@ -137,16 +137,13 @@ module.exports = function() {
 
   const _users = _sequelize.define('users', {
     userId: {
-      type: Sequelize.UUID,
+      type: Sequelize.STRING,
       primaryKey: true
     },
     email: {
       type: Sequelize.STRING
     },
-    pass: {
-      type: Sequelize.STRING
-    },
-    dob: {
+    /*dob: {
       type: Sequelize.DATEONLY
     },
     gender: {
@@ -157,7 +154,7 @@ module.exports = function() {
     },
     location: {
       type: Sequelize.STRING
-    }
+    }*/
   });
 
   //Relationships
