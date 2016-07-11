@@ -110,4 +110,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(({ routes }) => ({ routes }))(WelcomeView);
+export default connect(mapStateToProps, mapDispatchToProps)(WelcomeView);

@@ -213,4 +213,4 @@ const styles = StyleSheet.create({
   }
 });;
 
-export default connect(({ routes }) => ({ routes }))(SettingsView);
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsView);

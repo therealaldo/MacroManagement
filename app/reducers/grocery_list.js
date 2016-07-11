@@ -2,6 +2,10 @@
 
 const initialState = {
   groceryLists: [],
+  entities: {
+    lists: {},
+    ingredients: {},
+  }
 };
 
 export default reducer = (
