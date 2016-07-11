@@ -14,32 +14,19 @@ let nextListId = 0;
 export const newEmptyList = (list) => {
   return {
     type: NEW_EMPTY_LIST,
-    groceryLists: [
-      ...list,
-      {
-        id: nextListId++,
-        items: []
-      }
-    ]
   }
 };
 
 export const newPopulatedList = (list, items) => {
   return {
     type: NEW_POPULATED_LIST,
-    groceryLists: [
-      ...list,
-      {
-        id: nextListId++,
-        items
-      }
-    ]
+    items
   }
 };
 
-export const editList = (list, index) => {
+export const viewList = (list, index) => {
   return {
-    type: EDIT_LIST,
+    type: VIEW_LIST,
     index
   };
 };
@@ -64,13 +51,6 @@ export const addGroceryItem = (list, index, item) => {
     type: ADD_GROCERY_ITEM,
     index,
     item
-  };
-};
-
-export const editGroceryItem = (index) => {
-  return {
-    type: EDIT_GROCERY_ITEM,
-    index
   };
 };
 export const removeGroceryItem = (index) => {

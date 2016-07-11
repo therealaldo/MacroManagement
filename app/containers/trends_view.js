@@ -26,19 +26,7 @@ class TrendsView extends React.Component {
             </View>
 
             <View style={ styles.chartContainer }>
-              <Text style={ styles.chartTitleText }>Calorie Intake</Text>
-
-            </View>
-            <View style={ styles.chartContainer }>
-              <Text style={ styles.chartTitleText }>Calorie Intake</Text>
-
-            </View>
-            <View style={ styles.chartContainer }>
-              <Text style={ styles.chartTitleText }>Calorie Intake</Text>
-
-            </View>
-            <View style={ styles.chartContainer }>
-              <Text style={ styles.chartTitleText }>Calorie Intake</Text>
+              <Text style={ styles.chartTitleText }>Calorie Progress</Text>
 
             </View>
           </View>

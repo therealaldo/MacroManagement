@@ -45,8 +45,8 @@ class SettingsView extends React.Component {
               <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
                 <SettingsList.Item title='Edit Food Preferences' titleStyle={{fontFamily: 'OpenSans'}}
                   onPress={() => Alert.alert('Edit Food Preferences pressed')} />
-                <SettingsList.Item title='Nutrition Facts' titleStyle={{fontFamily: 'OpenSans'}}
-                  onPress={() => Alert.alert('Nutrition Facts pressed')} />
+                <SettingsList.Item title='Show Nutrition Facts' hasSwitch={ true } hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}} />
               </SettingsList>
             </View>
           </View>
@@ -54,63 +54,10 @@ class SettingsView extends React.Component {
       case 'notificationSettings':
         return (
           <View style={ styles.settingsContainer }>
-            <View style={ styles.listContainer }>
+            <View scrollEnabled={ false } style={ styles.listContainer }>
               <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
-                <SettingsList.Item title='Meal Plan' titleStyle={{fontFamily: 'OpenSans'}}
-                  onPress={ Actions.notificationMealPlanSettings } />
-                <SettingsList.Item title='Cookbook' titleStyle={{fontFamily: 'OpenSans'}}
-                  onPress={ Actions.notificationCookbookSettings } />
-                <SettingsList.Item title='Recommendations' titleStyle={{fontFamily: 'OpenSans'}}
-                  onPress={ Actions.notificationRecommendSettings } />
-              </SettingsList>
-            </View>
-            <View style={ styles.listContainer }>
-              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
-                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
-                  titleStyle={{fontFamily: 'OpenSans'}} />
-              </SettingsList>
-            </View>
-          </View>
-        );
-      case 'notificationMealPlanSettings':
-        return (
-          <View style={ styles.settingsContainer }>
-            <View style={ styles.listContainer }>
-              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
-                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
-                  titleStyle={{fontFamily: 'OpenSans'}} />
-                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
-                  titleStyle={{fontFamily: 'OpenSans'}} />
-                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
-                  titleStyle={{fontFamily: 'OpenSans'}} />
-              </SettingsList>
-            </View>
-          </View>
-        );
-      case 'notificationCookbookSettings':
-        return (
-          <View style={ styles.settingsContainer }>
-            <View style={ styles.listContainer }>
-              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
-                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
-                  titleStyle={{fontFamily: 'OpenSans'}} />
-                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
-                  titleStyle={{fontFamily: 'OpenSans'}} />
-                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
-                  titleStyle={{fontFamily: 'OpenSans'}} />
-              </SettingsList>
-            </View>
-          </View>
-        );
-      case 'notificationRecommendSettings':
-        return (
-          <View style={ styles.settingsContainer }>
-            <View style={ styles.listContainer }>
-              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
-                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
-                  titleStyle={{fontFamily: 'OpenSans'}} />
-                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
-                  titleStyle={{fontFamily: 'OpenSans'}} />
+                <SettingsList.Item title='Enable Recommendations' hasSwitch={ true }
+                  hasNavArrow={ false } titleStyle={{fontFamily: 'OpenSans'}} />
                 <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
                   titleStyle={{fontFamily: 'OpenSans'}} />
               </SettingsList>

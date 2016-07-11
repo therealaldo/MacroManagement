@@ -1,6 +1,5 @@
 {
   selectedDate: 'Mon, Jul 11, 2016',
-  selectedGroceryList: ''
   entities: {
     user: {
       'facebook|1020620286942176': {
@@ -86,5 +85,9 @@
   pagination: 0,
   totalResults: 2,
   processingTimeMs: 136,
-
+  settings: {
+    nutritionFacts: false,
+    notifications: false,
+    recommendations: false
+  }
 }
