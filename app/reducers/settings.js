@@ -4,8 +4,11 @@ import omit from 'lodash/object/omit';
 import assign from 'lodash/object/assign';
 import mapValues from 'lodash/object/mapValues';
 import {
-  RESET_NOTIFICATIONS,
+  TOGGLE_NOTIFICATIONS,
+  TOGGLE_RECOMMENDATIONS,
+  TOGGLE_NUTRITION_FACTS,
   RESET_PREFERENCES,
+  RESET_NOTIFICATIONS,
   RESET_ALL_SETTINGS
 } from '../constants/action_types';
 
@@ -22,6 +25,18 @@ export default reducer = (
   action = {}
 ) => {
   switch (action.type) {
+    case TOGGLE_NOTIFICATIONS:
+      return {
+        
+      };
+    case TOGGLE_RECOMMENDATIONS:
+      return {
+
+      };
+    case TOGGLE_NUTRITION_FACTS:
+      return {
+
+      };
     case RESET_NOTIFICATIONS:
       return {
 
