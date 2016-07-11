@@ -13,7 +13,6 @@ import {
   FETCH_MEAL_RESULT,
   SEARCH_MEAL_INFO,
   ADD_MEAL,
-  EDIT_MEAL,
   SAVE_MEAL,
   DELETE_MEAL,
 } from '../constants/action_types';
@@ -70,19 +69,40 @@ export default reducer = (
       };
     case ADD_MEAL:
       return {
-
+        ...state,
+        mealPlans: state.mealPlans.concat(action.meal.id),
+        entities: {
+          plans: {
+            ...state.entities.plans,
+            [action.selectedDate]: {
+              ...state.entities.plans[action.selectedDate],
+              [action.mealType]: state.entitites.plans[action.selectedDate][action.mealType].concat(action.meal.id)
+            }
+          },
+          meals: {
+            ...state.entities.meals,
+            [action.meal.id]: {
+              id: action.meal.id,
+              name: action.meal.name,
+              image: action.meal.image
+            }
+          }
+        }
       };
-    case EDIT_MEAL:
+    /*case SAVE_MEAL:
       return {
 
-      };
-    case SAVE_MEAL:
-      return {
-
-      };
+      };*/
     case DELETE_MEAL:
       return {
-
+        ...state,
+        entities: {
+          ...state.entities,
+          plans[selectedDate]: {
+            ...state.entities.plans[action.selectedDate],
+            [action.mealType]: state.entities.plans[action.selectedDate][action.mealType].filter(id => id !== action.mealId)
+          },
+        }
       };
   };
 };

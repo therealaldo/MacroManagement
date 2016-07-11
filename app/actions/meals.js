@@ -8,7 +8,6 @@ import {
   SEARCH_MEAL_INFO,
   ADD_MEAL,
   DELETE_MEAL,
-  EDIT_MEAL,
   SAVE_MEAL
 } from '../constants/action_types';
 
@@ -48,35 +47,30 @@ export function searchMealInfo = (mealIndex) => {
   };
 };
 
-export function addMeal = (mealType, meal) => {
+export function addMeal = (selectedDate, mealType, meal) => {
   return {
     type: ADD_MEAL,
+    selectedDate
     mealType,
     meal
   };
 };
 
-export function deleteMeal = (mealType, mealIndex) => {
+export function deleteMeal = (selectedDate, mealType, mealId) => {
   return {
     type: DELETE_MEAL,
+    selectedDate
     mealType,
-    mealIndex
+    mealId
   };
 };
 
-export function editMeal = (mealType, mealIndex) => {
-  return {
-    type: EDIT_MEAL,
-    mealType,
-    mealIndex
-  };
-};
-
-export function saveMeal = (mealType, mealIndex, meal) => {
+export function saveMeal = (selectedDate, mealType, mealId, meal) => {
   return {
     type: SAVE_MEAL,
+    selectedDate,
     mealType,
-    mealIndex,
+    mealId,
     meal
   };
 };

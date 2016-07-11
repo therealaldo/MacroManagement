@@ -6,16 +6,9 @@ import {
   RECEIVE_USER_PROFILE
 } from '../constants/action_types';
 
-export const saveUserProfile = (profile) => {
+export const saveUserProfile = (newProfile) => {
   return {
     type: SAVE_USER_PROFILE,
-    profile
-  };
-};
-
-export const editUserProfile = (newProfile) => {
-  return {
-    type: EDIT_USER_PROFILE,
     newProfile
   };
 };

@@ -1,16 +1,48 @@
 'use strict';
 
 import {
+  ADD_GROCERY_ITEM,
+  SAVE_GROCERY_ITEM,
+  REMOVE_GROCERY_ITEM,
+  TOGGLE_GROCERY_ITEM,
   NEW_EMPTY_LIST,
   NEW_POPULATED_LIST,
-  EDIT_LIST,
   SAVE_LIST,
-  REMOVE_LIST,
-  ADD_GROCERY_ITEM,
-  EDIT_GROCERY_ITEM,
-  REMOVE_GROCERY_ITEM,
-  TOGGLE_GROCERY_ITEM
+  REMOVE_LIST
 } from '../constants/action_types';
+
+export const addGroceryItem = (listId, item) => {
+  return {
+    type: ADD_GROCERY_ITEM,
+    listId,
+    item
+  };
+};
+
+export const saveGroceryItem = (listId, itemId, newItem) => {
+  return {
+    type: SAVE_GROCERY_ITEM,
+    listId,
+    itemId,
+    newItem
+  };
+};
+
+export const removeGroceryItem = (listId, itemId) => {
+  return {
+    type: REMOVE_GROCERY_ITEM,
+    listId,
+    itemId,
+  };
+};
+
+export const toggleGroceryItem = (listId, itemId) => {
+  return {
+    type: TOGGLE_GROCERY_ITEM,
+    listId,
+    itemId,
+  };
+};
 
 export const newEmptyList = () => {
   return {
@@ -25,46 +57,16 @@ export const newPopulatedList = (items) => {
   }
 };
 
-export const viewList = (listIndex) => {
-  return {
-    type: VIEW_LIST,
-    listIndex
-  };
-};
-
-export const saveList = (listIndex, newList) => {
+export const saveList = (newItemList) => {
   return {
     type: SAVE_LIST,
-    listIndex,
-    newList
+    newItemList
   };
 };
 
-export const removeList = (listIndex) => {
+export const removeList = (listId) => {
   return {
     type: REMOVE_LIST,
-    listIndex
-  };
-};
-
-export const addGroceryItem = (listIndex, item) => {
-  return {
-    type: ADD_GROCERY_ITEM,
-    listIndex,
-    item
-  };
-};
-export const removeGroceryItem = (listIndex, itemIndex) => {
-  return {
-    type: REMOVE_GROCERY_ITEM,
-    listIndex,
-    itemIndex,
-  };
-};
-export const toggleGroceryItem = (listIndex, itemIndex) => {
-  return {
-    type: TOGGLE_GROCERY_ITEM,
-    listIndex,
-    itemIndex,
+    listId
   };
 };

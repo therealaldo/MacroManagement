@@ -2,36 +2,28 @@
 
 import {
   ADD_PREFERENCE,
-  EDIT_PREFERENCES,
   SAVE_PREFERENCES,
   REMOVE_PREFERENCE,
 } from '../constants/action_types';
 
-export const addPreference = (preference) => {
+export const addPreference = (name) => {
   return {
     type: ADD_PREFERENCE,
-    preference
+    name
   };
 };
 
-export const editPreferences = (index) => {
-  return {
-    type: EDIT_PREFERENCES,
-    index
-  };
-};
-
-export const savePreferences = (index, newPreferences) => {
+export const savePreferences = (preferenceId, newPreferences) => {
   return {
     type: SAVE_PREFERENCES,
-    index,
+    preferenceId,
     newPreferences
   };
 };
 
-export const removePreference = (index) => {
+export const removePreference = (preferenceId) => {
   return {
     type: REMOVE_PREFERENCE,
-    index
+    preferenceId
   };
 };
