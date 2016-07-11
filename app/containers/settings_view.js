@@ -104,30 +104,6 @@ class SettingsView extends React.Component {
           <View style={ styles.settingsContainer }>
             <View style={ styles.listContainer }>
               <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
-                <SettingsList.Item title='Reset Food Preferences' hasNavArrow={ false }
-                  titleStyle={{fontFamily: 'OpenSans'}}
-                  onPress={() => Alert.alert(
-                    'Reset Food Preferences',
-                    'Are you sure you want to reset your food preferences?',
-                    [
-                      {text: 'Cancel'},
-                      {text: 'Reset', onPress: () => console.log('You just reset your food prefereces!')},
-                    ]
-                  )} />
-                <SettingsList.Item title='Reset Notifications' hasNavArrow={ false }
-                  titleStyle={{fontFamily: 'OpenSans'}}
-                  onPress={() => Alert.alert(
-                    'Reset Notifications',
-                    'Are you sure you want to reset your notifications?',
-                    [
-                      {text: 'Cancel'},
-                      {text: 'Reset', onPress: () => console.log('You just reset your notifications!')},
-                    ]
-                  )} />
-              </SettingsList>
-            </View>
-            <View style={ styles.listContainer }>
-              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
                 <SettingsList.Item title='Reset All Settings' hasNavArrow={ false }
                   titleStyle={{fontFamily: 'OpenSans'}}
                   onPress={() => Alert.alert(
