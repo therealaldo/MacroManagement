@@ -21,6 +21,7 @@
     "express": "4.13.4",
     "moment": "2.14.1",
     "mysql": "2.10.2",
+    "normalizr": "^2.1.0",
     "react": "15.1.0",
     "react-native": "0.27.0",
     "react-native-button": "1.6.0",
