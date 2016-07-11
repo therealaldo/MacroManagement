@@ -21,11 +21,29 @@ export default reducer = (
   switch (action.type) {
     case SAVE_USER_PROFILE:
       return {
-
+        entities: {
+          users: {
+            ...state.entities.users,
+            [action.profile.userId]: {
+              ...state.entities.users[action.profile.userId],
+              id: action.profile.userId,
+              email: action.profile.email,
+            }
+          }
+        }
       };
     case RECEIVE_USER_PROFILE:
       return {
-
+        entities: {
+          users: {
+            ...state.entities.users,
+            [action.profile.userId]: {
+              id: action.profile.userId,
+              email: action.profile.email,
+              token: action.profile.token
+            }
+          }
+        }
       };
   }
 };
