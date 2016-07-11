@@ -1,14 +1,14 @@
 {
-  /*selectedDate: 'Mon, Jul 11, 2016',*/
+  selectedDate: 'Mon, Jul 11, 2016',
   entities: {
-    user: {
+    users: {
       'facebook|1020620286942176': {
         id: 'facebook|1020620286942176',
         email: 'aldog212@gmail.com',
         token: 'ksjdfasdhfiushefuihefisihfishdf'
       }
     },
-    /*plans: {
+    plans: {
       'Sun, Jul 10, 2016': {
         breakfast: [534937, 524647],
         lunch: [534937],
@@ -35,8 +35,8 @@
         title: "Bacon Pineapple Burgers with Candied Jalepenos and Sweet Chili Mayo",
         image: "https://spoonacular.com/recipeImages/Bacon-Pineapple-Burgers-with-Candied-Jalepenos-and-Sweet-Chili-Mayo-524647.jpg",
       }
-    },*/
-    /*lists: {
+    },
+    lists: {
       'f47ac10b-58cc-4372-a567-0e02b2c3d479': {
         id: 'f47ac10b-58cc-4372-a567-0e02b2c3d479',
         ingredients: [1, 2]
@@ -57,7 +57,7 @@
         name: '5 bananas',
         completed: false
       }
-    },*/
+    },
     intolerances: {
       1: {
         id: 1,
@@ -66,9 +66,9 @@
     }
   },
   intoleranceList: [1],
-  /*mealPlans: ['Sun, Jul 10, 2016', 'Sun, Jul 11, 2016'],*/
-  /*groceryLists: [1, 2],*/
-  /*mealResults: [
+  mealPlans: ['Sun, Jul 10, 2016', 'Sun, Jul 11, 2016'],
+  groceryLists: [1, 2],
+  mealResults: [
     {
       id: 534937,
       title: "Garden Fresh Caprese Turkey Burger",
@@ -84,7 +84,7 @@
   ],
   pagination: 0,
   totalResults: 2,
-  processingTimeMs: 136,*/
+  processingTimeMs: 136,
   settings: {
     nutritionFacts: false,
     notifications: false,
