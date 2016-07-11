@@ -3,7 +3,6 @@
 import omit from 'lodash/object/omit';
 import assign from 'lodash/object/assign';
 import mapValues from 'lodash/object/mapValues';
-
 import {
   RESET_NOTIFICATIONS,
   RESET_PREFERENCES,
@@ -22,5 +21,18 @@ export default reducer = (
   state = initialState,
   action = {}
 ) => {
+  switch (action.type) {
+    case RESET_NOTIFICATIONS:
+      return {
 
+      };
+    case RESET_PREFERENCES:
+      return {
+
+      };
+    case RESET_ALL_SETTINGS:
+      return {
+
+      };
+  }
 };

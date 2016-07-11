@@ -21,5 +21,22 @@ export default reducer = (
   state = initialState,
   action = {}
 ) => {
+  switch (action.type) {
+    case SAVE_PREFERENCES:
+      return {
 
+      };
+    case EDIT_PREFERENCES:
+      return {
+
+      };
+    case REMOVE_PREFERENCE:
+      return {
+
+      };
+    case ADD_PREFERENCE:
+      return {
+
+      };
+  };
 };

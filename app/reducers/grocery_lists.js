@@ -28,7 +28,19 @@ export default reducer = (
   action = {}
 ) => {
   switch (action.type) {
-    case NEW_EMPTY_LIST:
+    case ADD_GROCERY_ITEM:
+      return {
+
+      };
+    case EDIT_GROCERY_ITEM:
+      return {
+
+      };
+    case REMOVE_GROCERY_ITEM:
+      return {
+
+      };
+    case TOGGLE_GROCERY_ITEM:
       return {
 
       };
@@ -36,31 +48,19 @@ export default reducer = (
       return {
 
       };
-    case NEW_EMPTY_LIST:
+    case NEW_POPULATED_LIST:
       return {
 
       };
-    case NEW_EMPTY_LIST:
+    case SAVE_LIST:
       return {
 
       };
-    case NEW_EMPTY_LIST:
+    case VIEW_LIST:
       return {
 
       };
-    case NEW_EMPTY_LIST:
-      return {
-
-      };
-    case NEW_EMPTY_LIST:
-      return {
-
-      };
-    case NEW_EMPTY_LIST:
-      return {
-
-      };
-      case NEW_EMPTY_LIST:
+      case REMOVE_LIST:
         return {
 
         };
