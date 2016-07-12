@@ -69,4 +69,5 @@ const styles = StyleSheet.create({
   }
 });;
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrendsView);
+
+export default connect(({routes}) => ({routes}))(TrendsView);

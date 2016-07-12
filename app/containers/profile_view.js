@@ -147,4 +147,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileView);
+
+export default connect(({routes}) => ({routes}))(ProfileView);

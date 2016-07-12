@@ -1,7 +1,7 @@
 'use strict';
 
 import { combineReducers } from 'redux';
-import groceryLists from './grocery_list';
+import groceryLists from './grocery_lists';
 import intolerances from './intolerances';
 import meals from './meals';
 import routes from './routes';

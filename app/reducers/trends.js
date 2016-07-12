@@ -10,10 +10,10 @@ const initialState = {
   analysisFilter: AnalysisFilters.FILTER_DAY
 };
 
-export default reducer = (
+export default function reducer(
   state = initialState,
   action = {}
-) => {
+) {
   switch (action.type) {
     case SET_ANALYSIS_FILTER:
       return {

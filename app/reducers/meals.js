@@ -30,12 +30,12 @@ const initialState = {
   processingTimeMs: 0,
 };
 
-export default reducer = (
+export default function reducer(
   state = initialState,
   action = {}
-) => {
+) {
   switch (action.type) {
-    case INCREMENT_DAY:
+    /*case INCREMENT_DAY:
       return {
 
       };
@@ -66,7 +66,7 @@ export default reducer = (
     case SEARCH_MEAL_INFO:
       return {
 
-      };
+      };*/
     case ADD_MEAL:
       return {
         ...state,
@@ -98,11 +98,16 @@ export default reducer = (
         ...state,
         entities: {
           ...state.entities,
-          plans[selectedDate]: {
-            ...state.entities.plans[action.selectedDate],
-            [action.mealType]: state.entities.plans[action.selectedDate][action.mealType].filter(id => id !== action.mealId)
+          plans: {
+            [selectedDate]: {
+              ...state.entities.plans[action.selectedDate],
+              [action.mealType]: state.entities.plans[action.selectedDate][action.mealType].filter(id => id !== action.mealId)
+            }
           },
         }
       };
+
+    default:
+      return state;
   };
 };

@@ -22,25 +22,25 @@ const initialState = {
   }
 };
 
-export default reducer = (
+export default function reducer(
   state = initialState,
   action = {}
-) => {
+) {
   switch (action.type) {
     case ADD_GROCERY_ITEM:
-      const ingredientsArrayLastId = state.entities.lists[listId].ingredients.length - 1;
-      const newItemId = state.entities.lists[listId].ingredients[ingredientsArrayLastId] + 1;
+      let ingredientsArrayLastId = state.entities.lists[listId].ingredients.length - 1;
+      let newItemId = state.entities.lists[listId].ingredients[ingredientsArrayLastId] + 1;
       return {
         ...state,
         entities: {
-          ...state.entities: {
+          ...state.entities,
             lists: mapValues(state.entities.lists, (groceryList) => {
               return groceryList.id === action.listId ?
-                ingredients: state.entities.lists[listId].ingredients.concat(newItemId):
+                /*ingredients: state.entities.lists[listId].ingredients.concat(newItemId)*/groceryList :
                 groceryList
             }),
             ingredients: {
-              ...state.entities.ingredients
+              ...state.entities.ingredients,
               [newItemId]: {
                 id: newItemId,
                 name: action.item.title,
@@ -49,7 +49,6 @@ export default reducer = (
             }
           }
         }
-      };
     /*case SAVE_GROCERY_ITEM:
       return {
         ...state,
@@ -61,14 +60,14 @@ export default reducer = (
           })
         }
       };*/
-    case REMOVE_GROCERY_ITEM:
+    /*case REMOVE_GROCERY_ITEM:
       return {
 
       };
     case TOGGLE_GROCERY_ITEM:
       return {
 
-      };
+      };*/
     case NEW_EMPTY_LIST:
       const groceryListsArrayLastId = state.groceryLists.length - 1;
       const newListId = state.groceryLists[groceryListsArrayLastId] + 1;
@@ -86,8 +85,6 @@ export default reducer = (
         }
       };
     case NEW_POPULATED_LIST:
-      const groceryListsArrayLastId = state.groceryLists.length - 1;
-      const newListId = state.groceryLists[groceryListsArrayLastId] + 1;
       return {
         groceryLists: state.groceryLists.concat(newListId),
         entities: {

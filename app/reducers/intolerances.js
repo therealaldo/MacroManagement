@@ -16,10 +16,10 @@ const initialState = {
   intoleranceList: [],
 };
 
-export default reducer = (
+export default function reducer(
   state = initialState,
   action = {}
-) => {
+) {
   switch (action.type) {
     case ADD_PREFERENCE:
       const intoleranceListArrayLastId = state.intoleranceList.length - 1;

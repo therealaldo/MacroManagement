@@ -140,4 +140,5 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardView);
+
+export default connect(({routes}) => ({routes}))(DashboardView);

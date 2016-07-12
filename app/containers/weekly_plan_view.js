@@ -100,4 +100,5 @@ const styles = StyleSheet.create({
   }
 });;
 
-export default connect(mapStateToProps, mapDispatchToProps)(WeeklyPlanView);
+
+export default connect(({routes}) => ({routes}))(WeeklyPlanView);

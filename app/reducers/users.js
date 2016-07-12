@@ -14,10 +14,10 @@ const initialState = {
   },
 };
 
-export default reducer = (
+export default function reducer(
   state = initialState,
   action = {}
-) => {
+) {
   switch (action.type) {
     case SAVE_USER_PROFILE:
       return {
@@ -45,5 +45,8 @@ export default reducer = (
           }
         }
       };
+
+    default:
+      return state;
   }
 };

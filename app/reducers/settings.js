@@ -18,10 +18,10 @@ const initialState = {
   }
 };
 
-export default reducer = (
+export default function reducer(
   state = initialState,
   action = {}
-) => {
+) {
   switch (action.type) {
     case TOGGLE_NOTIFICATIONS:
       return {
@@ -52,5 +52,8 @@ export default reducer = (
           recommendations: false,
         }
       };
+
+    default:
+      return state;
   }
 };
