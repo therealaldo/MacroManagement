@@ -9,17 +9,18 @@ const GC_HTML = `
     <head>
       <script type="text/javascript" src="https://www.google.com/jsapi"></script>
       <script type="text/javascript">
-        google.load('visualization', '1.0', {'packages':['corechart']});
+        google.load('visualization', '1.0', {'packages':['bar']});
         google.setOnLoadCallback(resolve); /* <--- resolve() is called by RNWebViewJSContext */
       </script>
     </head>
-    <body><div id="calorie_intake"></div></body>
+    <body><div id="calorie_progression"></div></body>
   </html>`;
 
-const CHART_INTAKE = `
+const CHART_PROGRESS = `
   var data = new google.visualization.DataTable();
   data.addColumn('date', 'Day');
   data.addColumn('number', 'Calorie Intake');
+  data.addColumn('number', 'Calorie Goal')
   data.addColumn({ type: 'string', role: 'annotation' });
   data.addRows([
       [new Date(2016, 7, 10), 2300, '2300'],
@@ -47,7 +48,7 @@ const CHART_INTAKE = `
                   vAxis: { gridlines: { count: 4, color: '#3f414f' } },
                 };
 
-  var chart = new google.visualization.AreaChart(document.getElementById('calorie_intake'));
+  var chart = new google.visualization.AreaChart(document.getElementById('calorie_progression'));
   chart.draw(data, options);
 
   resolve(chart.getImageURI()); /* <--- resolve() is called by RNWebViewJSContext */`;
@@ -70,7 +71,7 @@ class Chart extends React.Component {
   }
 
   async loadChart() {
-    var imageUri = await this.ctx.evaluateScript(CHART_INTAKE);
+    var imageUri = await this.ctx.evaluateScript(CHART_PROGRESS);
     // this.setState({ imageUri });
   }
 
