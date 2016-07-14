@@ -13,7 +13,7 @@ module.exports = function() {
 
   function _find(data, err, success) {
     let payload = data;
-    db.preferences.findAll({where: {uuid: payload.uuid}})
+    db.preferences.findAll({where: {userId: payload.userId}})
     .then(success)
     .catch(err);
   }
@@ -26,7 +26,7 @@ module.exports = function() {
 
   function _update(data, err, success) {
     let payload = data;
-    db.preferences.find({where: {uuid: payload.uuid}})
+    db.preferences.find({where: {userId: payload.userId}})
     .then(function(matchedOrder) {
       matchedOrder.updateAttributes(data)
       .then(success)
@@ -37,7 +37,7 @@ module.exports = function() {
 
   function _destroy(data, err, success) {
     let payload = data;
-    db.preferences.destroy({where: {uuid: payload.uuid}})
+    db.preferences.destroy({where: {userId: payload.userId}})
     .then(success)
     .catch(err);
   }

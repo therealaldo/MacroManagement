@@ -19,6 +19,10 @@ module.exports = function() {
   const _groceryLists = _sequelize.define('groceryLists', {
     listId: {
       type: Sequelize.UUID,
+<<<<<<< HEAD
+=======
+      primaryKey: true
+>>>>>>> modelsdb
     },
     quantity: {
       type: Sequelize.INTEGER
@@ -26,7 +30,10 @@ module.exports = function() {
   });
 
   const _ingredients = _sequelize.define('ingredients', {
+<<<<<<< HEAD
 
+=======
+>>>>>>> modelsdb
     quantity: {
       type: Sequelize.INTEGER
     }
@@ -51,6 +58,19 @@ module.exports = function() {
       primaryKey: true
     },
     category: {
+<<<<<<< HEAD
+=======
+      type: Sequelize.STRING
+    }
+  });
+
+  const _meals = _sequelize.define('meals', {
+    mealId: {
+      type: Sequelize.UUID,
+      primaryKey: true
+    },
+    name: {
+>>>>>>> modelsdb
       type: Sequelize.STRING
     }
   });
@@ -99,6 +119,7 @@ module.exports = function() {
     nutritionFacts: {
       type: Sequelize.BOOLEAN
     },
+<<<<<<< HEAD
     notifications: {
       type: Sequelize.BOOLEAN
     },
@@ -172,6 +193,107 @@ module.exports = function() {
   //Relationships
   _users.hasMany(_userMeals, {foreignKey: 'userId'});
   _users.hasMany(_settings, {foreignKey: 'userId'});
+=======
+    calories: {
+      type: Sequelize.INTEGER
+    },
+    fat: {
+      type: Sequelize.INTEGER
+    },
+    cholesterol: {
+      type: Sequelize.INTEGER
+    },
+    sodium: {
+      type: Sequelize.INTEGER
+    },
+    carbs: {
+      type: Sequelize.INTEGER
+    },
+    protein: {
+      type: Sequelize.INTEGER
+    },
+    prepTime: {
+      type: Sequelize.STRING
+    },
+    cookTime: {
+      type: Sequelize.STRING
+    },
+  });
+
+  const _preferences = _sequelize.define('preferences', {
+    status: {
+      type: Sequelize.UUID
+    }
+  });
+
+  const _userGoals = _sequelize.define('userGoals', {
+    weightGoal: {
+      type: Sequelize.INTEGER
+    }
+  });
+
+  const _userGroceryLists = _sequelize.define('userGroceryLists', {
+
+  });
+
+  const _userIntake = _sequelize.define('userIntake', {
+    date: {
+      type: Sequelize.DATEONLY
+    },
+    calories: {
+      type: Sequelize.INTEGER
+    },
+    fat: {
+      type: Sequelize.INTEGER
+    },
+    cholesterol: {
+      type: Sequelize.INTEGER
+    },
+    sodium: {
+      type: Sequelize.INTEGER
+    },
+    carbs: {
+      type: Sequelize.INTEGER
+    },
+    protein: {
+      type: Sequelize.INTEGER
+    }
+  });
+
+  const _userMeals = _sequelize.define('userMeals', {
+    dateFor: {
+      type: Sequelize.DATEONLY
+    }
+  });
+
+  const _users = _sequelize.define('users', {
+    userId: {
+      type: Sequelize.UUID,
+      primaryKey: true
+    },
+    email: {
+      type: Sequelize.STRING
+    },
+    pass: {
+      type: Sequelize.STRING
+    },
+    dob: {
+      type: Sequelize.DATEONLY
+    },
+    gender: {
+      type: Sequelize.STRING
+    },
+    height: {
+      type: Sequelize.STRING
+    },
+    location: {
+      type: Sequelize.STRING
+    }
+  });
+
+  //Relationships
+  _users.hasMany(_userMeals, {foreignKey: 'userId'});
+>>>>>>> modelsdb
   _users.hasMany(_userGroceryLists, {foreignKey: 'userId'});
   _users.hasMany(_userIntake, {foreignKey: 'userId'});
   _users.hasMany(_preferences, {foreignKey: 'userId'});
@@ -200,8 +322,12 @@ module.exports = function() {
     userGroceryLists: _userGroceryLists,
     userIntake: _userIntake,
     userMeals: _userMeals,
+<<<<<<< HEAD
     users: _users,
     settings: _settings,
+=======
+    users: _users
+>>>>>>> modelsdb
   }
 
 }();
