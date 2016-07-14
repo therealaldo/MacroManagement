@@ -16,11 +16,7 @@
   },
   "homepage": "https://github.com/therealaldo/MacroManagement#readme",
   "dependencies": {
-    "async": "1.5.2",
-    "body-parser": "1.15.1",
-    "express": "4.13.4",
     "moment": "2.14.1",
-    "mysql": "2.10.2",
     "normalizr": "^2.1.0",
     "react": "15.1.0",
     "react-native": "0.27.0",
@@ -38,12 +34,5 @@
     "redux-logger": "2.6.1",
     "redux-saga": "0.10.5",
     "redux-thunk": "2.1.0",
-    "sequelize": "3.23.3"
-  },
-  "devDependencies": {
-    "dotenv": "2.0.0",
-    "faker": "3.1.0",
-    "mocha": "2.5.3",
-    "supertest": "1.2.0"
   }
 }
