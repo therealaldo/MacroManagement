@@ -10,10 +10,8 @@ import {
 } from '../constants/action_types';
 
 const initialState = {
-  entities: {
-    intolerances: {}
-  },
-  intoleranceList: [],
+  intolerances: [],
+  intolerancesById: {}
 };
 
 export default function reducer(

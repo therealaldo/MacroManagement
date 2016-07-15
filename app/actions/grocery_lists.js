@@ -7,7 +7,6 @@ import {
   TOGGLE_GROCERY_ITEM,
   NEW_EMPTY_LIST,
   NEW_POPULATED_LIST,
-  SAVE_LIST,
   REMOVE_LIST
 } from '../constants/action_types';
 
@@ -50,18 +49,13 @@ export const newEmptyList = () => {
   }
 };
 
-export const newPopulatedList = (items) => {
+export const newPopulatedList = (listId, ingredients, ingredientsById) => {
   return {
     type: NEW_POPULATED_LIST,
-    items
+    listId,
+    ingredients,
+    ingredientsById
   }
-};
-
-export const saveList = (newItemList) => {
-  return {
-    type: SAVE_LIST,
-    newItemList
-  };
 };
 
 export const removeList = (listId) => {

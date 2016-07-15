@@ -20,10 +20,8 @@ import {
 const initialState = {
   selectedDate: '',
   mealPlans: [],
-  entities: {
-    plans: {},
-    meals: {},
-  },
+  mealPlansByDate: {},
+  mealsById: {},
   mealResults: [],
   pagination: 0,
   totalResults: 0,

@@ -9,9 +9,7 @@ import {
 } from '../constants/action_types';
 
 const initialState = {
-  entities: {
-    users: {}
-  },
+  user: {}
 };
 
 export default function reducer(

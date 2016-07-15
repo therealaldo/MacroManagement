@@ -29,33 +29,28 @@ class TabIcon extends React.Component {
     switch (this.props.title) {
       case 'Dashboard':
         return (
-          <Icon name={ this.props.selected ? 'ion-ios-home' : 'ion-ios-home-outline' }
-            size={ 30 }
-            style={ styles.forwardIcon } />
+          <Icon name='ios-home' size={ 40 }
+            style={{ color: this.props.selected ? '#222222' : '#999999' }} />
         );
       case 'Weekly Plan':
         return (
-          <Icon name={ this.props.selected ? 'ion-ios-calendar' : 'ion-ios-calendar-outline' }
-            size={ 30 }
-            style={ styles.forwardIcon } />
+          <Icon name='ios-calendar' size={ 40 }
+            style={{ color: this.props.selected ? '#222222' : '#999999' }} />
         );
       case 'Trends':
         return (
-          <Icon name={ this.props.selected ? 'ion-ios-pulse-strong' : 'ion-ios-pulse' }
-            size={ 30 }
-            style={ styles.forwardIcon } />
+          <Icon name='ios-pulse' size={ 40 }
+            style={{ color: this.props.selected ? '#222222' : '#999999' }} />
         );
       case 'Profile':
         return (
-          <Icon name={ this.props.selected ? 'ion-ios-person' : 'ion-ios-person-outline' }
-            size={ 30 }
-            style={ styles.forwardIcon } />
+          <Icon name='ios-person' size={ 40 }
+            style={{ color: this.props.selected ? '#222222' : '#999999' }} />
         );
       case 'Settings':
         return (
-          <Icon name={ this.props.selected ? 'ion-ios-gear' : 'ion-ios-gear-outline' }
-            size={ 30 }
-            style={ styles.forwardIcon } />
+          <Icon name='ios-settings' size={ 40 }
+            style={{ color: this.props.selected ? '#222222' : '#999999' }} />
         );
     };
   };
@@ -68,7 +63,7 @@ export default class App extends React.Component {
         <RouterWithRedux navigationBarStyle={ styles.navBar }
           titleStyle={ styles.navTitle } sceneStyle={ styles.routerScene }>
           <Scene key='root' hideNavBar>
-            <Scene key='welcome' type='jump' icon={ TabIcon } component={ WelcomeView } title='Welcome'
+            <Scene key='welcome' type='jump' component={ WelcomeView } title='Welcome'
               initial={ true } hideNavBar={ true }></Scene>
             <Scene key='tabbar' tabs hideNavBar>
               <Scene key='dashboard' icon={ TabIcon } title='Dashboard'>
