@@ -1,10 +1,12 @@
 {
+  // Users
   user: {
     id: 'facebook|1020620286942176',
     email: 'aldog212@gmail.com',
     token: 'ksjdfasdhfiushefuihefisihfishdf'
   },
 
+// Meals
   selectedDate: 'Mon, Jul 11, 2016',
   mealPlans: ['Sun, Jul 10, 2016', 'Sun, Jul 11, 2016'],
   mealPlansByDate: {
@@ -55,6 +57,7 @@
   totalResults: 2,
   processingTimeMs: 136,
 
+  // Grocery Lists
   groceryLists: [1, 2],
   groceryListsById: {
     1: {
@@ -79,6 +82,7 @@
     }
   },
 
+  // Intolerances
   intolerances: [1],
   intolerancesById: {
     1: {
@@ -87,12 +91,14 @@
     }
   }
 
+  // Settings
   settings: {
     nutritionFacts: false,
     notifications: false,
     recommendations: false
   }
 
+  // Trends
   analysisFilter: 'FILTER_DAY',
   imageUri: 'kzbcksdbfj'
 }
