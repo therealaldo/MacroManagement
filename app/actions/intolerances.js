@@ -1,29 +1,21 @@
 'use strict';
 
 import {
-  ADD_PREFERENCE,
-  SAVE_PREFERENCES,
-  REMOVE_PREFERENCE,
+  ADD_INTOLERANCE,
+  REMOVE_INTOLERANCE,
 } from '../constants/action_types';
 
-export const addPreference = (name) => {
+export const addIntolerance = (intoleranceId, name) => {
   return {
-    type: ADD_PREFERENCE,
+    type: ADD_INTOLERANCE,
+    intoleranceId
     name
   };
 };
 
-export const savePreferences = (preferenceId, newPreferences) => {
+export const removeIntolerance = (intoleranceId) => {
   return {
-    type: SAVE_PREFERENCES,
-    preferenceId,
-    newPreferences
-  };
-};
-
-export const removePreference = (preferenceId) => {
-  return {
-    type: REMOVE_PREFERENCE,
-    preferenceId
+    type: REMOVE_INTOLERANCE,
+    intoleranceId
   };
 };
