@@ -47,10 +47,9 @@ export function searchMealInfo = (mealIndex) => {
   };
 };
 
-export function addMeal = (selectedDate, mealType, meal) => {
+export function addMeal = (mealType, meal) => {
   return {
     type: ADD_MEAL,
-    selectedDate
     mealType,
     meal
   };
@@ -62,15 +61,5 @@ export function deleteMeal = (selectedDate, mealType, mealId) => {
     selectedDate
     mealType,
     mealId
-  };
-};
-
-export function saveMeal = (selectedDate, mealType, mealId, meal) => {
-  return {
-    type: SAVE_MEAL,
-    selectedDate,
-    mealType,
-    mealId,
-    meal
   };
 };
