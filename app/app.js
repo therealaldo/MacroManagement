@@ -19,16 +19,46 @@ import SettingsView from './containers/settings_view';
 import Error from './containers/error_view';
 
 import AddButton from './components/add_button';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const RouterWithRedux = connect()(Router);
 const store = configureStore();
 
 class TabIcon extends React.Component {
   render() {
-    return (
-      <Text style={{ color: this.props.selected ? 'red' : 'black'}}>{ this.props.title }</Text>
-    );
-  }
+    switch (this.props.title) {
+      case 'Dashboard':
+        return (
+          <Icon name={ this.props.selected ? 'ion-ios-home' : 'ion-ios-home-outline' }
+            size={ 30 }
+            style={ styles.forwardIcon } />
+        );
+      case 'Weekly Plan':
+        return (
+          <Icon name={ this.props.selected ? 'ion-ios-calendar' : 'ion-ios-calendar-outline' }
+            size={ 30 }
+            style={ styles.forwardIcon } />
+        );
+      case 'Trends':
+        return (
+          <Icon name={ this.props.selected ? 'ion-ios-pulse-strong' : 'ion-ios-pulse' }
+            size={ 30 }
+            style={ styles.forwardIcon } />
+        );
+      case 'Profile':
+        return (
+          <Icon name={ this.props.selected ? 'ion-ios-person' : 'ion-ios-person-outline' }
+            size={ 30 }
+            style={ styles.forwardIcon } />
+        );
+      case 'Settings':
+        return (
+          <Icon name={ this.props.selected ? 'ion-ios-gear' : 'ion-ios-gear-outline' }
+            size={ 30 }
+            style={ styles.forwardIcon } />
+        );
+    };
+  };
 };
 
 export default class App extends React.Component {
