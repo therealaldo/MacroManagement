@@ -5,7 +5,6 @@ import assign from 'lodash/object/assign';
 import mapValues from 'lodash/object/mapValues';
 import {
   ADD_GROCERY_ITEM,
-  SAVE_GROCERY_ITEM,
   REMOVE_GROCERY_ITEM,
   TOGGLE_GROCERY_ITEM,
   NEW_EMPTY_LIST,
@@ -43,25 +42,28 @@ export default function reducer(
           }
         }
       };
-    /*case SAVE_GROCERY_ITEM:
+
+    case REMOVE_GROCERY_ITEM:
       return {
         ...state,
-        entities: {
-          ...state.entities,
-          ingredients: mapValues(state.entities.ingredients, (ingredient) => {
-            return ingredient.id === action.itemId ?
-
-          })
-        }
-      };*/
-    /*case REMOVE_GROCERY_ITEM:
-      return {
-
+        groceryListsById: mapValues(state.groceryListsById, (groceryList) => {
+          return groceryList.id === action.listId ?
+            assign({}, groceryList, { ingredients: groceryList.ingredients.filter(id => id !== action.itemId) }) :
+            groceryList
+        }),
+        ingredientsById: omit(state.ingredientsById, action.itemId)
       };
+
     case TOGGLE_GROCERY_ITEM:
       return {
+        ...state,
+        ingredientsById: mapValues(state.ingredientsById, (ingredient) => {
+          return ingredient.id === action.itemId ?
+            assign({}, ingredient, { completed: !ingredient.completed }) :
+            ingredient
+        })
+      };
 
-      };*/
     case NEW_EMPTY_LIST:
       return {
         ...state,
@@ -74,6 +76,7 @@ export default function reducer(
           }
         }
       };
+
     case NEW_POPULATED_LIST:
       return {
         groceryLists: state.groceryLists.concat(action.listId),
@@ -82,14 +85,19 @@ export default function reducer(
           [action.listId]: {
             id: action.listId,
             ingredients: action.ingredients
-          }
+          },
+        },
+        ingredientsById: {
+          ...state.ingredientsById,
+          action.ingredientsById,
         }
       };
+
     case REMOVE_LIST:
       return {
         ...state,
         groceryLists: state.groceryLists.filter(id => id !== action.listId),
-        groceryListsById:
+        groceryListsById: omit(state.groceryListsById, action.listId)
       };
 
     default:
