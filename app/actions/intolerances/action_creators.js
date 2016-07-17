@@ -10,6 +10,10 @@ import {
   REMOVE_INTOLERANCE_SUCCESS,
   REMOVE_INTOLERANCE_FAILURE,
 
+  RESET_INTOLERANCES_REQUEST,
+  RESET_INTOLERANCES_SUCCESS,
+  RESET_INTOLERANCES_FAILURE,
+
 } from './action_types';
 
 // addIntolerance
@@ -49,6 +53,27 @@ export function removeIntoleranceSuccess(intoleranceId) {
 export function removeIntoleranceFailure(error) {
   return {
     type: REMOVE_INTOLERANCE_FAILURE,
+    error
+  };
+};
+
+
+
+// resetPreferences
+export function resetIntolerancesRequest() {
+  return {
+    type: RESET_PREFERENCES_REQUEST,
+  };
+};
+export function resetIntolerancesSuccess(intolerances) {
+  return {
+    type: RESET_PREFERENCES_SUCCESS,
+    intolerances
+  };
+};
+export function resetIntolerancesFailure(error) {
+  return {
+    type: RESET_PREFERENCES_FAILURE,
     error
   };
 };

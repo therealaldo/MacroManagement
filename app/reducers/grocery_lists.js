@@ -40,48 +40,71 @@ export default function reducer(
   action = {}
 ) {
   switch (action.type) {
-    case ADD_GROCERY_ITEM:
+    case ADD_GROCERY_ITEM_REQUEST:
+    case REMOVE_GROCERY_ITEM_REQUEST:
+    case NEW_EMPTY_LIST_REQUEST:
+    case REMOVE_LIST_REQUEST:
       return {
         ...state,
-        groceryListsById: {
-          ...state.groceryListsById,
-          [action.listId]: {
-            ...state.groceryListsById[action.listId],
-            ingredients: state.groceryListsById[action.listId].ingredients.concat(action.item.id)
-          }
-        },
-        ingredientsById: {
-          ...state.ingredientsById,
-          [newItemId]: {
-            id: newItemId,
-            name: action.item,
-            completed: false
-          }
-        }
+        isFetching: true,
+        error: null
       };
 
-    case REMOVE_GROCERY_ITEM:
+    case ADD_GROCERY_ITEM_SUCCESS:
       return {
         ...state,
         groceryListsById: mapValues(state.groceryListsById, (groceryList) => {
           return groceryList.id === action.listId ?
-            assign({}, groceryList, { ingredients: groceryList.ingredients.filter(id => id !== action.itemId) }) :
+            {
+              ...groceryList,
+              ingredients: groceryList.ingredients.concat(action.item.id)
+            } :
             groceryList
         }),
-        ingredientsById: omit(state.ingredientsById, action.itemId)
+        ingredientsById: {
+          ...state.ingredientsById,
+          [action.item.id]: {
+            id: action.item.id,
+            name: action.item.title,
+            image: action.item.image
+          }
+        },
+        isFetching: false,
+        error: null
       };
 
-    case TOGGLE_GROCERY_ITEM:
+    case REMOVE_GROCERY_ITEM_SUCCESS:
+      return {
+        ...state,
+        groceryListsById: mapValues(state.groceryListsById, (groceryList) => {
+          return groceryList.id === action.listId ?
+            {
+              ...groceryList,
+              ingredients: groceryList.ingredients.filter(id => id !== action.itemId)
+            } :
+            groceryList
+        }),
+        ingredientsById: omit(state.ingredientsById, action.itemId),
+        isFetching: false,
+        error: null
+      };
+
+    case TOGGLE_GROCERY_ITEM_SUCCESS:
       return {
         ...state,
         ingredientsById: mapValues(state.ingredientsById, (ingredient) => {
           return ingredient.id === action.itemId ?
-            assign({}, ingredient, { completed: !ingredient.completed }) :
+            {
+              ...ingredient,
+              completed: !ingredient.completed
+            } :
             ingredient
-        })
+        }),
+        isFetching: false,
+        error: null
       };
 
-    case NEW_EMPTY_LIST:
+    case NEW_EMPTY_LIST_SUCCESS:
       return {
         ...state,
         groceryLists: state.groceryLists.concat(action.listId),
@@ -91,14 +114,28 @@ export default function reducer(
             id: action.listId,
             ingredients: []
           }
-        }
+        },
+        isFetching: false,
+        error: null
       };
 
-    case REMOVE_LIST:
+    case REMOVE_LIST_SUCCESS:
       return {
         ...state,
         groceryLists: state.groceryLists.filter(id => id !== action.listId),
-        groceryListsById: omit(state.groceryListsById, action.listId)
+        groceryListsById: omit(state.groceryListsById, action.listId),
+        isFetching: false,
+        error: null
+      };
+
+    case ADD_GROCERY_ITEM_FAILURE:
+    case REMOVE_GROCERY_ITEM_FAILURE:
+    case NEW_EMPTY_LIST_FAILURE:
+    case REMOVE_LIST_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.error
       };
 
     default:

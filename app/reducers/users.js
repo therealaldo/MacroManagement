@@ -21,16 +21,28 @@ export default function reducer(
   action = {}
 ) {
   switch (action.type) {
-    case RECEIVE_USER_PROFILE:
+    case SAVE_USER_REQUEST:
       return {
+        ...state,
+        isFetching: true
+      };
+
+    case SAVE_USER_SUCCESS:
+      return {
+        ...state,
         user: {
-          ...state.user,
-          [action.profile.userId]: {
-            id: action.profile.userId,
-            email: action.profile.email,
-            token: action.profile.token
-          }
-        }
+          id: action.profile.userId,
+          email: action.profile.email,
+          token: action.token
+        },
+        isFetching: false,
+      };
+
+    case RECEIVE_USER_FAILURE:
+    case SAVE_USER_FAILURE:
+      return {
+        ...state,
+        error: action.error
       };
 
     default:

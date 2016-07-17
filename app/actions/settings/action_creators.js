@@ -14,10 +14,6 @@ import {
   TOGGLE_NUTRITION_FACTS_SUCCESS,
   TOGGLE_NUTRITION_FACTS_FAILURE,
 
-  RESET_PREFERENCES_REQUEST,
-  RESET_PREFERENCES_SUCCESS,
-  RESET_PREFERENCES_FAILURE,
-
   RESET_NOTIFICATIONS_REQUEST,
   RESET_NOTIFICATIONS_SUCCESS,
   RESET_NOTIFICATIONS_FAILURE,
@@ -91,27 +87,6 @@ export function toggleNutritionFactsFailure(error) {
 
 
 
-// resetPreferences
-export function resetPreferencesRequest() {
-  return {
-    type: RESET_PREFERENCES_REQUEST,
-  };
-};
-export function resetPreferencesSuccess(preferences) {
-  return {
-    type: RESET_PREFERENCES_SUCCESS,
-    preferences
-  };
-};
-export function resetPreferencesFailure(error) {
-  return {
-    type: RESET_PREFERENCES_FAILURE,
-    error
-  };
-};
-
-
-
 // resetNotifications
 export function resetNotificationsRequest() {
   return {
@@ -132,16 +107,16 @@ export function resetNotificationsFailure(error) {
 };
 
 
+
 // resetAllSettings
 export function resetAllSettingsRequest() {
   return {
     type: RESET_ALL_SETTINGS_REQUEST,
   };
 };
-export function resetAllSettingsSuccess(settings) {
+export function resetAllSettingsSuccess() {
   return {
     type: RESET_ALL_SETTINGS_SUCCESS,
-    settings
   };
 };
 export function resetAllSettingsFailure(error) {

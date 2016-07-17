@@ -31,10 +31,30 @@ export default function reducer(
         ...state,
         analysisFilter: action.filter
       };
+
     case SET_IMAGE_URI:
       return {
         ...state,
         imageUri: action.uri
+      };
+
+    case FETCH_USER_MEAL_DATA_REQUEST:
+      return {
+        ...state,
+        isFetching: true
+      };
+
+    case FETCH_USER_MEAL_DATA_SUCCESS:
+      return {
+        ...state,
+        
+      };
+
+    case FETCH_USER_MEAL_DATA_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.error
       };
 
     default:

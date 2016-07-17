@@ -53,6 +53,8 @@
       imageType: "jpg"
     }
   ],
+  isFetching: false,
+  error: null,
   pagination: 0,
   totalResults: 2,
   processingTimeMs: 136,
@@ -81,6 +83,8 @@
       completed: false
     }
   },
+  isFetching: false,
+  error: null,
 
   // Intolerances
   intolerances: [1],
@@ -90,6 +94,8 @@
       name: 'peanuts'
     }
   }
+  isFetching: false,
+  error: null,
 
   // Settings
   settings: {
@@ -97,8 +103,13 @@
     notifications: false,
     recommendations: false
   }
+  isFetching: false,
+  error: null,
 
   // Trends
   analysisFilter: 'FILTER_DAY',
-  imageUri: 'kzbcksdbfj'
+  imageUri: 'kzbcksdbfj',
+  userMealData: [],
+  isFetching: false,
+  error: null,
 }

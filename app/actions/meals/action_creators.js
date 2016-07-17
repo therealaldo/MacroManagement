@@ -22,6 +22,10 @@ import {
   DELETE_MEAL_SUCCESS,
   DELETE_MEAL_FAILURE,
 
+  ADD_MEAL_PLAN_REQUEST,
+  ADD_MEAL_PLAN_SUCCESS,
+  ADD_MEAL_PLAN_FAILURE,
+
   FETCH_USER_MEALS_REQUEST,
   FETCH_USER_MEALS_SUCCESS,
   FETCH_USER_MEALS_FAILURE,
@@ -37,10 +41,11 @@ export function searchMealRequest() {
     type: SEARCH_MEAL_REQUEST,
   };
 };
-export function searchMealSuccess(mealResults) {
+export function searchMealSuccess(mealResults, processingTimeMs) {
   return {
     type: SEARCH_MEAL_SUCCESS,
-    mealResults
+    mealResults,
+    processingTimeMs
   };
 };
 export function searchMealFailure(error) {
@@ -58,10 +63,11 @@ export function moreSearchRequest() {
     type: MORE_SEARCH_REQUEST,
   };
 };
-export function moreSearchSuccess(moreResults) {
+export function moreSearchSuccess(moreResults, processingTimeMs) {
   return {
     type: MORE_SEARCH_SUCCESS,
-    moreResults
+    moreResults,
+    processingTimeMs
   };
 };
 export function moreSearchFailure(error) {
@@ -122,7 +128,7 @@ export function deleteMealRequest() {
     type: DELETE_MEAL_REQUEST,
   };
 };
-export function deleteMealSuccess(selectedDate, mealType, mealId) {
+export function deleteMealSuccess(mealType, mealId) {
   return {
     type: DELETE_MEAL_SUCCESS,
     selectedDate,
@@ -133,6 +139,27 @@ export function deleteMealSuccess(selectedDate, mealType, mealId) {
 export function deleteMealFailure(error) {
   return {
     type: DELETE_MEAL_FAILURE,
+    error
+  };
+};
+
+
+
+// addMealPlan
+export function addMealPlanRequest() {
+  return {
+    type: ADD_MEAL_PLAN_REQUEST,
+  };
+};
+export function addMealPlanSuccess(date) {
+  return {
+    type: ADD_MEAL_PLAN_SUCCESS,
+    date
+  };
+};
+export function addMealPlanFailure(error) {
+  return {
+    type: ADD_MEAL_PLAN_FAILURE,
     error
   };
 };

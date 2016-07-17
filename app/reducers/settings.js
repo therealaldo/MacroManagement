@@ -17,17 +17,9 @@ import {
   TOGGLE_NUTRITION_FACTS_SUCCESS,
   TOGGLE_NUTRITION_FACTS_FAILURE,
 
-  RESET_PREFERENCES_REQUEST,
-  RESET_PREFERENCES_SUCCESS,
-  RESET_PREFERENCES_FAILURE,
-
   RESET_NOTIFICATIONS_REQUEST,
   RESET_NOTIFICATIONS_SUCCESS,
   RESET_NOTIFICATIONS_FAILURE,
-
-  RESET_ALL_SETTINGS_REQUEST,
-  RESET_ALL_SETTINGS_SUCCESS,
-  RESET_ALL_SETTINGS_FAILURE,
 
 } from '../actions/settings/action_types';
 
@@ -46,34 +38,57 @@ export default function reducer(
   action = {}
 ) {
   switch (action.type) {
-    case TOGGLE_NOTIFICATIONS:
+    case TOGGLE_NOTIFICATIONS_REQUEST:
+    case TOGGLE_RECOMMENDATIONS_REQUEST:
+    case TOGGLE_NUTRITION_FACTS_REQUEST:
+    case RESET_NOTIFICATIONS_REQUEST:
       return {
-        settings: {
-          ...state.settings,
-          notifications: !state.settings.notifications
-        }
+        ...state,
+        isFetching: true,
+        error: null
       };
-    case TOGGLE_RECOMMENDATIONS:
+
+    case TOGGLE_NOTIFICATIONS_SUCCESS:
       return {
-        settings: {
-          ...state.settings,
-          recommendations: !state.settings.recommendations
-        }
+        ....state,
+        notifications: !state.notifications,
+        isFetching: false,
+        error: null
       };
-    case TOGGLE_NUTRITION_FACTS:
+
+    case TOGGLE_RECOMMENDATIONS_SUCCESS:
       return {
-        settings: {
-          ...state.settings,
-          nutritionFacts: !state.settings.nutritionFacts
-        }
+        ....state,
+        recommendations: !state.recommendations,
+        isFetching: false,
+        error: null
       };
-    case RESET_ALL_SETTINGS:
+
+    case TOGGLE_NUTRITION_FACTS_SUCCESS:
       return {
-        settings: {
-          nutritionFacts: false,
-          notifications: false,
-          recommendations: false,
-        }
+        ....state,
+        nutritionFacts: !state.nutritionFacts,
+        isFetching: false,
+        error: null
+      };
+
+    case RESET_NOTIFICATIONS_SUCCESS:
+      return {
+        ...state,
+        notifications: false,
+        recommendations: false,
+        isFetching: false,
+        error: null
+      };
+
+    case TOGGLE_NOTIFICATIONS_FAILURE:
+    case TOGGLE_RECOMMENDATIONS_FAILURE:
+    case TOGGLE_NUTRITION_FACTS_FAILURE:
+    case RESET_NOTIFICATIONS_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.error
       };
 
     default:
