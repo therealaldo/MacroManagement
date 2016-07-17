@@ -2,7 +2,7 @@
 
 import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 // Authorization w/ Auth0
@@ -54,6 +54,7 @@ class WelcomeView extends React.Component {
         console.log(err);
         return;
       }
+      // 
       Actions.tabbar({
         profile: profile,
         token: token,
@@ -111,4 +112,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default connect(({routes}) => ({routes}))(WelcomeView);
+// export default connect(({routes}) => ({routes}))(WelcomeView);

@@ -8,7 +8,6 @@ import {
   REMOVE_GROCERY_ITEM,
   TOGGLE_GROCERY_ITEM,
   NEW_EMPTY_LIST,
-  NEW_POPULATED_LIST,
   REMOVE_LIST
 } from '../constants/action_types';
 
@@ -30,9 +29,9 @@ export default function reducer(
           ...state.groceryListsById,
           [action.listId]: {
             ...state.groceryListsById[action.listId],
-            ingredients: state.groceryListsById[action.listId].ingredients.concat(action.)
+            ingredients: state.groceryListsById[action.listId].ingredients.concat(action.item.id)
           }
-        }
+        },
         ingredientsById: {
           ...state.ingredientsById,
           [newItemId]: {
@@ -74,22 +73,6 @@ export default function reducer(
             id: action.listId,
             ingredients: []
           }
-        }
-      };
-
-    case NEW_POPULATED_LIST:
-      return {
-        groceryLists: state.groceryLists.concat(action.listId),
-        groceryListsById: {
-          ...state.groceryListsById,
-          [action.listId]: {
-            id: action.listId,
-            ingredients: action.ingredients
-          },
-        },
-        ingredientsById: {
-          ...state.ingredientsById,
-          action.ingredientsById,
         }
       };
 

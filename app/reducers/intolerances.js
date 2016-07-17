@@ -32,7 +32,7 @@ export default function reducer(
 
     case REMOVE_INTOLERANCE:
       return {
-        intolerances: state.intolerances.filter(id => id !=== action.intoleranceId),
+        intolerances: state.intolerances.filter(id => id !== action.intoleranceId),
         intolerancesById: omit(state.intolerancesById, action.intoleranceId)
       };
 

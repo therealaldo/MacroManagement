@@ -1,21 +1,41 @@
 'use strict';
 
 import {
-  SAVE_USER_PROFILE,
-  EDIT_USER_PROFILE,
-  RECEIVE_USER_PROFILE
+
+  RECEIVE_USER_FAILURE,
+
+  SAVE_USER_REQUEST,
+  SAVE_USER_SUCCESS,
+  SAVE_USER_FAILURE,
+
 } from '../constants/action_types';
 
-export const saveUserProfile = (newProfile) => {
+// receiveUser
+export function receiveUserFailure(err) => {
   return {
-    type: SAVE_USER_PROFILE,
-    newProfile
+    type: RECEIVE_USER_FAILURE,
+    err
   };
 };
 
-export const receiveUserProfile = (profile) => {
+
+
+// saveUser
+export function saveUserRequest() => {
   return {
-    type: RECEIVE_USER_PROFILE,
-    profile
+    type: SAVE_USER_REQUEST,
+  };
+};
+export function saveUserSuccess(profile, token) => {
+  return {
+    type: SAVE_USER_SUCCESS,
+    profile,
+    token
+  };
+};
+export function saveUserFailure(err) => {
+  return {
+    type: SAVE_USER_FAILURE,
+    err
   };
 };

@@ -2,7 +2,7 @@
 
 import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, Alert, ProgressViewIOS, ScrollView, Image } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Button from 'react-native-button';
@@ -139,8 +139,5 @@ const styles = StyleSheet.create({
     paddingLeft: 10
   }
 });
-
-const 
-
 
 export default connect(({routes}) => ({routes}))(DashboardView);

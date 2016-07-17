@@ -85,7 +85,7 @@ export default function reducer(
         mealsById: {
           ...state.mealsById,
           [action.meal.id]: {
-            id: action,meal.id,
+            id: action.meal.id,
             name: action.meal.title,
             image: action.meal.image
           }
