@@ -41,6 +41,14 @@ export default reduceReducers(
         };
 
       case RESET_ALL_SETTINGS_SUCCESS:
+        return {
+          ...state,
+          groceryLists: state.groceryLists,
+          intolerances: state.intolerances,
+          meals: state.meals,
+          settings: state.settings,
+        };
+
       default:
         return state;
     };
