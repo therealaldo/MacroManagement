@@ -131,7 +131,6 @@ export function deleteMealRequest() {
 export function deleteMealSuccess(mealType, mealId) {
   return {
     type: DELETE_MEAL_SUCCESS,
-    selectedDate,
     mealType,
     mealId
   };
@@ -200,5 +199,124 @@ export function incrementDate() {
 export function decrementDate() {
   return {
     type: DECREMENT_DATE,
+  };
+};
+
+
+
+// async searchMeal
+export function searchMeal(query) {
+  return dispatch => {
+    dispatch(searchMealRequest());
+    /*return api call sending through the query for a meal
+      .then((query, mealResults, processingTimeMs) => {
+        dispatch(searchMealSuccess(mealResults, processingTimeMs));
+      })
+      .catch((err) => {
+        dispatch(searchMealFailure(err));
+        return;
+      })*/
+  };
+};
+
+
+
+// async moreSearch
+export function moreSearch() {
+  return dispatch => {
+    dispatch(moreSearchRequest());
+    /*return api call appending more results to the mealResults
+      .then((moreResults, processingTimeMs) => {
+        dispatch(moreSearchSuccess(moreResults, processingTimeMs));
+      })
+      .catch((err) => {
+        dispatch(moreSearchFailure(err));
+        return;
+      })*/
+  };
+};
+
+
+
+// async searchInfo
+export function searchInfo(meal) {
+  return dispatch => {
+    dispatch(searchInfoRequest());
+    /*return api call searching info on the selected meal
+      .then((meal, info) => {
+        dispatch(searchInfoSuccess(info));
+      })
+      .catch((err) => {
+        dispatch(searchInfoFailure(err));
+        return;
+      })*/
+  };
+};
+
+
+
+// async addMeal
+export function addMeal(selectedDate) {
+  return dispatch => {
+    dispatch(addMealRequest());
+    /*return api call creating a new meal in the database
+      .then((selectedDate, mealType, meal) => {
+        dispatch(addMealSuccess(mealType, meal));
+      })
+      .catch((err) => {
+        dispatch(addMealFailure(err));
+        return;
+      })*/
+  };
+};
+
+
+
+// async deleteMeal
+export function deleteMeal(selectedDate, mealType, mealId) {
+  return dispatch => {
+    dispatch(deleteMealRequest());
+    /*return api call sending through the meal to delete in the database
+      .then((selectedDate, mealType, mealId) => {
+        dispatch(deleteMealSuccess(mealType, mealId));
+      })
+      .catch((err) => {
+        dispatch(deleteMealFailure(err));
+        return;
+      })*/
+  };
+};
+
+
+
+// async addMealPlan
+export function addMealPlan(selectedDate) {
+  return dispatch => {
+    dispatch(addMealPlanRequest());
+    /*return api call creating a new meal plan in the database
+      .then((date) => {
+        dispatch(addMealPlanSuccess(date));
+      })
+      .catch((err) => {
+        dispatch(addMealPlanFailure(err));
+        return;
+      })*/
+  };
+};
+
+
+
+// async fetchUserMeals
+export function fetchUserMeals(selectedDate) {
+  return dispatch => {
+    dispatch(fetchUserMealsRequest());
+    /*return api call fetching all of the user meals for a specific day
+      .then((date, userMeals) => {
+        dispatch(fetchUserMealsSuccess(userMeals));
+      })
+      .catch((err) => {
+        dispatch(fetchUserMealsFailure(err));
+        return;
+      })*/
   };
 };

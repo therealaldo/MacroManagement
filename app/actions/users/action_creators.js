@@ -1,5 +1,9 @@
 'use strict';
 
+import { Actions } from 'react-native-router-flux';
+import Auth0Lock from 'react-native-lock';
+import Config from 'react-native-config';
+// import the api calls to the database and the food api
 import {
 
   RECEIVE_USER_FAILURE,
@@ -9,6 +13,17 @@ import {
   SAVE_USER_FAILURE,
 
 } from './action_types';
+
+const moment = require('moment');
+const credentials = {
+  clientId: Config.CLIENT_ID,
+  domain: Config.DOMAIN
+};
+const lock = new Auth0Lock(credentials, {
+  integrations: {
+    facebook: {}
+  }
+});
 
 // receiveUser
 export function receiveUserFailure(error) => {
@@ -21,7 +36,7 @@ export function receiveUserFailure(error) => {
 
 
 // saveUser
-export function saveUserrorequest() => {
+export function saveUserRequest() => {
   return {
     type: SAVE_USER_REQUEST,
   };
@@ -39,3 +54,30 @@ export function saveUserFailure(error) => {
     error
   };
 };
+
+
+
+// async login
+export function login() {
+  return dispatch => {
+    lock.show({
+      closable: true,
+    }, (err, profile, token) => {
+      if (err) {
+        console.log(err);
+        dispatch(receiveUserFailure(err));
+        return;
+      }
+      dispatch(saveUserRequest());
+      /*return api call sending through the profile and token to the database
+        .then((profile, token) => {
+          dispatch(saveUserSuccess(profile, token));
+          Actions.tabbar();
+        })
+        .catch((err) => {
+          dispatch(saveUserFailure(err));
+          return;
+        })*/
+    });
+  };
+}

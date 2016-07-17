@@ -5,20 +5,6 @@ import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-// Authorization w/ Auth0
-import Auth0Lock from 'react-native-lock';
-import Config from 'react-native-config';
-
-let credentials = {
-  clientId: Config.CLIENT_ID,
-  domain: Config.DOMAIN
-};
-let lock = new Auth0Lock(credentials, {
-  integrations: {
-    facebook: {}
-  }
-});
-
 // TODO: style the login flow to match the app's style guidelines
 class WelcomeView extends React.Component {
   static propTypes = {
@@ -44,22 +30,6 @@ class WelcomeView extends React.Component {
         </TouchableHighlight>
       </View>
     );
-  }
-
-  _onLogin() {
-    lock.show({
-      closable: true,
-    }, (err, profile, token) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      // 
-      Actions.tabbar({
-        profile: profile,
-        token: token,
-      });
-    });
   }
 };
 

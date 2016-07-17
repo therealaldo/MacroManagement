@@ -50,3 +50,19 @@ export function fetchUserMealDataFailure(error) {
     error
   };
 };
+
+
+
+// async fetchUserMealData
+export function fetchUserMealData() {
+  return dispatch => {
+    dispatch(fetchUserMealDataRequest());
+    /*return api call to the database getting all of the meal data
+      .then((userMealData) => {
+        dispatch(fetchUserMealDataSuccess(userMealData));
+      })
+      .catch((err) => {
+        dispatch(fetchUserMealDataFailure());
+      });*/
+  };
+};

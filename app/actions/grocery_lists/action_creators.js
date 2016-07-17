@@ -129,3 +129,88 @@ export function removeListFailure(error) {
     error
   };
 };
+
+
+
+// async addGroceryItem
+export function addGroceryItem() {
+  return dispatch => {
+    dispatch(addGroceryItemRequest());
+    /*return api call creating a grocery item in the database
+      .then((listId, item) => {
+        dispatch(addGroceryItemSuccess(listId, item));
+      })
+      .catch((err) => {
+        dispatch(addGroceryItemFailure(err));
+        return;
+      })*/
+  };
+};
+
+
+
+// async removeGroceryItem
+export function removeGroceryItem() {
+  return dispatch => {
+    dispatch(removeGroceryItemRequest());
+    /*return api call sending through the grocery item to delete in the database
+      .then((listId, itemId) => {
+        dispatch(removeGroceryItemSuccess(listId, itemId));
+      })
+      .catch((err) => {
+        dispatch(removeGroceryItemFailure(err));
+        return;
+      })*/
+  };
+};
+
+
+
+// async toggleGroceryItem
+export function toggleGroceryItem() {
+  return dispatch => {
+    dispatch(toggleGroceryItemRequest());
+    /*return api call sending through the grocery item to toggle in the database
+      .then((listId, itemId) => {
+        dispatch(toggleGroceryItemSuccess(listId, itemId));
+      })
+      .catch((err) => {
+        dispatch(toggleGroceryItemFailure(err));
+        return;
+      })*/
+  };
+};
+
+
+
+// async newEmptyList
+export function newEmptyList() {
+  return dispatch => {
+    dispatch(newEmptyListRequest());
+    /*return api call creating a new grocery list in the database
+      .then((listId) => {
+        dispatch(newEmptyListSuccess(listId));
+      })
+      .catch((err) => {
+        dispatch(newEmptyListFailure(err));
+        return;
+      })*/
+  };
+};
+
+
+
+// async removeList
+export function removeList() {
+  return dispatch => {
+    dispatch(removeListRequest());
+    /*return api call sending through the grocery list to delete in the database
+      .then((listId) => {
+        dispatch(removeListSuccess(listId));
+      })
+      .catch((err) => {
+        dispatch(removeListFailure(err));
+        return;
+      })*/
+  };
+};

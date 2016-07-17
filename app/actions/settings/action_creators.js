@@ -125,3 +125,88 @@ export function resetAllSettingsFailure(error) {
     error
   };
 };
+
+
+
+// async toggleNotifications
+export function toggleNotifications() {
+  return dispatch => {
+    dispatch(toggleNotificationsRequest());
+    /*return api call changing the value of notifications in the database
+      .then((notification) => {
+        dispatch(toggleNotificationsSuccess(notifcation));
+      })
+      .catch((err) => {
+        dispatch(toggleNotificationsFailure(err));
+        return;
+      })*/
+  };
+};
+
+
+
+// async toggleRecommendations
+export function toggleRecommendations() {
+  return dispatch => {
+    dispatch(toggleRecommendationsRequest());
+    /*return api call changing the value of recommendations in the database
+      .then((recommendation) => {
+        dispatch(toggleRecommendationsSuccess(recommendation));
+      })
+      .catch((err) => {
+        dispatch(toggleRecommendationsFailure(err));
+        return;
+      })*/
+  };
+};
+
+
+
+// async toggleNutritionFacts
+export function toggleNutritionFacts() {
+  return dispatch => {
+    dispatch(toggleNutritionFactsRequest());
+    /*return api call changing the value of nutrition facts in the database
+      .then((nutritionFact) => {
+        dispatch(toggleNutritionFactsSuccess(nutritionFact));
+      })
+      .catch((err) => {
+        dispatch(toggleNutritionFactsFailure(err));
+        return;
+      })*/
+  };
+};
+
+
+
+// async resetNotifications
+export function resetNotifications() {
+  return dispatch => {
+    dispatch(resetNotificationsRequest());
+    /*return api call resetting the notifications in the database
+      .then((notifications) => {
+        dispatch(resetNotificationsSuccess(notifications));
+      })
+      .catch((err) => {
+        dispatch(resetNotificationsFailure(err));
+        return;
+      })*/
+  };
+};
+
+
+
+// async resetAllSetttings
+export function resetAllSettings() {
+  return dispatch => {
+    dispatch(resetAllSettingsRequest());
+    /*return api call resetting all settings in the database
+      .then(() => {
+        dispatch(resetAllSettingsSuccess());
+      })
+      .catch((err) => {
+        dispatch(resetAllSettingsFailure(err));
+        return;
+      })*/
+  };
+};
