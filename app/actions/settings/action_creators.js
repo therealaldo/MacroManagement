@@ -26,7 +26,7 @@ import {
   RESET_ALL_SETTINGS_SUCCESS,
   RESET_ALL_SETTINGS_FAILURE,
 
-} from '../constants/action_types';
+} from './action_types';
 
 // toggleNotifications
 export function toggleNotificationsRequest() {
@@ -40,10 +40,10 @@ export function toggleNotificationsSuccess(notification) {
     notification
   };
 };
-export function toggleNotificationsFailure(err) {
+export function toggleNotificationsFailure(error) {
   return {
     type: TOGGLE_NOTIFICATIONS_FAILURE,
-    err
+    error
   };
 };
 
@@ -61,10 +61,10 @@ export function toggleRecommendationsSuccess(recommendation) {
     recommendation
   };
 };
-export function toggleRecommendationsFailure(err) {
+export function toggleRecommendationsFailure(error) {
   return {
     type: TOGGLE_RECOMMENDATIONS_FAILURE,
-    err
+    error
   };
 };
 
@@ -82,10 +82,10 @@ export function toggleNutritionFactsSuccess(nutritionFact) {
     nutritionFact
   };
 };
-export function toggleNutritionFactsFailure(err) {
+export function toggleNutritionFactsFailure(error) {
   return {
     type: TOGGLE_NUTRITION_FACTS_FAILURE,
-    err
+    error
   };
 };
 
@@ -103,10 +103,10 @@ export function resetPreferencesSuccess(preferences) {
     preferences
   };
 };
-export function resetPreferencesFailure(err) {
+export function resetPreferencesFailure(error) {
   return {
     type: RESET_PREFERENCES_FAILURE,
-    err
+    error
   };
 };
 
@@ -124,10 +124,10 @@ export function resetNotificationsSuccess(notifications) {
     notifications
   };
 };
-export function resetNotificationsFailure(err) {
+export function resetNotificationsFailure(error) {
   return {
     type: RESET_NOTIFICATIONS_FAILURE,
-    err
+    error
   };
 };
 
@@ -144,9 +144,9 @@ export function resetAllSettingsSuccess(settings) {
     settings
   };
 };
-export function resetAllSettingsFailure(err) {
+export function resetAllSettingsFailure(error) {
   return {
     type: RESET_ALL_SETTINGS_FAILURE,
-    err
+    error
   };
 };

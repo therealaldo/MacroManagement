@@ -10,7 +10,7 @@ import {
   REMOVE_INTOLERANCE_SUCCESS,
   REMOVE_INTOLERANCE_FAILURE,
 
-} from '../constants/action_types';
+} from './action_types';
 
 // addIntolerance
 export function addIntoleranceRequest() {
@@ -25,10 +25,10 @@ export function addIntoleranceSuccess(intoleranceId, name) {
     name
   };
 };
-export function addIntoleranceFailure(err) {
+export function addIntoleranceFailure(error) {
   return {
     type: ADD_INTOLERANCE_FAILURE,
-    err
+    error
   };
 };
 
@@ -46,9 +46,9 @@ export function removeIntoleranceSuccess(intoleranceId) {
     intoleranceId
   };
 };
-export function removeIntoleranceFailure(err) {
+export function removeIntoleranceFailure(error) {
   return {
     type: REMOVE_INTOLERANCE_FAILURE,
-    err
+    error
   };
 };

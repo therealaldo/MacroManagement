@@ -22,7 +22,7 @@ import {
   REMOVE_LIST_SUCCESS,
   REMOVE_LIST_FAILURE,
 
-} from '../constants/action_types';
+} from './action_types';
 
  // addGroceryItem
 export function addGroceryItemRequest() {
@@ -37,10 +37,10 @@ export function addGroceryItemSuccess(listId, item) {
     item
   };
 };
-export function addGroceryItemFailure(err) {
+export function addGroceryItemFailure(error) {
   return {
     type: ADD_GROCERY_ITEM_FAILURE,
-    err
+    error
   };
 };
 
@@ -59,10 +59,10 @@ export function removeGroceryItemSuccess(listId, itemId) {
     itemId,
   };
 };
-export function removeGroceryItemFailure(err) {
+export function removeGroceryItemFailure(error) {
   return {
     type: REMOVE_GROCERY_ITEM_FAILURE,
-    err
+    error
   };
 };
 
@@ -81,10 +81,10 @@ export function toggleGroceryItemSuccess(listId, itemId) {
     itemId,
   };
 };
-export function toggleGroceryItemFailure(err) {
+export function toggleGroceryItemFailure(error) {
   return {
     type: TOGGLE_GROCERY_ITEM_FAILURE,
-    err
+    error
   };
 };
 
@@ -102,10 +102,10 @@ export function newEmptyListSuccess(listId) {
     listId
   }
 };
-export function newEmptyListFailure(err) {
+export function newEmptyListFailure(error) {
   return {
     type: NEW_EMPTY_LIST_FAILURE,
-    err
+    error
   }
 };
 
@@ -123,9 +123,9 @@ export function removeListSuccess(listId) {
     listId
   };
 };
-export function removeListFailure(err) {
+export function removeListFailure(error) {
   return {
     type: REMOVE_LIST_FAILURE,
-    err
+    error
   };
 };

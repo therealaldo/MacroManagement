@@ -8,20 +8,20 @@ import {
   SAVE_USER_SUCCESS,
   SAVE_USER_FAILURE,
 
-} from '../constants/action_types';
+} from './action_types';
 
 // receiveUser
-export function receiveUserFailure(err) => {
+export function receiveUserFailure(error) => {
   return {
     type: RECEIVE_USER_FAILURE,
-    err
+    error
   };
 };
 
 
 
 // saveUser
-export function saveUserRequest() => {
+export function saveUserrorequest() => {
   return {
     type: SAVE_USER_REQUEST,
   };
@@ -33,9 +33,9 @@ export function saveUserSuccess(profile, token) => {
     token
   };
 };
-export function saveUserFailure(err) => {
+export function saveUserFailure(error) => {
   return {
     type: SAVE_USER_FAILURE,
-    err
+    error
   };
 };
