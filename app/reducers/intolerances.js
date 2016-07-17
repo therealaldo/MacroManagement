@@ -17,7 +17,9 @@ import {
 
 const initialState = {
   intolerances: [],
-  intolerancesById: {}
+  intolerancesById: {},
+  isFetching: false,
+  error: null,
 };
 
 export default function reducer(

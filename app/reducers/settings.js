@@ -36,6 +36,8 @@ const initialState = {
     nutritionFacts: false,
     notifications: false,
     recommendations: false,
+    isFetching: false,
+    error: null,
   }
 };
 

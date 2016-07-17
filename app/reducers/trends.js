@@ -15,7 +15,10 @@ import {
 
 const initialState = {
   analysisFilter: AnalysisFilters.FILTER_DAY,
-  imageUri: null
+  imageUri: null,
+  isFetching: false,
+  error: null,
+  userMealData: [],
 };
 
 export default function reducer(

@@ -39,6 +39,8 @@ const initialState = {
   mealPlans: [],
   mealPlansByDate: {},
   mealsById: {},
+  isFetching: false,
+  error: null,
   mealResults: [],
   pagination: 0,
   totalResults: 0,

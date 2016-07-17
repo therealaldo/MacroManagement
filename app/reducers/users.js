@@ -11,7 +11,9 @@ import {
 } from '../actions/users/action_types';
 
 const initialState = {
-  user: {}
+  user: {},
+  isFetching: false,
+  error: null,
 };
 
 export default function reducer(

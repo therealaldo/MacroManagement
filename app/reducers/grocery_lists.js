@@ -31,6 +31,8 @@ const initialState = {
   groceryLists: [],
   groceryListsById: {},
   ingredientsById: {},
+  isFetching: false,
+  error: null,
 };
 
 export default function reducer(
