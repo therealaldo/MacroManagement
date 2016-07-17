@@ -2,10 +2,16 @@
 
 import assign from 'lodash/object/assign';
 import {
+
   SET_ANALYSIS_FILTER,
+
   SET_IMAGE_URI,
-  AnalysisFilters
-} from '../constants/action_types';
+
+  FETCH_USER_MEAL_DATA_REQUEST,
+  FETCH_USER_MEAL_DATA_SUCCESS,
+  FETCH_USER_MEAL_DATA_FAILURE,
+
+} from '../actions/trends/action_types';
 
 const initialState = {
   analysisFilter: AnalysisFilters.FILTER_DAY,

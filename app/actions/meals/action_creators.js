@@ -26,7 +26,8 @@ import {
   FETCH_USER_MEALS_SUCCESS,
   FETCH_USER_MEALS_FAILURE,
 
-  SET_DATE,
+  INCREMENT_DATE,
+  DECREMENT_DATE,
 
 } from './action_types';
 
@@ -159,10 +160,18 @@ export function fetchUserMealsFailure(error) {
 
 
 
-// setDate
-export function setDate(selectedDate) {
+// incrementDate
+export function incrementDate() {
   return {
-    type: SET_DATE,
-    selectedDate
+    type: INCREMENT_DATE,
+  };
+};
+
+
+
+// decrementDate
+export function decrementDate() {
+  return {
+    type: DECREMENT_DATE,
   };
 };

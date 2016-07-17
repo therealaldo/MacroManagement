@@ -4,17 +4,35 @@ import omit from 'lodash/object/omit';
 import assign from 'lodash/object/assign';
 import mapValues from 'lodash/object/mapValues';
 import {
-  INCREMENT_DAY,
-  DECREMENT_DAY,
-  SELECT_DAY,
-  SEARCH_DAY,
-  FETCH_MEAL_REQUEST,
-  FETCH_MEAL_FAILED,
-  FETCH_MEAL_RESULT,
-  SEARCH_MEAL_INFO,
-  ADD_MEAL,
-  DELETE_MEAL,
-} from '../constants/action_types';
+
+  SEARCH_MEAL_REQUEST,
+  SEARCH_MEAL_SUCCESS,
+  SEARCH_MEAL_FAILURE,
+
+  MORE_SEARCH_REQUEST,
+  MORE_SEARCH_SUCCESS,
+  MORE_SEARCH_FAILURE,
+
+  SEARCH_INFO_REQUEST,
+  SEARCH_INFO_SUCCESS,
+  SEARCH_INFO_FAILURE,
+
+  ADD_MEAL_REQUEST,
+  ADD_MEAL_SUCCESS,
+  ADD_MEAL_FAILURE,
+
+  DELETE_MEAL_REQUEST,
+  DELETE_MEAL_SUCCESS,
+  DELETE_MEAL_FAILURE,
+
+  FETCH_USER_MEALS_REQUEST,
+  FETCH_USER_MEALS_SUCCESS,
+  FETCH_USER_MEALS_FAILURE,
+
+  INCREMENT_DATE,
+  DECREMENT_DATE,
+
+} from '../actions/meals/action_types';
 
 const initialState = {
   selectedDate: '',

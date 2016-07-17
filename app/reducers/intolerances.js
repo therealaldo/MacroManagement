@@ -4,9 +4,16 @@ import omit from 'lodash/object/omit';
 import assign from 'lodash/object/assign';
 import mapValues from 'lodash/object/mapValues';
 import {
-  ADD_INTOLERANCE,
-  REMOVE_INTOLERANCE,
-} from '../constants/action_types';
+
+  ADD_INTOLERANCE_REQUEST,
+  ADD_INTOLERANCE_SUCCESS,
+  ADD_INTOLERANCE_FAILURE,
+
+  REMOVE_INTOLERANCE_REQUEST,
+  REMOVE_INTOLERANCE_SUCCESS,
+  REMOVE_INTOLERANCE_FAILURE,
+
+} from '../actions/intolerances/action_types';
 
 const initialState = {
   intolerances: [],

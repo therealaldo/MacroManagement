@@ -4,12 +4,28 @@ import omit from 'lodash/object/omit';
 import assign from 'lodash/object/assign';
 import mapValues from 'lodash/object/mapValues';
 import {
-  ADD_GROCERY_ITEM,
-  REMOVE_GROCERY_ITEM,
-  TOGGLE_GROCERY_ITEM,
-  NEW_EMPTY_LIST,
-  REMOVE_LIST
-} from '../constants/action_types';
+
+  ADD_GROCERY_ITEM_REQUEST,
+  ADD_GROCERY_ITEM_SUCCESS,
+  ADD_GROCERY_ITEM_FAILURE,
+
+  REMOVE_GROCERY_ITEM_REQUEST,
+  REMOVE_GROCERY_ITEM_SUCCESS,
+  REMOVE_GROCERY_ITEM_FAILURE,
+
+  TOGGLE_GROCERY_ITEM_REQUEST,
+  TOGGLE_GROCERY_ITEM_SUCCESS,
+  TOGGLE_GROCERY_ITEM_FAILURE,
+
+  NEW_EMPTY_LIST_REQUEST,
+  NEW_EMPTY_LIST_SUCCESS,
+  NEW_EMPTY_LIST_FAILURE,
+
+  REMOVE_LIST_REQUEST,
+  REMOVE_LIST_SUCCESS,
+  REMOVE_LIST_FAILURE,
+
+} from '../actions/grocery_lists/action_types';
 
 const initialState = {
   groceryLists: [],

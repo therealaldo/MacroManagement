@@ -1,8 +1,14 @@
 'use strict';
 
 import {
-  RECEIVE_USER_PROFILE
-} from '../constants/action_types';
+
+  RECEIVE_USER_FAILURE,
+
+  SAVE_USER_REQUEST,
+  SAVE_USER_SUCCESS,
+  SAVE_USER_FAILURE,
+
+} from '../actions/users/action_types';
 
 const initialState = {
   user: {}
