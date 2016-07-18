@@ -68,7 +68,7 @@ export default class App extends React.Component {
         <RouterWithRedux navigationBarStyle={ styles.navBar }
           titleStyle={ styles.navTitle } sceneStyle={ styles.routerScene }>
           <Scene key='root' hideNavBar>
-            <Scene key='welcome' type='jump' icon={ TabIcon } component={ WelcomeView } title='Welcome'
+            <Scene key='welcome' type='jump' component={ WelcomeView } title='Welcome'
               initial={ true } hideNavBar={ true }></Scene>
             <Scene key='tabbar' tabs hideNavBar>
               <Scene key='dashboard' icon={ TabIcon } title='Dashboard'>
@@ -93,8 +93,6 @@ export default class App extends React.Component {
                 title='Settings' leftButtonIconStyle={{tintColor: '#e9e9e9'}}>
                 <Scene key='mainSettings' initial={ true } component={ SettingsView }
                   title='Settings'></Scene>
-                <Scene key='profileSettings' component={ SettingsView }
-                  title='Profile'></Scene>
                 <Scene key='sharePrivacySettings' component={ SettingsView }
                   title='Sharing & Privacy'></Scene>
                 <Scene key='mealSettings' component={ SettingsView }

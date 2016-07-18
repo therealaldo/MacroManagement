@@ -1,45 +1,57 @@
 'use strict';
 
 import {
-  TOGGLE_NOTIFICATIONS,
-  TOGGLE_RECOMMENDATIONS,
-  TOGGLE_NUTRITION_FACTS,
-  RESET_PREFERENCES,
-  RESET_NOTIFICATIONS,
-  RESET_ALL_SETTINGS
-} from '../constants/action_types';
 
-export const toggleNotifications = () => {
+  TOGGLE_NOTIFICATIONS,
+
+  TOGGLE_RECOMMENDATIONS,
+
+  TOGGLE_NUTRITION_FACTS,
+
+  RESET_NOTIFICATIONS,
+
+  RESET_ALL_SETTINGS,
+
+} from './action_types';
+
+// toggleNotifications
+export function toggleNotifications() {
   return {
     type: TOGGLE_NOTIFICATIONS,
   };
 };
 
-export const toggleRecommendations = () => {
+
+
+// toggleRecommendations
+export function toggleRecommendations() {
   return {
     type: TOGGLE_RECOMMENDATIONS,
   };
 };
 
-export const toggleNutritionFacts = () => {
+
+
+// toggleNutritionFacts
+export function toggleNutritionFacts() {
   return {
     type: TOGGLE_NUTRITION_FACTS,
   };
 };
 
-export const resetPreferences = () => {
-  return {
-    type: RESET_PREFERENCES,
-  };
-};
 
-export const resetNotifications = () => {
+
+// resetNotifications
+export function resetNotifications() {
   return {
     type: RESET_NOTIFICATIONS,
   };
 };
 
-export const resetAllSettings = () => {
+
+
+// resetAllSettings
+export function resetAllSettings() {
   return {
     type: RESET_ALL_SETTINGS,
   };

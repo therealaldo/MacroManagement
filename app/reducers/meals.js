@@ -1,29 +1,48 @@
 'use strict';
 
 import omit from 'lodash/object/omit';
-import assign from 'lodash/object/assign';
 import mapValues from 'lodash/object/mapValues';
 import {
-  INCREMENT_DAY,
-  DECREMENT_DAY,
-  SELECT_DAY,
-  SEARCH_DAY,
-  FETCH_MEAL_REQUEST,
-  FETCH_MEAL_FAILED,
-  FETCH_MEAL_RESULT,
-  SEARCH_MEAL_INFO,
-  ADD_MEAL,
-  SAVE_MEAL,
-  DELETE_MEAL,
-} from '../constants/action_types';
+
+  SEARCH_MEAL_REQUEST,
+  SEARCH_MEAL_SUCCESS,
+  SEARCH_MEAL_FAILURE,
+
+  MORE_SEARCH_REQUEST,
+  MORE_SEARCH_SUCCESS,
+  MORE_SEARCH_FAILURE,
+
+  SEARCH_INFO_REQUEST,
+  SEARCH_INFO_SUCCESS,
+  SEARCH_INFO_FAILURE,
+
+  ADD_MEAL_REQUEST,
+  ADD_MEAL_SUCCESS,
+  ADD_MEAL_FAILURE,
+
+  DELETE_MEAL_REQUEST,
+  DELETE_MEAL_SUCCESS,
+  DELETE_MEAL_FAILURE,
+
+  ADD_MEAL_PLAN,
+
+  FETCH_USER_MEALS_REQUEST,
+  FETCH_USER_MEALS_SUCCESS,
+  FETCH_USER_MEALS_FAILURE,
+
+  INCREMENT_DATE,
+  DECREMENT_DATE,
+
+} from '../actions/meals/action_types';
 
 const initialState = {
   selectedDate: '',
   mealPlans: [],
-  entities: {
-    plans: {},
-    meals: {},
-  },
+  mealPlansByDate: {},
+  mealsById: {},
+  mealInfo: {},
+  isFetching: false,
+  error: null,
   mealResults: [],
   pagination: 0,
   totalResults: 0,
@@ -35,76 +54,133 @@ export default function reducer(
   action = {}
 ) {
   switch (action.type) {
-    /*case INCREMENT_DAY:
-      return {
-
-      };
-    case DECREMENT_DAY:
-      return {
-
-      };
-    case SELECT_DAY:
-      return {
-
-      };
-    case SEARCH_DAY:
-      return {
-
-      };
-    case FETCH_MEAL_REQUEST:
-      return {
-
-      };
-    case FETCH_MEAL_FAILED:
-      return {
-
-      };
-    case FETCH_MEAL_RESULT:
-      return {
-
-      };
-    case SEARCH_MEAL_INFO:
-      return {
-
-      };*/
-    case ADD_MEAL:
+    case SEARCH_MEAL_REQUEST:
+    case MORE_SEARCH_REQUEST:
+    case SEARCH_INFO_REQUEST:
+    case ADD_MEAL_REQUEST:
+    case DELETE_MEAL_REQUEST:
+    case FETCH_USER_MEALS_REQUEST:
       return {
         ...state,
-        mealPlans: state.mealPlans.concat(action.meal.id),
-        entities: {
-          plans: {
-            ...state.entities.plans,
-            [action.selectedDate]: {
-              ...state.entities.plans[action.selectedDate],
-              [action.mealType]: state.entitites.plans[action.selectedDate][action.mealType].concat(action.meal.id)
-            }
-          },
-          meals: {
-            ...state.entities.meals,
-            [action.meal.id]: {
-              id: action.meal.id,
-              name: action.meal.name,
-              image: action.meal.image
-            }
+        isFetching: true
+      };
+
+    case SEARCH_MEAL_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        error: null,
+        mealResults: action.mealResults,
+        pagination: 1,
+        totalResults: state.mealResults.length,
+        processingTimeMs: action.processingTimeMs
+      };
+
+    case MORE_SEARCH_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        error: null,
+        mealResults: state.mealResults.concat(action.moreResults),
+        pagination: state.pagination++,
+        totalResults: state.mealResults.length,
+        processingTimeMs: action.processingTimeMs
+      };
+
+    case SEARCH_INFO_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        error: null,
+        mealInfo: {
+          glutenFree: action.info.glutenFree,
+          servings: action.info.servings,
+          ingredients: action.info.extendedIngredients,
+          caloricBreakdown: action.info.caloricBreakdown,
+        }
+      };
+
+    case ADD_MEAL_SUCCESS:
+      return {
+        ...state,
+        mealPlansByDate: mapValues(state.mealPlansByDate, (mealPlan) => {
+          return mealPlan.date === state.selectedDate ?
+            {
+              ...mealPlan,
+              [action.mealType]: mealPlan[action.mealType].concat(meal.id)
+            } :
+            mealPlan
+        }),
+        mealsById: {
+          ...state.mealsById,
+          [action.meal.id]: {
+            id: action.meal.id,
+            name: action.meal.title,
+            image: action.meal.image
           }
-        }
+        },
+        isFetching: false,
+        error: null
       };
-    /*case SAVE_MEAL:
-      return {
 
-      };*/
-    case DELETE_MEAL:
+    case DELETE_MEAL_SUCCESS:
       return {
         ...state,
-        entities: {
-          ...state.entities,
-          plans: {
-            [selectedDate]: {
-              ...state.entities.plans[action.selectedDate],
-              [action.mealType]: state.entities.plans[action.selectedDate][action.mealType].filter(id => id !== action.mealId)
-            }
-          },
-        }
+        mealPlansByDate: mapValues(state.mealPlansByDate, (mealPlan) => {
+          return mealPlan.date === state.selectedDate ?
+            {
+              ...mealPlan,
+              [action.mealType]: mealPlan[action.mealType].filter(id => id !== action.mealId)
+            } :
+            mealPlan
+        }),
+        mealsById: omit(state.mealsById, action.mealId),
+        isFetching: false,
+        error: null
+      };
+
+    case ADD_MEAL_PLAN:
+      return {
+        ...state,
+        mealPlans: state.mealPlans.concat(action.date),
+        mealPlansByDate: {
+          ...state.mealPlansByDate,
+          [action.date]: {
+            breakfast: [],
+            lunch: [],
+            dinner: [],
+            snacks: []
+          }
+        },
+        isFetching: false,
+        error: null
+      };
+
+    case FETCH_USER_MEALS_SUCCESS:
+      return {
+
+      };
+
+    case INCREMENT_DATE:
+      return {
+
+      };
+
+    case DECREMENT_DATE:
+      return {
+
+      };
+
+    case SEARCH_MEAL_FAILURE:
+    case MORE_SEARCH_FAILURE:
+    case SEARCH_INFO_FAILURE:
+    case ADD_MEAL_FAILURE:
+    case DELETE_MEAL_FAILURE:
+    case FETCH_USER_MEALS_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.error
       };
 
     default:

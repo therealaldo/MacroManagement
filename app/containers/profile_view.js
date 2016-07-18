@@ -2,6 +2,7 @@
 
 import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, Image, TouchableHighlight, Alert } from 'react-native';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import SettingsList from 'react-native-settings-list';
@@ -9,17 +10,18 @@ import Button from 'react-native-button';
 
 class ProfileView extends React.Component {
   static propTypes = {
-    routes: PropTypes.object,
+    users: PropTypes.object,
+    intolerances: PropTypes.object,
+    groceryLists: PropTypes.object,
   };
 
-  // TODO: make the profile view a smart component handling both view and edit profile screens
   render() {
     return (
       <View style={ styles.container }>
         <View style={ styles.profileInfo }>
           <View style={ styles.profileColumn }>
             <View style={ styles.bubble1 }>
-              <Text>Aldo Gonzalez</Text>
+              <Text>{ this.props.users.email }</Text>
             </View>
             <View style={ styles.bubble2 }>
               <Text>5ft. 7in.</Text>
@@ -37,17 +39,15 @@ class ProfileView extends React.Component {
         <View style={ styles.settingsContainer }>
           <View style={ styles.listContainer }>
             <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
-              <SettingsList.Item title='Edit Profile' titleStyle={{fontFamily: 'OpenSans'}}
-                onPress={() =>  Alert.alert('Edit Profile pressed')} />
-              <SettingsList.Item title='Change Food Preferences' titleStyle={{fontFamily: 'OpenSans'}}
-                  onPress={() =>  Alert.alert('Change Food Preferences pressed')} />
-              <SettingsList.Item title='Saved Shopping Lists' titleStyle={{fontFamily: 'OpenSans'}}
-                  onPress={() =>  Alert.alert('Saved Shopping Lists pressed')} />
+              <SettingsList.Item title='Change Food Intolerances' titleStyle={{fontFamily: 'OpenSans'}}
+                  onPress={ () =>  Alert.alert('Change Food Intolerances pressed') } />
+              <SettingsList.Item title='Saved Grocery Lists' titleStyle={{fontFamily: 'OpenSans'}}
+                  onPress={ () =>  Alert.alert('Saved Grocery Lists pressed') } />
             </SettingsList>
           </View>
         </View>
         <Button containerStyle={ styles.logOutButtonContainer } style={ styles.logOutButtonText }
-          onPress={() => Alert.alert('Log Out pressed')}>
+          onPress={ () => Alert.alert('Log Out pressed') }>
           Log Out
         </Button>
       </View>
@@ -147,5 +147,12 @@ const styles = StyleSheet.create({
   },
 });
 
+function mapStateToProps(state) {
+  return {
+    users: state.users,
+    intolerances: state.intolerances,
+    groceryLists: state.groceryLists
+  };
+};
 
-export default connect(({routes}) => ({routes}))(ProfileView);
+export default connect(mapStateToProps)(ProfileView);

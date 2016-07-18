@@ -7,6 +7,7 @@ import meals from './meals';
 import routes from './routes';
 import settings from './settings';
 import users from './users';
+
 export default combineReducers({
   groceryLists,
   intolerances,
