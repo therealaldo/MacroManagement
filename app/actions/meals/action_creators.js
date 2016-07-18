@@ -199,7 +199,7 @@ export function searchMeal(query, queryOffset) {
     .then((mealResults) => {
       dispatch(searchMealSuccess(mealResults, mealResults.processingTimeMs));
     })
-    .catch((err) = {
+    .catch((err) => {
       dispatch(searchMealFailure(err));
     })
   };

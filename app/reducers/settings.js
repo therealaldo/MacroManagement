@@ -18,11 +18,9 @@ import {
 } from '../actions/settings/action_types';
 
 const initialState = {
-  settings: {
-    nutritionFacts: false,
-    notifications: false,
-    recommendations: false,
-  }
+  nutritionFacts: false,
+  notifications: false,
+  recommendations: false,
 };
 
 export default function reducer(

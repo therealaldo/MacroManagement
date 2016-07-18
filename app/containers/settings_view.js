@@ -2,29 +2,42 @@
 
 import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, Alert, InteractionManager } from 'react-native';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actionCreators from '../actions/settings/action_creators';
 import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
-import { connect } from 'react-redux';
 import SettingsList from 'react-native-settings-list';
 
 class SettingsView extends React.Component {
   static propTypes = {
     routes: PropTypes.object,
+    settings: PropTypes.object.isRequired,
+    users: PropTypes.object.isRequired,
+    toggleRecommendations: PropTypes.func.isRequired,
+    toggleNutritionFacts: PropTypes.func.isRequired,
+    toggleNotifications: PropTypes.func.isRequired,
+    resetAllSettings: PropTypes.func.isRequired,
   };
+
+  toggleNotifications() {
+    return dispatch(props.toggleNotifications);
+  }
+
+  toggleNutritionFacts() {
+    return dispatch(props.toggleNutritionFacts)
+  }
+
+  toggleRecommendations() {
+    return dispatch(props.toggleRecommendations)
+  }
+
+  resetAllSettings() {
+    return dispatch(props.resetAllSettings)
+  }
 
   generateSettingsList() {
     switch(this.props.routes.scene.name) {
-      case 'profileSettings':
-        return (
-          <View style={ styles.settingsContainer }>
-            <View style={ styles.listContainer }>
-              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
-                <SettingsList.Item title='Edit Profile' titleStyle={{fontFamily: 'OpenSans'}}
-                  onPress={() => Alert.alert('Edit Profile pressed')} />
-              </SettingsList>
-            </View>
-          </View>
-        );
       case 'sharePrivacySettings':
         return (
           <View style={ styles.settingsContainer }>
@@ -43,10 +56,14 @@ class SettingsView extends React.Component {
           <View style={ styles.settingsContainer }>
             <View style={ styles.listContainer }>
               <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
-                <SettingsList.Item title='Edit Food Preferences' titleStyle={{fontFamily: 'OpenSans'}}
+                <SettingsList.Item title='Edit Food Preferences'
+                  titleStyle={{fontFamily: 'OpenSans'}}
                   onPress={() => Alert.alert('Edit Food Preferences pressed')} />
-                <SettingsList.Item title='Show Nutrition Facts' hasSwitch={ true } hasNavArrow={ false }
-                  titleStyle={{fontFamily: 'OpenSans'}} />
+                <SettingsList.Item title='Show Nutrition Facts'
+                  hasSwitch={ true } hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}}
+                  switchState={ this.props.settings.nutritionFacts }
+                  switchOnValueChange={ toggleNutritionFacts } />
               </SettingsList>
             </View>
           </View>
@@ -56,10 +73,16 @@ class SettingsView extends React.Component {
           <View style={ styles.settingsContainer }>
             <View scrollEnabled={ false } style={ styles.listContainer }>
               <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
-                <SettingsList.Item title='Enable Recommendations' hasSwitch={ true }
-                  hasNavArrow={ false } titleStyle={{fontFamily: 'OpenSans'}} />
-                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
-                  titleStyle={{fontFamily: 'OpenSans'}} />
+                <SettingsList.Item title='Enable Recommendations'
+                  hasSwitch={ true } hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}}
+                  switchState={ this.props.settings.recommendations }
+                  switchOnValueChange={ toggleRecommendations } />
+                <SettingsList.Item title='Do Not Disturb'
+                  hasSwitch={ true } hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}}
+                  switchState={ this.props.settings.notifications }
+                  switchOnValueChange={ toggleNotifications } />
               </SettingsList>
             </View>
           </View>
@@ -111,7 +134,7 @@ class SettingsView extends React.Component {
                     'Are you sure you want to reset all of your settings?',
                     [
                       {text: 'Cancel'},
-                      {text: 'Reset', onPress: () => console.log('You just reset your settings.')},
+                      {text: 'Reset', onPress: () => this.props.resetAllSettings},
                     ]
                   )} />
               </SettingsList>
@@ -123,8 +146,6 @@ class SettingsView extends React.Component {
             <View style={ styles.settingsContainer }>
               <View style={ styles.listContainer }>
                 <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
-                  <SettingsList.Item title='Profile' titleStyle={{fontFamily: 'OpenSans'}}
-                    onPress={ Actions.profileSettings } />
                   <SettingsList.Item title='Sharing & Privacy' titleStyle={{fontFamily: 'OpenSans'}}
                     onPress={ Actions.sharePrivacySettings } />
                   <SettingsList.Item title='Meal Plan' titleStyle={{fontFamily: 'OpenSans'}}
@@ -141,7 +162,8 @@ class SettingsView extends React.Component {
                     onPress={ Actions.resetSettings } />
                 </SettingsList>
               </View>
-              <Button containerStyle={ styles.logOutButtonContainer } style={ styles.logOutButtonText }
+              <Button containerStyle={ styles.logOutButtonContainer }
+                style={ styles.logOutButtonText }
                 onPress={() => Alert.alert('Log Out pressed')}>
                 Log Out
               </Button>
@@ -187,7 +209,19 @@ const styles = StyleSheet.create({
   logOutButtonText: {
     color: '#e9e9e9',
   }
-});;
+});
+
+function mapStateToProps(state) {
+  return {
+    routes: state.routes,
+    settings: state.settings,
+    users: state.users
+  };
+};
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch);
+};
 
 
-export default connect(({routes}) => ({routes}))(SettingsView);
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsView);

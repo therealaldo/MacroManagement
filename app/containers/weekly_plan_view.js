@@ -2,22 +2,26 @@
 
 import React, { PropTypes} from 'react';
 import { StyleSheet, Text, View, ScrollView, ProgressViewIOS, ListView, Alert } from 'react-native';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actionCreators from '../actions/meals/action_creators';
 import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
-import { connect } from 'react-redux';
 import DateSwitcher from '../components/date_switcher';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 class WeeklyPlanView extends React.Component {
   static propTypes = {
     routes: PropTypes.object,
+    meals: PropTypes.object,
+    users: PropTypes.object,
+    intolerances: PropTypes.object,
   };
 
-  // next thing would be to write the actions for the view such as SEARCH_MEALS || SET_MEAL, etc.
   render() {
     return (
       <View style={ styles.container }>
-        <DateSwitcher />
+        <DateSwitcher {...props} />
         <ScrollView >
           <View style={ styles.componentContainer }>
              <Text style={ styles.containerTitle }>Progress</Text>
@@ -100,5 +104,17 @@ const styles = StyleSheet.create({
   }
 });;
 
+function mapStateToProps(state) {
+  return {
+    routes: state.routes,
+    meals: state.meals,
+    users: state.users,
+    intolerances: state.meals
+  };
+};
 
-export default connect(({routes}) => ({routes}))(WeeklyPlanView);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WeeklyPlanView);

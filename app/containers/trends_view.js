@@ -2,9 +2,10 @@
 
 import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, SegmentedControlIOS, ScrollView } from 'react-native';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
-import { connect } from 'react-redux';
 
 class TrendsView extends React.Component {
   static propTypes = {

@@ -4,12 +4,17 @@ import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, Alert, ProgressViewIOS, ScrollView, Image } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import * as actionCreators from '../actions/rss_feed/action_creators';
+import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Button from 'react-native-button';
 
 class DashboardView extends React.Component {
   static propTypes = {
     routes: PropTypes.object,
+    users: PropTypes.object,
+    meals: PropTypes.object,
+    rssFeed: PropTypes.object
   };
 
   render() {
@@ -67,7 +72,7 @@ class DashboardView extends React.Component {
 
 const imageMap = {
   "articleImageUrl": require('../img/articleImage.jpeg'),
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -140,4 +145,17 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(({routes}) => ({routes}))(DashboardView);
+function mapStateToProps(state) {
+  return {
+    routes: state.routes,
+    users: state.users,
+    meals: state.meals,
+    rssFeed: state.rssFeed
+  };
+};
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardView);
