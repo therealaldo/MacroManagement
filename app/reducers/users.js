@@ -24,7 +24,8 @@ export default function reducer(
     case SAVE_USER_REQUEST:
       return {
         ...state,
-        isFetching: true
+        isFetching: true,
+        error: null
       };
 
     case SAVE_USER_SUCCESS:
@@ -36,12 +37,14 @@ export default function reducer(
           token: action.token
         },
         isFetching: false,
+        error: null
       };
 
     case RECEIVE_USER_FAILURE:
     case SAVE_USER_FAILURE:
       return {
         ...state,
+        isFetching: false,
         error: action.error
       };
 

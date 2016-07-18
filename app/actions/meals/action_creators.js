@@ -1,5 +1,6 @@
 'use strict';
 
+import api from '../../utils/api';
 import {
 
   SEARCH_MEAL_REQUEST,
@@ -22,9 +23,7 @@ import {
   DELETE_MEAL_SUCCESS,
   DELETE_MEAL_FAILURE,
 
-  ADD_MEAL_PLAN_REQUEST,
-  ADD_MEAL_PLAN_SUCCESS,
-  ADD_MEAL_PLAN_FAILURE,
+  ADD_MEAL_PLAN,
 
   FETCH_USER_MEALS_REQUEST,
   FETCH_USER_MEALS_SUCCESS,
@@ -145,21 +144,9 @@ export function deleteMealFailure(error) {
 
 
 // addMealPlan
-export function addMealPlanRequest() {
+export function addMealPlan() {
   return {
-    type: ADD_MEAL_PLAN_REQUEST,
-  };
-};
-export function addMealPlanSuccess(date) {
-  return {
-    type: ADD_MEAL_PLAN_SUCCESS,
-    date
-  };
-};
-export function addMealPlanFailure(error) {
-  return {
-    type: ADD_MEAL_PLAN_FAILURE,
-    error
+    type: ADD_MEAL_PLAN,
   };
 };
 
@@ -205,17 +192,16 @@ export function decrementDate() {
 
 
 // async searchMeal
-export function searchMeal(query) {
+export function searchMeal(query, queryOffset) {
   return dispatch => {
     dispatch(searchMealRequest());
-    /*return api call sending through the query for a meal
-      .then((query, mealResults, processingTimeMs) => {
-        dispatch(searchMealSuccess(mealResults, processingTimeMs));
-      })
-      .catch((err) => {
-        dispatch(searchMealFailure(err));
-        return;
-      })*/
+    return api.searchMeal(query, queryOffset)
+    .then((mealResults) => {
+      dispatch(searchMealSuccess(mealResults, mealResults.processingTimeMs));
+    })
+    .catch((err) = {
+      dispatch(searchMealFailure(err));
+    })
   };
 };
 
@@ -239,84 +225,88 @@ export function moreSearch() {
 
 
 // async searchInfo
-export function searchInfo(meal) {
+export function searchInfo(mealId) {
   return dispatch => {
     dispatch(searchInfoRequest());
-    /*return api call searching info on the selected meal
-      .then((meal, info) => {
-        dispatch(searchInfoSuccess(info));
-      })
-      .catch((err) => {
-        dispatch(searchInfoFailure(err));
-        return;
-      })*/
+    return api.getRecipeInfo(mealId)
+    .then((mealInfo) => {
+      dispatch(searchInfoSuccess(mealInfo));
+    })
+    .catch((err) => {
+      dispatch(searchInfoFailure(err));
+    })
   };
 };
 
 
 
 // async addMeal
-export function addMeal(selectedDate) {
+export function addMeal(selectedDate,mealType, userId, meal) {
   return dispatch => {
     dispatch(addMealRequest());
-    /*return api call creating a new meal in the database
-      .then((selectedDate, mealType, meal) => {
-        dispatch(addMealSuccess(mealType, meal));
+    return fetch('http://192.241.140.116/meals', {
+      method: 'PUT',
+      body: JSON.stringify({
+        userId: userId,
+        date: selectedDate,
+        meal: meal,
+        mealType: mealType
       })
-      .catch((err) => {
-        dispatch(addMealFailure(err));
-        return;
-      })*/
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      dispatch(addMealSuccess(responseJson.mealType, responseJson.meal))
+    })
+    .catch((err) => {
+      dispatch(addMealFailure(err))
+    })
   };
 };
 
 
 
 // async deleteMeal
-export function deleteMeal(selectedDate, mealType, mealId) {
+export function deleteMeal(userId, selectedDate, mealType, mealId) {
   return dispatch => {
     dispatch(deleteMealRequest());
-    /*return api call sending through the meal to delete in the database
-      .then((selectedDate, mealType, mealId) => {
-        dispatch(deleteMealSuccess(mealType, mealId));
+    return fetch('http://192.241.140.116/meals', {
+      method: 'DELETE',
+      body: JSON.stringify({
+        userId: userId,
+        date: selectedDate,
+        mealType: mealType,
+        mealId: mealId
       })
-      .catch((err) => {
-        dispatch(deleteMealFailure(err));
-        return;
-      })*/
-  };
-};
-
-
-
-// async addMealPlan
-export function addMealPlan(selectedDate) {
-  return dispatch => {
-    dispatch(addMealPlanRequest());
-    /*return api call creating a new meal plan in the database
-      .then((date) => {
-        dispatch(addMealPlanSuccess(date));
-      })
-      .catch((err) => {
-        dispatch(addMealPlanFailure(err));
-        return;
-      })*/
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      dispatch(deleteMealSuccess(responseJson.mealType, responseJson.mealId))
+    })
+    .catch((err) => {
+      dispatch(deleteMealFailure(err))
+    })
   };
 };
 
 
 
 // async fetchUserMeals
-export function fetchUserMeals(selectedDate) {
+export function fetchUserMeals(selectedDate, userId) {
   return dispatch => {
     dispatch(fetchUserMealsRequest());
-    /*return api call fetching all of the user meals for a specific day
-      .then((date, userMeals) => {
-        dispatch(fetchUserMealsSuccess(userMeals));
+    return fetch('http://192.241.140.116/meals', {
+      method: 'GET',
+      body: JSON.stringify({
+        userId: userId,
+        date: selectedDate
       })
-      .catch((err) => {
-        dispatch(fetchUserMealsFailure(err));
-        return;
-      })*/
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      dispatch(fetchUserMealsSuccess(responseJson));
+    })
+    .catch((err) => {
+      dispatch(fetchUserMealsFailure(err));
+    })
   };
 };

@@ -2,8 +2,8 @@
 
 import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, Image, TouchableHighlight, Alert } from 'react-native';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
 import SettingsList from 'react-native-settings-list';
 import Button from 'react-native-button';
 
@@ -146,6 +146,8 @@ const styles = StyleSheet.create({
     color: '#e9e9e9',
   },
 });
+
+
 
 
 export default connect(({routes}) => ({routes}))(ProfileView);

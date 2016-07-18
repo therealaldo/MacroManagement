@@ -4,6 +4,7 @@ import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import * as actionCreators from '../actions/users/action_creators';
 
 // TODO: style the login flow to match the app's style guidelines
 class WelcomeView extends React.Component {
@@ -12,6 +13,7 @@ class WelcomeView extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <View style={ styles.container }>
         <View style={ styles.messageBox }>
@@ -25,7 +27,7 @@ class WelcomeView extends React.Component {
         <TouchableHighlight
           style={ styles.signInButton }
           underlayColor='#949494'
-          onPress={ this._onLogin }>
+          onPress={ this.props.login }>
           <Text style={ styles.buttonText }>Log In</Text>
         </TouchableHighlight>
       </View>
@@ -81,5 +83,15 @@ const styles = StyleSheet.create({
   }
 });
 
+function mapStateToProps(state) {
+  return {
+    routes: state.routes,
+    users: state.users
+  }
+};
 
-// export default connect(({routes}) => ({routes}))(WelcomeView);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WelcomeView);

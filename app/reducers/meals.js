@@ -25,9 +25,7 @@ import {
   DELETE_MEAL_SUCCESS,
   DELETE_MEAL_FAILURE,
 
-  ADD_MEAL_PLAN_REQUEST,
-  ADD_MEAL_PLAN_SUCCESS,
-  ADD_MEAL_PLAN_FAILURE,
+  ADD_MEAL_PLAN,
 
   FETCH_USER_MEALS_REQUEST,
   FETCH_USER_MEALS_SUCCESS,
@@ -62,7 +60,6 @@ export default function reducer(
     case SEARCH_INFO_REQUEST:
     case ADD_MEAL_REQUEST:
     case DELETE_MEAL_REQUEST:
-    case ADD_MEAL_PLAN_REQUEST:
     case FETCH_USER_MEALS_REQUEST:
       return {
         ...state,
@@ -143,7 +140,7 @@ export default function reducer(
         error: null
       };
 
-    case ADD_MEAL_PLAN_SUCCESS:
+    case ADD_MEAL_PLAN:
       return {
         ...state,
         mealPlans: state.mealPlans.concat(action.date),
@@ -180,7 +177,6 @@ export default function reducer(
     case SEARCH_INFO_FAILURE:
     case ADD_MEAL_FAILURE:
     case DELETE_MEAL_FAILURE:
-    case ADD_MEAL_PLAN_FAILURE:
     case FETCH_USER_MEALS_FAILURE:
       return {
         ...state,
