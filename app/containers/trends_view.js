@@ -4,12 +4,17 @@ import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, SegmentedControlIOS, ScrollView } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import * as actionCreators from '../actions/trends/action_creators';
 import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
 
 class TrendsView extends React.Component {
   static propTypes = {
-    routes: PropTypes.object,
+    routes: PropTypes.object.isRequired,
+    users: PropTypes.object.isRequired,
+    meals: PropTypes.object.isRequired,
+    trends: PropTypes.object.isRequired,
+    setAnalysisFilter: PropTypes.func.isRequired
   };
 
   render() {
@@ -17,7 +22,8 @@ class TrendsView extends React.Component {
       <View style={ styles.container }>
         <View style={ styles.filterContainer }>
           <SegmentedControlIOS values={['Days', 'Weeks', 'Months', 'All']}
-            tintColor='#e9e9e9' selectedIndex={ 0 } />
+            tintColor='#e9e9e9' selectedIndex={ this.props.trends.selectedIndex }
+            onChange={ this.props.setAnalysisFilter } />
         </View>
         <ScrollView>
           <View style={ styles.charts }>
@@ -68,7 +74,20 @@ const styles = StyleSheet.create({
   chart: {
     height: 200,
   }
-});;
+});
+
+function mapStateToProps(state) {
+  return {
+    routes: state.routes,
+    users: state.users,
+    meals: state.meals,
+    trends: state.trends
+  };
+};
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch);
+};
 
 
-export default connect(({routes}) => ({routes}))(TrendsView);
+export default connect(mapStateToProps, mapDispatchToProps)(TrendsView);

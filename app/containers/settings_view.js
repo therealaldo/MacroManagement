@@ -11,7 +11,7 @@ import SettingsList from 'react-native-settings-list';
 
 class SettingsView extends React.Component {
   static propTypes = {
-    routes: PropTypes.object,
+    routes: PropTypes.object.isRequired,
     settings: PropTypes.object.isRequired,
     users: PropTypes.object.isRequired,
     toggleRecommendations: PropTypes.func.isRequired,
@@ -19,22 +19,6 @@ class SettingsView extends React.Component {
     toggleNotifications: PropTypes.func.isRequired,
     resetAllSettings: PropTypes.func.isRequired,
   };
-
-  toggleNotifications() {
-    return dispatch(props.toggleNotifications);
-  }
-
-  toggleNutritionFacts() {
-    return dispatch(props.toggleNutritionFacts)
-  }
-
-  toggleRecommendations() {
-    return dispatch(props.toggleRecommendations)
-  }
-
-  resetAllSettings() {
-    return dispatch(props.resetAllSettings)
-  }
 
   generateSettingsList() {
     switch(this.props.routes.scene.name) {
@@ -63,7 +47,7 @@ class SettingsView extends React.Component {
                   hasSwitch={ true } hasNavArrow={ false }
                   titleStyle={{fontFamily: 'OpenSans'}}
                   switchState={ this.props.settings.nutritionFacts }
-                  switchOnValueChange={ toggleNutritionFacts } />
+                  switchOnValueChange={ this.props.toggleNutritionFacts } />
               </SettingsList>
             </View>
           </View>
@@ -77,12 +61,12 @@ class SettingsView extends React.Component {
                   hasSwitch={ true } hasNavArrow={ false }
                   titleStyle={{fontFamily: 'OpenSans'}}
                   switchState={ this.props.settings.recommendations }
-                  switchOnValueChange={ toggleRecommendations } />
+                  switchOnValueChange={ this.props.toggleRecommendations } />
                 <SettingsList.Item title='Do Not Disturb'
                   hasSwitch={ true } hasNavArrow={ false }
                   titleStyle={{fontFamily: 'OpenSans'}}
                   switchState={ this.props.settings.notifications }
-                  switchOnValueChange={ toggleNotifications } />
+                  switchOnValueChange={ this.props.toggleNotifications } />
               </SettingsList>
             </View>
           </View>
@@ -134,7 +118,7 @@ class SettingsView extends React.Component {
                     'Are you sure you want to reset all of your settings?',
                     [
                       {text: 'Cancel'},
-                      {text: 'Reset', onPress: () => this.props.resetAllSettings},
+                      {text: 'Reset', onPress: () => this.props.resetAllSettings()},
                     ]
                   )} />
               </SettingsList>

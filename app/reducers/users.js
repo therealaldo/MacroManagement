@@ -11,7 +11,9 @@ import {
 } from '../actions/users/action_types';
 
 const initialState = {
-  user: {},
+  userId: '',
+  email: '',
+  token: '',
   isFetching: false,
   error: null,
 };
@@ -30,12 +32,9 @@ export default function reducer(
 
     case SAVE_USER_SUCCESS:
       return {
-        ...state,
-        user: {
-          id: action.profile.userId,
-          email: action.profile.email,
-          token: action.token
-        },
+        userId: action.userData[0].userId,
+        email: action.userData[0].email,
+        token: action.userData[0].token,
         isFetching: false,
         error: null
       };

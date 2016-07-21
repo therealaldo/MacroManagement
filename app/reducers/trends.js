@@ -12,9 +12,11 @@ import {
   FETCH_USER_MEAL_DATA_FAILURE,
 
 } from '../actions/trends/action_types';
+import { AnalysisFilters } from '../actions/trends/action_types';
 
 const initialState = {
   analysisFilter: AnalysisFilters.FILTER_DAY,
+  selectedIndex: 0,
   imageUri: null,
   isFetching: false,
   error: null,
@@ -29,7 +31,7 @@ export default function reducer(
     case SET_ANALYSIS_FILTER:
       return {
         ...state,
-        analysisFilter: action.filter
+        selectedIndex: action.selectedIndex
       };
 
     case SET_IMAGE_URI:
@@ -47,7 +49,7 @@ export default function reducer(
     case FETCH_USER_MEAL_DATA_SUCCESS:
       return {
         ...state,
-        
+
       };
 
     case FETCH_USER_MEAL_DATA_FAILURE:

@@ -4,15 +4,16 @@ import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, Image, TouchableHighlight, Alert } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import * as actionCreators from '../actions/users/action_creators';
 import { Actions } from 'react-native-router-flux';
 import SettingsList from 'react-native-settings-list';
 import Button from 'react-native-button';
 
 class ProfileView extends React.Component {
   static propTypes = {
-    users: PropTypes.object,
-    intolerances: PropTypes.object,
-    groceryLists: PropTypes.object,
+    users: PropTypes.object.isRequired,
+    intolerances: PropTypes.object.isRequired,
+    groceryLists: PropTypes.object.isRequired,
   };
 
   render() {
@@ -155,4 +156,8 @@ function mapStateToProps(state) {
   };
 };
 
-export default connect(mapStateToProps)(ProfileView);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileView);

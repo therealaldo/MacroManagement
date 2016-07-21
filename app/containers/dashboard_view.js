@@ -11,10 +11,10 @@ import Button from 'react-native-button';
 
 class DashboardView extends React.Component {
   static propTypes = {
-    routes: PropTypes.object,
-    users: PropTypes.object,
-    meals: PropTypes.object,
-    rssFeed: PropTypes.object
+    routes: PropTypes.object.isRequired,
+    users: PropTypes.object.isRequired,
+    meals: PropTypes.object.isRequired,
+    rssFeed: PropTypes.object,
   };
 
   render() {

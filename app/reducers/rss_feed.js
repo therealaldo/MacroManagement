@@ -15,7 +15,7 @@ const initialState = {
   totalResults: 0,
 };
 
-export default reducer(
+export default function reducer(
   state = initialState,
   action = {}
 ) {

@@ -9,5 +9,5 @@ export const AnalysisFilters = {
   FILTER_DAY: 'FILTER_DAY',
   FILTER_WEEK: 'FILTER_WEEK',
   FILTER_YEAR: 'FILTER_YEAR',
-  FILTER_ALL: 'FILTER_ALL',
+  FILTER_ALL: 'FILTER_ALL'
 };

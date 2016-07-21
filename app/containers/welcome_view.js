@@ -9,11 +9,11 @@ import * as actionCreators from '../actions/users/action_creators';
 // TODO: style the login flow to match the app's style guidelines
 class WelcomeView extends React.Component {
   static propTypes = {
-    routes: PropTypes.object,
+    routes: PropTypes.object.isRequired,
+    users: PropTypes.object.isRequired
   };
 
   render() {
-    console.log(this.props);
     return (
       <View style={ styles.container }>
         <View style={ styles.messageBox }>

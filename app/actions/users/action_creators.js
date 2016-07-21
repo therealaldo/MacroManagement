@@ -3,6 +3,7 @@
 import { Actions } from 'react-native-router-flux';
 import Auth0Lock from 'react-native-lock';
 import Config from 'react-native-config';
+import { InteractionManager } from 'react-native';
 // import the api calls to the database and the food api
 import {
 
@@ -67,18 +68,23 @@ export function login() {
       }
 
       dispatch(saveUserRequest());
-      return fetch('http://192.241.140.116/users', {
+      return fetch('http://162.243.164.11/users', {
         method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
           userId: profile.userId,
           email: profile.email,
-          token: token
+          token: token.accessToken
         })
       })
       .then((response) => response.json())
-      .then((responseJson) => {
-        dispatch(saveUserSuccess(responseJson));
-        Actions.tabbar();
+      .then((json) => {
+        InteractionManager.runAfterInteractions(() => {
+          dispatch(saveUserSuccess(json));
+          Actions.tabbar();
+        })
       })
       .catch((err) => {
         dispatch(saveUserFailure(err));

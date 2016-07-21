@@ -54,6 +54,12 @@ export default function reducer(
       };
 
     case RESET_ALL_SETTINGS:
+      return {
+        nutritionFacts: false,
+        notifications: false,
+        recommendations: false,
+      };
+
     default:
       return state;
   }

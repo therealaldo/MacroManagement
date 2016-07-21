@@ -12,16 +12,16 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 class WeeklyPlanView extends React.Component {
   static propTypes = {
-    routes: PropTypes.object,
-    meals: PropTypes.object,
-    users: PropTypes.object,
-    intolerances: PropTypes.object,
+    routes: PropTypes.object.isRequired,
+    meals: PropTypes.object.isRequired,
+    users: PropTypes.object.isRequired,
+    intolerances: PropTypes.object.isRequired,
   };
 
   render() {
     return (
       <View style={ styles.container }>
-        <DateSwitcher {...props} />
+        <DateSwitcher {...this.props} />
         <ScrollView >
           <View style={ styles.componentContainer }>
              <Text style={ styles.containerTitle }>Progress</Text>

@@ -29,31 +29,31 @@ class TabIcon extends React.Component {
     switch (this.props.title) {
       case 'Dashboard':
         return (
-          <Icon name={ this.props.selected ? 'ion-ios-home' : 'ion-ios-home-outline' }
+          <Icon name={ this.props.selected ? 'ios-home' : 'ios-home-outline' }
             size={ 30 }
             style={ styles.forwardIcon } />
         );
       case 'Weekly Plan':
         return (
-          <Icon name={ this.props.selected ? 'ion-ios-calendar' : 'ion-ios-calendar-outline' }
+          <Icon name={ this.props.selected ? 'ios-calendar' : 'ios-calendar-outline' }
             size={ 30 }
             style={ styles.forwardIcon } />
         );
       case 'Trends':
         return (
-          <Icon name={ this.props.selected ? 'ion-ios-pulse-strong' : 'ion-ios-pulse' }
+          <Icon name={ this.props.selected ? 'ios-pulse' : 'ios-pulse-outline' }
             size={ 30 }
             style={ styles.forwardIcon } />
         );
       case 'Profile':
         return (
-          <Icon name={ this.props.selected ? 'ion-ios-person' : 'ion-ios-person-outline' }
+          <Icon name={ this.props.selected ? 'ios-person' : 'ios-person-outline' }
             size={ 30 }
             style={ styles.forwardIcon } />
         );
       case 'Settings':
         return (
-          <Icon name={ this.props.selected ? 'ion-ios-gear' : 'ion-ios-gear-outline' }
+          <Icon name={ this.props.selected ? 'ios-settings' : 'ios-settings-outline' }
             size={ 30 }
             style={ styles.forwardIcon } />
         );
@@ -101,16 +101,12 @@ export default class App extends React.Component {
                   title='Notifications'></Scene>
                 <Scene key='mealNotificationSettings' component={ SettingsView }
                   title='Meal Plan'></Scene>
-                <Scene key='notificationSettings' component={ SettingsView }
-                  title='Notifications'></Scene>
                 <Scene key='notificationMealPlanSettings' component={ SettingsView }
                   title='Meal Plan'></Scene>
                 <Scene key='notificationCookbookSettings' component={ SettingsView }
                   title='Cookbook'></Scene>
                 <Scene key='notificationRecommendSettings' component={ SettingsView }
                   title='Recommendations'></Scene>
-                <Scene key='notificationSettings' component={ SettingsView }
-                  title='Notifications'></Scene>
                 <Scene key='langRegionSettings' component={ SettingsView }
                   title='Language & Region'></Scene>
                 <Scene key='languageSettings' component={ SettingsView }

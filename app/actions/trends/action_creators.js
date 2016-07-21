@@ -13,10 +13,10 @@ import {
 } from './action_types';
 
 // setAnalysisFilter
-export function setAnalysisFilter(filter) {
+export function setAnalysisFilter(selectedIndex) {
   return {
     type: SET_ANALYSIS_FILTER,
-    filter
+    selectedIndex
   };
 };
 
