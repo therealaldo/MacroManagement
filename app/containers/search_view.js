@@ -7,7 +7,8 @@ import {
   View,
   ScrollView,
   ActivityIndicatorIOS,
-  TextInput
+  TextInput,
+  InteractionManager
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -33,6 +34,14 @@ class SearchView extends React.Component {
     this.props.searchMeal(this.props.meals.searchKeyword, 0);
   }
 
+  handleRecipeSearch(mealId) {
+    InteractionManager.runAfterInteractions(() => {
+      this.props.searchRecipe(mealId);
+      this.props.analyzeRecipe(mealId);
+      Actions.searchMealInfo();
+    });
+  }
+
   render() {
     return (
       <View style={ styles.container }>
@@ -50,7 +59,7 @@ class SearchView extends React.Component {
               size="large" /> :
             <ScrollView style={ styles.mealResultsContainer }>
               <MealList data={ this.props.meals.mealResults }
-                handleRecipeSearch={ this.props.analyzeRecipe } />
+                handleRecipeSearch={ this.handleRecipeSearch.bind(this) } />
             </ScrollView>
           }
         </View>

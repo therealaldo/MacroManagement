@@ -296,35 +296,20 @@ export function analyzeRecipe(mealId) {
     .then((mealInfo) => {
       let steps = [];
       let equipment = [];
-      let ingredients = [];
 
       for(let i = 0; i < mealInfo.length; i++) {
         if(mealInfo[i].equipment !== 0) {
           equipment.push(mealInfo[i].equipment);
         }
-        if(mealInfo[i].ingredients !== 0) {
-          ingredients.push(mealInfo[i].ingredients);
-        }
         steps.push(mealInfo[i].step);
       };
-
-      dispatch(analyzeRecipeSuccess(flatten(steps), flatten(equipment), flatten(ingredients)));
+      dispatch(analyzeRecipeSuccess(flatten(steps), flatten(equipment)));
     })
     .catch((err) => {
       dispatch(analyzeRecipeFailure(err));
     })
   };
 };
-
-
-
-// async searchAnalyzeRecipe
-export function searchAnalyzeRecipe(mealId) {
-  InteractionManager.runAfterInteractions(() => {
-    searchRecipe(mealId);
-    analyzeRecipe(mealId);
-  });
-}
 
 
 

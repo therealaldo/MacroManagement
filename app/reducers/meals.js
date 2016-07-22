@@ -112,7 +112,7 @@ export default function reducer(
           glutenFree: action.info.glutenFree,
           servings: action.info.servings,
           ingredients: action.info.extendedIngredients,
-          caloricBreakdown: action.info.nutritiion.caloricBreakdown,
+          caloricBreakdown: action.info.nutrition.caloricBreakdown,
           nutrients: action.info.nutrition.nutrients
         }
       };
@@ -126,7 +126,6 @@ export default function reducer(
           ...state.mealInfo,
           equipment: action.equipment,
           steps: action.steps,
-          ingredients: action.ingredients
         }
       };
 
