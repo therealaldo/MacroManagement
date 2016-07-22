@@ -15,9 +15,13 @@ import {
   MORE_SEARCH_SUCCESS,
   MORE_SEARCH_FAILURE,
 
-  SEARCH_INFO_REQUEST,
-  SEARCH_INFO_SUCCESS,
-  SEARCH_INFO_FAILURE,
+  SEARCH_RECIPE_REQUEST,
+  SEARCH_RECIPE_SUCCESS,
+  SEARCH_RECIPE_FAILURE,
+
+  ANALYZE_RECIPE_REQUEST,
+  ANALYZE_RECIPE_SUCCESS,
+  ANALYZE_RECIPE_FAILURE,
 
   ADD_MEAL_REQUEST,
   ADD_MEAL_SUCCESS,
@@ -118,11 +122,12 @@ export function analyzeRecipeRequest() {
     type: ANALYZE_RECIPE_REQUEST,
   };
 };
-export function analyzeRecipeSuccess(steps, equipment) {
+export function analyzeRecipeSuccess(steps, equipment, ingredients) {
   return {
     type: ANALYZE_RECIPE_SUCCESS,
     steps,
-    equipment
+    equipment,
+    ingredients
   };
 };
 export function analyzeRecipeFailure(error) {
@@ -275,6 +280,14 @@ export function searchRecipe(mealId) {
 
 
 
+function flatten(arr) {
+  return arr.reduce(function (flat, toFlatten) {
+    return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
+  }, []);
+}
+
+
+
 // async analyzeRecipe
 export function analyzeRecipe(mealId) {
   return dispatch => {
@@ -283,7 +296,19 @@ export function analyzeRecipe(mealId) {
     .then((mealInfo) => {
       let steps = [];
       let equipment = [];
-      dispatch(analyzeRecipeSuccess(steps, equipment));
+      let ingredients = [];
+
+      for(let i = 0; i < mealInfo.length; i++) {
+        if(mealInfo[i].equipment !== 0) {
+          equipment.push(mealInfo[i].equipment);
+        }
+        if(mealInfo[i].ingredients !== 0) {
+          ingredients.push(mealInfo[i].ingredients);
+        }
+        steps.push(mealInfo[i].step);
+      };
+
+      dispatch(analyzeRecipeSuccess(flatten(steps), flatten(equipment), flatten(ingredients)));
     })
     .catch((err) => {
       dispatch(analyzeRecipeFailure(err));
@@ -298,7 +323,6 @@ export function searchAnalyzeRecipe(mealId) {
   InteractionManager.runAfterInteractions(() => {
     searchRecipe(mealId);
     analyzeRecipe(mealId);
-    Actions.searchMealInfo();
   });
 }
 

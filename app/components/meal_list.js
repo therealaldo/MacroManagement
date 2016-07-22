@@ -7,7 +7,7 @@ import {
   View,
   Image,
   ListView,
-  TouchableHighlight
+  TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -27,12 +27,12 @@ export default class MealList extends React.Component {
           <Text style={ styles.mealTime } numberOfLines={ 1 }>{ mealItem.readyInMinutes } min.</Text>
         </View>
         <View style={ styles.mealButtonContainer }>
-          <TouchableHighlight onPress={() => this.props.handleSearchInfo(mealItem.id)}>
+          <TouchableOpacity onPress={() => this.props.handleRecipeSearch(mealItem.id)}>
             <Icon name='ios-more' size={ 30 } color='#999' />
-          </TouchableHighlight>
-          <TouchableHighlight>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.props.addMeal(mealItem)}>
             <Icon name='md-add' size={ 30 } color='#999' />
-          </TouchableHighlight>
+          </TouchableOpacity>
         </View>
       </View>
     )
@@ -43,8 +43,8 @@ export default class MealList extends React.Component {
       <View style={ styles.container }>
         <ListView
           dataSource={ this.ds.cloneWithRows(this.props.data) }
-          renderRow={ this.renderRow }
-          enableEmptySections={ true }/>
+          renderRow={ this.renderRow.bind(this) }
+          enableEmptySections={ true } />
       </View>
     )
   }

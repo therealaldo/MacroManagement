@@ -74,28 +74,28 @@ export default class App extends React.Component {
               initial={ true } hideNavBar={ true }></Scene>
             <Scene key='tabbar' tabs hideNavBar>
               <Scene key='dashboard' initial={ true } icon={ TabIcon } title='Dashboard'>
-                <Scene key='mainDashboard' component={ DashboardView }
+                <Scene key='mainDashboard' initial component={ DashboardView }
                   renderRightButton={() => <AddButton />}
                   title='Dashboard'></Scene>
               </Scene>
               <Scene key='weeklyPlan' icon={ TabIcon } title='Weekly Plan'
                 leftButtonIconStyle={{tintColor: '#e9e9e9'}} leftButtonStyle={{paddingBottom: 40}}>
-                <Scene key='mainWeeklyPlan' component={ WeeklyPlanView }
+                <Scene key='mainWeeklyPlan' initial component={ WeeklyPlanView }
                   title='Weekly Plan'></Scene>
                 <Scene key='searchMeal' component={ SearchView } title='Search Meals'></Scene>
                 <Scene key='searchMealInfo' component={ MealInfoView } title='Meal Info'></Scene>
               </Scene>
               <Scene key='trends' icon={ TabIcon } title='Trends'>
-                <Scene key='mainTrends' component={ TrendsView }
+                <Scene key='mainTrends' initial component={ TrendsView }
                   title='Trends'></Scene>
               </Scene>
               <Scene key='profile' icon={ TabIcon } title='Profile'>
-                <Scene key='viewProfile' component={ ProfileView }
+                <Scene key='viewProfile' initial component={ ProfileView }
                   title='Profile'></Scene>
               </Scene>
               <Scene key='settings' icon={ TabIcon } leftButtonStyle={{paddingBottom: 40}}
                 title='Settings' leftButtonIconStyle={{tintColor: '#e9e9e9'}}>
-                <Scene key='mainSettings' component={ SettingsView }
+                <Scene key='mainSettings' initial component={ SettingsView }
                   title='Settings'></Scene>
                 <Scene key='sharePrivacySettings' component={ SettingsView }
                   title='Sharing & Privacy'></Scene>

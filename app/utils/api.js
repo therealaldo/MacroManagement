@@ -20,7 +20,7 @@ let api = {
     })
   },
   getRecipeInfo(mealId) {
-    let url = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${ mealId }/analyzedInstructions?stepBreakdown=true`;
+    let url = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${ mealId }/information?includeNutrition=true`;
     return fetch(url, {
       method: 'GET',
       headers: {
@@ -30,6 +30,22 @@ let api = {
     .then((response) => response.json())
     .then((responseJson) => {
       return responseJson;
+    })
+    .catch((err) => {
+      return err;
+    })
+  },
+  analyzeRecipeInfo(mealId) {
+    let url = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${ mealId }/analyzedInstructions?stepBreakdown=true`;
+    return fetch(url, {
+      method: 'GET',
+      headers: {
+        'X-Mashape-Key': '1tlN4L9Dhrmsh9PGTeJ5czyf7Xvzp1LiGx6jsnG3p7NCNfYl6P'
+      }
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      return responseJson[0].steps;
     })
     .catch((err) => {
       return err;

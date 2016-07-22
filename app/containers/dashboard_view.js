@@ -74,9 +74,7 @@ class DashboardView extends React.Component {
               animating={ this.props.rssFeed.isFetching }
               color='#e9e9e9'
               size='large' /> :
-            <ScrollView style={ styles.rssResultsContainer }>
-              <RssList data={ this.props.rssFeed.rssFeed } handleRssView={ this.handleRssView } />
-            </ScrollView>
+            <RssList data={ this.props.rssFeed.rssFeed } handleRssView={ this.handleRssView } />
           }
         </ScrollView>
       </View>

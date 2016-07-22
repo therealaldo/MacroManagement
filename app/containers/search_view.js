@@ -12,6 +12,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actionCreators from '../actions/meals/action_creators';
+import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MealList from '../components/meal_list';
 
@@ -32,10 +33,6 @@ class SearchView extends React.Component {
     this.props.searchMeal(this.props.meals.searchKeyword, 0);
   }
 
-  handleSearchInfo(mealId) {
-    this.props.searchInfo(mealId);
-  }
-
   render() {
     return (
       <View style={ styles.container }>
@@ -52,8 +49,8 @@ class SearchView extends React.Component {
               color='#e9e9e9'
               size="large" /> :
             <ScrollView style={ styles.mealResultsContainer }>
-              <MealList data={ this.props.meals.mealResults } baseUri={ this.props.meals.baseUri }
-                handleSearchInfo={ this.handleSearchInfo } addMeal={ this.props.addMeal } />
+              <MealList data={ this.props.meals.mealResults }
+                handleRecipeSearch={ this.props.analyzeRecipe } />
             </ScrollView>
           }
         </View>
