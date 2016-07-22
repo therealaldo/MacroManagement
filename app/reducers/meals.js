@@ -14,9 +14,13 @@ import {
   MORE_SEARCH_SUCCESS,
   MORE_SEARCH_FAILURE,
 
-  SEARCH_INFO_REQUEST,
-  SEARCH_INFO_SUCCESS,
-  SEARCH_INFO_FAILURE,
+  SEARCH_RECIPE_REQUEST,
+  SEARCH_RECIPE_SUCCESS,
+  SEARCH_RECIPE_FAILURE,
+
+  ANALYZE_RECIPE_REQUEST,
+  ANALYZE_RECIPE_SUCCESS,
+  ANALYZE_RECIPE_FAILURE,
 
   ADD_MEAL_REQUEST,
   ADD_MEAL_SUCCESS,
@@ -36,9 +40,10 @@ import {
   DECREMENT_DATE,
 
 } from '../actions/meals/action_types';
+import moment from 'moment';
 
 const initialState = {
-  selectedDate: '',
+  selectedDate: moment().format('ddd, MMM D, YYYY'),
   mealPlans: [],
   mealPlansByDate: {},
   mealsById: {},
@@ -59,7 +64,8 @@ export default function reducer(
   switch (action.type) {
     case SEARCH_MEAL_REQUEST:
     case MORE_SEARCH_REQUEST:
-    case SEARCH_INFO_REQUEST:
+    case SEARCH_RECIPE_REQUEST:
+    case ANALYZE_RECIPE_REQUEST:
     case ADD_MEAL_REQUEST:
     case DELETE_MEAL_REQUEST:
     case FETCH_USER_MEALS_REQUEST:
@@ -96,16 +102,29 @@ export default function reducer(
         processingTimeMs: action.processingTimeMs
       };
 
-    case SEARCH_INFO_SUCCESS:
+    case SEARCH_RECIPE_SUCCESS:
       return {
         ...state,
         isFetching: false,
         error: null,
         mealInfo: {
+          ...state.mealInfo,
           glutenFree: action.info.glutenFree,
           servings: action.info.servings,
           ingredients: action.info.extendedIngredients,
           caloricBreakdown: action.info.caloricBreakdown,
+        }
+      };
+
+    case ANALYZE_RECIPE_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        error: null,
+        mealInfo: {
+          ...state.mealInfo,
+          equipment: action.equipment,
+          steps: action.steps
         }
       };
 
@@ -171,18 +190,23 @@ export default function reducer(
       };
 
     case INCREMENT_DATE:
+    let incrementedDate = moment(state.selectedDate, 'ddd, MMM D, YYYY', true).clone().add(1, 'day');
       return {
-
+        ...state,
+        selectedDate: incrementedDate.format('ddd, MMM D, YYYY')
       };
 
     case DECREMENT_DATE:
+    let decrementedDate = moment(state.selectedDate, 'ddd, MMM D, YYYY', true).clone().subtract(1, 'day');
       return {
-
+        ...state,
+        selectedDate: decrementedDate.format('ddd, MMM D, YYYY')
       };
 
     case SEARCH_MEAL_FAILURE:
     case MORE_SEARCH_FAILURE:
-    case SEARCH_INFO_FAILURE:
+    case SEARCH_RECIPE_FAILURE:
+    case ANALYZE_RECIPE_FAILURE:
     case ADD_MEAL_FAILURE:
     case DELETE_MEAL_FAILURE:
     case FETCH_USER_MEALS_FAILURE:

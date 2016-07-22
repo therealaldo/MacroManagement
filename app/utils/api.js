@@ -20,7 +20,7 @@ let api = {
     })
   },
   getRecipeInfo(mealId) {
-    let url = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${mealId}/information?includeNutrition=true`;
+    let url = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${ mealId }/analyzedInstructions?stepBreakdown=true`;
     return fetch(url, {
       method: 'GET',
       headers: {
@@ -40,7 +40,7 @@ let api = {
     return fetch (url, {
       method: 'GET',
       headers: {
-        'X-Mashape-Key': Config.FOOD_API_KEY
+        'X-Mashape-Key': '1tlN4L9Dhrmsh9PGTeJ5czyf7Xvzp1LiGx6jsnG3p7NCNfYl6P'
       }
     })
     .then((response) => response.json())

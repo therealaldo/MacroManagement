@@ -7,6 +7,7 @@ import {
   View,
   Image,
   ListView,
+  TouchableHighlight
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -19,10 +20,20 @@ export default class MealList extends React.Component {
   renderRow(mealItem) {
     let uri = `https://spoonacular.com/recipeImages/${ mealItem.image }`;
     return (
-      <View style={ styles.row }>
+      <View style={ styles.mealContainer }>
         <Image source={{ uri: uri }} style={ styles.mealImage } />
-        <Text>{ mealItem.title }</Text>
-        <Text>{ mealItem.readyInMinutes } min.</Text>
+        <View style={ styles.mealTextContainer }>
+          <Text style={ styles.mealTitle } numberOfLines={ 1 }>{ mealItem.title }</Text>
+          <Text style={ styles.mealTime } numberOfLines={ 1 }>{ mealItem.readyInMinutes } min.</Text>
+        </View>
+        <View style={ styles.mealButtonContainer }>
+          <TouchableHighlight onPress={() => this.props.handleSearchInfo(mealItem.id)}>
+            <Icon name='ios-more' size={ 30 } color='#999' />
+          </TouchableHighlight>
+          <TouchableHighlight>
+            <Icon name='md-add' size={ 30 } color='#999' />
+          </TouchableHighlight>
+        </View>
       </View>
     )
   }
@@ -42,14 +53,38 @@ export default class MealList extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e9e9e9',
   },
-  row: {
-    height: 120,
+  mealContainer: {
+    height: 90,
     flexDirection: 'row',
+    backgroundColor: '#e9e9e9',
+    borderRadius: 7,
+    marginBottom: 10,
+    padding: 10,
   },
   mealImage: {
-    width: 100,
-    height: 100,
+    flex: 3,
+    marginRight: 10,
+  },
+  mealTextContainer: {
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    flex: 6
+  },
+  mealTitle: {
+    fontFamily: 'OpenSans-Semibold',
+    fontSize: 16,
+    marginBottom: 5,
+    color: '#333',
+  },
+  mealTime: {
+    fontFamily: 'OpenSans-Light',
+    fontSize: 14,
+    color: '#666',
+  },
+  mealButtonContainer: {
+    justifyContent: 'space-around',
+    flex: 1,
+    alignItems: 'flex-end'
   }
 });

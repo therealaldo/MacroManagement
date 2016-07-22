@@ -7,7 +7,7 @@ import {
   View,
   Image,
   ListView,
-  TouchableHighlight
+  TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -19,16 +19,19 @@ export default class RssList extends React.Component {
 
   renderRow(rss) {
     return (
-      <TouchableHighlight onPress={() => this.props.handleRssView(rss.link)}>
+      <TouchableOpacity onPress={() => this.props.handleRssView(rss.link)}>
         <View style={ styles.articleContainer }>
           <Text style={ styles.articleTitle }
             numberOfLines={ 1 }>{ rss.title }</Text>
           <Text style={ styles.articleSnippet }
             numberOfLines={ 1 }>{ rss.contentSnippet }</Text>
-          <Text style={ styles.articleDate }
-            numberOfLines={ 1 }>{ rss.publishedDate }</Text>
+          <View style={ styles.rssFooter }>
+            <Icon name='logo-rss' size={ 15 } style={ styles.rssLogo } />
+            <Text style={ styles.articleDate }
+              numberOfLines={ 1 }>{ rss.publishedDate }</Text>
+          </View>
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
     )
   }
 
@@ -72,5 +75,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#666',
     textAlign: 'right',
+  },
+  rssFooter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  rssLogo: {
+    color: '#f09f04',
   }
 });

@@ -10,13 +10,13 @@ export default class DateSwitcher extends React.Component {
   render() {
     return (
       <View style={ styles.container }>
-        <Button containerStyle={ styles.back } onPress={() => Alert.alert('Go back a day pressed')}>
+        <Button containerStyle={ styles.back } onPress={ this.props.decrementDate }>
           <Icon name='ios-arrow-back' size={ 26 } />
         </Button>
         <Button containerStyle={ styles.day } onPress={() => Alert.alert('Select specific day pressed')}>
-          <Text style={ styles.dayText }>Today</Text>
+          <Text style={ styles.dayText }>{ this.props.selectedDate }</Text>
         </Button>
-        <Button containerStyle={ styles.forward } onPress={() => Alert.alert('Go forward a day pressed')}>
+        <Button containerStyle={ styles.forward } onPress={ this.props.incrementDate }>
           <Icon name='ios-arrow-forward' size={ 26 } />
         </Button>
       </View>

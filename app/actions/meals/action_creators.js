@@ -1,5 +1,7 @@
 'use strict';
 
+import { InteractionManager } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import api from '../../utils/api';
 import {
 
@@ -89,21 +91,43 @@ export function moreSearchFailure(error) {
 
 
 
-// searchInfo
-export function searchInfoRequest() {
+// searchRecipe
+export function searchRecipeRequest() {
   return {
-    type: SEARCH_INFO_REQUEST,
+    type: SEARCH_RECIPE_REQUEST,
   };
 };
-export function searchInfoSuccess(info) {
+export function searchRecipeSuccess(info) {
   return {
-    type: SEARCH_INFO_SUCCESS,
+    type: SEARCH_RECIPE_SUCCESS,
     info
   };
 };
-export function searchInfoFailure(error) {
+export function searchRecipeFailure(error) {
   return {
-    type: SEARCH_INFO_FAILURE,
+    type: SEARCH_RECIPE_FAILURE,
+    error
+  };
+};
+
+
+
+// analyzeRecipe
+export function analyzeRecipeRequest() {
+  return {
+    type: ANALYZE_RECIPE_REQUEST,
+  };
+};
+export function analyzeRecipeSuccess(steps, equipment) {
+  return {
+    type: ANALYZE_RECIPE_SUCCESS,
+    steps,
+    equipment
+  };
+};
+export function analyzeRecipeFailure(error) {
+  return {
+    type: ANALYZE_RECIPE_FAILURE,
     error
   };
 };
@@ -235,19 +259,48 @@ export function moreSearch() {
 
 
 
-// async searchInfo
-export function searchInfo(mealId) {
+// async searchRecipe
+export function searchRecipe(mealId) {
   return dispatch => {
-    dispatch(searchInfoRequest());
+    dispatch(searchRecipeRequest());
     return api.getRecipeInfo(mealId)
     .then((mealInfo) => {
-      dispatch(searchInfoSuccess(mealInfo));
+      dispatch(searchRecipeSuccess(mealInfo));
     })
     .catch((err) => {
-      dispatch(searchInfoFailure(err));
+      dispatch(searchRecipeFailure(err));
     })
   };
 };
+
+
+
+// async analyzeRecipe
+export function analyzeRecipe(mealId) {
+  return dispatch => {
+    dispatch(analyzeRecipeRequest());
+    return api.analyzeRecipeInfo(mealId)
+    .then((mealInfo) => {
+      let steps = [];
+      let equipment = [];
+      dispatch(analyzeRecipeSuccess(steps, equipment));
+    })
+    .catch((err) => {
+      dispatch(analyzeRecipeFailure(err));
+    })
+  };
+};
+
+
+
+// async searchAnalyzeRecipe
+export function searchAnalyzeRecipe(mealId) {
+  InteractionManager.runAfterInteractions(() => {
+    searchRecipe(mealId);
+    analyzeRecipe(mealId);
+    Actions.searchMealInfo();
+  });
+}
 
 
 

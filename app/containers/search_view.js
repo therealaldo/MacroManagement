@@ -1,6 +1,6 @@
 'use strict';
 
-import React, { PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import {
   StyleSheet,
   Text,
@@ -12,7 +12,6 @@ import {
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actionCreators from '../actions/meals/action_creators';
-import Button from 'react-native-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MealList from '../components/meal_list';
 
@@ -33,6 +32,10 @@ class SearchView extends React.Component {
     this.props.searchMeal(this.props.meals.searchKeyword, 0);
   }
 
+  handleSearchInfo(mealId) {
+    this.props.searchInfo(mealId);
+  }
+
   render() {
     return (
       <View style={ styles.container }>
@@ -49,7 +52,8 @@ class SearchView extends React.Component {
               color='#e9e9e9'
               size="large" /> :
             <ScrollView style={ styles.mealResultsContainer }>
-              <MealList data={ this.props.meals.mealResults } baseUri={ this.props.meals.baseUri } />
+              <MealList data={ this.props.meals.mealResults } baseUri={ this.props.meals.baseUri }
+                handleSearchInfo={ this.handleSearchInfo } addMeal={ this.props.addMeal } />
             </ScrollView>
           }
         </View>
@@ -77,7 +81,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#999999',
     borderRadius: 7,
-    marginBottom: 20,
+    marginBottom: 15,
   },
   spinner: {
     flex: 1,

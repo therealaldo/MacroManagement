@@ -21,7 +21,8 @@ class WeeklyPlanView extends React.Component {
   render() {
     return (
       <View style={ styles.container }>
-        <DateSwitcher {...this.props} />
+        <DateSwitcher selectedDate={ this.props.meals.selectedDate } decrementDate={ this.props.decrementDate }
+          incrementDate={ this.props.incrementDate } />
         <ScrollView >
           <View style={ styles.componentContainer }>
              <Text style={ styles.containerTitle }>Progress</Text>

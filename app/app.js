@@ -14,6 +14,7 @@ import WelcomeView from './containers/welcome_view';
 import DashboardView from './containers/dashboard_view';
 import WeeklyPlanView from './containers/weekly_plan_view';
 import SearchView from './containers/search_view';
+import MealInfoView from './containers/meal_info_view';
 import TrendsView from './containers/trends_view';
 import ProfileView from './containers/profile_view';
 import SettingsView from './containers/settings_view';
@@ -72,29 +73,29 @@ export default class App extends React.Component {
             <Scene key='welcome' type='jump' component={ WelcomeView } title='Welcome'
               initial={ true } hideNavBar={ true }></Scene>
             <Scene key='tabbar' tabs hideNavBar>
-              <Scene key='dashboard' icon={ TabIcon } title='Dashboard'>
-                <Scene key='mainDashboard' initial={ true } component={ DashboardView }
+              <Scene key='dashboard' initial={ true } icon={ TabIcon } title='Dashboard'>
+                <Scene key='mainDashboard' component={ DashboardView }
                   renderRightButton={() => <AddButton />}
-                  onRight={() => Alert.alert('add pressed')}
                   title='Dashboard'></Scene>
               </Scene>
               <Scene key='weeklyPlan' icon={ TabIcon } title='Weekly Plan'
                 leftButtonIconStyle={{tintColor: '#e9e9e9'}} leftButtonStyle={{paddingBottom: 40}}>
-                <Scene key='mainWeeklyPlan' initial={ true } component={ WeeklyPlanView }
+                <Scene key='mainWeeklyPlan' component={ WeeklyPlanView }
                   title='Weekly Plan'></Scene>
-                <Scene key='searchMeal' component={ SearchView } title='Weekly Plan'></Scene>
+                <Scene key='searchMeal' component={ SearchView } title='Search Meals'></Scene>
+                <Scene key='searchMealInfo' component={ MealInfoView } title='Meal Info'></Scene>
               </Scene>
               <Scene key='trends' icon={ TabIcon } title='Trends'>
-                <Scene key='mainTrends' initial={ true } component={ TrendsView }
+                <Scene key='mainTrends' component={ TrendsView }
                   title='Trends'></Scene>
               </Scene>
               <Scene key='profile' icon={ TabIcon } title='Profile'>
-                <Scene key='viewProfile' initial={ true } component={ ProfileView }
+                <Scene key='viewProfile' component={ ProfileView }
                   title='Profile'></Scene>
               </Scene>
               <Scene key='settings' icon={ TabIcon } leftButtonStyle={{paddingBottom: 40}}
                 title='Settings' leftButtonIconStyle={{tintColor: '#e9e9e9'}}>
-                <Scene key='mainSettings' initial={ true } component={ SettingsView }
+                <Scene key='mainSettings' component={ SettingsView }
                   title='Settings'></Scene>
                 <Scene key='sharePrivacySettings' component={ SettingsView }
                   title='Sharing & Privacy'></Scene>
