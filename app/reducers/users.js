@@ -8,6 +8,8 @@ import {
   SAVE_USER_SUCCESS,
   SAVE_USER_FAILURE,
 
+  LOG_OUT
+
 } from '../actions/users/action_types';
 
 const initialState = {
@@ -45,6 +47,15 @@ export default function reducer(
         ...state,
         isFetching: false,
         error: action.error
+      };
+
+    case LOG_OUT:
+      return {
+        userId: '',
+        email: '',
+        token: '',
+        isFetching: false,
+        error: null,
       };
 
     default:

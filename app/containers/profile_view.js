@@ -16,6 +16,11 @@ class ProfileView extends React.Component {
     groceryLists: PropTypes.object.isRequired,
   };
 
+  handleLogout() {
+    this.props.logout();
+    Actions.welcome({ type: 'reset' });
+  }
+
   render() {
     return (
       <View style={ styles.container }>
@@ -48,7 +53,9 @@ class ProfileView extends React.Component {
           </View>
         </View>
         <Button containerStyle={ styles.logOutButtonContainer } style={ styles.logOutButtonText }
-          onPress={ () => Alert.alert('Log Out pressed') }>
+          onPress={ () => Alert.alert({
+            
+          }) }>
           Log Out
         </Button>
       </View>

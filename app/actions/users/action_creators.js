@@ -13,6 +13,8 @@ import {
   SAVE_USER_SUCCESS,
   SAVE_USER_FAILURE,
 
+  LOG_OUT
+
 } from './action_types';
 
 const credentials = {
@@ -51,6 +53,15 @@ export function saveUserFailure(error) {
   return {
     type: SAVE_USER_FAILURE,
     error
+  };
+};
+
+
+
+// logout
+export function logout() {
+  return {
+    type: LOG_OUT
   };
 };
 

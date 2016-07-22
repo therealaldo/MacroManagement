@@ -4,7 +4,8 @@ import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, Alert, InteractionManager } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as actionCreators from '../actions/settings/action_creators';
+import * as settingsActionCreators from '../actions/settings/action_creators';
+import * as usersActionCreators from '../actions/users/action_creators';
 import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
 import SettingsList from 'react-native-settings-list';
@@ -19,6 +20,11 @@ class SettingsView extends React.Component {
     toggleNotifications: PropTypes.func.isRequired,
     resetAllSettings: PropTypes.func.isRequired,
   };
+
+  handleLogout() {
+    this.props.logout();
+    Actions.welcome({ type: 'reset' });
+  }
 
   generateSettingsList() {
     switch(this.props.routes.scene.name) {
@@ -148,7 +154,7 @@ class SettingsView extends React.Component {
               </View>
               <Button containerStyle={ styles.logOutButtonContainer }
                 style={ styles.logOutButtonText }
-                onPress={() => Alert.alert('Log Out pressed')}>
+                onPress={ this.handleLogout.bind(this) }>
                 Log Out
               </Button>
             </View>
@@ -204,7 +210,7 @@ function mapStateToProps(state) {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actionCreators, dispatch);
+  return bindActionCreators(Object.assign({}, settingsActionCreators, usersActionCreators), dispatch);
 };
 
 
