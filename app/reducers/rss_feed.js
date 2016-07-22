@@ -31,8 +31,8 @@ export default function reducer(
       return {
         isFetching: false,
         error: null,
-        rssFeed: action.rssFeed,
-        totalResults: action.rssFeed.length
+        rssFeed: action.rssFeed.responseData.feed.entries,
+        totalResults: action.rssFeed.responseData.feed.entries.length
       };
 
     case GET_RSS_FAILURE:

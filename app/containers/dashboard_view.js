@@ -1,21 +1,47 @@
 'use strict';
 
 import React, { PropTypes } from 'react';
-import { StyleSheet, Text, View, Alert, ProgressViewIOS, ScrollView, Image } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Alert,
+  ProgressViewIOS,
+  ScrollView,
+  ActivityIndicatorIOS
+} from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actionCreators from '../actions/rss_feed/action_creators';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Button from 'react-native-button';
+import RssList from '../components/rss_list';
+import SafariView from 'react-native-safari-view';
 
 class DashboardView extends React.Component {
   static propTypes = {
     routes: PropTypes.object.isRequired,
     users: PropTypes.object.isRequired,
     meals: PropTypes.object.isRequired,
-    rssFeed: PropTypes.object,
+    rssFeed: PropTypes.object.isRequired,
   };
+
+  componentWillMount() {
+    this.props.getRss();
+  }
+
+  handleRssView(url) {
+    SafariView.isAvailable()
+      .then(SafariView.show({
+        url: url,
+        readerMode: true,
+        tintColor: '#26a65b'
+      }))
+      .catch(error => {
+        console.log(error);
+      })
+  }
 
   render() {
     return (
@@ -43,35 +69,19 @@ class DashboardView extends React.Component {
               </View>
             </View>
           </Button>
-          <View style={ styles.articleContainer }>
-            <Image style={ styles.articleImage } source={ imageMap['articleImageUrl'] } />
-            <Text style={ styles.articleTitle }>Best Juices for the Summer</Text>
-          </View>
-
-          <View style={ styles.articleContainer }>
-            <Image style={ styles.articleImage } source={ imageMap['articleImageUrl'] } />
-            <Text style={ styles.articleTitle }>Best Juices for the Summer</Text>
-          </View>
-          <View style={ styles.articleContainer }>
-            <Image style={ styles.articleImage } source={ imageMap['articleImageUrl'] } />
-            <Text style={ styles.articleTitle }>Best Juices for the Summer</Text>
-          </View>
-          <View style={ styles.articleContainer }>
-            <Image style={ styles.articleImage } source={ imageMap['articleImageUrl'] } />
-            <Text style={ styles.articleTitle }>Best Juices for the Summer</Text>
-          </View>
-          <View style={ styles.articleContainer }>
-            <Image style={ styles.articleImage } source={ imageMap['articleImageUrl'] } />
-            <Text style={ styles.articleTitle }>Best Juices for the Summer</Text>
-          </View>
+          { this.props.rssFeed.isFetching ?
+            <ActivityIndicatorIOS style={ styles.spinner }
+              animating={ this.props.rssFeed.isFetching }
+              color='#e9e9e9'
+              size='large' /> :
+            <ScrollView style={ styles.rssResultsContainer }>
+              <RssList data={ this.props.rssFeed.rssFeed } handleRssView={ this.handleRssView } />
+            </ScrollView>
+          }
         </ScrollView>
       </View>
     );
   }
-};
-
-const imageMap = {
-  "articleImageUrl": require('../img/articleImage.jpeg'),
 };
 
 const styles = StyleSheet.create({
@@ -92,6 +102,7 @@ const styles = StyleSheet.create({
     fontFamily: 'OpenSans-Semibold',
     fontSize: 16,
     marginBottom: 15,
+    color: '#333',
   },
   progressView: {
     marginBottom: 15
@@ -127,21 +138,8 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center'
   },
-  articleContainer: {
-    backgroundColor: '#e9e9e9',
-    borderRadius: 7,
-    overflow: 'hidden',
-    paddingBottom: 15,
-    marginBottom: 10,
-  },
-  articleImage: {
-    height: 200,
-    marginBottom: 15
-  },
-  articleTitle: {
-    fontFamily: 'OpenSans-Semibold',
-    fontSize: 16,
-    paddingLeft: 10
+  spinner: {
+    flex: 1,
   }
 });
 

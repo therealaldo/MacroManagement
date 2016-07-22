@@ -3,6 +3,8 @@
 import api from '../../utils/api';
 import {
 
+  SET_SEARCH_KEYWORD,
+
   SEARCH_MEAL_REQUEST,
   SEARCH_MEAL_SUCCESS,
   SEARCH_MEAL_FAILURE,
@@ -34,17 +36,26 @@ import {
 
 } from './action_types';
 
+// setSearchKeyword
+export function setSearchKeyword(keyword) {
+  return {
+    type: SET_SEARCH_KEYWORD,
+    keyword
+  };
+};
+
+
+
 // searchMeal
 export function searchMealRequest() {
   return {
     type: SEARCH_MEAL_REQUEST,
   };
 };
-export function searchMealSuccess(mealResults, processingTimeMs) {
+export function searchMealSuccess(mealResults) {
   return {
     type: SEARCH_MEAL_SUCCESS,
     mealResults,
-    processingTimeMs
   };
 };
 export function searchMealFailure(error) {
@@ -192,12 +203,12 @@ export function decrementDate() {
 
 
 // async searchMeal
-export function searchMeal(query, queryOffset) {
+export function searchMeal(query, offset) {
   return dispatch => {
     dispatch(searchMealRequest());
-    return api.searchMeal(query, queryOffset)
+    return api.searchRecipe(query, offset)
     .then((mealResults) => {
-      dispatch(searchMealSuccess(mealResults, mealResults.processingTimeMs));
+      dispatch(searchMealSuccess(mealResults));
     })
     .catch((err) => {
       dispatch(searchMealFailure(err));
@@ -241,7 +252,7 @@ export function searchInfo(mealId) {
 
 
 // async addMeal
-export function addMeal(selectedDate,mealType, userId, meal) {
+export function addMeal(selectedDate, mealType, userId, meal) {
   return dispatch => {
     dispatch(addMealRequest());
     return fetch('http://192.241.140.116/meals', {

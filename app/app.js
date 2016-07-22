@@ -13,6 +13,7 @@ import configureStore from './store/configure_store';
 import WelcomeView from './containers/welcome_view';
 import DashboardView from './containers/dashboard_view';
 import WeeklyPlanView from './containers/weekly_plan_view';
+import SearchView from './containers/search_view';
 import TrendsView from './containers/trends_view';
 import ProfileView from './containers/profile_view';
 import SettingsView from './containers/settings_view';
@@ -77,9 +78,11 @@ export default class App extends React.Component {
                   onRight={() => Alert.alert('add pressed')}
                   title='Dashboard'></Scene>
               </Scene>
-              <Scene key='weeklyPlan' icon={ TabIcon } title='Weekly Plan'>
+              <Scene key='weeklyPlan' icon={ TabIcon } title='Weekly Plan'
+                leftButtonIconStyle={{tintColor: '#e9e9e9'}} leftButtonStyle={{paddingBottom: 40}}>
                 <Scene key='mainWeeklyPlan' initial={ true } component={ WeeklyPlanView }
                   title='Weekly Plan'></Scene>
+                <Scene key='searchMeal' component={ SearchView } title='Weekly Plan'></Scene>
               </Scene>
               <Scene key='trends' icon={ TabIcon } title='Trends'>
                 <Scene key='mainTrends' initial={ true } component={ TrendsView }

@@ -4,6 +4,8 @@ import omit from 'lodash/object/omit';
 import mapValues from 'lodash/object/mapValues';
 import {
 
+  SET_SEARCH_KEYWORD,
+
   SEARCH_MEAL_REQUEST,
   SEARCH_MEAL_SUCCESS,
   SEARCH_MEAL_FAILURE,
@@ -43,6 +45,7 @@ const initialState = {
   mealInfo: {},
   isFetching: false,
   error: null,
+  searchKeyword: '',
   mealResults: [],
   pagination: 0,
   totalResults: 0,
@@ -65,15 +68,21 @@ export default function reducer(
         isFetching: true
       };
 
+    case SET_SEARCH_KEYWORD:
+      return {
+        ...state,
+        searchKeyword: action.keyword
+      };
+
     case SEARCH_MEAL_SUCCESS:
       return {
         ...state,
         isFetching: false,
         error: null,
-        mealResults: action.mealResults,
+        mealResults: action.mealResults.results,
         pagination: 1,
-        totalResults: state.mealResults.length,
-        processingTimeMs: action.processingTimeMs
+        totalResults: action.mealResults.totalResults,
+        processingTimeMs: action.mealResults.processingTimeMs
       };
 
     case MORE_SEARCH_SUCCESS:
@@ -81,9 +90,9 @@ export default function reducer(
         ...state,
         isFetching: false,
         error: null,
-        mealResults: state.mealResults.concat(action.moreResults),
-        pagination: state.pagination++,
-        totalResults: state.mealResults.length,
+        mealResults: action.mealResults.concat(action.moreResults),
+        pagination: action.pagination++,
+        totalResults: action.mealResults.length,
         processingTimeMs: action.processingTimeMs
       };
 

@@ -35,7 +35,7 @@ class WeeklyPlanView extends React.Component {
           <View style={ styles.componentContainer }>
             <Text style={ styles.containerTitle }>Breakfast</Text>
             <Icon.Button name='md-add-circle' backgroundColor='#efbe14'
-              onPress={() => Alert.alert('add meal pressed')}>
+              onPress={ Actions.searchMeal }>
               <Text style={ styles.addMealText }>Add an item</Text>
             </Icon.Button>
           </View>
@@ -43,21 +43,21 @@ class WeeklyPlanView extends React.Component {
           <View style={ styles.componentContainer }>
             <Text style={ styles.containerTitle }>Lunch</Text>
             <Icon.Button name='md-add-circle' backgroundColor='#efbe14'
-              onPress={() => Alert.alert('add meal pressed')}>
+              onPress={ Actions.searchMeal }>
               <Text style={ styles.addMealText }>Add an item</Text>
             </Icon.Button>
           </View>
           <View style={ styles.componentContainer }>
             <Text style={ styles.containerTitle }>Dinner</Text>
             <Icon.Button name='md-add-circle' backgroundColor='#efbe14'
-              onPress={() => Alert.alert('add meal pressed')}>
+              onPress={ Actions.searchMeal }>
               <Text style={ styles.addMealText }>Add an item</Text>
             </Icon.Button>
           </View>
           <View style={ styles.componentContainer }>
             <Text style={ styles.containerTitle }>Snacks</Text>
             <Icon.Button name='md-add-circle' backgroundColor='#efbe14'
-              onPress={() => Alert.alert('add meal pressed')}>
+              onPress={ Actions.searchMeal }>
               <Text style={ styles.addMealText }>Add an item</Text>
             </Icon.Button>
           </View>

@@ -4,20 +4,17 @@ import Config from 'react-native-config';
 
 let api = {
 
-  searchRecipe(query, queryOffset) {
-    let url = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?&query=';
-    let queryOpt = '&limitLicense=false&number=10';
-    let offset = `&offset=${queryOffset}`;
-    return fetch(url + query + queryOpt + offset, {
+  searchRecipe(query, offset) {
+    let bareUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?';
+    let queryOpt = `limitLicense=false&number=10&offset=${ offset }&query=${ query }`;
+    let url = `${ bareUrl }${ queryOpt }`;
+    return fetch(url, {
       method: 'GET',
       headers: {
-        'X-Mashape-Key': Config.FOOD_API_KEY
+        'X-Mashape-Key': '1tlN4L9Dhrmsh9PGTeJ5czyf7Xvzp1LiGx6jsnG3p7NCNfYl6P',
       }
     })
     .then((response) => response.json())
-    .then((responseJson) => {
-      return responseJson;
-    })
     .catch((err) => {
       return err;
     })
@@ -27,7 +24,7 @@ let api = {
     return fetch(url, {
       method: 'GET',
       headers: {
-        'X-Mashape-Key': Config.FOOD_API_KEY
+        'X-Mashape-Key': '1tlN4L9Dhrmsh9PGTeJ5czyf7Xvzp1LiGx6jsnG3p7NCNfYl6P'
       }
     })
     .then((response) => response.json())
@@ -59,7 +56,7 @@ let api = {
 
   getRssFeed() {
     const GOOGLE_FEED_API_URL = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=-1&q=";
-    let rssUrl = 'http://www.medicinenet.com/rss/general/exercise_and_fitness.xml';
+    let rssUrl = 'http://www.huffingtonpost.com/feeds/verticals/health-fitness/index.xml';
     let url = GOOGLE_FEED_API_URL + encodeURIComponent(rssUrl);
     return fetch(url)
     .then((response) => response.json())
@@ -72,3 +69,5 @@ let api = {
   }
 
 };
+
+module.exports = api;

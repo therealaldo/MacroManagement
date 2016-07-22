@@ -74,7 +74,7 @@ export function login() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          userId: profile.userId,
+          userId: profile.identities[0].userId,
           email: profile.email,
           token: token.accessToken
         })
