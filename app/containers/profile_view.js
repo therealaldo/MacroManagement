@@ -53,9 +53,7 @@ class ProfileView extends React.Component {
           </View>
         </View>
         <Button containerStyle={ styles.logOutButtonContainer } style={ styles.logOutButtonText }
-          onPress={ () => Alert.alert({
-            
-          }) }>
+          onPress={ this.handleLogout.bind(this) }>
           Log Out
         </Button>
       </View>
