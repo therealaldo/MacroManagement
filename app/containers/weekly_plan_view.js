@@ -25,7 +25,7 @@ class WeeklyPlanView extends React.Component {
         <ScrollView >
           <View style={ styles.componentContainer }>
              <Text style={ styles.containerTitle }>Progress</Text>
-             <ProgressViewIOS style={ styles.progressView } progress={ 0.5 }
+             <ProgressViewIOS style={ styles.progressView } progress={ 0.75 }
               progressTintColor='#efbe14' />
              <View style={ styles.calorieInfo }>
                <Text style={ styles.containerText }>1250/2500 calories</Text>
