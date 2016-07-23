@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../actions/trends/action_creators';
 import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
+import DWChart from '../components/dw_chart';
+import MAChart from '../components/ma_chart';
 
 class TrendsView extends React.Component {
   static propTypes = {
@@ -17,19 +19,22 @@ class TrendsView extends React.Component {
     setAnalysisFilter: PropTypes.func.isRequired
   };
 
+  handleFilterChange(e) {
+    this.props.setAnalysisFilter(e.nativeEvent.selectedSegmentIndex);
+  }
+
   render() {
     return (
       <View style={ styles.container }>
         <View style={ styles.filterContainer }>
           <SegmentedControlIOS values={['Days', 'Weeks', 'Months', 'All']}
             tintColor='#e9e9e9' selectedIndex={ this.props.trends.selectedIndex }
-            onChange={ this.props.setAnalysisFilter } />
+            onChange={ this.handleFilterChange.bind(this) } />
         </View>
         <ScrollView>
           <View style={ styles.charts }>
             <View style={ styles.chartContainer }>
-              <Text style={ styles.chartTitleText }>Calorie Intake</Text>
-
+              <DWChart style={ styles.chart } imageUri={ this.props.trends.imageUri } />
             </View>
 
             <View style={ styles.chartContainer }>
@@ -56,24 +61,18 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginTop: 80,
   },
-  charts: {
-
-  },
   chartContainer: {
     height: 260,
     backgroundColor: '#e9e9e9',
-    padding: 15,
     justifyContent: 'space-around',
     borderRadius: 7,
     marginBottom: 10,
+    padding: 10,
   },
   chartTitleText: {
     fontFamily: 'OpenSans',
     fontSize: 20,
   },
-  chart: {
-    height: 200,
-  }
 });
 
 function mapStateToProps(state) {

@@ -4,63 +4,6 @@ import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import WebViewJSContext from 'react-native-webview-js-context';
 
-const DW_HTML = `
-  <html>
-    <head>
-      <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-      <script type="text/javascript">
-        google.load('visualization', '1.0', {'packages':['corechart']});
-        google.setOnLoadCallback(resolve);
-      </script>
-    </head>
-    <body><div id="calorie_progress"></div></body>
-  </html>`;
-
-const DW_JS = `
-  var data = new google.visualization.DataTable();
-  data.addColumn('date', 'Day of Week');
-  data.addColumn('number', 'Calorie Progress');
-  data.addRows([
-    [new Date(2016, 7, 15), .9],
-    [new Date(2016, 7, 14), .87],
-    [new Date(2016, 7, 13), .89],
-    [new Date(2016, 7, 12), .97],
-    [new Date(2016, 7, 11), 1.0],
-    [new Date(2016, 7, 10), .79],
-    [new Date(2016, 7, 9), .95],
-  ]);
-
-  var options = {
-    width: 500,
-    height: 250,
-    backgroundColor: 'transparent',
-    series: { 0: { color: '#26a65b' }},
-    hAxis: {
-      format: 'EEE \n M/d',
-      gridlines: {
-        color: 'transparent'
-      }
-    },
-    vAxis: {
-      format: '#%',
-      viewWindow: {
-        min: 0,
-        max: 1
-      },
-      gridlines: {
-        count: 2
-      },
-    },
-    legend: {
-      position: 'none'
-    }
-  };
-
-  var chart = new google.visualization.ColumnChart(document.getElementById('days_weeks'));
-  chart.draw(data, options);
-
-  resolve(chart.getImageURI());`;
-
 const MA_HTML = `
   <html>
     <head>
@@ -130,14 +73,13 @@ const MA_JS = `
   resolve(chart.getImageURI());
 `;
 
-class Chart extends React.Component {
+export default class MAChart extends React.Component {
   static propTypes: {
     imageUri: PropTypes.string
   };
 
   componentWillMount() {
-    switch (this.props.visibilityFilter)
-    WebViewJSContext.createWithHTML(CP_HTML)
+    WebViewJSContext.createWithHTML(MA_HTML)
     .then(context => {
       this.ctx = context;
       this.loadChart();
@@ -149,7 +91,8 @@ class Chart extends React.Component {
   }
 
   async loadChart() {
-    var imageUri = await this.ctx.evaluateScript(CP_JS);
+    var imageUri = await this.ctx.evaluateScript(MA_JS);
+    this.props.handleUriChange(imageUri);
   }
 
   render() {
@@ -166,5 +109,3 @@ const styles = StyleSheet.create({
     height: 250,
   }
 });
-
-export default Chart;

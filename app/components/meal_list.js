@@ -30,7 +30,7 @@ export default class MealList extends React.Component {
           <TouchableOpacity onPress={() => this.props.handleRecipeSearch(mealItem.id)}>
             <Icon name='ios-more' size={ 30 } color='#999' />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.addMeal(mealItem)}>
+          <TouchableOpacity onPress={() => this.props.addMeal(this.props.meals.selectedDate, mealItem)}>
             <Icon name='md-add' size={ 30 } color='#999' />
           </TouchableOpacity>
         </View>

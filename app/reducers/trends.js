@@ -15,7 +15,6 @@ import {
 import { AnalysisFilters } from '../actions/trends/action_types';
 
 const initialState = {
-  analysisFilter: AnalysisFilters.FILTER_DAY,
   selectedIndex: 0,
   imageUri: null,
   isFetching: false,

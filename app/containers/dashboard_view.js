@@ -56,19 +56,6 @@ class DashboardView extends React.Component {
                <Text style={ styles.containerText }>50%</Text>
              </View>
           </View>
-          <Button style={ styles.nextMealButton } onPress={ Actions.weeklyPlan }>
-            <View style={ styles.nextMealContainer }>
-              <View style={ styles.nextMealButtonContainer }>
-                <View style={ styles.nextMealButtonText }>
-                  <Text style={ styles.containerTitle }>Upcoming Meal</Text>
-                  <Text style={ styles.containerText }>Chicken Alfredo Pasta</Text>
-                </View>
-                <View style={ styles.nextMealButtonIcon }>
-                  <Icon name='ios-arrow-forward' size={ 30 } style={ styles.forwardIcon } />
-                </View>
-              </View>
-            </View>
-          </Button>
           { this.props.rssFeed.isFetching ?
             <ActivityIndicatorIOS style={ styles.spinner }
               animating={ this.props.rssFeed.isFetching }
@@ -95,6 +82,7 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     marginTop: 80,
     padding: 10,
+    marginBottom: 10
   },
   containerTitle: {
     fontFamily: 'OpenSans-Semibold',
@@ -112,29 +100,6 @@ const styles = StyleSheet.create({
   containerText: {
     fontFamily: 'OpenSans',
     fontSize: 16,
-  },
-  nextMealContainer: {
-    marginTop: 10,
-    backgroundColor: '#e9e9e9',
-    borderRadius: 7,
-    padding: 10,
-    marginBottom: 10,
-  },
-  nextMealButton: {
-    flex: 1,
-  },
-  nextMealButtonContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  nextMealButtonText: {
-    flexDirection: 'column',
-    justifyContent: 'center'
-  },
-  nextMealButtonIcon: {
-    flexDirection: 'column',
-    justifyContent: 'center'
   },
   spinner: {
     flex: 1,

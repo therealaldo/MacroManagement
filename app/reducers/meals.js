@@ -136,15 +136,15 @@ export default function reducer(
           return mealPlan.date === state.selectedDate ?
             {
               ...mealPlan,
-              [action.mealType]: mealPlan[action.mealType].concat(meal.id)
+              [action.mealType]: mealPlan[action.mealType].concat(meal.mealId)
             } :
             mealPlan
         }),
         mealsById: {
           ...state.mealsById,
-          [action.meal.id]: {
-            id: action.meal.id,
-            name: action.meal.title,
+          [action.meal.mealId]: {
+            id: action.meal.mealId,
+            name: action.meal.name,
             image: action.meal.image
           }
         },

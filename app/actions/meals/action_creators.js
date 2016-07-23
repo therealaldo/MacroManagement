@@ -317,8 +317,11 @@ export function analyzeRecipe(mealId) {
 export function addMeal(selectedDate, mealType, userId, meal) {
   return dispatch => {
     dispatch(addMealRequest());
-    return fetch('http://192.241.140.116/meals', {
+    return fetch('http://162.243.164.11/meals', {
       method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         userId: userId,
         date: selectedDate,
@@ -342,7 +345,7 @@ export function addMeal(selectedDate, mealType, userId, meal) {
 export function deleteMeal(userId, selectedDate, mealType, mealId) {
   return dispatch => {
     dispatch(deleteMealRequest());
-    return fetch('http://192.241.140.116/meals', {
+    return fetch('http://162.243.164.11/meals', {
       method: 'DELETE',
       body: JSON.stringify({
         userId: userId,
@@ -367,7 +370,7 @@ export function deleteMeal(userId, selectedDate, mealType, mealId) {
 export function fetchUserMeals(selectedDate, userId) {
   return dispatch => {
     dispatch(fetchUserMealsRequest());
-    return fetch('http://192.241.140.116/meals', {
+    return fetch('http://162.243.164.11/meals', {
       method: 'GET',
       body: JSON.stringify({
         userId: userId,
