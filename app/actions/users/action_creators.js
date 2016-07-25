@@ -4,7 +4,6 @@ import { Actions } from 'react-native-router-flux';
 import Auth0Lock from 'react-native-lock';
 import Config from 'react-native-config';
 import { InteractionManager } from 'react-native';
-// import the api calls to the database and the food api
 import {
 
   RECEIVE_USER_FAILURE,

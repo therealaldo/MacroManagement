@@ -54,15 +54,21 @@ export function fetchUserMealDataFailure(error) {
 
 
 // async fetchUserMealData
-export function fetchUserMealData() {
+export function fetchUserMealData(userId) {
   return dispatch => {
     dispatch(fetchUserMealDataRequest());
-    /*return api call to the database getting all of the meal data
-      .then((userMealData) => {
-        dispatch(fetchUserMealDataSuccess(userMealData));
-      })
-      .catch((err) => {
-        dispatch(fetchUserMealDataFailure());
-      });*/
+    return fetch(`http://162.243.164.11/trends/${ userId }`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      dispatch(fetchUserMealDataSuccess(responseJson));
+    })
+    .catch((err) => {
+      dispatch(fetchUserMealDataFailure(err));
+    })
   };
 };
