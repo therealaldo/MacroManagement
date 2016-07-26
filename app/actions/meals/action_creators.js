@@ -356,7 +356,7 @@ export function deleteMeal(userId, selectedDate, mealType, mealId) {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      dispatch(deleteMealSuccess(responseJson.mealType, responseJson.mealId))
+      dispatch(deleteMealSuccess(mealType, mealId))
     })
     .catch((err) => {
       dispatch(deleteMealFailure(err))
@@ -367,15 +367,14 @@ export function deleteMeal(userId, selectedDate, mealType, mealId) {
 
 
 // async fetchUserMeals
-export function fetchUserMeals(selectedDate, userId) {
+export function fetchUserMeals(userId) {
   return dispatch => {
     dispatch(fetchUserMealsRequest());
-    return fetch('http://162.243.164.11/meals', {
+    return fetch(`http://162.243.164.11/meals/${ userId }`, {
       method: 'GET',
-      body: JSON.stringify({
-        userId: userId,
-        date: selectedDate
-      })
+      headers: {
+        'Content-Type': 'application/json'
+      }
     })
     .then((response) => response.json())
     .then((responseJson) => {

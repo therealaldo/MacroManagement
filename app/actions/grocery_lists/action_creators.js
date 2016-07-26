@@ -22,6 +22,14 @@ import {
   REMOVE_LIST_SUCCESS,
   REMOVE_LIST_FAILURE,
 
+  FETCH_GROCERY_LISTS_REQUEST,
+  FETCH_GROCERY_LISTS_SUCCESS,
+  FETCH_GROCERY_LISTS_FAILURE,
+
+  FETCH_LIST_INGREDIENTS_REQUEST,
+  FETCH_LIST_INGREDIENTS_SUCCESS,
+  FETCH_LIST_INGREDIENTS_FAILURE,
+
 } from './action_types';
 
  // addGroceryItem
@@ -132,35 +140,92 @@ export function removeListFailure(error) {
 
 
 
+// fetchGroceryList
+export function fetchGroceryListRequest() {
+  return {
+    type: FETCH_GROCERY_LISTS_REQUEST
+  };
+};
+export function fetchGroceryListSuccess(lists) {
+  return {
+    type: FETCH_GROCERY_LISTS_SUCCESS,
+    lists
+  };
+};
+export function fetchGroceryListFailure(error) {
+  return {
+    type: FETCH_GROCERY_LISTS_FAILURE,
+    error
+  };
+};
+
+
+
+// fetchListIngredients
+export function fetchListIngredientsRequest() {
+  return {
+    type: FETCH_LIST_INGREDIENTS_REQUEST
+  };
+};
+export function fetchListIngredientsSuccess(ingredients) {
+  return {
+    type: FETCH_LIST_INGREDIENTS_SUCCESS,
+    ingredients
+  };
+};
+export function fetchListIngredientsFailure(error) {
+  return {
+    type: FETCH_LIST_INGREDIENTS_FAILURE,
+    error
+  };
+};
+
+
+
 // async addGroceryItem
-export function addGroceryItem() {
+export function addGroceryItem(listId, name) {
   return dispatch => {
     dispatch(addGroceryItemRequest());
-    /*return api call creating a grocery item in the database
-      .then((listId, item) => {
-        dispatch(addGroceryItemSuccess(listId, item));
+    return fetch('http://162.243.164.11/ingredients', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        listId: listId,
+        name: name
       })
-      .catch((err) => {
-        dispatch(addGroceryItemFailure(err));
-        return;
-      })*/
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      dispatch(addGroceryItemSuccess(responseJson.ingredientId, responseJson.name));
+    })
+    .catch((err) => {
+      dispatch(addGroceryItemFailure(err));
+    })
   };
 };
 
 
 
 // async removeGroceryItem
-export function removeGroceryItem() {
+export function removeGroceryItem(listId, ingredientId) {
   return dispatch => {
     dispatch(removeGroceryItemRequest());
-    /*return api call sending through the grocery item to delete in the database
-      .then((listId, itemId) => {
-        dispatch(removeGroceryItemSuccess(listId, itemId));
+    return fetch('http://162.243.164.11/ingredients', {
+      method: 'DELETE',
+      body: JSON.stringify({
+        listId: listId,
+        ingredientId: ingredientId
       })
-      .catch((err) => {
-        dispatch(removeGroceryItemFailure(err));
-        return;
-      })*/
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      dispatch(removeGroceryItemSuccess(listId, ingredientId));
+    })
+    .catch((err) => {
+      dispatch(removeGroceryItemFailure(err));
+    })
   };
 };
 
@@ -184,33 +249,91 @@ export function toggleGroceryItem() {
 
 
 // async newEmptyList
-export function newEmptyList() {
+export function newEmptyList(userId) {
   return dispatch => {
     dispatch(newEmptyListRequest());
-    /*return api call creating a new grocery list in the database
-      .then((listId) => {
-        dispatch(newEmptyListSuccess(listId));
+    fetch('http://162.243.164.11/grocerylist', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userId: userId
       })
-      .catch((err) => {
-        dispatch(newEmptyListFailure(err));
-        return;
-      })*/
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      dispatch(newEmptyListSuccess(responseJson.listId))
+    })
+    .catch((err) => {
+      dispatch(newEmptyListFailure(err))
+    })
   };
 };
 
 
 
 // async removeList
-export function removeList() {
+export function removeList(userId, listId) {
   return dispatch => {
     dispatch(removeListRequest());
-    /*return api call sending through the grocery list to delete in the database
-      .then((listId) => {
-        dispatch(removeListSuccess(listId));
+    return fetch('http://162.243.164.11/grocerylist', {
+      method: 'DELETE',
+      body: JSON.stringify({
+        userId: userId,
+        listId: listId
       })
-      .catch((err) => {
-        dispatch(removeListFailure(err));
-        return;
-      })*/
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      dispatch(removeListSuccess(listId))
+    })
+    .catch((err) => {
+      dispatch(removeListFailure(err))
+    })
   };
 };
+
+
+
+// async fetchGroceryList
+export function fetchGroceryList(userId) {
+  return dispatch => {
+    dispatch(fetchGroceryListRequest());
+    return fetch(`http://162.243.164.11/grocerylist/${ userId }`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      dispatch(fetchGroceryListSuccess(responseJson));
+    })
+    .catch((err) => {
+      dispatch(fetchGroceryListFailure(err));
+    })
+  }
+}
+
+
+
+// async fetchListIngredients
+export function fetchListIngredients(listId) {
+  return dispatch => {
+    dispatch(fetchListIngredientsRequest());
+    return fetch(`http://162.243.164.11/ingredients/${ listId }`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      dispatch(fetchListIngredientsSuccess(responseJson));
+    })
+    .catch((err) => {
+      dispatch(fetchListIngredientsFailure(err));
+    })
+  }
+}

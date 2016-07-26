@@ -81,34 +81,49 @@ export function resetIntolerancesFailure(error) {
 
 
 // async addIntolerance
-export function addIntolerance() {
+export function addIntolerance(userId, name) {
   return dispatch => {
     dispatch(addIntoleranceRequest());
-    /*return api call creating a new intolerance in the database
-      .then((listId, name) => {
-        dispatch(addIntoleranceSuccess(intoleranceId, name));
+    return fetch('http://162.243.164.11/meals', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userId: userId,
+        name: name
       })
-      .catch((err) => {
-        dispatch(addIntoleranceFailure(err));
-        return;
-      })*/
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      dispatch(addIntoleranceSuccess(responseJson.intoleranceId, responseJson.name))
+    })
+    .catch((err) => {
+      dispatch(addIntoleranceFailure(err))
+    })
   };
 };
 
 
 
 // async removeIntolerance
-export function removeIntolerance() {
+export function removeIntolerance(intoleranceId, userId) {
   return dispatch => {
     dispatch(removeIntoleranceRequest());
-    /*return api call sending through the intolerance to delete in the database
-      .then((intolernaceId) => {
-        dispatch(removeIntoleranceSuccess(listId));
+    return fetch('http://162.243.164.11/intolerances', {
+      method: 'DELETE',
+      body: JSON.stringify({
+        intoleranceId: intoleranceId,
+        userId: userId
       })
-      .catch((err) => {
-        dispatch(removeIntoleranceFailure(err));
-        return;
-      })*/
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      dispatch(removeIntoleranceSuccess(intoleranceId))
+    })
+    .catch((err) => {
+      dispatch(removeIntoleranceFailure(err))
+    })
   };
 };
 
