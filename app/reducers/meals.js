@@ -39,11 +39,16 @@ import {
   INCREMENT_DATE,
   DECREMENT_DATE,
 
+  SEARCH_BREAKFAST,
+  SEARCH_LUNCH,
+  SEARCH_DINNER,
+
 } from '../actions/meals/action_types';
 import moment from 'moment';
 
 const initialState = {
   selectedDate: moment().format('ddd, MMM D, YYYY'),
+  selectedMealType: '',
   mealPlans: [],
   mealPlansByDate: {},
   mealsById: {},
@@ -202,6 +207,24 @@ export default function reducer(
       return {
         ...state,
         selectedDate: decrementedDate.format('ddd, MMM D, YYYY')
+      };
+
+    case SEARCH_BREAKFAST:
+      return {
+        ...state,
+        selectedMealType: 'breakfast'
+      };
+
+    case SEARCH_LUNCH:
+      return {
+        ...state,
+        selectedMealType: 'lunch'
+      };
+
+    case SEARCH_DINNER:
+      return {
+        ...state,
+        selectedMealType: 'dinner'
       };
 
     case SEARCH_MEAL_FAILURE:

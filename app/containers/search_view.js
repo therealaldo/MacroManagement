@@ -42,6 +42,10 @@ class SearchView extends React.Component {
     });
   }
 
+  handleAddMeal(mealItem) {
+    
+  }
+
   render() {
     return (
       <View style={ styles.container }>

@@ -18,6 +18,21 @@ class WeeklyPlanView extends React.Component {
     intolerances: PropTypes.object.isRequired,
   };
 
+  handleBreakfastSearch() {
+    this.props.dispatch(this.props.searchBreakfast());
+    Actions.searchMeal();
+  }
+
+  handleLunchSearch() {
+    this.props.dispatch(this.props.searchLunch());
+    Actions.searchMeal();
+  }
+
+  handleDinnerSearch() {
+    this.props.dispatch(this.props.searchDinner());
+    Actions.searchMeal();
+  }
+
   render() {
     return (
       <View style={ styles.container }>
@@ -36,7 +51,7 @@ class WeeklyPlanView extends React.Component {
           <View style={ styles.componentContainer }>
             <Text style={ styles.containerTitle }>Breakfast</Text>
             <Icon.Button name='md-add-circle' backgroundColor='#efbe14'
-              onPress={ Actions.searchMeal }>
+              onPress={ this.handleBreakfastSearch.bind(this) }>
               <Text style={ styles.addMealText }>Add an item</Text>
             </Icon.Button>
           </View>
@@ -44,21 +59,14 @@ class WeeklyPlanView extends React.Component {
           <View style={ styles.componentContainer }>
             <Text style={ styles.containerTitle }>Lunch</Text>
             <Icon.Button name='md-add-circle' backgroundColor='#efbe14'
-              onPress={ Actions.searchMeal }>
+              onPress={ this.handleLunchSearch.bind(this) }>
               <Text style={ styles.addMealText }>Add an item</Text>
             </Icon.Button>
           </View>
           <View style={ styles.componentContainer }>
             <Text style={ styles.containerTitle }>Dinner</Text>
             <Icon.Button name='md-add-circle' backgroundColor='#efbe14'
-              onPress={ Actions.searchMeal }>
-              <Text style={ styles.addMealText }>Add an item</Text>
-            </Icon.Button>
-          </View>
-          <View style={ styles.componentContainer }>
-            <Text style={ styles.containerTitle }>Snacks</Text>
-            <Icon.Button name='md-add-circle' backgroundColor='#efbe14'
-              onPress={ Actions.searchMeal }>
+              onPress={ this.handleDinnerSearch.bind(this) }>
               <Text style={ styles.addMealText }>Add an item</Text>
             </Icon.Button>
           </View>
@@ -67,6 +75,7 @@ class WeeklyPlanView extends React.Component {
     );
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
