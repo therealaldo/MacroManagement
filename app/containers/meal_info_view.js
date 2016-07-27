@@ -7,7 +7,8 @@ import {
   View,
   ScrollView,
   Image,
-  ActivityIndicatorIOS
+  ActivityIndicatorIOS,
+  ListView
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -15,6 +16,8 @@ import * as actionCreators from '../actions/meals/action_creators';
 import Icon from 'react-native-vector-icons/Ionicons';
 import HTMLView from 'react-native-htmlview';
 import SafariView from 'react-native-safari-view';
+import IngredientList from '../components/ingredient_list';
+import DirectionList from '../components/direction_list';
 import api from '../utils/api';
 
 class MealInfoView extends React.Component {
@@ -24,17 +27,6 @@ class MealInfoView extends React.Component {
     users: PropTypes.object.isRequired,
   };
 
-  handleLinkPress(url) {
-    SafariView.isAvailable()
-    .then(SafariView.show({
-      url: url,
-      tintColor: '#26a65b'
-    }))
-    .catch(error => {
-      return;
-    })
-  }
-
   render() {
     return (
       <View style={ styles.container }>
@@ -43,7 +35,7 @@ class MealInfoView extends React.Component {
             animating={ this.props.meals.isFetching }
             color='#e9e9e9'
             size="large" /> :
-          <ScrollView>
+          <ScrollView style={ styles.scrollContainer }>
             <View style={ styles.infoContainer }>
               <View style={ styles.imageContainer }>
                 <Image style={ styles.mealPhoto }  source={{ uri: this.props.meals.mealInfo.image }} />
@@ -55,17 +47,24 @@ class MealInfoView extends React.Component {
                   <Text style={ styles.details }>Servings: { this.props.meals.mealInfo.servings }</Text>
                 </View>
               </View>
-              <View style={ styles.summaryContainer }>
+              <View style={ styles.detailContainer }>
                 <Text style={ styles.sectionTitle }>Summary</Text>
-                <HTMLView value={ this.props.meals.mealInfo.summary }
-                  onLinkPress={(url) => this.handleLinkPress(url)}
-                  stylesheet={ styles.summaryContent } />
+                <View style={ styles.sectionContent }>
+                  <HTMLView value={ this.props.meals.mealInfo.summary }
+                    onLinkPress={(url) => this.handleLinkPress(url)} />
+                </View>
               </View>
-              <View style={ styles.ingredientsContainer }>
+              <View style={ styles.detailContainer }>
                 <Text style={ styles.sectionTitle }>Ingredients</Text>
+                <View style={ styles.sectionContent }>
+                  <IngredientList data={ this.props.meals.mealInfo.ingredients } />
+                </View>
               </View>
-              <View style={ styles.directionsContainer }>
+              <View style={ styles.detailContainer }>
                 <Text style={ styles.sectionTitle }>Directions</Text>
+                <View style={ styles.sectionContent }>
+                  <DirectionList data={ this.props.meals.mealInfo.steps } />
+                </View>
               </View>
             </View>
           </ScrollView>
@@ -83,13 +82,15 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     paddingBottom: 50,
   },
+  scrollContainer: {
+    marginTop: 80,
+    borderRadius: 7,
+    overflow: 'hidden',
+    marginBottom: 10
+  },
   infoContainer: {
     flex: 1,
-    marginTop: 80,
     backgroundColor: '#e9e9e9',
-    borderTopLeftRadius: 7,
-    borderTopRightRadius: 7,
-    overflow: 'hidden'
   },
   imageContainer: {
     height: 200,
@@ -99,12 +100,13 @@ const styles = StyleSheet.create({
   },
   nameContainer: {
     height: 100,
-    padding: 10
+    padding: 10,
+    marginBottom: 20,
   },
   mealTitle: {
     fontSize: 20,
     fontFamily: 'OpenSans-Semibold',
-    marginBottom: 5
+    marginBottom: 10
   },
   nameDetails: {
     flexDirection: 'row',
@@ -113,7 +115,20 @@ const styles = StyleSheet.create({
     fontFamily: 'OpenSans',
     marginRight: 15
   },
-  summaryContent: {
+  detailContainer: {
+    paddingLeft: 10,
+    paddingRight: 10,
+    marginBottom: 20
+  },
+  sectionTitle: {
+    fontWeight: '600',
+    fontSize: 18,
+    marginBottom: 5,
+    borderBottomWidth: 2,
+    borderStyle: 'solid',
+    borderColor: '#999'
+  },
+  sectionContent: {
     flex: 1
   },
   spinner: {
