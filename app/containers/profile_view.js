@@ -56,10 +56,6 @@ class ProfileView extends React.Component {
   }
 };
 
-const imageMap = {
-  "badge": require('../img/badge.png'),
-};
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
