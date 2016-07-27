@@ -259,7 +259,7 @@ export default function reducer(
 
     case FETCH_USER_MEALS_SUCCESS:
       return {
-
+        
       };
 
     case INCREMENT_DATE:
