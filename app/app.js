@@ -83,8 +83,7 @@ export default class App extends React.Component {
                 <Scene key='mainWeeklyPlan' initial component={ WeeklyPlanView }
                   title='Weekly Plan'></Scene>
                 <Scene key='searchMeal' component={ SearchView } title='Search Meals'></Scene>
-                <Scene key='searchMealInfo' component={ MealInfoView } title='Meal Info'
-                  renderRightButton={() => <AddButton />}></Scene>
+                <Scene key='searchMealInfo' component={ MealInfoView } title='Meal Info'></Scene>
               </Scene>
               <Scene key='trends' icon={ TabIcon } title='Trends'>
                 <Scene key='mainTrends' initial component={ TrendsView }

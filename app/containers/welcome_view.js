@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#45d982',
+    backgroundColor: '#FFFFFF',
   },
   messageBox: {
     flex: 1,
@@ -70,14 +70,14 @@ const styles = StyleSheet.create({
   signInButton: {
     height: 50,
     alignSelf: 'stretch',
-    backgroundColor: '#efbe14',
+    backgroundColor: '#26a65b',
     margin: 10,
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonText: {
-    color: '#e9e9e9',
+    color: '#f4f4f4',
     fontFamily: 'OpenSans-Semibold',
     fontSize: 18
   }

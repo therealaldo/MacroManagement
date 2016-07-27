@@ -27,6 +27,22 @@ class MealInfoView extends React.Component {
     users: PropTypes.object.isRequired,
   };
 
+  handleAddMeal(selectedDate, mealType, userId, mealId, title, image) {
+    let meal = {
+      id: mealId,
+      title: title,
+      image: image
+    };
+    api.getRecipeInfo(meal.id)
+    .then((response) => {
+      let calories = Math.floor(response.nutrition.nutrients[0].amount);
+      this.props.addMeal(selectedDate, mealType, userId, meal, calories);
+    })
+    .catch((err) => {
+      this.props.dispatch(this.props.addMealFailure(err));
+    })
+  }
+
   render() {
     return (
       <View style={ styles.container }>
@@ -50,8 +66,7 @@ class MealInfoView extends React.Component {
               <View style={ styles.detailContainer }>
                 <Text style={ styles.sectionTitle }>Summary</Text>
                 <View style={ styles.sectionContent }>
-                  <HTMLView value={ this.props.meals.mealInfo.summary }
-                    onLinkPress={(url) => this.handleLinkPress(url)} />
+                  <HTMLView value={ this.props.meals.mealInfo.summary } />
                 </View>
               </View>
               <View style={ styles.detailContainer }>
@@ -66,6 +81,10 @@ class MealInfoView extends React.Component {
                   <DirectionList data={ this.props.meals.mealInfo.steps } />
                 </View>
               </View>
+              <Icon.Button name='md-add-circle' backgroundColor='#efbe14'
+                onPress={ () => this.handleAddMeal(this.props.meals.selectedDate, this.props.meals.selectedMealType, this.props.users.userId, this.props.meals.mealInfo.mealId, this.props.meals.mealInfo.name, this.props.meals.mealInfo.image) }>
+                <Text style={ styles.addMealText }>Add meal</Text>
+              </Icon.Button>
             </View>
           </ScrollView>
         }
@@ -91,6 +110,8 @@ const styles = StyleSheet.create({
   infoContainer: {
     flex: 1,
     backgroundColor: '#e9e9e9',
+    borderRadius: 7,
+    overflow: 'hidden',
   },
   imageContainer: {
     height: 200,
@@ -137,6 +158,13 @@ const styles = StyleSheet.create({
   tabView: {
     height: 100,
     marginBottom: 100
+  },
+  addMealText: {
+    fontSize: 18,
+    fontFamily: 'OpenSans-Semibold',
+    color: '#e9e9e9',
+    padding: 10,
+    alignSelf: 'center'
   }
 });
 
