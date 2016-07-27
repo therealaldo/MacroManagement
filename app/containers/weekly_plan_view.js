@@ -9,6 +9,7 @@ import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
 import DateSwitcher from '../components/date_switcher';
 import Icon from 'react-native-vector-icons/Ionicons';
+import moment from 'moment';
 
 class WeeklyPlanView extends React.Component {
   static propTypes = {
@@ -33,11 +34,24 @@ class WeeklyPlanView extends React.Component {
     Actions.searchMeal();
   }
 
+  handleIncrementDate() {
+    let incrementedDate = moment(this.props.meals.selectedDate, 'ddd, MMM D, YYYY', true).clone().add(1, 'day');
+    this.props.incrementDate(incrementedDate);
+    this.props.addMealPlan(incrementedDate.format('ddd, MMM D, YYYY'));
+  }
+
+  handleDecrementDate() {
+    let decrementedDate = moment(this.props.meals.selectedDate, 'ddd, MMM D, YYYY', true).clone().subtract(1, 'day');
+    this.props.decrementDate(decrementedDate);
+    this.props.addMealPlan(decrementedDate.format('ddd, MMM D, YYYY'));
+  }
+
   render() {
     return (
       <View style={ styles.container }>
-        <DateSwitcher selectedDate={ this.props.meals.selectedDate } decrementDate={ this.props.decrementDate }
-          incrementDate={ this.props.incrementDate } />
+        <DateSwitcher selectedDate={ this.props.meals.selectedDate }
+          decrementDate={ this.handleDecrementDate.bind(this) }
+          incrementDate={ this.handleIncrementDate.bind(this) } />
         <ScrollView >
           <View style={ styles.componentContainer }>
              <Text style={ styles.containerTitle }>Progress</Text>

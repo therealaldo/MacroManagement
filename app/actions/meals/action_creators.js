@@ -44,6 +44,12 @@ import {
   SEARCH_LUNCH,
   SEARCH_DINNER,
 
+  CHANGE_INFO_VIEW,
+
+  SEARCH_SUMMARY_REQUEST,
+  SEARCH_SUMMARY_SUCCESS,
+  SEARCH_SUMMARY_FAILURE
+
 } from './action_types';
 
 export function setSearchKeyword(keyword) {
@@ -126,10 +132,11 @@ export function searchRecipeRequest() {
     type: SEARCH_RECIPE_REQUEST,
   };
 };
-export function searchRecipeSuccess(info) {
+export function searchRecipeSuccess(info, readyIn) {
   return {
     type: SEARCH_RECIPE_SUCCESS,
-    info
+    info,
+    readyIn
   };
 };
 export function searchRecipeFailure(error) {
@@ -138,12 +145,12 @@ export function searchRecipeFailure(error) {
     error
   };
 };
-export function searchRecipe(mealId) {
+export function searchRecipe(mealId, readyIn) {
   return dispatch => {
     dispatch(searchRecipeRequest());
     return api.getRecipeInfo(mealId)
     .then((mealInfo) => {
-      dispatch(searchRecipeSuccess(mealInfo));
+      dispatch(searchRecipeSuccess(mealInfo, readyIn));
     })
     .catch((err) => {
       dispatch(searchRecipeFailure(err));
@@ -201,16 +208,56 @@ export function analyzeRecipe(mealId) {
 
 
 
+export function searchSummaryRequest() {
+  return {
+    type: SEARCH_SUMMARY_REQUEST
+  };
+};
+export function searchSummarySuccess(summary) {
+  return {
+    type: SEARCH_SUMMARY_SUCCESS,
+    summary
+  };
+};
+export function searchSummaryFailure(err) {
+  return {
+    type: SEARCH_SUMMARY_FAILURE,
+    err
+  };
+};
+export function searchSummary(mealId) {
+  return dispatch => {
+    dispatch(searchSummaryRequest());
+    return api.searchSummary(mealId)
+    .then((mealSummary) => {
+      dispatch(searchSummarySuccess(mealSummary));
+    })
+    .catch((err) => {
+      dispatch(searchSummaryFailure(err));
+    })
+  };
+};
+
+
+
+export function changeInfoView(selectedView) {
+  return {
+    type: CHANGE_INFO_VIEW,
+    selectedView
+  };
+};
+
+
+
 export function addMealRequest() {
   return {
     type: ADD_MEAL_REQUEST,
   };
 };
-export function addMealSuccess(mealType, meal) {
+export function addMealSuccess(mealJson) {
   return {
     type: ADD_MEAL_SUCCESS,
-    mealType,
-    meal
+    mealJson
   };
 };
 export function addMealFailure(error) {
@@ -219,14 +266,34 @@ export function addMealFailure(error) {
     error
   };
 };
-export function addMeal(selectedDate, mealType, userId, meal) {
+export function addMeal(selectedDate, mealType, userId, meal, calories) {
   return dispatch => {
     dispatch(addMealRequest());
-    return api.getRecipeInfo(meal.id)
-    .then((response) => response.json())
-    .then((responseJson) => {
-
+    return fetch('http://162.243.164.11/meals', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userId: userId,
+        date: selectedDate,
+        mealId: meal.id,
+        name: meal.title,
+        image: meal.image,
+        mealType: mealType,
+        calories: calories
+      })
     })
+    .then((response) => response.json())
+    .then((mealJson) => {
+      InteractionManager.runAfterInteractions(() => {
+        dispatch(addMealSuccess(mealJson));
+        Actions.pop();
+      });
+    })
+    .catch((err) => {
+      dispatch(addMealFailure(err))
+    });
   };
 };
 
@@ -275,9 +342,10 @@ export function deleteMeal(userId, selectedDate, mealType, mealId) {
 
 
 
-export function addMealPlan() {
+export function addMealPlan(date) {
   return {
     type: ADD_MEAL_PLAN,
+    date
   };
 };
 
@@ -322,14 +390,16 @@ export function fetchUserMeals(userId) {
 
 
 
-export function incrementDate() {
+export function incrementDate(incrementedDate) {
   return {
     type: INCREMENT_DATE,
+    incrementedDate
   };
 };
-export function decrementDate() {
+export function decrementDate(decrementedDate) {
   return {
     type: DECREMENT_DATE,
+    decrementedDate
   };
 };
 

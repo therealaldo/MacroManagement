@@ -51,7 +51,7 @@ let api = {
       return err;
     })
   },
-  searchNutrients(recipeId) {
+  searchSummary(recipeId) {
     let url = `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${recipeId}/summary`;
     return fetch (url, {
       method: 'GET',

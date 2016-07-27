@@ -34,16 +34,13 @@ class SearchView extends React.Component {
     this.props.searchMeal(this.props.meals.searchKeyword, 0);
   }
 
-  handleRecipeSearch(mealId) {
+  handleRecipeSearch(mealId, readyIn) {
     InteractionManager.runAfterInteractions(() => {
-      this.props.searchRecipe(mealId);
+      this.props.searchRecipe(mealId, readyIn);
       this.props.analyzeRecipe(mealId);
+      this.props.searchSummary(mealId);
       Actions.searchMealInfo();
     });
-  }
-
-  handleAddMeal(mealItem) {
-    
   }
 
   render() {
@@ -56,14 +53,18 @@ class SearchView extends React.Component {
             onSubmitEditing={ this.handleSubmitEdit.bind(this) }
             placeholder='Search for meals' />
 
-          {this.props.meals.isFetching ?
+          {this.props.meals.isSearching ?
             <ActivityIndicatorIOS style={ styles.spinner }
-              animating={ this.props.meals.isFetching }
+              animating={ this.props.meals.isSearching }
               color='#e9e9e9'
               size="large" /> :
             <ScrollView style={ styles.mealResultsContainer }>
               <MealList data={ this.props.meals.mealResults }
-                handleRecipeSearch={ this.handleRecipeSearch.bind(this) } />
+                addMeal={ this.props.addMeal }
+                handleRecipeSearch={ this.handleRecipeSearch.bind(this) }
+                selectedDate={ this.props.meals.selectedDate }
+                mealType={ this.props.meals.selectedMealType }
+                userId={ this.props.users.userId } />
             </ScrollView>
           }
         </View>

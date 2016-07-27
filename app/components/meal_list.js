@@ -9,12 +9,24 @@ import {
   ListView,
   TouchableOpacity
 } from 'react-native';
+import api from '../utils/api';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class MealList extends React.Component {
   constructor(props) {
     super(props);
     this.ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row !== row2 });
+  }
+
+  handleAddMeal(selectedDate, mealType, userId, meal) {
+    api.getRecipeInfo(meal.id)
+    .then((response) => {
+      let calories = Math.floor(response.nutrition.nutrients[0].amount);
+      this.props.addMeal(selectedDate, mealType, userId, meal, calories);
+    })
+    .catch((err) => {
+      this.props.dispatch(this.props.addMealFailure(err));
+    })
   }
 
   renderRow(mealItem) {
@@ -27,10 +39,10 @@ export default class MealList extends React.Component {
           <Text style={ styles.mealTime } numberOfLines={ 1 }>{ mealItem.readyInMinutes } min.</Text>
         </View>
         <View style={ styles.mealButtonContainer }>
-          <TouchableOpacity onPress={() => this.props.handleRecipeSearch(mealItem.id)}>
+          <TouchableOpacity onPress={() => this.props.handleRecipeSearch(mealItem.id, mealItem.readyInMinutes)}>
             <Icon name='ios-more' size={ 30 } color='#999' />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => console.log('bananas')}>
+          <TouchableOpacity onPress={() => this.handleAddMeal(this.props.selectedDate, this.props.mealType, this.props.userId, mealItem)}>
             <Icon name='md-add' size={ 30 } color='#999' />
           </TouchableOpacity>
         </View>
