@@ -33,14 +33,14 @@ class DashboardView extends React.Component {
 
   handleRssView(url) {
     SafariView.isAvailable()
-      .then(SafariView.show({
-        url: url,
-        readerMode: true,
-        tintColor: '#26a65b'
-      }))
-      .catch(error => {
-        console.log(error);
-      })
+    .then(SafariView.show({
+      url: url,
+      readerMode: true,
+      tintColor: '#26a65b'
+    }))
+    .catch(error => {
+      return;
+    })
   }
 
   render() {

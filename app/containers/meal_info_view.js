@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../actions/meals/action_creators';
 import Icon from 'react-native-vector-icons/Ionicons';
 import HTMLView from 'react-native-htmlview';
+import SafariView from 'react-native-safari-view';
 import api from '../utils/api';
 
 class MealInfoView extends React.Component {
@@ -23,6 +24,17 @@ class MealInfoView extends React.Component {
     users: PropTypes.object.isRequired,
   };
 
+  handleLinkPress(url) {
+    SafariView.isAvailable()
+    .then(SafariView.show({
+      url: url,
+      tintColor: '#26a65b'
+    }))
+    .catch(error => {
+      return;
+    })
+  }
+
   render() {
     return (
       <View style={ styles.container }>
@@ -31,17 +43,32 @@ class MealInfoView extends React.Component {
             animating={ this.props.meals.isFetching }
             color='#e9e9e9'
             size="large" /> :
-          <View style={ styles.infoContainer }>
-            <View style={ styles.imageContainer }>
-              <Image style={ styles.mealPhoto }  source={{ uri: this.props.meals.mealInfo.image }} />
+          <ScrollView>
+            <View style={ styles.infoContainer }>
+              <View style={ styles.imageContainer }>
+                <Image style={ styles.mealPhoto }  source={{ uri: this.props.meals.mealInfo.image }} />
+              </View>
+              <View style={ styles.nameContainer }>
+                <Text style={ styles.mealTitle }>{ this.props.meals.mealInfo.name }</Text>
+                <View style={ styles.nameDetails }>
+                  <Text style={ styles.details }>Cook Time: { this.props.meals.mealInfo.readyIn } min.</Text>
+                  <Text style={ styles.details }>Servings: { this.props.meals.mealInfo.servings }</Text>
+                </View>
+              </View>
+              <View style={ styles.summaryContainer }>
+                <Text style={ styles.sectionTitle }>Summary</Text>
+                <HTMLView value={ this.props.meals.mealInfo.summary }
+                  onLinkPress={(url) => this.handleLinkPress(url)}
+                  stylesheet={ styles.summaryContent } />
+              </View>
+              <View style={ styles.ingredientsContainer }>
+                <Text style={ styles.sectionTitle }>Ingredients</Text>
+              </View>
+              <View style={ styles.directionsContainer }>
+                <Text style={ styles.sectionTitle }>Directions</Text>
+              </View>
             </View>
-            <View style={ styles.nameContainer }>
-              <Text>{ this.props.meals.mealInfo.name }</Text>
-              <Text>Cook Time: { this.props.meals.mealInfo.readyIn } min.</Text>
-              <Text>Servings: { this.props.meals.mealInfo.servings }</Text>
-            </View>
-
-          </View>
+          </ScrollView>
         }
       </View>
     )
@@ -60,19 +87,34 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 80,
     backgroundColor: '#e9e9e9',
-    borderRadius: 7,
+    borderTopLeftRadius: 7,
+    borderTopRightRadius: 7,
+    overflow: 'hidden'
   },
   imageContainer: {
     height: 200,
   },
   mealPhoto: {
     height: 200,
-    borderTopLeftRadius: 7,
-    borderTopRightRadius: 7
   },
   nameContainer: {
     height: 100,
     padding: 10
+  },
+  mealTitle: {
+    fontSize: 20,
+    fontFamily: 'OpenSans-Semibold',
+    marginBottom: 5
+  },
+  nameDetails: {
+    flexDirection: 'row',
+  },
+  details: {
+    fontFamily: 'OpenSans',
+    marginRight: 15
+  },
+  summaryContent: {
+    flex: 1
   },
   spinner: {
     flex: 1
