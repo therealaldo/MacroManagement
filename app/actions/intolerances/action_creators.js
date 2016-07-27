@@ -2,6 +2,8 @@
 
 import {
 
+  SET_INTOLERANCE_KEYWORD,
+
   ADD_INTOLERANCE_REQUEST,
   ADD_INTOLERANCE_SUCCESS,
   ADD_INTOLERANCE_FAILURE,
@@ -12,16 +14,24 @@ import {
 
 } from './action_types';
 
+export function setIntoleranceKeyword(keyword) {
+  return {
+    type: SET_INTOLERANCE_KEYWORD,
+    keyword
+  };
+};
+
+
+
 export function addIntoleranceRequest() {
   return {
     type: ADD_INTOLERANCE_REQUEST,
   };
 };
-export function addIntoleranceSuccess(intoleranceId, name) {
+export function addIntoleranceSuccess(intoleranceJson) {
   return {
     type: ADD_INTOLERANCE_SUCCESS,
-    intoleranceId
-    name
+    intoleranceJson
   };
 };
 export function addIntoleranceFailure(error) {
@@ -33,7 +43,7 @@ export function addIntoleranceFailure(error) {
 export function addIntolerance(userId, name) {
   return dispatch => {
     dispatch(addIntoleranceRequest());
-    return fetch('http://162.243.164.11/meals', {
+    return fetch('http://162.243.164.11/intolerances', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -45,7 +55,7 @@ export function addIntolerance(userId, name) {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      dispatch(addIntoleranceSuccess(responseJson.intoleranceId, responseJson.name))
+      dispatch(addIntoleranceSuccess(responseJson))
     })
     .catch((err) => {
       dispatch(addIntoleranceFailure(err))

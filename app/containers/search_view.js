@@ -27,7 +27,7 @@ class SearchView extends React.Component {
   };
 
   handleKeywordChange(e) {
-    this.props.setSearchKeyword(e.nativeEvent.text.trim())
+    this.props.setSearchKeyword(e.nativeEvent.text.trim());
   }
 
   handleSubmitEdit(e) {

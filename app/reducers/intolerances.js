@@ -5,6 +5,8 @@ import assign from 'lodash/object/assign';
 import mapValues from 'lodash/object/mapValues';
 import {
 
+  SET_INTOLERANCE_KEYWORD,
+
   ADD_INTOLERANCE_REQUEST,
   ADD_INTOLERANCE_SUCCESS,
   ADD_INTOLERANCE_FAILURE,
@@ -22,6 +24,7 @@ import {
 const initialState = {
   intolerances: [],
   intolerancesById: {},
+  intoleranceKeyword: '',
   isFetching: false,
   error: null,
 };
@@ -39,14 +42,20 @@ export default function reducer(
         isFetching: true
       };
 
+    case SET_INTOLERANCE_KEYWORD:
+      return {
+        ...state,
+        intoleranceKeyword: action.keyword
+      };
+
     case ADD_INTOLERANCE_SUCCESS:
       return {
-        intolerances: state.intolerances.concat(action.intoleranceId),
+        intolerances: state.intolerances.concat(action.intoleranceJson.createdIntolerance.intoleranceId),
         intolerancesById: {
           ...state.intolerancesById,
-          [action.intoleranceId]: {
-            id: action.intoleranceId,
-            name: action.name
+          [action.intoleranceJson.createdIntolerance.intoleranceId]: {
+            id: action.intoleranceJson.createdIntolerance.intoleranceId,
+            name: action.intoleranceJson.createdIntolerance.name
           }
         },
         isFetching: false,

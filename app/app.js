@@ -17,6 +17,7 @@ import SearchView from './containers/search_view';
 import MealInfoView from './containers/meal_info_view';
 import TrendsView from './containers/trends_view';
 import ProfileView from './containers/profile_view';
+import IntoleranceView from './containers/intolerance_view';
 import SettingsView from './containers/settings_view';
 import TermsServiceView from './containers/terms_service_view';
 import PrivacyPolicyView from './containers/privacy_policy_view';
@@ -91,9 +92,12 @@ export default class App extends React.Component {
                 <Scene key='mainTrends' initial component={ TrendsView }
                   title='Trends'></Scene>
               </Scene>
-              <Scene key='profile' icon={ TabIcon } title='Profile'>
+              <Scene key='profile' icon={ TabIcon } title='Profile'
+                leftButtonIconStyle={{ tintColor: '#e9e9e9' }} leftButtonStyle={{ paddingBottom: 40 }}>
                 <Scene key='viewProfile' initial component={ ProfileView }
                   title='Profile'></Scene>
+                <Scene key='intolerances' component={ IntoleranceView }
+                  title='Intolerances'></Scene>
               </Scene>
               <Scene key='settings' icon={ TabIcon } leftButtonStyle={{paddingBottom: 40}}
                 title='Settings' leftButtonIconStyle={{tintColor: '#e9e9e9'}}>
