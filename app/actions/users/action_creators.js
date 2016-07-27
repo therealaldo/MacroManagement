@@ -26,7 +26,6 @@ const lock = new Auth0Lock(credentials, {
   }
 });
 
-// receiveUser
 export function receiveUserFailure(error) {
   return {
     type: RECEIVE_USER_FAILURE,
@@ -36,7 +35,6 @@ export function receiveUserFailure(error) {
 
 
 
-// saveUser
 export function saveUserRequest() {
   return {
     type: SAVE_USER_REQUEST,
@@ -54,19 +52,6 @@ export function saveUserFailure(error) {
     error
   };
 };
-
-
-
-// logout
-export function logout() {
-  return {
-    type: LOG_OUT
-  };
-};
-
-
-
-// async login
 export function login() {
   return dispatch => {
     lock.show({
@@ -101,5 +86,13 @@ export function login() {
         return;
       });
     });
+  };
+};
+
+
+
+export function logout() {
+  return {
+    type: LOG_OUT
   };
 };

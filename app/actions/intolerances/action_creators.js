@@ -10,13 +10,8 @@ import {
   REMOVE_INTOLERANCE_SUCCESS,
   REMOVE_INTOLERANCE_FAILURE,
 
-  RESET_INTOLERANCES_REQUEST,
-  RESET_INTOLERANCES_SUCCESS,
-  RESET_INTOLERANCES_FAILURE,
-
 } from './action_types';
 
-// addIntolerance
 export function addIntoleranceRequest() {
   return {
     type: ADD_INTOLERANCE_REQUEST,
@@ -35,52 +30,6 @@ export function addIntoleranceFailure(error) {
     error
   };
 };
-
-
-
-// removeIntolerance
-export function removeIntoleranceRequest() {
-  return {
-    type: REMOVE_INTOLERANCE_REQUEST,
-  };
-};
-export function removeIntoleranceSuccess(intoleranceId) {
-  return {
-    type: REMOVE_INTOLERANCE_SUCCESS,
-    intoleranceId
-  };
-};
-export function removeIntoleranceFailure(error) {
-  return {
-    type: REMOVE_INTOLERANCE_FAILURE,
-    error
-  };
-};
-
-
-
-// resetIntolerances
-export function resetIntolerancesRequest() {
-  return {
-    type: RESET_PREFERENCES_REQUEST,
-  };
-};
-export function resetIntolerancesSuccess(intolerances) {
-  return {
-    type: RESET_PREFERENCES_SUCCESS,
-    intolerances
-  };
-};
-export function resetIntolerancesFailure(error) {
-  return {
-    type: RESET_PREFERENCES_FAILURE,
-    error
-  };
-};
-
-
-
-// async addIntolerance
 export function addIntolerance(userId, name) {
   return dispatch => {
     dispatch(addIntoleranceRequest());
@@ -106,7 +55,23 @@ export function addIntolerance(userId, name) {
 
 
 
-// async removeIntolerance
+export function removeIntoleranceRequest() {
+  return {
+    type: REMOVE_INTOLERANCE_REQUEST,
+  };
+};
+export function removeIntoleranceSuccess(intoleranceId) {
+  return {
+    type: REMOVE_INTOLERANCE_SUCCESS,
+    intoleranceId
+  };
+};
+export function removeIntoleranceFailure(error) {
+  return {
+    type: REMOVE_INTOLERANCE_FAILURE,
+    error
+  };
+};
 export function removeIntolerance(intoleranceId, userId) {
   return dispatch => {
     dispatch(removeIntoleranceRequest());
@@ -124,22 +89,5 @@ export function removeIntolerance(intoleranceId, userId) {
     .catch((err) => {
       dispatch(removeIntoleranceFailure(err))
     })
-  };
-};
-
-
-
-// async resetIntolerances
-export function resetIntolerances() {
-  return dispatch => {
-    dispatch(resetIntolerancesRequest());
-    /*return api call sending through the grocery item to the database
-      .then((intolerances) => {
-        dispatch(resetIntolerancesSuccess(intolerances));
-      })
-      .catch((err) => {
-        dispatch(resetIntolerancesFailure(err));
-        return;
-      })*/
   };
 };

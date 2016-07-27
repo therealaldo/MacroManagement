@@ -14,7 +14,6 @@ import {
 
 } from './action_types';
 
-// toggleNotifications
 export function toggleNotifications() {
   return {
     type: TOGGLE_NOTIFICATIONS,
@@ -23,7 +22,6 @@ export function toggleNotifications() {
 
 
 
-// toggleRecommendations
 export function toggleRecommendations() {
   return {
     type: TOGGLE_RECOMMENDATIONS,
@@ -32,7 +30,6 @@ export function toggleRecommendations() {
 
 
 
-// toggleNutritionFacts
 export function toggleNutritionFacts() {
   return {
     type: TOGGLE_NUTRITION_FACTS,
@@ -41,7 +38,6 @@ export function toggleNutritionFacts() {
 
 
 
-// resetNotifications
 export function resetNotifications() {
   return {
     type: RESET_NOTIFICATIONS,
@@ -50,7 +46,6 @@ export function resetNotifications() {
 
 
 
-// resetAllSettings
 export function resetAllSettings() {
   return {
     type: RESET_ALL_SETTINGS,

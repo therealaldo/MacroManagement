@@ -81,10 +81,12 @@ class MealInfoView extends React.Component {
                   <DirectionList data={ this.props.meals.mealInfo.steps } />
                 </View>
               </View>
-              <Icon.Button name='md-add-circle' backgroundColor='#efbe14'
-                onPress={ () => this.handleAddMeal(this.props.meals.selectedDate, this.props.meals.selectedMealType, this.props.users.userId, this.props.meals.mealInfo.mealId, this.props.meals.mealInfo.name, this.props.meals.mealInfo.image) }>
-                <Text style={ styles.addMealText }>Add meal</Text>
-              </Icon.Button>
+              <View style={ styles.detailContainer }>
+                <Icon.Button name='md-add-circle' size={ 30 } backgroundColor='#efbe14'
+                  onPress={ () => this.handleAddMeal(this.props.meals.selectedDate, this.props.meals.selectedMealType, this.props.users.userId, this.props.meals.mealInfo.mealId, this.props.meals.mealInfo.name, this.props.meals.mealInfo.image) }>
+                  <Text style={ styles.addMealText }>Add meal</Text>
+                </Icon.Button>
+              </View>
             </View>
           </ScrollView>
         }

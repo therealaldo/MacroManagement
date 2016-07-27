@@ -12,7 +12,6 @@ import {
 
 } from './action_types';
 
-// setAnalysisFilter
 export function setAnalysisFilter(selectedIndex) {
   return {
     type: SET_ANALYSIS_FILTER,
@@ -22,7 +21,6 @@ export function setAnalysisFilter(selectedIndex) {
 
 
 
-// setImageUri
 export function setImageUri(uri) {
   return {
     type: SET_IMAGE_URI,
@@ -32,7 +30,6 @@ export function setImageUri(uri) {
 
 
 
-// fetchUserMealData
 export function fetchUserMealDataRequest() {
   return {
     type: FETCH_USER_MEAL_DATA_REQUEST
@@ -50,10 +47,6 @@ export function fetchUserMealDataFailure(error) {
     error
   };
 };
-
-
-
-// async fetchUserMealData
 export function fetchUserMealData(userId) {
   return dispatch => {
     dispatch(fetchUserMealDataRequest());

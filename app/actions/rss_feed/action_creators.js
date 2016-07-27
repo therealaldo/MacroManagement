@@ -9,7 +9,6 @@ GET_RSS_FAILURE,
 
 } from './action_types';
 
-// getRss
 export function getRssRequest() {
   return {
     type: GET_RSS_REQUEST,
@@ -27,10 +26,6 @@ export function getRssFailure(error) {
     error
   };
 };
-
-
-
-// async getRss
 export function getRss() {
   return dispatch => {
     dispatch(getRssRequest());

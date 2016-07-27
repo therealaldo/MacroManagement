@@ -31,9 +31,9 @@ class ProfileView extends React.Component {
         <View style={ styles.settingsContainer }>
           <View style={ styles.listContainer }>
             <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
-              <SettingsList.Item title='Change Food Intolerances' titleStyle={{fontFamily: 'OpenSans'}}
+              <SettingsList.Item title='Food Intolerances' titleStyle={{fontFamily: 'OpenSans'}}
                   onPress={ () =>  Alert.alert('Change Food Intolerances pressed') } />
-              <SettingsList.Item title='Saved Grocery Lists' titleStyle={{fontFamily: 'OpenSans'}}
+              <SettingsList.Item title='Grocery Lists' titleStyle={{fontFamily: 'OpenSans'}}
                   onPress={ () =>  Alert.alert('Saved Grocery Lists pressed') } />
             </SettingsList>
           </View>

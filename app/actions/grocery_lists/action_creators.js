@@ -10,10 +10,6 @@ import {
   REMOVE_GROCERY_ITEM_SUCCESS,
   REMOVE_GROCERY_ITEM_FAILURE,
 
-  TOGGLE_GROCERY_ITEM_REQUEST,
-  TOGGLE_GROCERY_ITEM_SUCCESS,
-  TOGGLE_GROCERY_ITEM_FAILURE,
-
   NEW_EMPTY_LIST_REQUEST,
   NEW_EMPTY_LIST_SUCCESS,
   NEW_EMPTY_LIST_FAILURE,
@@ -32,7 +28,6 @@ import {
 
 } from './action_types';
 
- // addGroceryItem
 export function addGroceryItemRequest() {
   return {
     type: ADD_GROCERY_ITEM_REQUEST
@@ -51,138 +46,6 @@ export function addGroceryItemFailure(error) {
     error
   };
 };
-
-
-
-// removeGroceryItem
-export function removeGroceryItemRequest() {
-  return {
-    type: REMOVE_GROCERY_ITEM_REQUEST
-  };
-};
-export function removeGroceryItemSuccess(listId, itemId) {
-  return {
-    type: REMOVE_GROCERY_ITEM_SUCCESS,
-    listId,
-    itemId,
-  };
-};
-export function removeGroceryItemFailure(error) {
-  return {
-    type: REMOVE_GROCERY_ITEM_FAILURE,
-    error
-  };
-};
-
-
-
-// toggleGroceryItem
-export function toggleGroceryItemRequest() {
-  return {
-    type: TOGGLE_GROCERY_ITEM_REQUEST
-  };
-};
-export function toggleGroceryItemSuccess(listId, itemId) {
-  return {
-    type: TOGGLE_GROCERY_ITEM_SUCCESS,
-    listId,
-    itemId,
-  };
-};
-export function toggleGroceryItemFailure(error) {
-  return {
-    type: TOGGLE_GROCERY_ITEM_FAILURE,
-    error
-  };
-};
-
-
-
-// newEmptyList
-export function newEmptyListRequest() {
-  return {
-    type: NEW_EMPTY_LIST_REQUEST,
-  }
-};
-export function newEmptyListSuccess(listId) {
-  return {
-    type: NEW_EMPTY_LIST_SUCCESS,
-    listId
-  }
-};
-export function newEmptyListFailure(error) {
-  return {
-    type: NEW_EMPTY_LIST_FAILURE,
-    error
-  }
-};
-
-
-
-// removeList
-export function removeListRequest() {
-  return {
-    type: REMOVE_LIST_REQUEST
-  };
-};
-export function removeListSuccess(listId) {
-  return {
-    type: REMOVE_LIST_SUCCESS,
-    listId
-  };
-};
-export function removeListFailure(error) {
-  return {
-    type: REMOVE_LIST_FAILURE,
-    error
-  };
-};
-
-
-
-// fetchGroceryList
-export function fetchGroceryListRequest() {
-  return {
-    type: FETCH_GROCERY_LISTS_REQUEST
-  };
-};
-export function fetchGroceryListSuccess(lists) {
-  return {
-    type: FETCH_GROCERY_LISTS_SUCCESS,
-    lists
-  };
-};
-export function fetchGroceryListFailure(error) {
-  return {
-    type: FETCH_GROCERY_LISTS_FAILURE,
-    error
-  };
-};
-
-
-
-// fetchListIngredients
-export function fetchListIngredientsRequest() {
-  return {
-    type: FETCH_LIST_INGREDIENTS_REQUEST
-  };
-};
-export function fetchListIngredientsSuccess(ingredients) {
-  return {
-    type: FETCH_LIST_INGREDIENTS_SUCCESS,
-    ingredients
-  };
-};
-export function fetchListIngredientsFailure(error) {
-  return {
-    type: FETCH_LIST_INGREDIENTS_FAILURE,
-    error
-  };
-};
-
-
-
-// async addGroceryItem
 export function addGroceryItem(listId, name) {
   return dispatch => {
     dispatch(addGroceryItemRequest());
@@ -208,7 +71,24 @@ export function addGroceryItem(listId, name) {
 
 
 
-// async removeGroceryItem
+export function removeGroceryItemRequest() {
+  return {
+    type: REMOVE_GROCERY_ITEM_REQUEST
+  };
+};
+export function removeGroceryItemSuccess(listId, itemId) {
+  return {
+    type: REMOVE_GROCERY_ITEM_SUCCESS,
+    listId,
+    itemId,
+  };
+};
+export function removeGroceryItemFailure(error) {
+  return {
+    type: REMOVE_GROCERY_ITEM_FAILURE,
+    error
+  };
+};
 export function removeGroceryItem(listId, ingredientId) {
   return dispatch => {
     dispatch(removeGroceryItemRequest());
@@ -231,24 +111,23 @@ export function removeGroceryItem(listId, ingredientId) {
 
 
 
-// async toggleGroceryItem
-export function toggleGroceryItem() {
-  return dispatch => {
-    dispatch(toggleGroceryItemRequest());
-    /*return api call sending through the grocery item to toggle in the database
-      .then((listId, itemId) => {
-        dispatch(toggleGroceryItemSuccess(listId, itemId));
-      })
-      .catch((err) => {
-        dispatch(toggleGroceryItemFailure(err));
-        return;
-      })*/
-  };
+export function newEmptyListRequest() {
+  return {
+    type: NEW_EMPTY_LIST_REQUEST,
+  }
 };
-
-
-
-// async newEmptyList
+export function newEmptyListSuccess(listId) {
+  return {
+    type: NEW_EMPTY_LIST_SUCCESS,
+    listId
+  }
+};
+export function newEmptyListFailure(error) {
+  return {
+    type: NEW_EMPTY_LIST_FAILURE,
+    error
+  }
+};
 export function newEmptyList(userId) {
   return dispatch => {
     dispatch(newEmptyListRequest());
@@ -273,7 +152,23 @@ export function newEmptyList(userId) {
 
 
 
-// async removeList
+export function removeListRequest() {
+  return {
+    type: REMOVE_LIST_REQUEST
+  };
+};
+export function removeListSuccess(listId) {
+  return {
+    type: REMOVE_LIST_SUCCESS,
+    listId
+  };
+};
+export function removeListFailure(error) {
+  return {
+    type: REMOVE_LIST_FAILURE,
+    error
+  };
+};
 export function removeList(userId, listId) {
   return dispatch => {
     dispatch(removeListRequest());
@@ -296,7 +191,23 @@ export function removeList(userId, listId) {
 
 
 
-// async fetchGroceryList
+export function fetchGroceryListRequest() {
+  return {
+    type: FETCH_GROCERY_LISTS_REQUEST
+  };
+};
+export function fetchGroceryListSuccess(lists) {
+  return {
+    type: FETCH_GROCERY_LISTS_SUCCESS,
+    lists
+  };
+};
+export function fetchGroceryListFailure(error) {
+  return {
+    type: FETCH_GROCERY_LISTS_FAILURE,
+    error
+  };
+};
 export function fetchGroceryList(userId) {
   return dispatch => {
     dispatch(fetchGroceryListRequest());
@@ -314,11 +225,27 @@ export function fetchGroceryList(userId) {
       dispatch(fetchGroceryListFailure(err));
     })
   }
-}
+};
 
 
 
-// async fetchListIngredients
+export function fetchListIngredientsRequest() {
+  return {
+    type: FETCH_LIST_INGREDIENTS_REQUEST
+  };
+};
+export function fetchListIngredientsSuccess(ingredients) {
+  return {
+    type: FETCH_LIST_INGREDIENTS_SUCCESS,
+    ingredients
+  };
+};
+export function fetchListIngredientsFailure(error) {
+  return {
+    type: FETCH_LIST_INGREDIENTS_FAILURE,
+    error
+  };
+};
 export function fetchListIngredients(listId) {
   return dispatch => {
     dispatch(fetchListIngredientsRequest());
@@ -336,4 +263,4 @@ export function fetchListIngredients(listId) {
       dispatch(fetchListIngredientsFailure(err));
     })
   }
-}
+};

@@ -11,10 +11,6 @@ import {
   SEARCH_MEAL_SUCCESS,
   SEARCH_MEAL_FAILURE,
 
-  MORE_SEARCH_REQUEST,
-  MORE_SEARCH_SUCCESS,
-  MORE_SEARCH_FAILURE,
-
   SEARCH_RECIPE_REQUEST,
   SEARCH_RECIPE_SUCCESS,
   SEARCH_RECIPE_FAILURE,
@@ -88,40 +84,6 @@ export function searchMeal(query, offset) {
     .catch((err) => {
       dispatch(searchMealFailure(err));
     })
-  };
-};
-
-
-
-export function moreSearchRequest() {
-  return {
-    type: MORE_SEARCH_REQUEST,
-  };
-};
-export function moreSearchSuccess(moreResults, processingTimeMs) {
-  return {
-    type: MORE_SEARCH_SUCCESS,
-    moreResults,
-    processingTimeMs
-  };
-};
-export function moreSearchFailure(error) {
-  return {
-    type: MORE_SEARCH_FAILURE,
-    error
-  };
-};
-export function moreSearch() {
-  return dispatch => {
-    dispatch(moreSearchRequest());
-    /*return api call appending more results to the mealResults
-      .then((moreResults, processingTimeMs) => {
-        dispatch(moreSearchSuccess(moreResults, processingTimeMs));
-      })
-      .catch((err) => {
-        dispatch(moreSearchFailure(err));
-        return;
-      })*/
   };
 };
 
@@ -288,7 +250,7 @@ export function addMeal(selectedDate, mealType, userId, meal, calories) {
     .then((mealJson) => {
       InteractionManager.runAfterInteractions(() => {
         dispatch(addMealSuccess(mealJson));
-        Actions.pop();
+        Actions.mainWeeklyPlan({ type: 'reset' });
       });
     })
     .catch((err) => {

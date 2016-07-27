@@ -47,5 +47,8 @@ export default class DirectionList extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  itemRow: {
+    marginBottom: 5
   }
 });
