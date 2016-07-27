@@ -34,9 +34,9 @@ class SettingsView extends React.Component {
             <View style={ styles.listContainer }>
               <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
                 <SettingsList.Item title='Terms of Service' titleStyle={{fontFamily: 'OpenSans'}}
-                  onPress={() => Alert.alert('TOS pressed')} />
+                  onPress={ Actions.termsService } />
                 <SettingsList.Item title='Privacy Policy' titleStyle={{fontFamily: 'OpenSans'}}
-                  onPress={() => Alert.alert('Privacy Policy pressed')} />
+                  onPress={ Actions.privacyPolicy } />
               </SettingsList>
             </View>
           </View>

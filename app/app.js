@@ -18,6 +18,8 @@ import MealInfoView from './containers/meal_info_view';
 import TrendsView from './containers/trends_view';
 import ProfileView from './containers/profile_view';
 import SettingsView from './containers/settings_view';
+import TermsServiceView from './containers/terms_service_view';
+import PrivacyPolicyView from './containers/privacy_policy_view';
 import Error from './containers/error_view';
 
 import AddButton from './components/add_button';
@@ -119,6 +121,10 @@ export default class App extends React.Component {
                   title='Region'></Scene>
                 <Scene key='resetSettings' component={ SettingsView }
                   title='Reset'></Scene>
+                <Scene key='termsService' component={ TermsServiceView }
+                  title='Terms of Service'></Scene>
+                <Scene key='privacyPolicy' component={ PrivacyPolicyView }
+                  title='Privacy Policy'></Scene>
               </Scene>
             </Scene>
           </Scene>
