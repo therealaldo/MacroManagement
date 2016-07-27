@@ -21,8 +21,7 @@ class WelcomeView extends React.Component {
             style={ styles.badge }
             source={ imageMap['badge'] }
           />
-        <Text style={ styles.title }>MacroManagement</Text>
-          <Text style={ styles.subtitle }>We Sweat the Small Stuff for You</Text>
+          <Text style={ styles.subtitle }>"We Sweat the Small Stuff for You"</Text>
         </View>
         <TouchableHighlight
           style={ styles.signInButton }
@@ -36,7 +35,7 @@ class WelcomeView extends React.Component {
 };
 
 const imageMap = {
-  "badge": require('../img/badge.png'),
+  "badge": require('../img/mmlogo.png'),
 };
 
 const styles = StyleSheet.create({
@@ -44,7 +43,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#26a65b',
+    backgroundColor: '#45d982',
   },
   messageBox: {
     flex: 1,
@@ -52,8 +51,8 @@ const styles = StyleSheet.create({
   },
   badge: {
     alignSelf: 'center',
-    height: 169,
-    width: 151,
+    height: 100,
+    width: 250,
   },
   title: {
     fontSize: 17,
@@ -66,6 +65,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 4,
     color: '#FFFFFF',
+    fontFamily: 'OpenSans-Italic'
   },
   signInButton: {
     height: 50,
