@@ -125,4 +125,4 @@ Version 1.0.0
 
 ## License
 
-This project is available under the [MIT License](https://opensource.org/licenses/MIT)
+This project is available under the [MIT License.](https://opensource.org/licenses/MIT)
