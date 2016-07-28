@@ -141,8 +141,8 @@ export function analyzeRecipeFailure(error) {
     error
   };
 };
-function flatten(arr) {
-  return arr.reduce(function (flat, toFlatten) {
+function flatten(array) {
+  return array.reduce((flat, toFlatten) => {
     return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
   }, []);
 }
