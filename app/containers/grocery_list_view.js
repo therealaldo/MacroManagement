@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as actionCreators from '../actions/intolerances/action_creators';
+import * as actionCreators from '../actions/grocery_lists/action_creators';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import GroceryList from '../components/grocery_list';
@@ -22,6 +22,10 @@ class GroceryListView extends React.Component {
     groceryLists: PropTypes.object.isRequired,
     users: PropTypes.object.isRequired,
   };
+
+  componentWillMount() {
+    this.props.fetchGroceryList(this.props.users.userId);
+  }
 
   handleKeywordChange(e) {
     this.props.setGroceryListKeyword(e.nativeEvent.text.trim());
@@ -42,7 +46,8 @@ class GroceryListView extends React.Component {
             placeholder='Add a grocery list' />
           <ScrollView style={ styles.groceryListContainer }>
             <GroceryList data={ this.props.groceryLists }
-              removeList={ this.props.removeList.bind(this) } />
+              viewGroceryList={ this.props.viewGroceryList }
+              removeList={ this.props.removeList } />
           </ScrollView>
         </View>
       </View>
@@ -85,4 +90,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(actionCreators, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(IntoleranceView);
+export default connect(mapStateToProps, mapDispatchToProps)(GroceryListView);

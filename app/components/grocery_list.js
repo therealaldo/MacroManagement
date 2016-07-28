@@ -7,12 +7,14 @@ import {
   View,
   Image,
   ListView,
+  TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { Actions } from 'react-native-router-flux';
 
 let ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row !== row2 });
 
-export default class IntoleranceList extends React.Component {
+export default class GroceryList extends React.Component {
   constructor(props) {
     super(props);
     let groceryListArray = [];
@@ -28,7 +30,7 @@ export default class IntoleranceList extends React.Component {
   componentWillReceiveProps(nextProps) {
     let newGroceryListArray = [];
     if(this.props.data.groceryLists.length !== nextProps.data.groceryLists.length) {
-      for(let i = 0; i < nextProps.data.intolerances.length; i++) {
+      for(let i = 0; i < nextProps.data.groceryLists.length; i++) {
         newGroceryListArray.push(nextProps.data.groceryListsById[nextProps.data.groceryLists[i]]);
       }
       this.setState({
@@ -37,10 +39,17 @@ export default class IntoleranceList extends React.Component {
     }
   }
 
+  navigateToList(listId) {
+    this.props.viewGroceryList(listId);
+    Actions.groceryIngredients();
+  }
+
   renderRow(list) {
     return (
       <View style={ styles.container }>
-        <Text>{ list.name }</Text>
+        <TouchableOpacity onPress={ () => this.navigateToList(list.id) }>
+          <Text>{ list.name }</Text>
+        </TouchableOpacity>
       </View>
     )
   }
@@ -49,7 +58,7 @@ export default class IntoleranceList extends React.Component {
     return (
       <ListView
         dataSource={ this.state.dataSource }
-        renderRow={ this.renderRow }
+        renderRow={ this.renderRow.bind(this) }
         enableEmptySections={ true } />
     )
   }

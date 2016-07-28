@@ -6,6 +6,8 @@ import {
 
   SET_INGREDIENT_KEYWORD,
 
+  VIEW_GROCERY_LIST,
+
   ADD_GROCERY_ITEM_REQUEST,
   ADD_GROCERY_ITEM_SUCCESS,
   ADD_GROCERY_ITEM_FAILURE,
@@ -50,16 +52,24 @@ export function setIngredientKeyword(keyword) {
 
 
 
+export function viewGroceryList(listId) {
+  return {
+    type: VIEW_GROCERY_LIST,
+    listId
+  };
+};
+
+
+
 export function addGroceryItemRequest() {
   return {
     type: ADD_GROCERY_ITEM_REQUEST
   };
 };
-export function addGroceryItemSuccess(listId, item) {
+export function addGroceryItemSuccess(list) {
   return {
     type: ADD_GROCERY_ITEM_SUCCESS,
-    listId,
-    item
+    list
   };
 };
 export function addGroceryItemFailure(error) {
@@ -83,7 +93,7 @@ export function addGroceryItem(listId, name) {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      dispatch(addGroceryItemSuccess(responseJson.ingredientId, responseJson.name));
+      dispatch(addGroceryItemSuccess(responseJson));
     })
     .catch((err) => {
       dispatch(addGroceryItemFailure(err));

@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as actionCreators from '../actions/intolerances/action_creators';
+import * as actionCreators from '../actions/grocery_lists/action_creators';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import GroceryIngredientList from '../components/grocery_ingredient_list';
@@ -22,6 +22,10 @@ class GroceryListIngredientView extends React.Component {
     groceryLists: PropTypes.object.isRequired,
     users: PropTypes.object.isRequired,
   };
+
+  componentWillMount() {
+    this.props.fetchListIngredients(this.props.groceryLists.selectedGroceryList);
+  }
 
   handleKeywordChange(e) {
     this.props.setIngredientKeyword(e.nativeEvent.text.trim());
@@ -36,12 +40,13 @@ class GroceryListIngredientView extends React.Component {
       <View style={ styles.container }>
         <View style={ styles.groceryListInputContainer }>
           <TextInput style={ styles.groceryListInput }
-            value={ this.props.groceryLists.groceryListKeyword }
+            value={ this.props.groceryLists.ingredientKeyword }
             onChange={ this.handleKeywordChange.bind(this) }
             onSubmitEditing={ this.handleSubmitEdit.bind(this) }
-            placeholder='Add a grocery list' />
+            placeholder='Add an ingredient' />
           <ScrollView style={ styles.groceryListContainer }>
-            <GroceryList data={ this.props.groceryLists }
+            <GroceryIngredientList data={ this.props.groceryLists }
+              selectedGroceryList={ this.props.groceryLists.selectedGroceryList }
               removeList={ this.props.removeList.bind(this) } />
           </ScrollView>
         </View>
@@ -85,4 +90,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(actionCreators, dispatch);
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(IntoleranceView);
+export default connect(mapStateToProps, mapDispatchToProps)(GroceryListIngredientView);

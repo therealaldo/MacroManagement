@@ -34,7 +34,7 @@ class ProfileView extends React.Component {
               <SettingsList.Item title='Food Intolerances' titleStyle={{fontFamily: 'OpenSans'}}
                   onPress={ Actions.intolerances } />
               <SettingsList.Item title='Grocery Lists' titleStyle={{fontFamily: 'OpenSans'}}
-                  onPress={ () =>  Alert.alert('Saved Grocery Lists pressed') } />
+                  onPress={ Actions.groceryLists } />
             </SettingsList>
           </View>
         </View>

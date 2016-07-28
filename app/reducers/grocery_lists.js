@@ -9,6 +9,8 @@ import {
 
   SET_INGREDIENT_KEYWORD,
 
+  VIEW_GROCERY_LIST,
+
   ADD_GROCERY_ITEM_REQUEST,
   ADD_GROCERY_ITEM_SUCCESS,
   ADD_GROCERY_ITEM_FAILURE,
@@ -29,6 +31,14 @@ import {
   REMOVE_LIST_SUCCESS,
   REMOVE_LIST_FAILURE,
 
+  FETCH_GROCERY_LISTS_REQUEST,
+  FETCH_GROCERY_LISTS_SUCCESS,
+  FETCH_GROCERY_LISTS_FAILURE,
+
+  FETCH_LIST_INGREDIENTS_REQUEST,
+  FETCH_LIST_INGREDIENTS_SUCCESS,
+  FETCH_LIST_INGREDIENTS_FAILURE,
+
 } from '../actions/grocery_lists/action_types';
 
 const initialState = {
@@ -36,6 +46,7 @@ const initialState = {
   groceryListsById: {},
   ingredientsById: {},
   groceryListKeyword: '',
+  selectedGroceryList: '',
   ingredientKeyword: '',
   isFetching: false,
   error: null,
@@ -50,6 +61,8 @@ export default function reducer(
     case REMOVE_GROCERY_ITEM_REQUEST:
     case NEW_EMPTY_LIST_REQUEST:
     case REMOVE_LIST_REQUEST:
+    case FETCH_GROCERY_LISTS_REQUEST:
+    case FETCH_LIST_INGREDIENTS_REQUEST:
       return {
         ...state,
         isFetching: true,
@@ -60,19 +73,18 @@ export default function reducer(
       return {
         ...state,
         groceryListsById: mapValues(state.groceryListsById, (groceryList) => {
-          return groceryList.id === action.listId ?
+          return groceryList.id === action.list.createdList.listId ?
             {
               ...groceryList,
-              ingredients: groceryList.ingredients.concat(action.item.id)
+              ingredients: groceryList.ingredients.concat(action.list.createdList.ingredientId)
             } :
             groceryList
         }),
         ingredientsById: {
           ...state.ingredientsById,
-          [action.item.id]: {
-            id: action.item.id,
-            name: action.item.title,
-            image: action.item.image
+          [action.list.createdIngredient.ingredientId]: {
+            id: action.list.createdIngredient.ingredientId,
+            name: action.list.createdIngredient.name
           }
         },
         isFetching: false,
@@ -107,6 +119,12 @@ export default function reducer(
         ingredientKeyword: action.keyword
       };
 
+    case VIEW_GROCERY_LIST:
+      return {
+        ...state,
+        selectedGroceryList: action.listId
+      };
+
     case TOGGLE_GROCERY_ITEM_SUCCESS:
       return {
         ...state,
@@ -125,10 +143,10 @@ export default function reducer(
     case NEW_EMPTY_LIST_SUCCESS:
       return {
         ...state,
-        groceryLists: state.groceryLists.concat(action.listId),
+        groceryLists: state.groceryLists.concat(action.list.createdList.listId),
         groceryListsById: {
           ...state.groceryListsById,
-          [action.listId]: {
+          [action.list.createdList.listId]: {
             id: action.list.createdList.listId,
             name: action.list.createdList.name,
             ingredients: []
@@ -147,10 +165,67 @@ export default function reducer(
         error: null
       };
 
+    case FETCH_GROCERY_LISTS_SUCCESS:
+      let len = action.lists.userGroceryLists.length;
+      let newGroceryLists = state.groceryLists.slice();
+      let newGroceryListsById = { ...state.groceryListsById };
+      for(let i = 0; i < len; i++) {
+        let listAlreadyExist = newGroceryLists.indexOf(action.lists.userGroceryLists[i].listId) > -1;
+        if(!listAlreadyExist) {
+          newGroceryLists = newGroceryLists.concat(action.lists.userGroceryLists[i].listId);
+          newGroceryListsById = {
+            ...newGroceryListsById,
+            [action.lists.userGroceryLists[i].listId]: {
+              id: action.lists.userGroceryLists[i].listId,
+              name: action.lists.userGroceryLists[i].name,
+              ingredients: []
+            }
+          };
+        }
+      };
+      return {
+        ...state,
+        groceryLists: newGroceryLists,
+        groceryListsById: newGroceryListsById,
+        selectedGroceryList: '',
+        groceryListKeyword: '',
+      };
+
+    case FETCH_LIST_INGREDIENTS_SUCCESS:
+      let length = action.ingredients.listIngredients.length;
+      let populatedGroceryListsById = { ...state.groceryListsById };
+      let newIngredientsById = { ...state.ingredientsById };
+      for(let i = 0; i < length; i++) {
+        populatedGroceryListsById = mapValues(populatedGroceryListsById, (groceryList) => {
+          return groceryList.id === action.ingredients.listIngredients[i].listId ?
+          {
+            ...groceryList,
+            ingredients: groceryList.ingredients.concat(action.ingredients.listIngredients[i].ingredientId)
+          } :
+          groceryList
+        });
+        newIngredientsById = {
+          ...newIngredientsById,
+          [action.ingredients.listIngredients[i].ingredientId]: {
+            id: action.ingredients.listIngredients[i].ingredientId,
+            name: action.ingredients.listIngredients[i].name,
+            completed: action.ingredients.listIngredients[i].completed
+          }
+        };
+      };
+      return {
+        ...state,
+        groceryListsById: populatedGroceryListsById,
+        ingredientsById: newIngredientsById,
+        groceryListKeyword: '',
+      };
+
     case ADD_GROCERY_ITEM_FAILURE:
     case REMOVE_GROCERY_ITEM_FAILURE:
     case NEW_EMPTY_LIST_FAILURE:
     case REMOVE_LIST_FAILURE:
+    case FETCH_GROCERY_LISTS_FAILURE:
+    case FETCH_LIST_INGREDIENTS_FAILURE:
       return {
         ...state,
         isFetching: false,

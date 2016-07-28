@@ -18,6 +18,8 @@ import MealInfoView from './containers/meal_info_view';
 import TrendsView from './containers/trends_view';
 import ProfileView from './containers/profile_view';
 import IntoleranceView from './containers/intolerance_view';
+import GroceryListView from './containers/grocery_list_view';
+import GroceryListIngredientView from './containers/grocery_ingredients_view';
 import SettingsView from './containers/settings_view';
 import TermsServiceView from './containers/terms_service_view';
 import PrivacyPolicyView from './containers/privacy_policy_view';
@@ -98,6 +100,10 @@ export default class App extends React.Component {
                   title='Profile'></Scene>
                 <Scene key='intolerances' component={ IntoleranceView }
                   title='Intolerances'></Scene>
+                <Scene key='groceryLists' component={ GroceryListView }
+                  title='Grocery Lists'></Scene>
+                <Scene key='groceryIngredients' component={ GroceryListIngredientView }
+                  title='Ingredients'></Scene>
               </Scene>
               <Scene key='settings' icon={ TabIcon } leftButtonStyle={{paddingBottom: 40}}
                 title='Settings' leftButtonIconStyle={{tintColor: '#e9e9e9'}}>
