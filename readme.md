@@ -38,7 +38,7 @@ Macro Management Terms and Conditions of Use
 
 1. Terms
 
-By accessing this application, you are agreeing to be bound by these application Terms and Conditions of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this application are protected by applicable copyright and trade mark law.
+  By accessing this application, you are agreeing to be bound by these application Terms and Conditions of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this application are protected by applicable copyright and trade mark law.
 
 2. Use License
 
@@ -51,29 +51,29 @@ By accessing this application, you are agreeing to be bound by these application
 
 3. Disclaimer
 
-The materials on Macro Management's application are provided "as is". Macro Management makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties, including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights. Further, Macro Management does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its Internet application or otherwise relating to such materials or on any sites linked to this site.
+  The materials on Macro Management's application are provided "as is". Macro Management makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties, including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights. Further, Macro Management does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its Internet application or otherwise relating to such materials or on any sites linked to this site.
 
 4. Limitations
 
-In no event shall Macro Management or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption,) arising out of the use or inability to use the materials on Macro Management's Internet site, even if Macro Management or a Macro Management authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.
+  In no event shall Macro Management or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption,) arising out of the use or inability to use the materials on Macro Management's Internet site, even if Macro Management or a Macro Management authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.
 
 5. Revisions and Errata
 
-The materials appearing on Macro Management's application could include technical, typographical, or photographic errors. Macro Management does not warrant that any of the materials on its application are accurate, complete, or current. Macro Management may make changes to the materials contained on its application at any time without notice. Macro Management does not, however, make any commitment to update the materials.
+  The materials appearing on Macro Management's application could include technical, typographical, or photographic errors. Macro Management does not warrant that any of the materials on its application are accurate, complete, or current. Macro Management may make changes to the materials contained on its application at any time without notice. Macro Management does not, however, make any commitment to update the materials.
 
 6. Links
 
-Macro Management has not reviewed all of the sites linked to its Internet application and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Macro Management of the site. Use of any such linked application is at the user's own risk.
+  Macro Management has not reviewed all of the sites linked to its Internet application and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Macro Management of the site. Use of any such linked application is at the user's own risk.
 
 7. Site Terms of Use Modifications
 
-Macro Management may revise these terms of use for its application at any time without notice. By using this application you are agreeing to be bound by the then current version of these Terms and Conditions of Use.
+  Macro Management may revise these terms of use for its application at any time without notice. By using this application you are agreeing to be bound by the then current version of these Terms and Conditions of Use.
 
 8. Governing Law
 
-Any claim relating to Macro Management's application shall be governed by the laws of the State of Florida without regard to its conflict of law provisions.
+  Any claim relating to Macro Management's application shall be governed by the laws of the State of Florida without regard to its conflict of law provisions.
 
-General Terms and Conditions applicable to Use of a application.
+  General Terms and Conditions applicable to Use of a application.
 
 ## Privacy Policy
 
