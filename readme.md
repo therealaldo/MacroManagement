@@ -29,8 +29,19 @@ To test to see if it worked just run
 $ react-native run-ios
 ```
 
-## Common Errors when compiling
+## Project Technologies
 
+| Techology           | Implementation |
+| ------------------- |:-------------:|
+| NodeJS              | Backend Server Code |
+| React Native        | Frontend code |
+| Redux               | Routing and Data handling on the front end |
+| Express             | API/Routing |
+| MySQL               | Data Storage |
+| Sequelize           | ORM |
+| Git                 | Version Control |
+| Zenhub              | Project Management |
+| DigitalOcean        | Server Deployment  |
 
 ## Terms of Service
 
