@@ -2,6 +2,10 @@
 
 import {
 
+  SET_GROCERY_LIST_KEYWORD,
+
+  SET_INGREDIENT_KEYWORD,
+
   ADD_GROCERY_ITEM_REQUEST,
   ADD_GROCERY_ITEM_SUCCESS,
   ADD_GROCERY_ITEM_FAILURE,
@@ -27,6 +31,24 @@ import {
   FETCH_LIST_INGREDIENTS_FAILURE,
 
 } from './action_types';
+
+export function setGroceryListKeyword(keyword) {
+  return {
+    type: SET_GROCERY_LIST_KEYWORD,
+    keyword
+  };
+};
+
+
+
+export function setIngredientKeyword(keyword) {
+  return {
+    type: SET_INGREDIENT_KEYWORD,
+    keyword
+  };
+};
+
+
 
 export function addGroceryItemRequest() {
   return {
@@ -116,10 +138,10 @@ export function newEmptyListRequest() {
     type: NEW_EMPTY_LIST_REQUEST,
   }
 };
-export function newEmptyListSuccess(listId) {
+export function newEmptyListSuccess(list) {
   return {
     type: NEW_EMPTY_LIST_SUCCESS,
-    listId
+    list
   }
 };
 export function newEmptyListFailure(error) {
@@ -128,7 +150,7 @@ export function newEmptyListFailure(error) {
     error
   }
 };
-export function newEmptyList(userId) {
+export function newEmptyList(userId, name) {
   return dispatch => {
     dispatch(newEmptyListRequest());
     fetch('http://162.243.164.11/grocerylist', {
@@ -137,12 +159,13 @@ export function newEmptyList(userId) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        userId: userId
+        userId,
+        name
       })
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      dispatch(newEmptyListSuccess(responseJson.listId))
+      dispatch(newEmptyListSuccess(responseJson))
     })
     .catch((err) => {
       dispatch(newEmptyListFailure(err))

@@ -129,6 +129,8 @@ export default class App extends React.Component {
                   title='Terms of Service'></Scene>
                 <Scene key='privacyPolicy' component={ PrivacyPolicyView }
                   title='Privacy Policy'></Scene>
+                <Scene key='intolerances' component={ IntoleranceView }
+                  title='Intolerances'></Scene>
               </Scene>
             </Scene>
           </Scene>

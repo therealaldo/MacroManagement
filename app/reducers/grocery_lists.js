@@ -5,6 +5,10 @@ import assign from 'lodash/object/assign';
 import mapValues from 'lodash/object/mapValues';
 import {
 
+  SET_GROCERY_LIST_KEYWORD,
+
+  SET_INGREDIENT_KEYWORD,
+
   ADD_GROCERY_ITEM_REQUEST,
   ADD_GROCERY_ITEM_SUCCESS,
   ADD_GROCERY_ITEM_FAILURE,
@@ -31,6 +35,8 @@ const initialState = {
   groceryLists: [],
   groceryListsById: {},
   ingredientsById: {},
+  groceryListKeyword: '',
+  ingredientKeyword: '',
   isFetching: false,
   error: null,
 };
@@ -89,6 +95,18 @@ export default function reducer(
         error: null
       };
 
+    case SET_GROCERY_LIST_KEYWORD:
+      return {
+        ...state,
+        groceryListKeyword: action.keyword
+      };
+
+    case SET_INGREDIENT_KEYWORD:
+      return {
+        ...state,
+        ingredientKeyword: action.keyword
+      };
+
     case TOGGLE_GROCERY_ITEM_SUCCESS:
       return {
         ...state,
@@ -111,7 +129,8 @@ export default function reducer(
         groceryListsById: {
           ...state.groceryListsById,
           [action.listId]: {
-            id: action.listId,
+            id: action.list.createdList.listId,
+            name: action.list.createdList.name,
             ingredients: []
           }
         },
