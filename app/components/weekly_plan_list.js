@@ -45,7 +45,6 @@ export default class WeeklyPlanList extends React.Component {
   }
 
   renderRow(mealItem) {
-    console.log(this);
     return (
       <View style={ styles.mealContainer }>
         <Text>{ mealItem.name }</Text>

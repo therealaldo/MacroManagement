@@ -34,12 +34,22 @@ class TrendsView extends React.Component {
         <ScrollView>
           <View style={ styles.charts }>
             <View style={ styles.chartContainer }>
+            <Text style={ styles.chartTitleText }>Calorie Intake</Text>
+            { this.props.trends.userMealData < 5 ?
+              <View>
+                <Text>You need at least 5 days of data to use this</Text>
+              </View> :
               <DWChart style={ styles.chart } imageUri={ this.props.trends.imageUri } />
+            }
             </View>
-
             <View style={ styles.chartContainer }>
               <Text style={ styles.chartTitleText }>Calorie Progress</Text>
-
+              { this.props.trends.userMealData < 5 ?
+                <View>
+                  <Text>You need at least 5 days of data to use this</Text>
+                </View> :
+                <DWChart style={ styles.chart } imageUri={ this.props.trends.imageUri } />
+              }
             </View>
           </View>
         </ScrollView>
