@@ -33,7 +33,8 @@ import {
   ADD_MEAL_PLAN,
 
   FETCH_USER_MEALS_REQUEST,
-  FETCH_USER_MEALS_SUCCESS,
+  ADD_MEAL_PLANS,
+  ADD_MEALS,
   FETCH_USER_MEALS_FAILURE,
 
   INCREMENT_DATE,
@@ -242,9 +243,11 @@ export default function reducer(
         mealPlansByDate = {
           ...state.mealPlansByDate,
           [action.date]: {
+            date: action.date,
             breakfast: [],
             lunch: [],
-            dinner: []
+            dinner: [],
+            totalCalories: 0
           }
         }
       };
@@ -257,12 +260,60 @@ export default function reducer(
         error: null
       };
 
-    case FETCH_USER_MEALS_SUCCESS:
+    case ADD_MEAL_PLANS:
+      let len = action.userMeals.userMeals.length;
+      let newMealPlans = state.mealPlans.slice();
+      let newMealPlansByDate = { ...state.mealPlansByDate };
+      let newMealsById = {};
+      for(let i = 0; i < len; i++) {
+        let mealsAlreadyExist = newMealPlans.indexOf(action.userMeals.userMeals[i].date) > -1;
+        if(!mealsAlreadyExist) {
+          newMealPlans = newMealPlans.concat(action.userMeals.userMeals[i].date);
+          newMealPlansByDate = {
+            ...newMealPlansByDate,
+            [action.userMeals.userMeals[i].date]: {
+              date: action.userMeals.userMeals[i].date,
+              breakfast: [],
+              lunch: [],
+              dinner: [],
+              totalCalories: 0
+            }
+          };
+        };
+        newMealsById = {
+          ...newMealsById,
+          [action.userMeals.userMeals[i].mealId]: {
+            mealId: action.userMeals.userMeals[i].mealId,
+            name: action.userMeals.userMeals[i].name,
+            image: action.userMeals.userMeals[i].image,
+            calories: action.userMeals.userMeals[i].calories,
+          }
+        }
+      };
       return {
         ...state,
-        mealPlans: action.userMeals.mealPlans,
-        mealPlansByDate: action.userMeals.mealPlansByDate,
-        mealsById: action.userMeals.mealsById
+        mealPlans: newMealPlans,
+        mealPlansByDate: newMealPlansByDate,
+        mealsById: newMealsById
+      };
+
+    case ADD_MEALS:
+      let length = action.userMeals.userMeals.length;
+      let populatedMealPlansByDate = { ...state.mealPlansByDate };
+      for(let i = 0; i < length; i++) {
+        populatedMealPlansByDate = mapValues(populatedMealPlansByDate, (mealPlan) => {
+          return mealPlan.date === action.userMeals.userMeals[i].date ?
+          {
+            ...mealPlan,
+            [action.userMeals.userMeals[i].mealType]: mealPlan[action.userMeals.userMeals[i].mealType].concat(action.userMeals.userMeals[i].mealId),
+            totalCalories: mealPlan.totalCalories + action.userMeals.userMeals[i].calories
+          } :
+          mealPlan
+        })
+      };
+      return {
+        ...state,
+        mealPlansByDate: populatedMealPlansByDate
       };
 
     case INCREMENT_DATE:
