@@ -202,7 +202,7 @@ export function removeListFailure(error) {
     error
   };
 };
-export function removeList(userId, listId) {
+export function removeList(listId, userId) {
   return dispatch => {
     dispatch(removeListRequest());
     return fetch('http://162.243.164.11/grocerylist', {

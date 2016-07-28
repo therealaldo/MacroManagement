@@ -28,7 +28,9 @@ export default class IngredientList extends React.Component {
 
   renderRow(item) {
     return (
-      <Text style={ styles.itemRow }>{ item.originalString }</Text>
+      <View style={ styles.ingredientRow }>
+        <Text style={ styles.itemRow }>{ item.originalString }</Text>
+      </View>
     )
   }
 
@@ -49,6 +51,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   itemRow: {
-    marginBottom: 5
+    marginBottom: 5,
   }
 });

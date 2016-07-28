@@ -44,11 +44,18 @@ export default class GroceryList extends React.Component {
     Actions.groceryIngredients();
   }
 
+  handleRemoveList(listId) {
+    this.props.removeList(listId, this.props.userId);
+  }
+
   renderRow(list) {
     return (
-      <View style={ styles.container }>
+      <View style={ styles.listRow }>
         <TouchableOpacity onPress={ () => this.navigateToList(list.id) }>
           <Text>{ list.name }</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.handleRemoveList(list.id)}>
+          <Icon name='md-remove' size={ 30 } color='#c62733' />
         </TouchableOpacity>
       </View>
     )
@@ -67,5 +74,10 @@ export default class GroceryList extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  listRow: {
+    marginBottom: 5,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 });

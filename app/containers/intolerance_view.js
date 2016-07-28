@@ -42,7 +42,8 @@ class IntoleranceView extends React.Component {
             placeholder='Add an intolerance' />
           <ScrollView style={ styles.intoleranceListContainer }>
             <IntoleranceList data={ this.props.intolerances }
-              removeIntolerance={ this.props.removeIntolerance.bind(this) } />
+              userId={ this.props.users.userId }
+              removeIntolerance={ this.props.removeIntolerance } />
           </ScrollView>
         </View>
       </View>

@@ -7,6 +7,7 @@ import {
   View,
   Image,
   ListView,
+  TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -37,10 +38,17 @@ export default class IntoleranceList extends React.Component {
     };
   }
 
+  handleRemoveIntolerance(intoleranceId) {
+    this.props.removeIntolerance(intoleranceId, this.props.userId);
+  }
+
   renderRow(intolerance) {
     return (
-      <View style={ styles.container }>
+      <View style={ styles.intoleranceRow }>
         <Text>{ intolerance.name }</Text>
+        <TouchableOpacity onPress={() => this.handleRemoveIntolerance(intolerance.id)}>
+          <Icon name='md-remove' size={ 30 } color='#c62733' />
+        </TouchableOpacity>
       </View>
     )
   }
@@ -49,7 +57,7 @@ export default class IntoleranceList extends React.Component {
     return (
       <ListView
       dataSource={ this.state.dataSource }
-      renderRow={ this.renderRow }
+      renderRow={ this.renderRow.bind(this) }
       enableEmptySections={ true } />
     )
   }
@@ -58,5 +66,10 @@ export default class IntoleranceList extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  intoleranceRow: {
+    marginBottom: 5,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 });

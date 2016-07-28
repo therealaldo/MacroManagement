@@ -47,7 +47,7 @@ class GroceryListIngredientView extends React.Component {
           <ScrollView style={ styles.groceryListContainer }>
             <GroceryIngredientList data={ this.props.groceryLists }
               selectedGroceryList={ this.props.groceryLists.selectedGroceryList }
-              removeList={ this.props.removeList.bind(this) } />
+              removeIngredient={ this.props.removeGroceryItem } />
           </ScrollView>
         </View>
       </View>

@@ -46,6 +46,7 @@ class GroceryListView extends React.Component {
             placeholder='Add a grocery list' />
           <ScrollView style={ styles.groceryListContainer }>
             <GroceryList data={ this.props.groceryLists }
+              userId={ this.props.users.userId }
               viewGroceryList={ this.props.viewGroceryList }
               removeList={ this.props.removeList } />
           </ScrollView>
