@@ -32,7 +32,7 @@ $ react-native run-ios
 ## Project Technologies
 
 | Techology           | Implementation |
-| ------------------- |:-------------:|
+| ------------------- |:-------------|
 | NodeJS              | Backend Server Code |
 | React Native        | Frontend code |
 | Redux               | Routing and Data handling on the front end |
