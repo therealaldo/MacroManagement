@@ -32,7 +32,7 @@ class GroceryListIngredientView extends React.Component {
   }
 
   handleSubmitEdit(e) {
-    this.props.newEmptyList(this.props.users.userId, this.props.groceryLists.groceryListKeyword);
+    this.props.addGroceryItem(this.props.groceryLists.selectedGroceryList, this.props.groceryLists.ingredientKeyword);
   }
 
   render() {

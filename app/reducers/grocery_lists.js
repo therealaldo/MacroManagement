@@ -73,10 +73,10 @@ export default function reducer(
       return {
         ...state,
         groceryListsById: mapValues(state.groceryListsById, (groceryList) => {
-          return groceryList.id === action.list.createdList.listId ?
+          return groceryList.id === action.list.createdIngredient.listId ?
             {
               ...groceryList,
-              ingredients: groceryList.ingredients.concat(action.list.createdList.ingredientId)
+              ingredients: groceryList.ingredients.concat(action.list.createdIngredient.ingredientId)
             } :
             groceryList
         }),
@@ -87,6 +87,7 @@ export default function reducer(
             name: action.list.createdIngredient.name
           }
         },
+        ingredientKeyword: '',
         isFetching: false,
         error: null
       };
@@ -152,6 +153,7 @@ export default function reducer(
             ingredients: []
           }
         },
+        groceryListKeyword: '',
         isFetching: false,
         error: null
       };
@@ -195,24 +197,27 @@ export default function reducer(
       let length = action.ingredients.listIngredients.length;
       let populatedGroceryListsById = { ...state.groceryListsById };
       let newIngredientsById = { ...state.ingredientsById };
-      for(let i = 0; i < length; i++) {
-        populatedGroceryListsById = mapValues(populatedGroceryListsById, (groceryList) => {
-          return groceryList.id === action.ingredients.listIngredients[i].listId ?
-          {
-            ...groceryList,
-            ingredients: groceryList.ingredients.concat(action.ingredients.listIngredients[i].ingredientId)
-          } :
-          groceryList
-        });
-        newIngredientsById = {
-          ...newIngredientsById,
-          [action.ingredients.listIngredients[i].ingredientId]: {
-            id: action.ingredients.listIngredients[i].ingredientId,
-            name: action.ingredients.listIngredients[i].name,
-            completed: action.ingredients.listIngredients[i].completed
-          }
+        for(let i = 0; i < length; i++) {
+          let ingredientAlreadyExist = populatedGroceryListsById[action.ingredients.listIngredients[i].listId].ingredients.indexOf(action.ingredients.listIngredients[i].ingredientId) > -1;
+          if(!ingredientAlreadyExist) {
+            populatedGroceryListsById = mapValues(populatedGroceryListsById, (groceryList) => {
+              return groceryList.id === action.ingredients.listIngredients[i].listId ?
+              {
+                ...groceryList,
+                ingredients: groceryList.ingredients.concat(action.ingredients.listIngredients[i].ingredientId)
+              } :
+              groceryList
+            });
+            newIngredientsById = {
+              ...newIngredientsById,
+              [action.ingredients.listIngredients[i].ingredientId]: {
+                id: action.ingredients.listIngredients[i].ingredientId,
+                name: action.ingredients.listIngredients[i].name,
+                completed: action.ingredients.listIngredients[i].completed
+              }
+            };
+          };
         };
-      };
       return {
         ...state,
         groceryListsById: populatedGroceryListsById,

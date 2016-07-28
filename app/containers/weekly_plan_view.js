@@ -59,15 +59,6 @@ class WeeklyPlanView extends React.Component {
           incrementDate={ this.handleIncrementDate.bind(this) } />
         <ScrollView >
           <View style={ styles.componentContainer }>
-             <Text style={ styles.containerTitle }>Progress</Text>
-             <ProgressViewIOS style={ styles.progressView } progress={ 0.75 }
-              progressTintColor='#efbe14' />
-             <View style={ styles.calorieInfo }>
-               <Text style={ styles.containerText }>1250/2500 calories</Text>
-               <Text style={ styles.containerText }>50%</Text>
-             </View>
-          </View>
-          <View style={ styles.componentContainer }>
             <Text style={ styles.containerTitle }>Breakfast</Text>
             <WeeklyPlanList
               data={ this.props.meals }
@@ -84,7 +75,7 @@ class WeeklyPlanView extends React.Component {
             <Text style={ styles.containerTitle }>Lunch</Text>
             <WeeklyPlanList
               data={ this.props.meals }
-              deleteMeal={ this.deleteMeal }
+              deleteMeal={ this.props.deleteMeal }
               userId={ this.props.users.userId }
               selectedDate={ this.props.meals.selectedDate }
               mealType='lunch' />
@@ -97,7 +88,7 @@ class WeeklyPlanView extends React.Component {
             <Text style={ styles.containerTitle }>Dinner</Text>
             <WeeklyPlanList
               data={ this.props.meals }
-              deleteMeal={ this.deleteMeal }
+              deleteMeal={ this.props.deleteMeal }
               userId={ this.props.users.userId }
               selectedDate={ this.props.meals.selectedDate }
               mealType='dinner' />
