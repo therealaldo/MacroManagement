@@ -7,7 +7,8 @@
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [Macro Management](#macro-management)
-		- [Table of contents](#table-of-contents)
+
+	- [Table of contents](#table-of-contents)
 	- [Features](#features)
 	- [Getting setup!](#getting-setup)
 	- [Project Technologies](#project-technologies)
@@ -16,8 +17,7 @@
 	- [Credits & Version](#credits-version)
 	- [License](#license)
 
-<!-- /TOC -->
-
+<!-- TOC -->
 
 ## Features
 * Setting meals for the day.
