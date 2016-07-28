@@ -1,16 +1,27 @@
-# Macro Management
+[# Macro Management](companyName)
 
 > Macro Management is a meal planning application that allows users to set daily/weekly meals. It
 > also allows for the user to see their intake progress visually using graphs.  
 
-## Features
+### Table of contents
+[* Company name & description](companyName)
+[* Features](features)
+[* Getting setup](setup)
+[* Project Technologies](tech)
+[* Terms of Service](tos)
+[* Privacy Policy](pp)
+[* Credits & Version](c&v)
+[* License](license)
+
+
+[## Features](features)
 * Setting meals for the day.
 * Visually seeing calorie progression.
 * Visually seeing macro intake.
 * Get news from an RSS feed.
 * Change user settings
 
-## Getting setup!
+[## Getting setup!](setup)
 
 Clone the git repository to your machine using ssh.
 ```
@@ -29,7 +40,7 @@ To test to see if it worked just run
 $ react-native run-ios
 ```
 
-## Project Technologies
+[## Project Technologies](tech)
 
 | Techology           | Implementation |
 | ------------------- |:-------------|
@@ -43,7 +54,7 @@ $ react-native run-ios
 | Zenhub              | Project Management |
 | DigitalOcean        | Server Deployment  |
 
-## Terms of Service
+[## Terms of Service](tos)
 
 Macro Management Terms and Conditions of Use
 
@@ -86,7 +97,7 @@ Macro Management Terms and Conditions of Use
 
   General Terms and Conditions applicable to Use of a application.
 
-## Privacy Policy
+[## Privacy Policy](pp)
 
 Your privacy is very important to us. Accordingly, we have developed this Policy in order for you to understand how we collect, use, communicate and disclose and make use of personal information. The following outlines our privacy policy.
 
@@ -98,3 +109,14 @@ Your privacy is very important to us. Accordingly, we have developed this Policy
 * We will protect personal information by reasonable security safeguards against loss or theft, as well as unauthorized access, disclosure, copying, use or modification.
 * We will make readily available to customers information about our policies and practices relating to the management of personal information.
 * We are committed to conducting our business in accordance with these principles in order to ensure that the confidentiality of personal information is protected and maintained.
+
+[## Credits & Version](c&v)
+
+[Aldo Gonzalez](https://github.com/therealaldo)
+[Jacob Nigh](https://github.com/jacobnigh)
+
+Version 1.0.0
+
+[## License](license)
+
+This project is available under the [MIT License](https://opensource.org/licenses/MIT)
