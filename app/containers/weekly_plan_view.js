@@ -57,9 +57,6 @@ class WeeklyPlanView extends React.Component {
         <DateSwitcher selectedDate={ this.props.meals.selectedDate }
           decrementDate={ this.handleDecrementDate.bind(this) }
           incrementDate={ this.handleIncrementDate.bind(this) } />
-<<<<<<< HEAD
-        <ScrollView>
-=======
         <ScrollView >
           <View style={ styles.componentContainer }>
              <Text style={ styles.containerTitle }>Progress</Text>
@@ -70,7 +67,6 @@ class WeeklyPlanView extends React.Component {
                <Text style={ styles.containerText }>50%</Text>
              </View>
           </View>
->>>>>>> dcf07855b6c7c61d63eb8eb176712b91b65de023
           <View style={ styles.componentContainer }>
             <Text style={ styles.containerTitle }>Breakfast</Text>
             <WeeklyPlanList
