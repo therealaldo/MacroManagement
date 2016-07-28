@@ -44,8 +44,6 @@ import {
   SEARCH_LUNCH,
   SEARCH_DINNER,
 
-  CHANGE_INFO_VIEW,
-
   SEARCH_SUMMARY_REQUEST,
   SEARCH_SUMMARY_SUCCESS,
   SEARCH_SUMMARY_FAILURE,
@@ -68,9 +66,7 @@ const initialState = {
     }
   },
   mealsById: {},
-  mealInfo: {
-    isViewing: 'summary',
-  },
+  mealInfo: {},
   isFetching: false,
   isSearching: false,
   error: null,
@@ -181,15 +177,6 @@ export default function reducer(
         }
       };
 
-    case CHANGE_INFO_VIEW:
-      return {
-        ...state,
-        mealInfo: {
-          ...state.mealInfo,
-          isViewing: action.selectedView
-        }
-      };
-
     case ADD_MEAL_SUCCESS:
       return {
         ...state,
@@ -212,6 +199,7 @@ export default function reducer(
           }
         },
         selectedMealType: '',
+        searchKeyword: '',
         isFetching: false,
         isSearching: false,
         error: null

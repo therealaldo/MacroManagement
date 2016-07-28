@@ -48,7 +48,7 @@ class SettingsView extends React.Component {
               <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
                 <SettingsList.Item title='Food Intolerances'
                   titleStyle={{fontFamily: 'OpenSans'}}
-                  onPress={() => Alert.alert('Edit Food Preferences pressed')} />
+                  onPress={ Actions.settingsIntolerances } />
                 <SettingsList.Item title='Show Nutrition Facts'
                   hasSwitch={ true } hasNavArrow={ false }
                   titleStyle={{fontFamily: 'OpenSans'}}

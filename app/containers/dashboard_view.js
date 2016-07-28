@@ -46,16 +46,7 @@ class DashboardView extends React.Component {
   render() {
     return (
       <View style={ styles.container }>
-        <ScrollView>
-          <View style={ styles.progressContainer }>
-             <Text style={ styles.containerTitle }>Progress</Text>
-             <ProgressViewIOS style={ styles.progressView } progress={ 0.5 }
-              progressTintColor='#efbe14' />
-             <View style={ styles.calorieInfo }>
-               <Text style={ styles.containerText }>1250/2500 calories</Text>
-               <Text style={ styles.containerText }>50%</Text>
-             </View>
-          </View>
+        <ScrollView style={ styles.scrollView }>
           { this.props.rssFeed.isFetching ?
             <ActivityIndicatorIOS style={ styles.spinner }
               animating={ this.props.rssFeed.isFetching }
@@ -77,25 +68,14 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     paddingBottom: 50,
   },
-  progressContainer: {
-    backgroundColor: '#e9e9e9',
-    borderRadius: 7,
+  scrollView: {
     marginTop: 80,
-    padding: 10,
-    marginBottom: 10
   },
   containerTitle: {
     fontFamily: 'OpenSans-Semibold',
     fontSize: 16,
     marginBottom: 15,
     color: '#333',
-  },
-  progressView: {
-    marginBottom: 15
-  },
-  calorieInfo: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
   },
   containerText: {
     fontFamily: 'OpenSans',

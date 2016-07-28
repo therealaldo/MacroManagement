@@ -30,11 +30,11 @@ export default class IntoleranceList extends React.Component {
     if(this.props.data.intolerances.length !== nextProps.data.intolerances.length) {
       for(let i = 0; i < nextProps.data.intolerances.length; i++) {
         newIntoleranceArray.push(nextProps.data.intolerancesById[nextProps.data.intolerances[i]]);
-      }
+      };
       this.setState({
         dataSource: ds.cloneWithRows(newIntoleranceArray)
-      })
-    }
+      });
+    };
   }
 
   renderRow(intolerance) {
