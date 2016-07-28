@@ -47,8 +47,8 @@ export default class WeeklyPlanList extends React.Component {
   renderRow(mealItem) {
     return (
       <View style={ styles.mealContainer }>
-        <Text>{ mealItem.name }</Text>
-        <TouchableOpacity onPress={() => this.handleDeleteMeal(this.props.userId, this.props.selectedDate, this.props.mealType, mealItem.mealId)}>
+        <Text style={ styles.mealName }>{ mealItem.name }</Text>
+        <TouchableOpacity style={ styles.removeButton } onPress={() => this.handleDeleteMeal(this.props.userId, this.props.selectedDate, this.props.mealType, mealItem.mealId)}>
           <Icon name='md-remove' size={ 30 } color='#c62733' />
         </TouchableOpacity>
       </View>
@@ -77,6 +77,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#e9e9e9',
     borderRadius: 7,
     marginBottom: 10,
-    padding: 10,
+    padding: 5,
+    width: 339,
+    justifyContent: 'space-between'
   },
+  mealName: {
+    fontFamily: 'OpenSans',
+    fontSize: 18
+  },
+  removeButton: {
+
+  }
 });
