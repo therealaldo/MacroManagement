@@ -19,6 +19,10 @@ class WeeklyPlanView extends React.Component {
     intolerances: PropTypes.object.isRequired,
   };
 
+  componentWillMount() {
+    this.props.fetchUserMeals(this.props.users.userId);
+  }
+
   handleBreakfastSearch() {
     this.props.dispatch(this.props.searchBreakfast());
     Actions.searchMeal();

@@ -259,7 +259,10 @@ export default function reducer(
 
     case FETCH_USER_MEALS_SUCCESS:
       return {
-        
+        ...state,
+        mealPlans: action.userMeals.mealPlans,
+        mealPlansByDate: action.userMeals.mealPlansByDate,
+        mealsById: action.userMeals.mealsById
       };
 
     case INCREMENT_DATE:

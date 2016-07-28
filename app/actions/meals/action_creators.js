@@ -341,14 +341,59 @@ export function fetchUserMeals(userId) {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      dispatch(fetchUserMealsSuccess(responseJson));
+      dispatch(fetchUserMealsSuccess(structureUserMeals(responseJson)));
+      console.log(structureUserMeals(responseJson.userMeals));
     })
     .catch((err) => {
       dispatch(fetchUserMealsFailure(err));
     })
   };
 };
+function structureUserMeals(userMeals) {
+  let mealPlans = [];
+  let mealPlansByDate = {};
+  let mealsById = {};
+  let length = userMeals.length;
 
+  for(let i = 0; i < length; i++) {
+
+    let alreadyExists = mealPlans.indexOf(userMeals[i].date) > -1;
+
+    if(!alreadyExists) {
+      mealPlans = mealPlans.concat(userMeals[i].date);
+    }
+
+    mealPlansByDate = {
+      ...mealPlansByDate,
+      [userMeals[i].date]: {
+        date: userMeals[i].date,
+        [userMeals[i].mealType]: [
+          ...mealPlansByDate[userMeals[i].date][userMeals[i].mealtype],
+          userMeals[i].mealId
+        ],
+        totalCalories: mealPlansByDate.totalCalories + userMeals[i].calories
+      }
+    },
+    mealsById = {
+      ...mealsById,
+      [userMeals[i].mealId]: {
+        mealId: userMeals[i].mealId,
+        name: userMeals[i].name,
+        image: userMeals[i].image,
+        calories: userMeals[i].calories
+      }
+    }
+  }
+
+  let structuredUserMeals = {
+    mealPlans,
+    mealPlansByDate,
+    mealsById
+  };
+
+  return structuredUserMeals;
+
+}
 
 
 
