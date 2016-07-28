@@ -118,6 +118,7 @@ Your privacy is very important to us. Accordingly, we have developed this Policy
 ## Credits & Version
 
 [Aldo Gonzalez](https://github.com/therealaldo)
+
 [Jacob Nigh](https://github.com/jacobnigh)
 
 Version 1.0.0
