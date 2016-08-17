@@ -2,38 +2,41 @@
 
 import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, Alert, InteractionManager } from 'react-native';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as settingsActionCreators from '../actions/settings/action_creators';
+import * as usersActionCreators from '../actions/users/action_creators';
 import { Actions } from 'react-native-router-flux';
 import Button from 'react-native-button';
-import { connect } from 'react-redux';
 import SettingsList from 'react-native-settings-list';
 
 class SettingsView extends React.Component {
   static propTypes = {
-    routes: PropTypes.object,
+    routes: PropTypes.object.isRequired,
+    settings: PropTypes.object.isRequired,
+    users: PropTypes.object.isRequired,
+    toggleRecommendations: PropTypes.func.isRequired,
+    toggleNutritionFacts: PropTypes.func.isRequired,
+    toggleNotifications: PropTypes.func.isRequired,
+    resetAllSettings: PropTypes.func.isRequired,
   };
+
+  handleLogout() {
+    this.props.logout();
+    Actions.welcome({ type: 'reset' });
+  }
 
   generateSettingsList() {
     switch(this.props.routes.scene.name) {
-      case 'profileSettings':
-        return (
-          <View style={ styles.settingsContainer }>
-            <View style={ styles.listContainer }>
-              <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
-                <SettingsList.Item title='Edit Profile' titleStyle={{fontFamily: 'OpenSans'}}
-                  onPress={() => Alert.alert('Edit Profile pressed')} />
-              </SettingsList>
-            </View>
-          </View>
-        );
       case 'sharePrivacySettings':
         return (
           <View style={ styles.settingsContainer }>
             <View style={ styles.listContainer }>
               <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
                 <SettingsList.Item title='Terms of Service' titleStyle={{fontFamily: 'OpenSans'}}
-                  onPress={() => Alert.alert('TOS pressed')} />
+                  onPress={ Actions.termsService } />
                 <SettingsList.Item title='Privacy Policy' titleStyle={{fontFamily: 'OpenSans'}}
-                  onPress={() => Alert.alert('Privacy Policy pressed')} />
+                  onPress={ Actions.privacyPolicy } />
               </SettingsList>
             </View>
           </View>
@@ -43,10 +46,14 @@ class SettingsView extends React.Component {
           <View style={ styles.settingsContainer }>
             <View style={ styles.listContainer }>
               <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
-                <SettingsList.Item title='Edit Food Preferences' titleStyle={{fontFamily: 'OpenSans'}}
-                  onPress={() => Alert.alert('Edit Food Preferences pressed')} />
-                <SettingsList.Item title='Show Nutrition Facts' hasSwitch={ true } hasNavArrow={ false }
-                  titleStyle={{fontFamily: 'OpenSans'}} />
+                <SettingsList.Item title='Food Intolerances'
+                  titleStyle={{fontFamily: 'OpenSans'}}
+                  onPress={ Actions.settingsIntolerances } />
+                <SettingsList.Item title='Show Nutrition Facts'
+                  hasSwitch={ true } hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}}
+                  switchState={ this.props.settings.nutritionFacts }
+                  switchOnValueChange={ this.props.toggleNutritionFacts } />
               </SettingsList>
             </View>
           </View>
@@ -56,10 +63,16 @@ class SettingsView extends React.Component {
           <View style={ styles.settingsContainer }>
             <View scrollEnabled={ false } style={ styles.listContainer }>
               <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
-                <SettingsList.Item title='Enable Recommendations' hasSwitch={ true }
-                  hasNavArrow={ false } titleStyle={{fontFamily: 'OpenSans'}} />
-                <SettingsList.Item title='Do Not Disturb' hasSwitch={ true } hasNavArrow={ false }
-                  titleStyle={{fontFamily: 'OpenSans'}} />
+                <SettingsList.Item title='Enable Recommendations'
+                  hasSwitch={ true } hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}}
+                  switchState={ this.props.settings.recommendations }
+                  switchOnValueChange={ this.props.toggleRecommendations } />
+                <SettingsList.Item title='Do Not Disturb'
+                  hasSwitch={ true } hasNavArrow={ false }
+                  titleStyle={{fontFamily: 'OpenSans'}}
+                  switchState={ this.props.settings.notifications }
+                  switchOnValueChange={ this.props.toggleNotifications } />
               </SettingsList>
             </View>
           </View>
@@ -111,7 +124,7 @@ class SettingsView extends React.Component {
                     'Are you sure you want to reset all of your settings?',
                     [
                       {text: 'Cancel'},
-                      {text: 'Reset', onPress: () => console.log('You just reset your settings.')},
+                      {text: 'Reset', onPress: () => this.props.resetAllSettings()},
                     ]
                   )} />
               </SettingsList>
@@ -123,8 +136,6 @@ class SettingsView extends React.Component {
             <View style={ styles.settingsContainer }>
               <View style={ styles.listContainer }>
                 <SettingsList backgroundColor='#e9e9e9' borderColor='#999'>
-                  <SettingsList.Item title='Profile' titleStyle={{fontFamily: 'OpenSans'}}
-                    onPress={ Actions.profileSettings } />
                   <SettingsList.Item title='Sharing & Privacy' titleStyle={{fontFamily: 'OpenSans'}}
                     onPress={ Actions.sharePrivacySettings } />
                   <SettingsList.Item title='Meal Plan' titleStyle={{fontFamily: 'OpenSans'}}
@@ -141,8 +152,9 @@ class SettingsView extends React.Component {
                     onPress={ Actions.resetSettings } />
                 </SettingsList>
               </View>
-              <Button containerStyle={ styles.logOutButtonContainer } style={ styles.logOutButtonText }
-                onPress={() => Alert.alert('Log Out pressed')}>
+              <Button containerStyle={ styles.logOutButtonContainer }
+                style={ styles.logOutButtonText }
+                onPress={ this.handleLogout.bind(this) }>
                 Log Out
               </Button>
             </View>
@@ -187,7 +199,19 @@ const styles = StyleSheet.create({
   logOutButtonText: {
     color: '#e9e9e9',
   }
-});;
+});
+
+function mapStateToProps(state) {
+  return {
+    routes: state.routes,
+    settings: state.settings,
+    users: state.users
+  };
+};
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(Object.assign({}, settingsActionCreators, usersActionCreators), dispatch);
+};
 
 
-export default connect(({routes}) => ({routes}))(SettingsView);
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsView);

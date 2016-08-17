@@ -1,17 +1,23 @@
 'use strict';
 
-import omit from 'lodash/object/omit';
-import assign from 'lodash/object/assign';
-import mapValues from 'lodash/object/mapValues';
 import {
-  SAVE_USER_PROFILE,
-  RECEIVE_USER_PROFILE
-} from '../constants/action_types';
+
+  RECEIVE_USER_FAILURE,
+
+  SAVE_USER_REQUEST,
+  SAVE_USER_SUCCESS,
+  SAVE_USER_FAILURE,
+
+  LOG_OUT
+
+} from '../actions/users/action_types';
 
 const initialState = {
-  entities: {
-    users: {}
-  },
+  userId: '',
+  email: '',
+  token: '',
+  isFetching: false,
+  error: null,
 };
 
 export default function reducer(
@@ -19,31 +25,37 @@ export default function reducer(
   action = {}
 ) {
   switch (action.type) {
-    case SAVE_USER_PROFILE:
+    case SAVE_USER_REQUEST:
       return {
-        entities: {
-          users: {
-            ...state.entities.users,
-            [action.profile.userId]: {
-              ...state.entities.users[action.profile.userId],
-              id: action.profile.userId,
-              email: action.profile.email,
-            }
-          }
-        }
+        ...state,
+        isFetching: true,
+        error: null
       };
-    case RECEIVE_USER_PROFILE:
+
+    case SAVE_USER_SUCCESS:
       return {
-        entities: {
-          users: {
-            ...state.entities.users,
-            [action.profile.userId]: {
-              id: action.profile.userId,
-              email: action.profile.email,
-              token: action.profile.token
-            }
-          }
-        }
+        userId: action.userData[0].userId,
+        email: action.userData[0].email,
+        token: action.userData[0].token,
+        isFetching: false,
+        error: null
+      };
+
+    case RECEIVE_USER_FAILURE:
+    case SAVE_USER_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.error
+      };
+
+    case LOG_OUT:
+      return {
+        userId: '',
+        email: '',
+        token: '',
+        isFetching: false,
+        error: null,
       };
 
     default:

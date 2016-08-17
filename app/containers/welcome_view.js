@@ -2,27 +2,15 @@
 
 import React, { PropTypes } from 'react';
 import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
-// Authorization w/ Auth0
-import Auth0Lock from 'react-native-lock';
-import Config from 'react-native-config';
-
-let credentials = {
-  clientId: Config.CLIENT_ID,
-  domain: Config.DOMAIN
-};
-let lock = new Auth0Lock(credentials, {
-  integrations: {
-    facebook: {}
-  }
-});
+import * as actionCreators from '../actions/users/action_creators';
 
 // TODO: style the login flow to match the app's style guidelines
 class WelcomeView extends React.Component {
   static propTypes = {
-    routes: PropTypes.object,
+    routes: PropTypes.object.isRequired,
+    users: PropTypes.object.isRequired
   };
 
   render() {
@@ -33,37 +21,21 @@ class WelcomeView extends React.Component {
             style={ styles.badge }
             source={ imageMap['badge'] }
           />
-        <Text style={ styles.title }>MacroManagement</Text>
-          <Text style={ styles.subtitle }>We Sweat the Small Stuff for You</Text>
+          <Text style={ styles.subtitle }>"We Sweat the Small Stuff for You"</Text>
         </View>
         <TouchableHighlight
           style={ styles.signInButton }
           underlayColor='#949494'
-          onPress={ this._onLogin }>
+          onPress={ this.props.login }>
           <Text style={ styles.buttonText }>Log In</Text>
         </TouchableHighlight>
       </View>
     );
   }
-
-  _onLogin() {
-    lock.show({
-      closable: true,
-    }, (err, profile, token) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      Actions.tabbar({
-        profile: profile,
-        token: token,
-      });
-    });
-  }
 };
 
 const imageMap = {
-  "badge": require('../img/badge.png'),
+  "badge": require('../img/mmlogo.png'),
 };
 
 const styles = StyleSheet.create({
@@ -71,7 +43,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    backgroundColor: '#26a65b',
+    backgroundColor: '#FFFFFF',
   },
   messageBox: {
     flex: 1,
@@ -79,8 +51,8 @@ const styles = StyleSheet.create({
   },
   badge: {
     alignSelf: 'center',
-    height: 169,
-    width: 151,
+    height: 100,
+    width: 250,
   },
   title: {
     fontSize: 17,
@@ -93,22 +65,33 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 4,
     color: '#FFFFFF',
+    fontFamily: 'OpenSans-Italic'
   },
   signInButton: {
     height: 50,
     alignSelf: 'stretch',
-    backgroundColor: '#efbe14',
+    backgroundColor: '#26a65b',
     margin: 10,
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonText: {
-    color: '#e9e9e9',
+    color: '#f4f4f4',
     fontFamily: 'OpenSans-Semibold',
     fontSize: 18
   }
 });
 
+function mapStateToProps(state) {
+  return {
+    routes: state.routes,
+    users: state.users
+  }
+};
 
-export default connect(({routes}) => ({routes}))(WelcomeView);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch);
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WelcomeView);

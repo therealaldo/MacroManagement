@@ -10,7 +10,7 @@ export default function reducer(
 ) {
   switch(action.type) {
     case 'focus':
-      if(action.scene.index) {
+      if(action.scene.children) {
         return {
           ...state,
           scene: action.scene.children[action.scene.index],

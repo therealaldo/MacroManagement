@@ -17,22 +17,22 @@
   "homepage": "https://github.com/therealaldo/MacroManagement#readme",
   "dependencies": {
     "moment": "2.14.1",
-    "normalizr": "^2.1.0",
     "react": "15.1.0",
     "react-native": "0.27.0",
     "react-native-button": "1.6.0",
     "react-native-chart": "1.0.1-beta",
     "react-native-config": "0.0.6",
+    "react-native-htmlview": "0.5.0",
     "react-native-lock": "0.2.0",
     "react-native-router-flux": "3.30.0",
+    "react-native-safari-view": "1.0.0",
     "react-native-settings-list": "1.1.4",
-    "react-native-tabs": "1.0.7",
     "react-native-vector-icons": "2.0.3",
-    "react-native-webview-js-context": "^0.2.4",
+    "react-native-webview-js-context": "0.2.4",
     "react-redux": "4.4.5",
     "redux": "3.5.2",
     "redux-logger": "2.6.1",
-    "redux-saga": "0.10.5",
-    "redux-thunk": "2.1.0"
+    "redux-thunk": "2.1.0",
+    "xml2js": "0.4.17"
   }
 }
