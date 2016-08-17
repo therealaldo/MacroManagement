@@ -87,8 +87,8 @@ export function addGroceryItem(listId, name) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        listId: listId,
-        name: name
+        listId,
+        name
       })
     })
     .then((response) => response.json())
@@ -126,9 +126,12 @@ export function removeGroceryItem(listId, ingredientId) {
     dispatch(removeGroceryItemRequest());
     return fetch('http://162.243.164.11/ingredients', {
       method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
-        listId: listId,
-        ingredientId: ingredientId
+        listId,
+        ingredientId
       })
     })
     .then((response) => response.json())
@@ -207,9 +210,12 @@ export function removeList(listId, userId) {
     dispatch(removeListRequest());
     return fetch('http://162.243.164.11/grocerylist', {
       method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
-        userId: userId,
-        listId: listId
+        userId,
+        listId
       })
     })
     .then((response) => response.json())

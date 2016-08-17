@@ -30,7 +30,7 @@ export default class RssList extends React.Component {
             <Icon name='logo-rss' size={ 15 } style={ styles.rssLogo } />
             <Text style={ styles.articleDate }
               numberOfLines={ 1 }>
-              { moment(rss.publishedDate, 'ddd, DD MMM YYYY HH:mm:SS').format('dddd, MMM DD, YYYY h:mm a') }
+              { moment(rss.publishedDate, 'ddd, DD MMM YYYY HH:mm:SS').format('dddd, MMM DD, YYYY - h:mm a') }
             </Text>
           </View>
         </View>

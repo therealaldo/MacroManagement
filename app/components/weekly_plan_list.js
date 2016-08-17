@@ -26,8 +26,8 @@ export default class WeeklyPlanList extends React.Component {
     };
   }
 
-  handleDeleteMeal(userId, selectedDate, mealType, mealId) {
-    this.props.deleteMeal(userId, selectedDate, mealType, mealId);
+  handleDeleteMeal(mealId) {
+    this.props.deleteMeal(this.props.userId, this.props.selectedDate, this.props.mealType, mealId);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -39,6 +39,7 @@ export default class WeeklyPlanList extends React.Component {
         newMealArray.push(nextProps.data.mealsById[nextProps.data.mealPlansByDate[nextProps.selectedDate][nextProps.mealType][i]]);
       };
     };
+
     this.setState({
       dataSource: ds.cloneWithRows(newMealArray)
     });
@@ -48,7 +49,7 @@ export default class WeeklyPlanList extends React.Component {
     return (
       <View style={ styles.mealContainer }>
         <Text style={ styles.mealName }>{ mealItem.name }</Text>
-        <TouchableOpacity style={ styles.removeButton } onPress={() => this.handleDeleteMeal(this.props.userId, this.props.selectedDate, this.props.mealType, mealItem.mealId)}>
+        <TouchableOpacity style={ styles.removeButton } onPress={() => this.handleDeleteMeal(mealItem.mealId)}>
           <Icon name='md-remove' size={ 30 } color='#c62733' />
         </TouchableOpacity>
       </View>

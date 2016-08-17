@@ -49,8 +49,8 @@ export function addIntolerance(userId, name) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        userId: userId,
-        name: name
+        userId,
+        name
       })
     })
     .then((response) => response.json())
@@ -87,9 +87,12 @@ export function removeIntolerance(intoleranceId, userId) {
     dispatch(removeIntoleranceRequest());
     return fetch('http://162.243.164.11/intolerances', {
       method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
-        intoleranceId: intoleranceId,
-        userId: userId
+        intoleranceId,
+        userId
       })
     })
     .then((response) => response.json())
