@@ -10,6 +10,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import moment from 'moment';
 
 export default class RssList extends React.Component {
   constructor(props) {
@@ -28,7 +29,9 @@ export default class RssList extends React.Component {
           <View style={ styles.rssFooter }>
             <Icon name='logo-rss' size={ 15 } style={ styles.rssLogo } />
             <Text style={ styles.articleDate }
-              numberOfLines={ 1 }>{ rss.publishedDate }</Text>
+              numberOfLines={ 1 }>
+              { moment(rss.publishedDate, 'ddd, DD MMM YYYY HH:mm:SS').format('dddd, MMM DD, YYYY h:mm a') }
+            </Text>
           </View>
         </View>
       </TouchableOpacity>
