@@ -46,6 +46,7 @@ class GroceryListView extends React.Component {
             placeholder='Add a grocery list' />
           <ScrollView style={ styles.groceryListContainer }>
             <GroceryList data={ this.props.groceryLists }
+              style={ styles.listData }
               userId={ this.props.users.userId }
               viewGroceryList={ this.props.viewGroceryList }
               removeList={ this.props.removeList } />
@@ -76,6 +77,13 @@ const styles = StyleSheet.create({
     borderColor: '#999999',
     borderRadius: 7,
     marginBottom: 15,
+  },
+  listData: {
+    backgroundColor: '#e9e9e9',
+    height: 35,
+    padding: 5,
+    marginBottom: 5,
+    color: '#DDD555'
   }
 });
 
