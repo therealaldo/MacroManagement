@@ -47,7 +47,7 @@ export default class GroceryIngredientList extends React.Component {
       <View style={ styles.ingredientRow }>
         <Text>{ ingredient.name }</Text>
         <TouchableOpacity onPress={() => this.handleRemoveIngredient(ingredient.id)}>
-          <Icon name='md-remove' size={ 30 } color='#c62733' />
+          <Icon name='md-remove-circle' size={ 25 } color='#c62733' />
         </TouchableOpacity>
       </View>
     )
@@ -68,6 +68,10 @@ const styles = StyleSheet.create({
     flex: 1
   },
   ingredientRow: {
+    padding: 7,
+    alignItems: 'center',
+    borderRadius: 7,
+    backgroundColor: '#e9e9e9',
     marginBottom: 5,
     flexDirection: 'row',
     justifyContent: 'space-between'

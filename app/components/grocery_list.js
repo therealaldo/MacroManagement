@@ -51,14 +51,13 @@ export default class GroceryList extends React.Component {
 
   renderRow(list) {
     return (
-        <TouchableHighlight >
-        </TouchableHighlight>
+
           <View style={ styles.listRow }>
             <TouchableOpacity onPress={ () => this.navigateToList(list.id) }>
               <Text>{ list.name }</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.handleRemoveList(list.id)}>
-              <Icon name='md-remove' size={ 30 } color='#c62733' />
+              <Icon name='md-remove-circle' size={ 25 } color='#c62733' />
             </TouchableOpacity>
           </View>
 

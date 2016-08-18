@@ -29,7 +29,9 @@ export default class IngredientList extends React.Component {
   renderRow(item) {
     return (
       <View style={ styles.ingredientRow }>
-        <Text style={ styles.itemRow }>{ item.originalString }</Text>
+        <Text style={ styles.itemRow }>
+          • { item.originalString }
+        </Text>
       </View>
     )
   }

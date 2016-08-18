@@ -28,7 +28,9 @@ export default class DirectionList extends React.Component {
 
   renderRow(item) {
     return (
-      <Text style={ styles.itemRow }>{ item }</Text>
+      <Text style={ styles.itemRow }>
+        { item }
+      </Text>
     )
   }
 
