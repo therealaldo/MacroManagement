@@ -51,6 +51,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   itemRow: {
-    marginBottom: 5
+    marginBottom: 10
   }
 });
