@@ -21,7 +21,9 @@ class WeeklyPlanView extends React.Component {
   };
 
   componentWillMount() {
-    this.props.fetchUserMeals(this.props.users.userId);
+    if(Object.keys(this.props.meals.mealsById).length === 0) {
+      this.props.fetchUserMeals(this.props.users.userId);
+    }
   }
 
   handleBreakfastSearch() {

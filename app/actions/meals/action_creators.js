@@ -236,13 +236,13 @@ export function addMeal(selectedDate, mealType, userId, meal, calories) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        userId: userId,
+        userId,
+        mealType,
+        calories,
         date: selectedDate,
         mealId: meal.id,
         name: meal.title,
-        image: meal.image,
-        mealType: mealType,
-        calories: calories
+        image: meal.image
       })
     })
     .then((response) => response.json())
@@ -283,16 +283,19 @@ export function deleteMeal(userId, selectedDate, mealType, mealId) {
     dispatch(deleteMealRequest());
     return fetch('http://162.243.164.11/meals', {
       method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
-        userId: userId,
+        userId,
+        mealType,
+        mealId,
         date: selectedDate,
-        mealType: mealType,
-        mealId: mealId
       })
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      dispatch(deleteMealSuccess(mealType, mealId))
+      dispatch(deleteMealSuccess(mealType, mealId));
     })
     .catch((err) => {
       dispatch(deleteMealFailure(err))

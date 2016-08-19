@@ -198,6 +198,7 @@ export default function reducer(
             calories: action.mealJson.createdMeal.calories
           }
         },
+        mealResults: [],
         selectedMealType: '',
         searchKeyword: '',
         isFetching: false,

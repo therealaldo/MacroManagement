@@ -1,7 +1,7 @@
 # Macro Management
 
 > Macro Management is a meal planning application that allows users to set daily/weekly meals. It
-> also allows for the user to see their intake progress visually using graphs.  
+> also allows for the user to see their intake progress visually using graphs.
 
 ### Table of contents
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
@@ -125,4 +125,4 @@ Version 1.0.0
 
 ## License
 
-This project is available under the [MIT License.](https://opensource.org/licenses/MIT)
+This project is available under the [MIT License.](https://github.com/therealaldo/MacroManagement/blob/master/LICENSE)
