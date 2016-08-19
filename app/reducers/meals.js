@@ -251,8 +251,8 @@ export default function reducer(
 
     case ADD_MEAL_PLANS:
       let len = action.userMeals.userMeals.length;
-      let newMealPlans = state.mealPlans.slice();
-      let newMealPlansByDate = { ...state.mealPlansByDate };
+      let newMealPlans = [];
+      let newMealPlansByDate = {};
       let newMealsById = {};
       for(let i = 0; i < len; i++) {
         let mealsAlreadyExist = newMealPlans.indexOf(action.userMeals.userMeals[i].date) > -1;
