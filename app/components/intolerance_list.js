@@ -47,7 +47,7 @@ export default class IntoleranceList extends React.Component {
       <View style={ styles.intoleranceRow }>
         <Text>{ intolerance.name }</Text>
         <TouchableOpacity onPress={() => this.handleRemoveIntolerance(intolerance.id)}>
-          <Icon name='md-remove' size={ 30 } color='#c62733' />
+          <Icon name='md-remove-circle' size={ 25 } color='#c62733' />
         </TouchableOpacity>
       </View>
     )
@@ -68,6 +68,10 @@ const styles = StyleSheet.create({
     flex: 1
   },
   intoleranceRow: {
+    padding: 7,
+    alignItems: 'center',
+    borderRadius: 7,
+    backgroundColor: '#e9e9e9',
     marginBottom: 5,
     flexDirection: 'row',
     justifyContent: 'space-between'

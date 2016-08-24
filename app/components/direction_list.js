@@ -28,7 +28,9 @@ export default class DirectionList extends React.Component {
 
   renderRow(item) {
     return (
-      <Text style={ styles.itemRow }>{ item }</Text>
+      <Text style={ styles.itemRow }>
+        { item }
+      </Text>
     )
   }
 
@@ -49,6 +51,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   itemRow: {
-    marginBottom: 5
+    marginBottom: 10
   }
 });
