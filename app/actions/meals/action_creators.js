@@ -246,9 +246,9 @@ export function addMeal(selectedDate, mealType, userId, meal, calories) {
       })
     })
     .then((response) => response.json())
-    .then((mealJson) => {
+    .then((responseJson) => {
       InteractionManager.runAfterInteractions(() => {
-        dispatch(addMealSuccess(mealJson));
+        dispatch(addMealSuccess(responseJson));
         Actions.mainWeeklyPlan({ type: 'reset' });
       });
     })
@@ -278,7 +278,7 @@ export function deleteMealFailure(error) {
     error
   };
 };
-export function deleteMeal(userId, selectedDate, mealType, mealId) {
+export function deleteMeal(userId, selectedDate, mealType, mealId, calories) {
   return dispatch => {
     dispatch(deleteMealRequest());
     return fetch('http://162.243.164.11/meals', {
@@ -295,7 +295,7 @@ export function deleteMeal(userId, selectedDate, mealType, mealId) {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      dispatch(deleteMealSuccess(mealType, mealId));
+      dispatch(deleteMealSuccess(mealType, mealId, calories));
     })
     .catch((err) => {
       dispatch(deleteMealFailure(err))

@@ -75,6 +75,7 @@ const initialState = {
   pagination: 0,
   totalResults: 0,
   processingTimeMs: 0,
+  preloaded: false
 };
 
 export default function reducer(
@@ -253,10 +254,10 @@ export default function reducer(
       let len = action.userMeals.userMeals.length;
       let newMealPlans = state.mealPlans.slice();
       let newMealPlansByDate = { ...state.mealPlansByDate };
-      let newMealsById = {};
+      let newMealsById = { ...state.mealsById };
       for(let i = 0; i < len; i++) {
-        let mealsAlreadyExist = newMealPlans.indexOf(action.userMeals.userMeals[i].date) > -1;
-        if(!mealsAlreadyExist) {
+        let mealPlanAlreadyExists = newMealPlans.indexOf(action.userMeals.userMeals[i].date) > -1;
+        if(!mealPlanAlreadyExists) {
           newMealPlans = newMealPlans.concat(action.userMeals.userMeals[i].date);
           newMealPlansByDate = {
             ...newMealPlansByDate,
@@ -283,7 +284,9 @@ export default function reducer(
         ...state,
         mealPlans: newMealPlans,
         mealPlansByDate: newMealPlansByDate,
-        mealsById: newMealsById
+        mealsById: newMealsById,
+        isFetching: false,
+        error: null
       };
 
     case ADD_MEALS:
@@ -302,7 +305,10 @@ export default function reducer(
       };
       return {
         ...state,
-        mealPlansByDate: populatedMealPlansByDate
+        mealPlansByDate: populatedMealPlansByDate,
+        isFetching: false,
+        error: null,
+        preloaded: true
       };
 
     case INCREMENT_DATE:

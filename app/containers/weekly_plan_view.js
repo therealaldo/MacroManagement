@@ -20,8 +20,8 @@ class WeeklyPlanView extends React.Component {
     intolerances: PropTypes.object.isRequired,
   };
 
-  componentWillMount() {
-    if(Object.keys(this.props.meals.mealsById).length === 0) {
+  componentDidMount() {
+    if(!this.props.meals.preloaded) {
       this.props.fetchUserMeals(this.props.users.userId);
     }
   }
