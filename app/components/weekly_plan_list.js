@@ -50,7 +50,7 @@ export default class WeeklyPlanList extends React.Component {
       <View style={ styles.mealContainer }>
         <Text style={ styles.mealName }>{ mealItem.name }</Text>
         <TouchableOpacity style={ styles.removeButton } onPress={() => this.handleDeleteMeal(mealItem.mealId)}>
-          <Icon name='md-remove' size={ 30 } color='#c62733' />
+          <Icon name='md-remove-circle' size={ 25 } color='#c62733' />
         </TouchableOpacity>
       </View>
     )
